@@ -15,6 +15,26 @@
             </div>
         </section>
     {{/articles}}
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Ingredients</th>
+            <th>Spices and Sauces</th>
+            <th>Cooking Instructions</th>
+        </tr>
+    {{#recipes}}
+        <tr>
+            <td>{{type}}</td>
+            <td>{{name}}</td>
+            <td><pre>{{ingredients}}</pre></td>
+            <td><pre>{{spicesAndSauces}}</pre></td>
+            <td><pre>{{cookingInstructions}}</pre></td>
+        </tr>
+    {{/recipes}}
+    </table>
+
 </div>
 
 {{> footer}}

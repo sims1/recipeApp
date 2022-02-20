@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.server.ResponseStatusException
 
 @Controller
-class HtmlController(private val repository: ArticleRepository) {
+class HtmlController(
+    private val repository: ArticleRepository,
+    private val recipeRepository: RecipeRepository
+) {
 
     @GetMapping("/")
     fun blog(model: Model): String {
         model["title"] = "Blog"
         model["articles"] = repository.findAllByOrderByAddedAtDesc().map { it.render() }
+        model["recipes"] = recipeRepository.findAll()
         return "blog"
     }
 
