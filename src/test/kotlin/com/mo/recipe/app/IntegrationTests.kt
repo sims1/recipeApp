@@ -1,4 +1,4 @@
-package com.mo.recipe.app.RecipeApp
+package com.mo.recipe.app
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll

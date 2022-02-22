@@ -1,4 +1,4 @@
-package com.mo.recipe.app.RecipeApp
+package com.mo.recipe.app
 
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller

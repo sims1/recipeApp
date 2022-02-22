@@ -1,4 +1,4 @@
-package com.mo.recipe.app.RecipeApp.recipes.atomics
+package com.mo.recipe.app.recipes.atomics
 
 import com.mo.recipe.app.RecipeApp.RecipeType
 

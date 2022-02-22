@@ -1,6 +1,6 @@
-package com.mo.recipe.app.RecipeApp
+package com.mo.recipe.app
 
-import com.mo.recipe.app.RecipeApp.recipes.atomics.Recipe
+import com.mo.recipe.app.recipes.atomics.Recipe
 import org.springframework.data.repository.CrudRepository
 
 interface ArticleRepository : CrudRepository<Article, Long> {

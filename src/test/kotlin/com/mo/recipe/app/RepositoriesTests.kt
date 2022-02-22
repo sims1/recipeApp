@@ -1,4 +1,4 @@
-package com.mo.recipe.app.RecipeApp
+package com.mo.recipe.app
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -11,7 +11,8 @@ import org.springframework.data.repository.findByIdOrNull
 class RepositoriesTests @Autowired constructor(
     val entityManager: TestEntityManager,
     val userRepository: UserRepository,
-    val articleRepository: ArticleRepository) {
+    val articleRepository: ArticleRepository
+) {
 
     @Test
     fun `When findByIdOrNull then return Article`() {

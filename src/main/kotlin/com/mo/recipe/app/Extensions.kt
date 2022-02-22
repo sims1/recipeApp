@@ -1,4 +1,4 @@
-package com.mo.recipe.app.RecipeApp
+package com.mo.recipe.app
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatterBuilder
