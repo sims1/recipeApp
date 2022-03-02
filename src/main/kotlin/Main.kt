@@ -14,15 +14,11 @@ import kotlinx.serialization.Serializable
 // Following
 // https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction
 // https://github.com/kotlin-hands-on/web-app-react-kotlin-js-gradle
-
-
+// \todo study react
+// \todo study html
+// \todo study css
 
 fun main() {
     val container = document.getElementById("root") ?: error("Couldn't find root container!")
-
-    render(Fragment.create {
-        h1 {
-            +"Hello, React+Kotlin/JS!"
-        }
-    }, container)
+    render(App.create(), container)
 }
