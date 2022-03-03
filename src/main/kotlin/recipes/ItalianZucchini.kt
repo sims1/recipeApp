@@ -1,6 +1,6 @@
 package com.mo.recipe.app.recipes
 
-import com.mo.recipe.app.recipes.atomics.Recipe
+import recipes.atomics.Recipe
 import com.mo.recipe.app.RecipeApp.RecipeType
 import com.mo.recipe.app.recipes.atomics.Ingredient
 import com.mo.recipe.app.recipes.atomics.SpiceAndSauce

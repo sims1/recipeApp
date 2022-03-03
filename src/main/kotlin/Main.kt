@@ -1,15 +1,6 @@
 import kotlinx.browser.document
-import react.*
-import react.css.css
+import react.create
 import react.dom.render
-import csstype.Position
-import csstype.px
-import react.dom.html.ReactHTML.h1
-import react.dom.html.ReactHTML.h3
-import react.dom.html.ReactHTML.div
-import react.dom.html.ReactHTML.p
-import react.dom.html.ReactHTML.img
-import kotlinx.serialization.Serializable
 
 // Following
 // https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction
