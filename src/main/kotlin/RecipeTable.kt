@@ -1,4 +1,3 @@
-package recipes
 
 import react.FC
 import react.Props
@@ -16,19 +15,19 @@ external interface RecipeTableProps : Props {
 val RecipeTable = FC<RecipeTableProps> { props ->
     table {
         tr {
-            ReactHTML.th { +"Type" }
             ReactHTML.th { +"Name" }
             ReactHTML.th { +"Ingredients" }
             ReactHTML.th { +"Spices and Sauces" }
             ReactHTML.th { +"Cooking Instructions" }
+            ReactHTML.th { +"Type" }
         }
         props.recipes.map { recipe ->
             tr {
-                td { +recipe.getTypeString() }
                 td { +recipe.getNameString() }
                 td { pre { +recipe.getIngredientsString() } }
                 td { pre { +recipe.getSpicesAndSaucesString() } }
                 td { pre { +recipe.getCookingInstructionsString() } }
+                td { +recipe.getTypeString() }
             }
         }
     }
