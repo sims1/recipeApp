@@ -1,3 +1,6 @@
+import com.mo.recipe.app.components.FilterSidebar
+import com.mo.recipe.app.components.Footer
+import com.mo.recipe.app.components.Header
 import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.recipes.BakedSweetPotato
 import com.mo.recipe.app.recipes.ItalianZucchini
@@ -30,14 +33,7 @@ private val recipeList = listOf(
 val App = FC<Props> {
     //var recipeList: List<Recipe> by useState(emptyList())
 
-    header {
-        css {
-            textAlign = TextAlign.center
-        }
-        p {
-            +"Ling's favorite recipes"
-        }
-    }
+    Header { }
 
     section {
         css {
@@ -46,18 +42,7 @@ val App = FC<Props> {
         }
 
         div {
-            RecipeType.values().map { recipeTypeEnum -> recipeTypeEnum.value }
-                .map { recipeType ->
-                    label {
-                        input {
-                            type = InputType.checkbox
-                            value = recipeType
-                            onChange = { event -> println(event.target.checked) }
-                        }
-                        +recipeType
-                    }
-                    br {}
-                }
+            FilterSidebar { }
         }
 
         div {
@@ -67,13 +52,6 @@ val App = FC<Props> {
         }
     }
 
-    footer {
-        css {
-            textAlign = TextAlign.center
-        }
-        p {
-            +"myFooter"
-        }
-    }
+    Footer { }
 
 }
