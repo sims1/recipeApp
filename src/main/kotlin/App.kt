@@ -1,7 +1,8 @@
-import com.mo.recipe.app.RecipeApp.RecipeType
+import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.recipes.BakedSweetPotato
 import com.mo.recipe.app.recipes.ItalianZucchini
 import com.mo.recipe.app.recipes.MashedPotato
+import com.mo.recipe.app.containers.RecipeTable
 import csstype.*
 import react.FC
 import react.Props

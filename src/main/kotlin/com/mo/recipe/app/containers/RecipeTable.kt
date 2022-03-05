@@ -1,3 +1,4 @@
+package com.mo.recipe.app.containers
 
 import react.FC
 import react.Props
@@ -6,7 +7,7 @@ import react.dom.html.ReactHTML.pre
 import react.dom.html.ReactHTML.table
 import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.tr
-import recipes.atomics.Recipe
+import com.mo.recipe.app.recipes.atomics.Recipe
 
 external interface RecipeTableProps : Props {
     var recipes: List<Recipe>

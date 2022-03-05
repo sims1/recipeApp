@@ -1,8 +1,4 @@
-package recipes.atomics
-
-import com.mo.recipe.app.RecipeApp.RecipeType
-import com.mo.recipe.app.recipes.atomics.Ingredient
-import com.mo.recipe.app.recipes.atomics.SpiceAndSauce
+package com.mo.recipe.app.recipes.atomics
 
 class Recipe(
     private val type: RecipeType,

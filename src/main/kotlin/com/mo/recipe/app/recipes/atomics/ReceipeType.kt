@@ -1,4 +1,4 @@
-package com.mo.recipe.app.RecipeApp
+package com.mo.recipe.app.recipes.atomics
 
 enum class RecipeType(val value:String) {
     MEAT("Meat"),
