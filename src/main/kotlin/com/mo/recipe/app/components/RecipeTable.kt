@@ -1,4 +1,4 @@
-package com.mo.recipe.app.containers
+package com.mo.recipe.app.components
 
 import react.FC
 import react.Props
