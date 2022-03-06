@@ -1,11 +1,9 @@
-import com.mo.recipe.app.components.FilterSidebar
-import com.mo.recipe.app.components.Footer
-import com.mo.recipe.app.components.Header
+import com.mo.recipe.app.components.*
 import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.recipes.BakedSweetPotato
 import com.mo.recipe.app.recipes.ItalianZucchini
 import com.mo.recipe.app.recipes.MashedPotato
-import com.mo.recipe.app.components.RecipeTable
+import com.mo.recipe.app.recipes.atomics.Recipe
 import csstype.*
 import react.FC
 import react.Props
@@ -26,6 +24,7 @@ private val recipeList = listOf(
 
 val App = FC<Props> {
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
+    var selectedRecipesState: Set<Recipe> by useState(emptySet())
 
     Header { }
 
@@ -38,12 +37,8 @@ val App = FC<Props> {
         div {
             FilterSidebar {
                 recipeTypes = RecipeType.values().toList()
-                onSelectedType = { selectedType ->
-                    selectedTypesState += selectedType
-                }
-                onUnselectedType = { unselectedType ->
-                    selectedTypesState -= unselectedType
-                }
+                onSelectedType = { selectedType -> selectedTypesState += selectedType }
+                onUnselectedType = { unselectedType -> selectedTypesState -= unselectedType }
             }
         }
 
@@ -51,6 +46,14 @@ val App = FC<Props> {
             RecipeTable {
                 recipes = recipeList
                 selectedTypes = selectedTypesState
+                onSelectRecipe = { recipe -> selectedRecipesState += recipe }
+            }
+        }
+
+        div {
+            SelectedRecipesPanel {
+                selectedRecipes = selectedRecipesState
+                onUnselectedRecipe = { recipe -> selectedRecipesState -= recipe  }
             }
         }
     }
