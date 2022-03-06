@@ -4,19 +4,31 @@ import com.mo.recipe.app.recipes.atomics.RecipeType
 import react.FC
 import react.Props
 import react.dom.html.InputType
-import react.dom.html.ReactHTML
+import react.dom.html.ReactHTML.br
+import react.dom.html.ReactHTML.input
+import react.dom.html.ReactHTML.label
 
-val FilterSidebar = FC<Props> {
-    RecipeType.values().map { recipeTypeEnum -> recipeTypeEnum.value }
-        .map { recipeType ->
-            ReactHTML.label {
-                ReactHTML.input {
-                    type = InputType.checkbox
-                    value = recipeType
-                    onChange = { event -> println(event.target.checked) }
+external interface FilterSidebarProps : Props {
+    var recipeTypes: List<RecipeType>
+    var onSelectedType: (RecipeType) -> Unit
+    var onUnselectedType: (RecipeType) -> Unit
+}
+
+val FilterSidebar = FC<FilterSidebarProps> { props ->
+    props.recipeTypes.map { recipeType ->
+        label {
+            input {
+                type = InputType.checkbox
+                value = recipeType.value
+                onChange = { event ->
+                    when (event.target.checked) {
+                        true -> props.onSelectedType(recipeType)
+                        else -> props.onUnselectedType(recipeType)
+                    }
                 }
-                +recipeType
             }
-            ReactHTML.br {}
+            +recipeType.value
         }
+        br {}
+    }
 }

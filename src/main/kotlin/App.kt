@@ -10,15 +10,9 @@ import csstype.*
 import react.FC
 import react.Props
 import react.css.css
-import react.dom.html.InputType
-import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.div
-import react.dom.html.ReactHTML.footer
-import react.dom.html.ReactHTML.header
-import react.dom.html.ReactHTML.input
-import react.dom.html.ReactHTML.label
-import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.section
+import react.useState
 
 // Following
 // https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction
@@ -31,7 +25,7 @@ private val recipeList = listOf(
 
 
 val App = FC<Props> {
-    //var recipeList: List<Recipe> by useState(emptyList())
+    var selectedTypesState: Set<RecipeType> by useState(emptySet())
 
     Header { }
 
@@ -42,12 +36,21 @@ val App = FC<Props> {
         }
 
         div {
-            FilterSidebar { }
+            FilterSidebar {
+                recipeTypes = RecipeType.values().toList()
+                onSelectedType = { selectedType ->
+                    selectedTypesState += selectedType
+                }
+                onUnselectedType = { unselectedType ->
+                    selectedTypesState -= unselectedType
+                }
+            }
         }
 
         div {
             RecipeTable {
                 recipes = recipeList
+                selectedTypes = selectedTypesState
             }
         }
     }

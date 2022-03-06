@@ -1,7 +1,7 @@
 package com.mo.recipe.app.recipes.atomics
 
 class Recipe(
-    private val type: RecipeType,
+    val type: RecipeType,
     private val name: String,
     private val ingredients: List<Ingredient>,
     private val spicesAndSauces: List<SpiceAndSauce>,
