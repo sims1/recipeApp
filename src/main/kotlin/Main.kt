@@ -1,3 +1,4 @@
+import com.mo.recipe.app.App
 import kotlinx.browser.document
 import react.create
 import react.dom.render

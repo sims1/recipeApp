@@ -42,6 +42,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     implementation(npm("react-awesome-button", "6.5.1"))
+
+    // https://github.com/JetBrains/kotlin-wrappers/tree/master/kotlin-react-router-dom
+    //implementation(npm("react-router-dom", "6.2.1"))
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.2.1-pre.304-kotlin-1.6.10")
 }
 
 // Heroku Deployment (chapter 9)

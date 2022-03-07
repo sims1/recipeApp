@@ -1,3 +1,5 @@
+package com.mo.recipe.app.pages
+
 import com.mo.recipe.app.components.*
 import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.recipes.BakedSweetPotato
@@ -22,7 +24,7 @@ private val recipeList = listOf(
 )
 
 
-val App = FC<Props> {
+val IndexPage = FC<Props> {
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
     var selectedRecipesState: Set<Recipe> by useState(emptySet())
 
