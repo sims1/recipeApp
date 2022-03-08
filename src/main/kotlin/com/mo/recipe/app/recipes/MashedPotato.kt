@@ -9,8 +9,8 @@ class MashedPotato {
             RecipeType.CARB,
             "Mashed Potato",
             listOf(
-                VegetableAndMeatType.POTATO,
-                VegetableAndMeatType.GARLIC
+                Ingredient(VegetableAndMeatType.POTATO),
+                Ingredient(VegetableAndMeatType.GARLIC)
             ),
             listOf(
                 Ingredient(SpiceAndSauceType.BUTTER),

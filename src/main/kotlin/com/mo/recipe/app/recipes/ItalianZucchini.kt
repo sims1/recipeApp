@@ -9,7 +9,7 @@ class ItalianZucchini {
             RecipeType.VEGETABLE,
             "Italian Zucchini",
             listOf(
-                VegetableAndMeatType.ZUCCHINI
+                Ingredient(VegetableAndMeatType.ZUCCHINI)
             ),
             listOf(
                 Ingredient(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
