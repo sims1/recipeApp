@@ -1,9 +1,6 @@
 package com.mo.recipe.app.recipes
 
-import com.mo.recipe.app.recipes.atomics.Recipe
-import com.mo.recipe.app.recipes.atomics.RecipeType
-import com.mo.recipe.app.recipes.atomics.Ingredient
-import com.mo.recipe.app.recipes.atomics.SpiceAndSauce
+import com.mo.recipe.app.recipes.atomics.*
 
 class ItalianZucchini {
 
@@ -15,9 +12,9 @@ class ItalianZucchini {
                 Ingredient.ZUCCHINI
             ),
             listOf(
-                SpiceAndSauce.ITALIAN_HERB_SPICE_BLEND,
-                SpiceAndSauce.SALT,
-                SpiceAndSauce.PEPPER
+                SpiceAndSauce(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
+                SpiceAndSauce(SpiceAndSauceType.SALT),
+                SpiceAndSauce(SpiceAndSauceType.PEPPER)
             ),
             listOf("450F 12min")
         )

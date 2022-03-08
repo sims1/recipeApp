@@ -1,9 +1,6 @@
 package com.mo.recipe.app.recipes
 
-import com.mo.recipe.app.recipes.atomics.Recipe
-import com.mo.recipe.app.recipes.atomics.RecipeType
-import com.mo.recipe.app.recipes.atomics.Ingredient
-import com.mo.recipe.app.recipes.atomics.SpiceAndSauce
+import com.mo.recipe.app.recipes.atomics.*
 
 class MashedPotato {
 
@@ -16,9 +13,9 @@ class MashedPotato {
                 Ingredient.GARLIC
             ),
             listOf(
-                SpiceAndSauce.BUTTER,
-                SpiceAndSauce.SALT,
-                SpiceAndSauce.PEPPER
+                SpiceAndSauce(SpiceAndSauceType.BUTTER),
+                SpiceAndSauce(SpiceAndSauceType.SALT),
+                SpiceAndSauce(SpiceAndSauceType.PEPPER)
             ),
             listOf(
                 "steam potato slices and 1 garlic",

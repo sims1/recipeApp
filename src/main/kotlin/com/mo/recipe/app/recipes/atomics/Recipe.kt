@@ -1,6 +1,5 @@
 package com.mo.recipe.app.recipes.atomics
 
-import kotlin.js.Date
 import kotlin.random.Random
 
 class Recipe(
@@ -14,7 +13,7 @@ class Recipe(
     fun getTypeString() = type.value
     fun getNameString() = name
     fun getIngredientsString() = ingredients.joinToString("\n") { item -> item.value }
-    fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { item -> item.value }
+    fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { item -> item.getString() }
     fun getCookingInstructionsString() = cookingInstructions.joinToString("\n")
 
     override fun toString(): String {
