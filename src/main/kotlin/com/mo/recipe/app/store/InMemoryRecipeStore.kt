@@ -3,6 +3,7 @@ package com.mo.recipe.app.store
 import com.mo.recipe.app.recipes.BakedSweetPotato
 import com.mo.recipe.app.recipes.ItalianZucchini
 import com.mo.recipe.app.recipes.MashedPotato
+import com.mo.recipe.app.recipes.PotatoShoots
 import com.mo.recipe.app.recipes.atomics.Recipe
 
 class InMemoryRecipeStore {
@@ -24,6 +25,7 @@ class InMemoryRecipeStore {
             BakedSweetPotato.recipe,
             ItalianZucchini.recipe,
             MashedPotato.recipe,
+            PotatoShoots.recipe,
         )
 
         private val idToRecipe: Map<String, Recipe> = createRecipeMap()
@@ -33,7 +35,5 @@ class InMemoryRecipeStore {
             recipeList.forEach { recipe -> result[recipe.id] = recipe }
             return result
         }
-
-
     }
 }
