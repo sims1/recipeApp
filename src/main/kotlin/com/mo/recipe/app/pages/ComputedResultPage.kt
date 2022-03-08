@@ -2,6 +2,7 @@ package com.mo.recipe.app.pages
 
 import com.mo.recipe.app.components.Footer
 import com.mo.recipe.app.components.Header
+import com.mo.recipe.app.components.ShoppingListTable
 import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.NamedColor
 import csstype.TextAlign.Companion.center
@@ -10,7 +11,13 @@ import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.div
+import react.dom.html.ReactHTML.h1
 import react.dom.html.ReactHTML.p
+import react.dom.html.ReactHTML.pre
+import react.dom.html.ReactHTML.table
+import react.dom.html.ReactHTML.tbody
+import react.dom.html.ReactHTML.td
+import react.dom.html.ReactHTML.tr
 import react.router.useLocation
 
 val ComputedResultPage = FC<Props> {
@@ -20,24 +27,9 @@ val ComputedResultPage = FC<Props> {
     val selectedRecipeIds = location.state as Array<String>
     val selectedRecipes = selectedRecipeIds.mapNotNull { recipeId -> InMemoryRecipeStore.get(recipeId) }
 
-    p { +"Shopping List" }
-    selectedRecipes
-        .flatMap { recipe -> recipe.vegetableAndMeat }
-        .groupBy { vegetableAndMeat -> vegetableAndMeat.type }
-        .map { (vegetableAndMeatType, recipes) ->
-            vegetableAndMeatType to recipes.sumOf { ingredient -> ingredient.quantity }
-        }
-        .map { (vegetableAndMeatType, quantity) ->
-            p { +"${vegetableAndMeatType.value} x $quantity" }
-        }
-
-    br { }
-
-    selectedRecipes
-        .flatMap { recipe -> recipe.spicesAndSauces }
-        .map { spiceAndSauceType ->
-            p { +spiceAndSauceType.type.value }
-        }
+    ShoppingListTable {
+        recipes = selectedRecipes
+    }
 
     p { +"Cooking Instructions" }
     selectedRecipes.map { recipe ->

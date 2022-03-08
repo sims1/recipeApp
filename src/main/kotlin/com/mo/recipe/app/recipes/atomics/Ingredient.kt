@@ -1,6 +1,6 @@
 package com.mo.recipe.app.recipes.atomics
 
-enum class VegetableAndMeatType(val value: String) : BasedIngredient {
+enum class VegetableAndMeatType(private val value: String) : BasedIngredient {
     GARLIC("garlic"),
     POTATO("potato"),
     SWEET_POTATO("sweet potato"),
@@ -10,10 +10,12 @@ enum class VegetableAndMeatType(val value: String) : BasedIngredient {
     override fun getValue() = value
 }
 
-enum class SpiceAndSauceType(val value: String) : BasedIngredient {
+enum class SpiceAndSauceType(private val value: String) : BasedIngredient {
     BUTTER("butter"),
     ITALIAN_HERB_SPICE_BLEND("Italian herb spice blend"),
     PEPPER("pepper"),
+    VEGETABLE_OIL("vegetable oil"),
+    BLACK_VINEGAR("black vinegar"),
     SALT("salt")
     ;
 
