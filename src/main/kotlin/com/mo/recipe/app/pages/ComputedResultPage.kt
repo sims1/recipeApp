@@ -21,6 +21,23 @@ val ComputedResultPage = FC<Props> {
     val selectedRecipes = selectedRecipeIds.mapNotNull { recipeId -> InMemoryRecipeStore.get(recipeId) }
 
     p { +"Shopping List" }
+    selectedRecipes
+        .flatMap { recipe -> recipe.vegetableAndMeat }
+        .groupBy { vegetableAndMeat -> vegetableAndMeat.type }
+        .map { (vegetableAndMeatType, recipes) ->
+            vegetableAndMeatType to recipes.sumOf { ingredient -> ingredient.quantity }
+        }
+        .map { (vegetableAndMeatType, quantity) ->
+            p { +"${vegetableAndMeatType.value} x $quantity" }
+        }
+
+    br { }
+
+    selectedRecipes
+        .flatMap { recipe -> recipe.spicesAndSauces }
+        .map { spiceAndSauceType ->
+            p { +spiceAndSauceType.type.value }
+        }
 
     p { +"Cooking Instructions" }
     selectedRecipes.map { recipe ->
@@ -31,17 +48,13 @@ val ComputedResultPage = FC<Props> {
             }
             +recipe.getNameString()
             br { }
-            +recipe.getIngredientsString()
+            +recipe.getVegetableAndMeatString()
             br { }
             +recipe.getSpicesAndSaucesString()
             br { }
             +recipe.getCookingInstructionsString()
             br { }
         }
-    }
-
-    p {
-        +"hey"
     }
 
     Footer { }

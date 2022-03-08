@@ -9,7 +9,6 @@ import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.tr
 import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
-import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.tbody
 import react.dom.html.ReactHTML.th
 
@@ -25,7 +24,7 @@ val RecipeTable = FC<RecipeTableProps> { props ->
             tr {
                 th { }
                 th { +"Name" }
-                th { +"Ingredients" }
+                th { +"Vegetable and Meat" }
                 th { +"Spices and Sauces" }
                 th { +"Cooking Instructions" }
                 th { +"Type" }
@@ -46,7 +45,7 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                         }
                     }
                     td { +recipe.getNameString() }
-                    td { pre { +recipe.getIngredientsString() } }
+                    td { pre { +recipe.getVegetableAndMeatString() } }
                     td { pre { +recipe.getSpicesAndSaucesString() } }
                     td { pre { +recipe.getCookingInstructionsString() } }
                     td { +recipe.getTypeString() }
