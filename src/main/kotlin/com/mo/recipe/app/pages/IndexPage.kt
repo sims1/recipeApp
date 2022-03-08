@@ -1,30 +1,19 @@
 package com.mo.recipe.app.pages
 
-import ReactButton
 import com.mo.recipe.app.components.*
-import com.mo.recipe.app.recipes.BakedSweetPotato
-import com.mo.recipe.app.recipes.ItalianZucchini
-import com.mo.recipe.app.recipes.MashedPotato
 import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
+import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.*
 import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.section
-import react.router.useNavigate
 import react.useState
 
 // Following
 // https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction
-
-private val recipeList = listOf(
-    BakedSweetPotato.recipe,
-    ItalianZucchini.recipe,
-    MashedPotato.recipe
-)
-
 
 val IndexPage = FC<Props> {
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
@@ -48,7 +37,7 @@ val IndexPage = FC<Props> {
 
         div {
             RecipeTable {
-                recipes = recipeList
+                recipes = InMemoryRecipeStore.getAll()
                 selectedTypes = selectedTypesState
                 onSelectRecipe = { recipe -> selectedRecipesState += recipe }
             }

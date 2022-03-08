@@ -6,6 +6,7 @@ import react.FC
 import react.Props
 import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.p
+import react.router.NavigateOptions
 import react.router.useNavigate
 
 external interface SelectedRecipesPanelProps : Props {
@@ -32,10 +33,17 @@ val SelectedRecipesPanel = FC<SelectedRecipesPanelProps> { props ->
     }
 
     val navigate = useNavigate()
-
     ReactButton {
         type = "primary"
-        onPress= { navigate("/result") }
+        onPress= {
+            navigate(
+                "/result",
+                object : NavigateOptions {
+                    override var replace: Boolean? = true
+                    override var state: Any? = props.selectedRecipes.map { recipe -> recipe.id }.toTypedArray()
+                }
+            )
+        }
         +"Compute"
     }
 }

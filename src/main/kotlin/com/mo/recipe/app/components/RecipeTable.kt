@@ -38,10 +38,12 @@ val RecipeTable = FC<RecipeTableProps> { props ->
 
             showRecipes.map { recipe ->
                 tr {
-                    ReactButton {
-                        type = "primary"
-                        onPress = { props.onSelectRecipe(recipe) }
-                        +"select"
+                    td {
+                        ReactButton {
+                            type = "primary"
+                            onPress = { props.onSelectRecipe(recipe) }
+                            +"select"
+                        }
                     }
                     td { +recipe.getNameString() }
                     td { pre { +recipe.getIngredientsString() } }
