@@ -5,8 +5,8 @@ import kotlin.random.Random
 class Recipe(
     val type: RecipeType,
     private val name: String,
-    private val ingredients: List<Ingredient>,
-    private val spicesAndSauces: List<SpiceAndSauce>,
+    private val ingredients: List<VegetableAndMeatType>,
+    private val spicesAndSauces: List<Ingredient<SpiceAndSauceType>>,
     private val cookingInstructions: List<String>,
     val id: String = Random.nextInt().toString() // \todo replace with npm uuid
 ) {

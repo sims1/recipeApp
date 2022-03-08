@@ -1,7 +1,7 @@
 package com.mo.recipe.app.recipes
 
 import com.mo.recipe.app.recipes.atomics.RecipeType
-import com.mo.recipe.app.recipes.atomics.Ingredient
+import com.mo.recipe.app.recipes.atomics.VegetableAndMeatType
 import com.mo.recipe.app.recipes.atomics.Recipe
 
 class BakedSweetPotato {
@@ -10,7 +10,7 @@ class BakedSweetPotato {
         val recipe = Recipe(
             RecipeType.CARB,
             "Baked Sweet Potato",
-            listOf(Ingredient.SWEET_POTATO),
+            listOf(VegetableAndMeatType.SWEET_POTATO),
             listOf(),
             listOf(
                 "using fork to poke holes on sweet potatoes",

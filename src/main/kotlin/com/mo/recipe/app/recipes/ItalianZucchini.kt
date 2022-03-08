@@ -9,12 +9,12 @@ class ItalianZucchini {
             RecipeType.VEGETABLE,
             "Italian Zucchini",
             listOf(
-                Ingredient.ZUCCHINI
+                VegetableAndMeatType.ZUCCHINI
             ),
             listOf(
-                SpiceAndSauce(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
-                SpiceAndSauce(SpiceAndSauceType.SALT),
-                SpiceAndSauce(SpiceAndSauceType.PEPPER)
+                Ingredient(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
+                Ingredient(SpiceAndSauceType.SALT),
+                Ingredient(SpiceAndSauceType.PEPPER)
             ),
             listOf("450F 12min")
         )

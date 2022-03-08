@@ -9,13 +9,13 @@ class MashedPotato {
             RecipeType.CARB,
             "Mashed Potato",
             listOf(
-                Ingredient.POTATO,
-                Ingredient.GARLIC
+                VegetableAndMeatType.POTATO,
+                VegetableAndMeatType.GARLIC
             ),
             listOf(
-                SpiceAndSauce(SpiceAndSauceType.BUTTER),
-                SpiceAndSauce(SpiceAndSauceType.SALT),
-                SpiceAndSauce(SpiceAndSauceType.PEPPER)
+                Ingredient(SpiceAndSauceType.BUTTER),
+                Ingredient(SpiceAndSauceType.SALT),
+                Ingredient(SpiceAndSauceType.PEPPER)
             ),
             listOf(
                 "steam potato slices and 1 garlic",
