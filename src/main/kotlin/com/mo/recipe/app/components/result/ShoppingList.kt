@@ -1,11 +1,12 @@
 package com.mo.recipe.app.components.result
 
 import com.mo.recipe.app.recipes.atomics.Recipe
+import csstype.*
 import react.FC
 import react.Props
-import react.dom.html.ReactHTML.br
+import react.css.css
+import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.h1
-import react.dom.html.ReactHTML.pre
 import react.dom.html.ReactHTML.table
 import react.dom.html.ReactHTML.tbody
 import react.dom.html.ReactHTML.td
@@ -16,29 +17,50 @@ external interface ShoppingListTableProps : Props {
 }
 
 val ShoppingListTable = FC<ShoppingListTableProps> { props ->
-    h1 { +"Shopping List" }
-
-    val neededVegetableAndMeat = props.recipes
-        .flatMap { recipe -> recipe.vegetableAndMeat }
-        .groupBy { vegetableAndMeat -> vegetableAndMeat.type }
-        .map { (vegetableAndMeatType, recipes) ->
-            vegetableAndMeatType to recipes.sumOf { ingredient -> ingredient.quantity }
+    h1 {
+        css {
+            fontFamily = FontFamily.cursive
         }
-        .map { (vegetableAndMeatType, quantity) -> "${vegetableAndMeatType.getValue()} x $quantity" }
-        .joinToString("\n")
+        +"Shopping List"
+    }
 
-    br { }
+    div {
+        val neededVegetableAndMeat = props.recipes
+            .flatMap { recipe -> recipe.vegetableAndMeat }
+            .groupBy { vegetableAndMeat -> vegetableAndMeat.type }
+            .map { (vegetableAndMeatType, recipes) ->
+                vegetableAndMeatType to recipes.sumOf { ingredient -> ingredient.quantity }
+            }
+            .joinToString("\n") {
+                    (vegetableAndMeatType, quantity) -> "${vegetableAndMeatType.getValue()} x $quantity"
+            }
 
-    val neededSpicesAndSauces = props.recipes
-        .flatMap { recipe -> recipe.spicesAndSauces }
-        .map { spiceAndSauceType -> spiceAndSauceType.type.getValue() }
-        .joinToString("\n")
+        val neededSpicesAndSauces = props.recipes
+            .flatMap { recipe -> recipe.spicesAndSauces }
+            .joinToString("\n") {
+                    spiceAndSauceType -> spiceAndSauceType.type.getValue()
+            }
 
-    table {
-        tbody {
-            tr {
-                td { pre { +neededVegetableAndMeat } }
-                td { pre { +neededSpicesAndSauces } }
+        table {
+            css {
+                margin = Auto.auto
+                width = 50.pc
+                padding = 2.pc
+                backgroundColor = rgb(152, 251, 152)
+
+                borderWidth = 1.px
+                borderRadius = 10.px
+
+                fontFamily = FontFamily.monospace
+                whiteSpace = WhiteSpace.preWrap
+                fontSize = 1.5.em
+            }
+
+            tbody {
+                tr {
+                    td { +neededVegetableAndMeat }
+                    td { +neededSpicesAndSauces }
+                }
             }
         }
     }
