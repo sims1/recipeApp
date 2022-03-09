@@ -1,4 +1,4 @@
-package com.mo.recipe.app.components
+package com.mo.recipe.app.components.index
 
 import ReactButton
 import react.FC

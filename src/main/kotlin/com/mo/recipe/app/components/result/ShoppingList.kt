@@ -1,4 +1,4 @@
-package com.mo.recipe.app.components
+package com.mo.recipe.app.components.result
 
 import com.mo.recipe.app.recipes.atomics.Recipe
 import react.FC

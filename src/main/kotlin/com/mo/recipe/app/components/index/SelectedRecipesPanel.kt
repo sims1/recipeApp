@@ -1,4 +1,4 @@
-package com.mo.recipe.app.components
+package com.mo.recipe.app.components.index
 
 import ReactButton
 import com.mo.recipe.app.recipes.atomics.Recipe
