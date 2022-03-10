@@ -1,15 +1,28 @@
 package com.mo.recipe.app.components.common
 
-import csstype.FontFamily
-import csstype.FontWeight
-import csstype.em
-import csstype.px
+import csstype.*
 
-val headerFontSizeAlias = 2.em
-val fancyHeaderFontFamilyAlias = FontFamily.cursive
-val headerFontWeightAlias = FontWeight.bold
+// font
+val h1FontSizeAlias = 2.em
+val fancyH1FontFamilyAlias = FontFamily.cursive
+val h1FontWeightAlias = FontWeight.bold
 
-val recipeFontFamilyAlias = FontFamily.monospace
-val recipeFontSizeAlias = 1.2.em
+val h2FontFamilyAlias = FontFamily.fantasy
+val h2FontSizeAlias = 1.5.em
 
+val textFontFamilyAlias = FontFamily.monospace
+val textFontSizeAlias = 1.2.em
+
+val unimportantFontSizeAlias = 1.em
+
+// border
 val commonBorderRadiusAlias = 10.px
+
+// color
+val lightGreenAlias = rgb(152, 251, 152)
+
+val recipeNameColorAlias = NamedColor.coral
+val recipeColorAlias = NamedColor.moccasin
+val recipeDetailsColorAlias = NamedColor.lightsalmon
+
+val hoverColorAlias = NamedColor.mistyrose

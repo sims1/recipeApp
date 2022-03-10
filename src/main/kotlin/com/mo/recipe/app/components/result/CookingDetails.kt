@@ -16,9 +16,9 @@ external interface CookingDetailsProps : Props {
 val CookingDetails = FC<CookingDetailsProps> { props ->
     div {
         css {
-            fontFamily = fancyHeaderFontFamilyAlias
-            fontSize = headerFontSizeAlias
-            fontWeight = headerFontWeightAlias
+            fontFamily = fancyH1FontFamilyAlias
+            fontSize = h1FontSizeAlias
+            fontWeight = h1FontWeightAlias
         }
         +"Cooking Instructions"
     }
@@ -39,7 +39,7 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
                         GridArea("CookingInstructions")
                     )
 
-                    backgroundColor = NamedColor.moccasin
+                    backgroundColor = recipeColorAlias
 
                     margin = 1.pc
                     width = 24.pc
@@ -47,8 +47,8 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
                     borderRadius = commonBorderRadiusAlias
 
                     whiteSpace = WhiteSpace.preWrap
-                    fontFamily = recipeFontFamilyAlias
-                    fontSize = recipeFontSizeAlias
+                    fontFamily = textFontFamilyAlias
+                    fontSize = textFontSizeAlias
                 }
                 RecipeName {
                     gridAreaName = "RecipeName"
@@ -77,10 +77,10 @@ private val RecipeName = FC<RecipeNameProps> { props ->
     div {
         css {
             gridArea = GridArea(props.gridAreaName)
-            backgroundColor = NamedColor.coral
+            backgroundColor = recipeNameColorAlias
             textAlign = TextAlign.center
-            fontFamily = FontFamily.fantasy
-            fontSize = 1.5.em
+            fontFamily = h2FontFamilyAlias
+            fontSize = h2FontSizeAlias
 
             paddingTop = 0.5.pc
             paddingBottom = 0.2.pc
@@ -101,7 +101,7 @@ private val Ingredients = FC<IngredientsProps> { props ->
     div {
         css {
             gridArea = GridArea(props.gridAreaName)
-            backgroundColor = NamedColor.lightsalmon
+            backgroundColor = recipeDetailsColorAlias
 
             padding = 0.2.pc
             borderRadius = commonBorderRadiusAlias
@@ -133,7 +133,7 @@ private val CookingInstructions = FC<CookingInstructionsProps> { props ->
     div {
         css {
             gridArea = GridArea(props.gridAreaName)
-            backgroundColor = NamedColor.lightsalmon
+            backgroundColor = recipeDetailsColorAlias
 
             padding = 0.2.pc
             borderRadius = commonBorderRadiusAlias

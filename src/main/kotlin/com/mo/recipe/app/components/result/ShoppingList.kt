@@ -19,9 +19,9 @@ external interface ShoppingListTableProps : Props {
 val ShoppingListTable = FC<ShoppingListTableProps> { props ->
     div {
         css {
-            fontFamily = fancyHeaderFontFamilyAlias
-            fontSize = headerFontSizeAlias
-            fontWeight = headerFontWeightAlias
+            fontFamily = fancyH1FontFamilyAlias
+            fontSize = h1FontSizeAlias
+            fontWeight = h1FontWeightAlias
         }
         +"Shopping List"
     }
@@ -48,13 +48,13 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
                 margin = Auto.auto
                 width = 50.pc
                 padding = 2.pc
-                backgroundColor = rgb(152, 251, 152)
+                backgroundColor = lightGreenAlias
 
                 borderWidth = 1.px
                 borderRadius = commonBorderRadiusAlias
 
-                fontFamily = recipeFontFamilyAlias
-                fontSize = recipeFontSizeAlias
+                fontFamily = textFontFamilyAlias
+                fontSize = textFontSizeAlias
                 whiteSpace = WhiteSpace.preWrap
             }
 
