@@ -1,12 +1,11 @@
 package com.mo.recipe.app.pages
 
-import com.mo.recipe.app.components.result.CookingInstructions
-import com.mo.recipe.app.components.Footer
-import com.mo.recipe.app.components.Header
+import com.mo.recipe.app.components.result.CookingDetails
+import com.mo.recipe.app.components.shared.Footer
+import com.mo.recipe.app.components.shared.Header
 import com.mo.recipe.app.components.result.ShoppingListTable
 import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.Auto
-import csstype.NamedColor
 import csstype.pc
 import react.FC
 import react.Props
@@ -32,7 +31,7 @@ val ComputedResultPage = FC<Props> {
                 recipes = selectedRecipes
             }
 
-            CookingInstructions {
+            CookingDetails {
                 recipes = selectedRecipes
             }
         }

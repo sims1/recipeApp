@@ -1,12 +1,12 @@
 package com.mo.recipe.app.components.result
 
+import com.mo.recipe.app.components.common.*
 import com.mo.recipe.app.recipes.atomics.Recipe
 import csstype.*
 import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.div
-import react.dom.html.ReactHTML.h1
 import react.dom.html.ReactHTML.table
 import react.dom.html.ReactHTML.tbody
 import react.dom.html.ReactHTML.td
@@ -17,9 +17,11 @@ external interface ShoppingListTableProps : Props {
 }
 
 val ShoppingListTable = FC<ShoppingListTableProps> { props ->
-    h1 {
+    div {
         css {
-            fontFamily = FontFamily.cursive
+            fontFamily = fancyHeaderFontFamilyAlias
+            fontSize = headerFontSizeAlias
+            fontWeight = headerFontWeightAlias
         }
         +"Shopping List"
     }
@@ -49,11 +51,11 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
                 backgroundColor = rgb(152, 251, 152)
 
                 borderWidth = 1.px
-                borderRadius = 10.px
+                borderRadius = commonBorderRadiusAlias
 
-                fontFamily = FontFamily.monospace
+                fontFamily = recipeFontFamilyAlias
+                fontSize = recipeFontSizeAlias
                 whiteSpace = WhiteSpace.preWrap
-                fontSize = 1.5.em
             }
 
             tbody {

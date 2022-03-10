@@ -5,6 +5,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+build_and_deploy.sh
+.craig_docs.txt.swp
 
 ### STS ###
 .apt_generated

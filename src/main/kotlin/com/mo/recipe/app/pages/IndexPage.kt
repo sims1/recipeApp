@@ -1,9 +1,10 @@
 package com.mo.recipe.app.pages
 
-import com.mo.recipe.app.components.*
 import com.mo.recipe.app.components.index.FilterSidebar
 import com.mo.recipe.app.components.index.RecipeTable
 import com.mo.recipe.app.components.index.SelectedRecipesPanel
+import com.mo.recipe.app.components.shared.Footer
+import com.mo.recipe.app.components.shared.Header
 import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.store.InMemoryRecipeStore
