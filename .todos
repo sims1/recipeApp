@@ -1,0 +1,32 @@
+remove header/footer
+fix aggregation of spices
+change SelectedRecipesPanel to have mulpitles of 1 recipes
+add dummy pictures
+styling SelectedRecipesPanel
+styling FilterSidebar/RecipeTable layout
+styling RecipeTable layout
+styling buttons (Add/Selected Recipes/Summarize)
+implement uuid
+release 1.0 - basics
+
+filter by ingredients
+add tons of recipes
+filter by oven
+show number on SelectedRecipesPanel
+release 1.1 - more recipes+features
+
+add more pictures
+change colors more
+add header/footer
+add about (2 ppl meal)
+release 1.2 - cosmetics changes
+
+refactor css extensions more
+react tutorial
+html tutorial
+css tutorial
+release 1.3 - refactor
+
+maybe future
+think about prs&cons of using database(json)
+
