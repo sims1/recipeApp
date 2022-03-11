@@ -1,9 +1,6 @@
 package com.mo.recipe.app.store
 
-import com.mo.recipe.app.recipes.BakedSweetPotato
-import com.mo.recipe.app.recipes.ItalianZucchini
-import com.mo.recipe.app.recipes.MashedPotato
-import com.mo.recipe.app.recipes.PotatoShoots
+import com.mo.recipe.app.recipes.*
 import com.mo.recipe.app.recipes.atomics.Recipe
 
 class InMemoryRecipeStore {
@@ -22,6 +19,7 @@ class InMemoryRecipeStore {
         }
 
         private val recipeList: List<Recipe> = listOf(
+            BakedSpicedChickenWing.recipe,
             BakedSweetPotato.recipe,
             ItalianZucchini.recipe,
             MashedPotato.recipe,

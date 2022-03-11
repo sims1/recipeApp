@@ -85,7 +85,7 @@ private val RecipeItem = FC<RecipeItemProps> { props ->
                     backgroundColor = NamedColor.lightgrey
                     borderRadius = commonBorderRadiusAlias
                 }
-                +" info "
+                +"ⓘ"
                 if (props.showDetails) {
                     RecipeHoverBox {
                         recipeitem = props.recipeItem
