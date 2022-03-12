@@ -28,7 +28,7 @@ val IndexPage = FC<Props> {
     section {
         css {
             margin = Auto.auto
-            width = 60.pc
+            width = 80.pc
 
             display = Display.grid
             gridTemplateAreas = GridTemplateAreas(
@@ -50,6 +50,7 @@ val IndexPage = FC<Props> {
         div {
             css {
                 gridArea = GridArea("RecipeTable")
+                width = 60.pc
             }
             RecipeTable {
                 recipes = InMemoryRecipeStore.getAll()

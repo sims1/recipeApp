@@ -13,7 +13,6 @@ import com.mo.recipe.app.recipes.atomics.RecipeType
 import csstype.*
 import csstype.LineStyle.Companion.solid
 import react.css.css
-import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.img
 import react.dom.html.ReactHTML.p
@@ -35,44 +34,76 @@ val RecipeTable = FC<RecipeTableProps> { props ->
         else -> props.recipes.filter { recipe -> recipe.type in props.selectedTypes }
     }
 
-    showRecipes.map { recipe ->
-        var showDetailsState: Boolean by useState(false)
+    section {
+        css {
+            display = Display.flex
+            flexWrap = FlexWrap.wrap
+        }
 
-        section {
-            css {
-                display = Display.flex
-                flexWrap = FlexWrap.wrap
-            }
+        showRecipes.map { recipe ->
+            var showDetailsState: Boolean by useState(false)
             div {
-                img {
+                css {
+                    width = 20.pc
+                    GridTemplateAreas(
+                        GridArea("RecipeImage"),
+                        GridArea("RecipeItem"),
+                        GridArea("RecipeButton")
+                    )
+                }
+                div {
                     css {
-                        margin = 1.em
+                        gridArea = GridArea("RecipeImage")
+                        alignItems = AlignItems.center
+                        justifyItems = JustifyItems.center
                     }
-                    src = "tasty_stuff.PNG"
-                    alt = "tasty stuff"
-                    height = 300.0
-                    width = 200.0
+                    RecipeImage { }
                 }
-                RecipeItem {
-                    recipeItem = recipe
-                    showDetails = showDetailsState
-                    onMouseEnterInfo = {
-                        showDetailsState = true
+                div {
+                    css {
+                        gridArea = GridArea("RecipeItem")
+                        alignItems = AlignItems.center
+                        justifyItems = JustifyItems.center
                     }
-                    onMouseLeaveInfo = {
-                        showDetailsState = false
+                    RecipeItem {
+                        recipeItem = recipe
+                        showDetails = showDetailsState
+                        onMouseEnterInfo = {
+                            showDetailsState = true
+                        }
+                        onMouseLeaveInfo = {
+                            showDetailsState = false
+                        }
                     }
                 }
-                ReactButton {
-                    type = "primary"
-                    onPress = { props.onSelectRecipe(recipe) }
-                    +"select"
+                div {
+                    css {
+                        gridArea = GridArea("RecipeButton")
+                        alignItems = AlignItems.center
+                        justifyItems = JustifyItems.center
+                    }
+                    ReactButton {
+                        type = "primary"
+                        onPress = { props.onSelectRecipe(recipe) }
+                        +"select"
+                    }
                 }
             }
         }
     }
 }
 
+private val RecipeImage = FC<Props> {
+    img {
+        css {
+            marginBottom = 0.5.em
+        }
+        src = "tasty_stuff.PNG"
+        alt = "tasty stuff"
+        height = 200.0
+        width = 150.0
+    }
+}
 
 private interface RecipeItemProps : Props {
     var recipeItem: Recipe
