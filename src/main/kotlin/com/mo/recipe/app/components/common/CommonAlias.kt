@@ -13,7 +13,7 @@ val h2FontSizeAlias = 1.5.em
 val textFontFamilyAlias = FontFamily.monospace
 val textFontSizeAlias = 1.2.em
 
-val unimportantFontSizeAlias = 1.em
+val unimportantFontSizeAlias = 0.8.em
 
 // border
 val commonBorderRadiusAlias = 10.px

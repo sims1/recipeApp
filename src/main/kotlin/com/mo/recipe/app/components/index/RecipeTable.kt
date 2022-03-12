@@ -13,8 +13,11 @@ import com.mo.recipe.app.recipes.atomics.RecipeType
 import csstype.*
 import csstype.LineStyle.Companion.solid
 import react.css.css
+import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.div
+import react.dom.html.ReactHTML.img
 import react.dom.html.ReactHTML.p
+import react.dom.html.ReactHTML.section
 import react.dom.html.ReactHTML.span
 import react.dom.html.ReactHTML.tbody
 import react.dom.html.ReactHTML.th
@@ -35,8 +38,21 @@ val RecipeTable = FC<RecipeTableProps> { props ->
     showRecipes.map { recipe ->
         var showDetailsState: Boolean by useState(false)
 
-        div {
+        section {
+            css {
+                display = Display.flex
+                flexWrap = FlexWrap.wrap
+            }
             div {
+                img {
+                    css {
+                        margin = 1.em
+                    }
+                    src = "tasty_stuff.PNG"
+                    alt = "tasty stuff"
+                    height = 300.0
+                    width = 200.0
+                }
                 RecipeItem {
                     recipeItem = recipe
                     showDetails = showDetailsState
@@ -47,8 +63,6 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                         showDetailsState = false
                     }
                 }
-            }
-            div {
                 ReactButton {
                     type = "primary"
                     onPress = { props.onSelectRecipe(recipe) }
@@ -81,8 +95,8 @@ private val RecipeItem = FC<RecipeItemProps> { props ->
                     onMouseLeave = { props.onMouseLeaveInfo() }
 
                     fontFamily = textFontFamilyAlias
-                    fontSize = textFontSizeAlias
-                    backgroundColor = NamedColor.lightgrey
+                    fontSize = unimportantFontSizeAlias
+                    color = NamedColor.grey
                     borderRadius = commonBorderRadiusAlias
                 }
                 +"ⓘ"
@@ -105,34 +119,34 @@ private val RecipeHoverBox = FC<RecipeHoverBoxProps> { props ->
         css {
             position = Position.absolute
             backgroundColor = hoverColorAlias
-            fontSize = unimportantFontSizeAlias
-            fontFamily = textFontFamilyAlias
 
-            borderColor = NamedColor.lightgrey
             borderStyle = solid
             borderCollapse = BorderCollapse.collapse
+            borderRadius = commonBorderRadiusAlias
         }
         tbody { // this is mandatory, see https://github.com/facebook/react/issues/5652
             tr {
                 css {
-                    textAlign = TextAlign.left
-
                     borderColor = NamedColor.lightgrey
                     borderStyle = solid
-                    borderCollapse = BorderCollapse.collapse
                 }
-                th { +"Ingredients" }
-                th { +"" }
-                th { +"Cooking Instructions" }
+                th { +"Main Ingredients" }
+                td { pre { +props.recipeitem.getVegetableAndMeatString() } }
             }
             tr {
                 css {
                     borderColor = NamedColor.lightgrey
                     borderStyle = solid
-                    borderCollapse = BorderCollapse.collapse
                 }
-                td { pre { +props.recipeitem.getVegetableAndMeatString() } }
+                th { +"Stocked Ingredients" }
                 td { pre { +props.recipeitem.getSpicesAndSaucesString() } }
+            }
+            tr {
+                css {
+                    borderColor = NamedColor.lightgrey
+                    borderStyle = solid
+                }
+                th { +"Cooking Instructions" }
                 td { pre { +props.recipeitem.getCookingInstructionsString() } }
             }
         }

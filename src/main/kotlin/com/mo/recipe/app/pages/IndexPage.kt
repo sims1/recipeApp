@@ -27,11 +27,19 @@ val IndexPage = FC<Props> {
 
     section {
         css {
-            display = Display.flex
-            flexDirection = FlexDirection.row
+            margin = Auto.auto
+            width = 60.pc
+
+            display = Display.grid
+            gridTemplateAreas = GridTemplateAreas(
+                GridArea("FilterSidebar RecipeTable SelectedRecipesPanel")
+            )
         }
 
         div {
+            css {
+                gridArea = GridArea("FilterSidebar")
+            }
             FilterSidebar {
                 recipeTypes = RecipeType.values().toList()
                 onSelectedType = { selectedType -> selectedTypesState += selectedType }
@@ -40,6 +48,9 @@ val IndexPage = FC<Props> {
         }
 
         div {
+            css {
+                gridArea = GridArea("RecipeTable")
+            }
             RecipeTable {
                 recipes = InMemoryRecipeStore.getAll()
                 selectedTypes = selectedTypesState
@@ -48,6 +59,9 @@ val IndexPage = FC<Props> {
         }
 
         div {
+            css {
+                gridArea = GridArea("SelectedRecipesPanel")
+            }
             SelectedRecipesPanel {
                 selectedRecipes = selectedRecipesState
                 onUnselectedRecipe = { recipe -> selectedRecipesState -= recipe  }
