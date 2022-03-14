@@ -9,6 +9,7 @@ import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.*
+import csstype.LineStyle.Companion.solid
 import react.FC
 import react.Props
 import react.css.css
@@ -39,6 +40,7 @@ val IndexPage = FC<Props> {
         div {
             css {
                 gridArea = GridArea("FilterSidebar")
+                textAlign = TextAlign.left
             }
             FilterSidebar {
                 recipeTypes = RecipeType.values().toList()
@@ -51,6 +53,7 @@ val IndexPage = FC<Props> {
             css {
                 gridArea = GridArea("RecipeTable")
                 width = 60.pc
+                textAlign = TextAlign.center
             }
             RecipeTable {
                 recipes = InMemoryRecipeStore.getAll()

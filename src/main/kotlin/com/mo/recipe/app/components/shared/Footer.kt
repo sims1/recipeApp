@@ -5,14 +5,16 @@ import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML
+import react.dom.html.ReactHTML.footer
+import react.dom.html.ReactHTML.p
 
 val Footer = FC<Props> {
-    ReactHTML.footer {
+    footer {
         css {
             textAlign = TextAlign.center
         }
-        ReactHTML.p {
-            +"myFooter"
+        p {
+            +"V1.0"
         }
     }
 }

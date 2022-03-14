@@ -1,6 +1,5 @@
 package com.mo.recipe.app.components.index
 
-import ReactButton
 import com.mo.recipe.app.components.common.*
 import react.FC
 import react.Props
@@ -11,8 +10,11 @@ import react.dom.html.ReactHTML.tr
 import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
 import csstype.*
+import csstype.Cursor.Companion.pointer
 import csstype.LineStyle.Companion.solid
 import react.css.css
+import react.dom.html.ButtonType
+import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.img
 import react.dom.html.ReactHTML.p
@@ -50,20 +52,18 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                         GridArea("RecipeItem"),
                         GridArea("RecipeButton")
                     )
+                    marginTop = 0.2.em
+                    marginBottom = 0.2.em
                 }
                 div {
                     css {
                         gridArea = GridArea("RecipeImage")
-                        alignItems = AlignItems.center
-                        justifyItems = JustifyItems.center
                     }
                     RecipeImage { }
                 }
                 div {
                     css {
                         gridArea = GridArea("RecipeItem")
-                        alignItems = AlignItems.center
-                        justifyItems = JustifyItems.center
                     }
                     RecipeItem {
                         recipeItem = recipe
@@ -79,13 +79,23 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                 div {
                     css {
                         gridArea = GridArea("RecipeButton")
-                        alignItems = AlignItems.center
-                        justifyItems = JustifyItems.center
                     }
-                    ReactButton {
-                        type = "primary"
-                        onPress = { props.onSelectRecipe(recipe) }
-                        +"select"
+                    button {
+                        css {
+                            fontSize = textFontSizeAlias
+                            backgroundColor = recipeNameColorAlias
+                            color = NamedColor.white
+                            borderStyle = None.none
+                            borderRadius = commonButtonBorderRadiusAlias
+                            paddingLeft = 3.pc
+                            paddingRight = 3.pc
+                            paddingTop = 0.5.pc
+                            paddingBottom = 0.5.pc
+                            cursor = pointer
+                        }
+                        type = ButtonType.button
+                        onClick = { props.onSelectRecipe(recipe) }
+                        +"Add"
                     }
                 }
             }
@@ -95,9 +105,6 @@ val RecipeTable = FC<RecipeTableProps> { props ->
 
 private val RecipeImage = FC<Props> {
     img {
-        css {
-            marginBottom = 0.5.em
-        }
         src = "tasty_stuff.PNG"
         alt = "tasty stuff"
         height = 200.0
@@ -117,7 +124,7 @@ private val RecipeItem = FC<RecipeItemProps> { props ->
         p {
             css {
                 fontFamily = h2FontFamilyAlias
-                fontSize = h2FontSizeAlias
+                fontSize = textFontSizeAlias
             }
             +"${props.recipeItem.getNameString()} "
             span {

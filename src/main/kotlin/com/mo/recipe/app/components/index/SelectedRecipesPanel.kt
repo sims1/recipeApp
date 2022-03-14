@@ -15,7 +15,6 @@ external interface SelectedRecipesPanelProps : Props {
 }
 
 val SelectedRecipesPanel = FC<SelectedRecipesPanelProps> { props ->
-
     p {
         +"Selected Recipes"
     }
