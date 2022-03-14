@@ -46,14 +46,13 @@ val RecipeTable = FC<RecipeTableProps> { props ->
             var showDetailsState: Boolean by useState(false)
             div {
                 css {
-                    width = 20.pc
+                    width = 15.pc
                     GridTemplateAreas(
                         GridArea("RecipeImage"),
                         GridArea("RecipeItem"),
                         GridArea("RecipeButton")
                     )
-                    marginTop = 0.2.em
-                    marginBottom = 0.2.em
+                    marginBottom = 8.pc
                 }
                 div {
                     css {
@@ -64,6 +63,9 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                 div {
                     css {
                         gridArea = GridArea("RecipeItem")
+                        paddingLeft = 0.6.pc
+                        paddingRight = 0.6.pc
+                        height = 5.pc
                     }
                     RecipeItem {
                         recipeItem = recipe
