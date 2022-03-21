@@ -4,6 +4,7 @@ import com.mo.recipe.app.components.result.CookingDetails
 import com.mo.recipe.app.components.shared.Footer
 import com.mo.recipe.app.components.shared.Header
 import com.mo.recipe.app.components.result.ShoppingListTable
+import com.mo.recipe.app.deserialize
 import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.Auto
 import csstype.pc
@@ -19,7 +20,10 @@ val ComputedResultPage = FC<Props> {
 
     val location = useLocation()
     val selectedRecipeIds = location.state as Array<String>
-    val selectedRecipes = selectedRecipeIds.mapNotNull { recipeId -> InMemoryRecipeStore.get(recipeId) }
+    println(selectedRecipeIds)
+    println(1)
+    val selectedRecipes = selectedRecipeIds.deserialize()
+    println(2)
 
     body {
         div {
@@ -30,10 +34,11 @@ val ComputedResultPage = FC<Props> {
             ShoppingListTable {
                 recipes = selectedRecipes
             }
-
+/*
             CookingDetails {
                 recipes = selectedRecipes
             }
+ */
         }
     }
 

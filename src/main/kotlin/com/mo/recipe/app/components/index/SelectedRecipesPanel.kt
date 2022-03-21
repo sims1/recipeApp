@@ -1,7 +1,9 @@
 package com.mo.recipe.app.components.index
 
+import ReactButton
 import com.mo.recipe.app.components.common.*
 import com.mo.recipe.app.recipes.atomics.Recipe
+import com.mo.recipe.app.serialize
 import csstype.*
 import csstype.TextAlign.Companion.center
 import react.FC
@@ -12,6 +14,9 @@ import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.span
+import react.router.NavigateOptions
+import react.router.dom.Link
+import react.router.useNavigate
 import react.useState
 
 external interface SelectedRecipesPanelProps : Props {
@@ -76,7 +81,7 @@ private val SelectedRecipeHoverBox = FC<SelectedRecipesPanelProps> { props ->
             }
             br {}
         }
-        /*
+
         val navigate = useNavigate()
         ReactButton {
             type = "primary"
@@ -85,12 +90,11 @@ private val SelectedRecipeHoverBox = FC<SelectedRecipesPanelProps> { props ->
                     "/result",
                     object : NavigateOptions {
                         override var replace: Boolean? = true
-                        override var state: Any? = props.selectedRecipes.map { recipe -> recipe.id }.toTypedArray()
+                        override var state: Any? = props.selectedRecipes.serialize()
                     }
                 )
             }
             +"Compute"
         }
-         */
     }
 }

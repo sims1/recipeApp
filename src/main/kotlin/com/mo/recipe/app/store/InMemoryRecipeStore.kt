@@ -1,17 +1,19 @@
 package com.mo.recipe.app.store
 
 import com.mo.recipe.app.recipes.*
-import com.mo.recipe.app.recipes.atomics.Recipe
+import com.mo.recipe.app.recipes.atomics.*
+import kotlin.random.Random
 
 class InMemoryRecipeStore {
 
     companion object {
-        fun get(id: String): Recipe? {
-            val result = idToRecipe[id]
+        fun get(id: String): Recipe {
+            var result = idToRecipe[id]
             if (result == null) {
                 println("Error while getting recipe from id $id")
+                result = defaultRecipe
             }
-            return idToRecipe[id]
+            return result
         }
 
         fun getAll(): List<Recipe> {
@@ -33,5 +35,13 @@ class InMemoryRecipeStore {
             recipeList.forEach { recipe -> result[recipe.id] = recipe }
             return result
         }
+
+        private val defaultRecipe = Recipe(
+            RecipeType.MEAT,
+            "Default Recipe",
+            listOf(),
+            listOf(),
+            listOf(),
+        )
     }
 }

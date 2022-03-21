@@ -2,6 +2,8 @@ package com.mo.recipe.app.components.result
 
 import com.mo.recipe.app.components.common.*
 import com.mo.recipe.app.recipes.atomics.Recipe
+import com.mo.recipe.app.recipes.atomics.VegetableAndMeatType
+import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.*
 import react.FC
 import react.Props
@@ -13,7 +15,7 @@ import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.tr
 
 external interface ShoppingListTableProps : Props {
-    var recipes: List<Recipe>
+    var recipes: Map<Recipe, Int>
 }
 
 val ShoppingListTable = FC<ShoppingListTableProps> { props ->
@@ -27,21 +29,25 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
     }
 
     div {
-        val neededVegetableAndMeat = props.recipes
-            .flatMap { recipe -> recipe.vegetableAndMeat }
-            .groupBy { vegetableAndMeat -> vegetableAndMeat.type }
-            .map { (vegetableAndMeatType, recipes) ->
-                vegetableAndMeatType to recipes.sumOf { ingredient -> ingredient.quantity }
+        val neededVegetableAndMeatMap = mutableMapOf<VegetableAndMeatType, Int>()
+        props.recipes.forEach { (recipe, recipeQuantity) ->
+            recipe.vegetableAndMeat.forEach { ingredient ->
+                val newQuantity = when (val currentQuantity = neededVegetableAndMeatMap[ingredient.type]) {
+                    null -> ingredient.quantity * recipeQuantity
+                    else -> ingredient.quantity * recipeQuantity + currentQuantity
+                }
+                neededVegetableAndMeatMap[ingredient.type] = newQuantity
             }
-            .joinToString("\n") {
-                    (vegetableAndMeatType, quantity) -> "${vegetableAndMeatType.getValue()} x $quantity"
-            }
+        }
+        val neededVegetableAndMeat = neededVegetableAndMeatMap
+            .map { (ingredient, quantity) -> "${ingredient.getValue()} x $quantity" }
+            .joinToString("\n")
 
-        val neededSpicesAndSauces = props.recipes
+        val neededSpicesAndSauces = props.recipes.keys
             .flatMap { recipe -> recipe.spicesAndSauces }
-            .joinToString("\n") {
-                    spiceAndSauceType -> spiceAndSauceType.type.getValue()
-            }
+            .map { ingredient -> ingredient.type }
+            .distinct()
+            .joinToString("\n") { ingredientType -> ingredientType.getValue() }
 
         table {
             css {
