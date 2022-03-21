@@ -10,7 +10,7 @@ import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.section
 
 external interface CookingDetailsProps : Props {
-    var recipes: List<Recipe>
+    var recipes: Map<Recipe, Int>
 }
 
 val CookingDetails = FC<CookingDetailsProps> { props ->
@@ -29,7 +29,7 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
             flexWrap = FlexWrap.wrap
         }
 
-        props.recipes.map { recipe ->
+        props.recipes.map { (recipe, quantity) ->
             div {
                 css {
                     display = Display.grid
@@ -52,7 +52,7 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
                 }
                 RecipeName {
                     gridAreaName = "RecipeName"
-                    recipeName = recipe.getNameString()
+                    recipeName = "${recipe.getNameString()} (x $quantity)"
                 }
                 Ingredients {
                     gridAreaName = "Ingredients"

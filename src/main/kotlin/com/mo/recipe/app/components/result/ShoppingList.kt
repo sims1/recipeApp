@@ -29,6 +29,9 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
     }
 
     div {
+        css {
+            marginTop = 1.pc
+        }
         val neededVegetableAndMeatMap = mutableMapOf<VegetableAndMeatType, Int>()
         props.recipes.forEach { (recipe, recipeQuantity) ->
             recipe.vegetableAndMeat.forEach { ingredient ->

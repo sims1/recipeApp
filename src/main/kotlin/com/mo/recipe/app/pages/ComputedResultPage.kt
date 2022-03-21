@@ -34,11 +34,11 @@ val ComputedResultPage = FC<Props> {
             ShoppingListTable {
                 recipes = selectedRecipes
             }
-/*
+
             CookingDetails {
                 recipes = selectedRecipes
             }
- */
+
         }
     }
 
