@@ -9,7 +9,6 @@ import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.*
-import csstype.LineStyle.Companion.solid
 import react.FC
 import react.Props
 import react.css.css
@@ -22,15 +21,12 @@ import react.useState
 
 val IndexPage = FC<Props> {
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
-    var selectedRecipesState: Set<Recipe> by useState(emptySet())
+    var selectedRecipesState: MutableMap<Recipe, Int> by useState(mutableMapOf())
 
     Header { }
 
     section {
         css {
-            margin = Auto.auto
-            width = 80.pc
-
             display = Display.grid
             gridTemplateAreas = GridTemplateAreas(
                 GridArea("FilterSidebar RecipeTable SelectedRecipesPanel")
@@ -41,6 +37,7 @@ val IndexPage = FC<Props> {
             css {
                 gridArea = GridArea("FilterSidebar")
                 textAlign = TextAlign.left
+                width = 10.pc
             }
             FilterSidebar {
                 recipeTypes = RecipeType.values().toList()
@@ -58,21 +55,36 @@ val IndexPage = FC<Props> {
             RecipeTable {
                 recipes = InMemoryRecipeStore.getAll()
                 selectedTypes = selectedTypesState
-                onSelectRecipe = { recipe -> selectedRecipesState += recipe }
+                onSelectRecipe = { recipe -> recipeIncrement(selectedRecipesState, recipe) }
             }
         }
 
         div {
             css {
                 gridArea = GridArea("SelectedRecipesPanel")
+                width = 15.pc
             }
             SelectedRecipesPanel {
                 selectedRecipes = selectedRecipesState
-                onUnselectedRecipe = { recipe -> selectedRecipesState -= recipe  }
+                onRecipeIncrement = { recipe -> recipeIncrement(selectedRecipesState, recipe) }
+                onRecipeDecrement = { recipe -> recipeDecrement(selectedRecipesState, recipe) }
             }
         }
     }
 
     Footer { }
+}
 
+private fun recipeIncrement(selectedRecipesState: MutableMap<Recipe, Int>, recipe: Recipe) {
+    when (val numOfSelected = selectedRecipesState[recipe]) {
+        null -> selectedRecipesState[recipe] = 1
+        else -> selectedRecipesState[recipe] = numOfSelected + 1
+    }
+}
+
+private fun recipeDecrement(selectedRecipesState: MutableMap<Recipe, Int>, recipe: Recipe) {
+    when(val numOfSelected = selectedRecipesState[recipe]!!) {
+        1 -> selectedRecipesState.remove(recipe)
+        else -> selectedRecipesState[recipe] = numOfSelected - 1
+    }
 }
