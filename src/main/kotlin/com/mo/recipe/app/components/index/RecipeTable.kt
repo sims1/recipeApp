@@ -136,45 +136,6 @@ private val RecipeImage = FC<Props> {
     }
 }
 
-private interface RecipeItemProps : Props {
-    var recipeItem: Recipe
-    var showDetails: Boolean
-    var onMouseEnterInfo: () -> Unit
-    var onMouseLeaveInfo: () -> Unit
-}
-
-private val RecipeItem = FC<RecipeItemProps> { props ->
-    div {
-        p {
-            css {
-                fontFamily = h2FontFamilyAlias
-                fontSize = textFontSizeAlias
-            }
-            +"${props.recipeItem.getNameString()} "
-            span {
-                css {
-                    onMouseEnter = { props.onMouseEnterInfo() }
-                    onMouseLeave = { props.onMouseLeaveInfo() }
-
-                    fontFamily = textFontFamilyAlias
-                    fontSize = unimportantFontSizeAlias
-                    color = NamedColor.grey
-                    borderRadius = commonBorderRadiusAlias
-                }
-                +"ⓘ"
-                /*
-                if (props.showDetails) {
-                    RecipeHoverBox {
-                        recipeitem = props.recipeItem
-                    }
-                }
-
-                 */
-            }
-        }
-    }
-}
-
 private interface RecipeHoverBoxProps : Props {
     var recipeitem: Recipe
 }

@@ -19,7 +19,10 @@ val ComputedResultPage = FC<Props> {
     Header { }
 
     val location = useLocation()
+
+    @Suppress("UNCHECKED_CAST")
     val selectedRecipeIds = location.state as Array<String>
+
     println(selectedRecipeIds)
     println(1)
     val selectedRecipes = selectedRecipeIds.deserialize()

@@ -1,6 +1,11 @@
 plugins {
     kotlin("js") version "1.6.10"
     kotlin("plugin.serialization") version "1.6.10"
+
+    // mandatory to resolve build issues, see
+    // https://plugins.gradle.org/plugin/com.github.turansky.kfc.legacy-union
+    // https://github.com/turansky/kfc-plugins
+    id("com.github.turansky.kfc.legacy-union") version "4.88.0"
 }
 
 group = "org.example"
