@@ -86,7 +86,7 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                         css {
                             fontSize = textFontSizeAlias
                             backgroundColor = recipeNameColorAlias
-                            color = NamedColor.white
+                            color = buttonFontColor
                             borderStyle = None.none
                             borderRadius = commonButtonBorderRadiusAlias
                             paddingLeft = 3.pc

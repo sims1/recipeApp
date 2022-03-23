@@ -1,10 +1,10 @@
 package com.mo.recipe.app.components.index
 
-import ReactButton
 import com.mo.recipe.app.components.common.*
 import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.serialize
 import csstype.*
+import csstype.LineStyle.Companion.solid
 import csstype.TextAlign.Companion.center
 import react.FC
 import react.Props
@@ -15,7 +15,6 @@ import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.span
 import react.router.NavigateOptions
-import react.router.dom.Link
 import react.router.useNavigate
 import react.useState
 
@@ -62,6 +61,15 @@ val SelectedRecipesPanel = FC<SelectedRecipesPanelProps> { props ->
 
 private val SelectedRecipeHoverBox = FC<SelectedRecipesPanelProps> { props ->
     div {
+        css {
+            borderColor = recipeNameColorAlias
+            borderRadius = commonBorderRadiusAlias
+            borderStyle = solid
+            borderWidth = 0.2.pc
+            marginTop = 2.pc
+            paddingBlock = 1.pc
+        }
+
         props.selectedRecipes.map { (recipe, numOfRecipes) ->
             button {
                 type = ButtonType.button
@@ -83,9 +91,22 @@ private val SelectedRecipeHoverBox = FC<SelectedRecipesPanelProps> { props ->
         }
 
         val navigate = useNavigate()
-        ReactButton {
-            type = "primary"
-            onPress = {
+        button {
+            css {
+                fontSize = unimportantFontSizeAlias
+                backgroundColor = recipeNameColorAlias
+                color = buttonFontColor
+                borderStyle = None.none
+                borderRadius = commonButtonBorderRadiusAlias
+                paddingLeft = 1.pc
+                paddingRight = 1.pc
+                paddingTop = 0.5.pc
+                paddingBottom = 0.5.pc
+                cursor = Cursor.pointer
+                marginBlock = 1.pc
+            }
+            type = ButtonType.button
+            onClick = {
                 navigate(
                     "/result",
                     object : NavigateOptions {

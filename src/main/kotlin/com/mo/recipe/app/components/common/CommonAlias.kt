@@ -27,3 +27,5 @@ val recipeColorAlias = NamedColor.moccasin
 val recipeDetailsColorAlias = NamedColor.lightsalmon
 
 val hoverColorAlias = NamedColor.mistyrose
+
+val buttonFontColor = NamedColor.white
