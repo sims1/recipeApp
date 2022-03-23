@@ -14,7 +14,7 @@ val Footer = FC<Props> {
             textAlign = TextAlign.center
         }
         p {
-            +"V1.0"
+            +"V2.0"
         }
     }
 }
