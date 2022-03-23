@@ -42,8 +42,8 @@ val RecipeTable = FC<RecipeTableProps> { props ->
             flexWrap = FlexWrap.wrap
         }
 
+        var showRecipeDetailsState: Recipe? by useState(null)
         showRecipes.map { recipe ->
-            var showDetailsState: Boolean by useState(false)
             div {
                 css {
                     width = 15.pc
@@ -67,14 +67,36 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                         paddingRight = 0.6.pc
                         height = 5.pc
                     }
-                    RecipeItem {
-                        recipeItem = recipe
-                        showDetails = showDetailsState
-                        onMouseEnterInfo = {
-                            showDetailsState = true
-                        }
-                        onMouseLeaveInfo = {
-                            showDetailsState = false
+                    div {
+                        p {
+                            css {
+                                fontFamily = h2FontFamilyAlias
+                                fontSize = textFontSizeAlias
+                            }
+                            +"${recipe.getNameString()} "
+                            span {
+                                css {
+                                    onMouseEnter = {
+                                        showRecipeDetailsState = recipe
+                                        println("showRecipeDetailsState = recipe")
+                                    }
+                                    onMouseLeave = {
+                                        showRecipeDetailsState = null
+                                        println("showRecipeDetailsState = null")
+                                    }
+
+                                    fontFamily = textFontFamilyAlias
+                                    fontSize = unimportantFontSizeAlias
+                                    color = NamedColor.grey
+                                    borderRadius = commonBorderRadiusAlias
+                                }
+                                +"ⓘ"
+                                if (showRecipeDetailsState?.id == recipe.id) {
+                                    RecipeHoverBox {
+                                        recipeitem = recipe
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -140,11 +162,14 @@ private val RecipeItem = FC<RecipeItemProps> { props ->
                     borderRadius = commonBorderRadiusAlias
                 }
                 +"ⓘ"
+                /*
                 if (props.showDetails) {
                     RecipeHoverBox {
                         recipeitem = props.recipeItem
                     }
                 }
+
+                 */
             }
         }
     }
