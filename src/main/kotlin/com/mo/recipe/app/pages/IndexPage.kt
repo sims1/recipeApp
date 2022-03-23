@@ -49,7 +49,7 @@ val IndexPage = FC<Props> {
         div {
             css {
                 gridArea = GridArea("RecipeTable")
-                width = 60.pc
+                width = 45.pc
                 textAlign = TextAlign.center
             }
             RecipeTable {
@@ -62,7 +62,7 @@ val IndexPage = FC<Props> {
         div {
             css {
                 gridArea = GridArea("SelectedRecipesPanel")
-                width = 15.pc
+                width = 25.pc
             }
             SelectedRecipesPanel {
                 selectedRecipes = selectedRecipesState

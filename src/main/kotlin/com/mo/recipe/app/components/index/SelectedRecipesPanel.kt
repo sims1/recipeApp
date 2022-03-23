@@ -6,6 +6,7 @@ import com.mo.recipe.app.serialize
 import csstype.*
 import csstype.LineStyle.Companion.solid
 import csstype.TextAlign.Companion.center
+import csstype.TextAlign.Companion.left
 import react.FC
 import react.Props
 import react.css.css
@@ -35,11 +36,12 @@ val SelectedRecipesPanel = FC<SelectedRecipesPanelProps> { props ->
             css {
                 onMouseEnter = { showSelectedRecipes = true }
 
-                fontSize = textFontSizeAlias
+                fontFamily = textFontFamilyAlias
+                fontSize = h2FontSizeAlias
                 backgroundColor = recipeNameColorAlias
                 color = NamedColor.white
                 borderStyle = None.none
-                borderRadius = 50.pc
+                borderRadius = roundBorderRadius
                 height = 8.pc
                 width = 8.pc
                 cursor = Cursor.pointer
@@ -71,23 +73,54 @@ private val SelectedRecipeHoverBox = FC<SelectedRecipesPanelProps> { props ->
         }
 
         props.selectedRecipes.map { (recipe, numOfRecipes) ->
-            button {
-                type = ButtonType.button
-                onClick = { props.onRecipeIncrement(recipe) }
-                +"+"
+            div {
+                css {
+                    textAlign = TextAlign.left
+                    paddingLeft = 1.pc
+                    paddingRight = 1.pc
+                }
+                button {
+                    css {
+                        fontFamily = textFontFamilyAlias
+                        fontSize = textFontSizeAlias
+                        backgroundColor = recipeNameColorAlias
+                        color = NamedColor.white
+                        borderStyle = None.none
+                        borderRadius = roundBorderRadius
+                    }
+                    type = ButtonType.button
+                    onClick = { props.onRecipeIncrement(recipe) }
+                    +"+"
+                }
+                span {
+                    css {
+                        fontFamily = textFontFamilyAlias
+                        fontSize = textFontSizeAlias
+                    }
+                    +" $numOfRecipes "
+                }
+                button {
+                    css {
+                        fontFamily = textFontFamilyAlias
+                        fontSize = textFontSizeAlias
+                        backgroundColor = recipeNameColorAlias
+                        color = NamedColor.white
+                        borderStyle = None.none
+                        borderRadius = roundBorderRadius
+                    }
+                    type = ButtonType.button
+                    onClick = { props.onRecipeDecrement(recipe) }
+                    +"-"
+                }
+                span {
+                    css {
+                        fontFamily = textFontFamilyAlias
+                        fontSize = textFontSizeAlias
+                    }
+                    +"   ${recipe.getNameString()}"
+                }
+                br {}
             }
-            span {
-                +"${recipe.getNameString()}"
-            }
-            button {
-                type = ButtonType.button
-                onClick = { props.onRecipeDecrement(recipe) }
-                +"-"
-            }
-            span {
-                +"x $numOfRecipes"
-            }
-            br {}
         }
 
         val navigate = useNavigate()

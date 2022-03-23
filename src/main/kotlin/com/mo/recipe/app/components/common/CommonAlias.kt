@@ -18,6 +18,7 @@ val unimportantFontSizeAlias = 0.8.em
 // border
 val commonBorderRadiusAlias = 10.px
 val commonButtonBorderRadiusAlias = 5.px
+val roundBorderRadius = 50.pc
 
 // color
 val lightGreenAlias = rgb(152, 251, 152)
