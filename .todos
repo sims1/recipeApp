@@ -1,16 +1,15 @@
 release 2.0 - basics
 
-remove header/footer
+split different flavors to multiple recipes
+styling header/footer
 implement uuid
 filter by ingredients
 add tons of recipes
 filter by oven
-show number on SelectedRecipesPanel
 release 2.1 - more recipes+features
 
 add more pictures
 change colors more
-add header/footer
 add about (2 ppl meal)
 release 2.2 - cosmetics changes
 

@@ -26,6 +26,7 @@ class InMemoryRecipeStore {
             ItalianZucchini.recipe,
             MashedPotato.recipe,
             PotatoShoots.recipe,
+            OvenSteak.recipe,
         )
 
         private val idToRecipe: Map<String, Recipe> = createRecipeMap()

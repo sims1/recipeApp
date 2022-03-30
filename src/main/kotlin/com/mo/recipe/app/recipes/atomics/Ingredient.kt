@@ -4,6 +4,7 @@ enum class VegetableAndMeatType(private val value: String) : BasedIngredient {
     CHICKEN_WING("chicken wing"),
     GARLIC("garlic"),
     POTATO("potato"),
+    STEAK("steak"),
     SWEET_POTATO("sweet potato"),
     ZUCCHINI("zucchini")
     ;
