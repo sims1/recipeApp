@@ -96,7 +96,7 @@ val RecipeTable = FC<RecipeTableProps> { props ->
 
                                     fontFamily = textFontFamilyAlias
                                     fontSize = unimportantFontSizeAlias
-                                    color = NamedColor.grey
+                                    color = unimportantColorAlias
                                     borderRadius = commonBorderRadiusAlias
                                 }
                                 +"ⓘ"

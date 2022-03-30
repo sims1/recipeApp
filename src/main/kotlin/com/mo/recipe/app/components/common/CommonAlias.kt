@@ -2,10 +2,8 @@ package com.mo.recipe.app.components.common
 
 import csstype.*
 
-typealias CssStyle = PropertiesBuilder.() -> Unit
-
 // font
-val h1FontSizeAlias = 2.em
+val h1FontSizeAlias = 3.em
 val fancyH1FontFamilyAlias = FontFamily.cursive
 val h1FontWeightAlias = FontWeight.bold
 
@@ -28,6 +26,7 @@ val lightGreenAlias = rgb(152, 251, 152)
 val recipeNameColorAlias = NamedColor.coral
 val recipeColorAlias = NamedColor.moccasin
 val recipeDetailsColorAlias = NamedColor.lightsalmon
+val unimportantColorAlias = NamedColor.grey
 
 val hoverColorAlias = NamedColor.mistyrose
 

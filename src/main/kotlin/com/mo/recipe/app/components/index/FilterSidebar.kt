@@ -29,8 +29,9 @@ val FilterSidebar = FC<FilterSidebarProps> { props ->
         css {
             borderStyle = solid
             borderColor = recipeNameColorAlias
-            borderWidth = 0.5.pc
             borderRadius = commonBorderRadiusAlias
+            paddingLeft = 1.pc
+            paddingBottom = 1.pc
         }
         p {
             css {
@@ -65,8 +66,9 @@ val FilterSidebar = FC<FilterSidebarProps> { props ->
         css {
             borderStyle = solid
             borderColor = recipeNameColorAlias
-            borderWidth = 0.5.pc
             borderRadius = commonBorderRadiusAlias
+            paddingLeft = 1.pc
+            paddingBottom = 1.pc
             marginTop = 1.pc
         }
         p {
