@@ -2,6 +2,8 @@ package com.mo.recipe.app.components.common
 
 import csstype.*
 
+typealias CssStyle = PropertiesBuilder.() -> Unit
+
 // font
 val h1FontSizeAlias = 2.em
 val fancyH1FontFamilyAlias = FontFamily.cursive

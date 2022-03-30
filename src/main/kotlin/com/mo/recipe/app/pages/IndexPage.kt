@@ -39,7 +39,7 @@ val IndexPage = FC<Props> {
             css {
                 gridArea = GridArea("FilterSidebar")
                 textAlign = TextAlign.left
-                width = 10.pc
+                width = 15.pc
             }
             FilterSidebar {
                 recipeTypes = RecipeType.values().toList()
