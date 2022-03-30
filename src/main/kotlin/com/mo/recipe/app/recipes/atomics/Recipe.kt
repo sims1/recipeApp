@@ -1,14 +1,12 @@
 package com.mo.recipe.app.recipes.atomics
 
-import kotlin.random.Random
-
 class Recipe(
     val type: RecipeType,
     private val name: String,
     val vegetableAndMeat: List<Ingredient<VegetableAndMeatType>>,
     val spicesAndSauces: List<Ingredient<SpiceAndSauceType>>,
     private val cookingInstructions: List<String>,
-    val id: String = Random.nextInt().toString() // \todo replace with npm uuid
+    val id: String = name.filter { !it.isWhitespace() }
 ) {
     fun getTypeString() = type.value
     fun getNameString() = name
