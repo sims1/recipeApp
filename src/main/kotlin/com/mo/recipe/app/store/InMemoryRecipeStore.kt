@@ -2,7 +2,6 @@ package com.mo.recipe.app.store
 
 import com.mo.recipe.app.recipes.*
 import com.mo.recipe.app.recipes.atomics.*
-import kotlin.random.Random
 
 class InMemoryRecipeStore {
 
@@ -23,7 +22,7 @@ class InMemoryRecipeStore {
 
         private fun createRecipeList(): List<Recipe> {
             val result = listOf(
-                BakedSpicedChickenWing.recipe,
+                OrleansChickenWing.recipe,
                 BakedSweetPotato.recipe,
                 ItalianZucchini.recipe,
                 MashedPotato.recipe,

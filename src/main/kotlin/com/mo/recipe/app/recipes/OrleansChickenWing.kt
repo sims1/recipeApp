@@ -2,17 +2,17 @@ package com.mo.recipe.app.recipes
 
 import com.mo.recipe.app.recipes.atomics.*
 
-class BakedSpicedChickenWing {
+class OrleansChickenWing {
 
     companion object {
         val recipe = Recipe(
             RecipeType.MEAT,
-            "Baked Spiced Chicken Wing",
+            "Orleans Chicken Wing",
             listOf(
                 Ingredient(VegetableAndMeatType.CHICKEN_WING)
             ),
             listOf(
-                Ingredient(SpiceAndSauceType.MARINATING_SPICE_PACK, "嘟嘟 天禾 香辣鸡/新奥尔良/蜜汁叉烧")
+                Ingredient(SpiceAndSauceType.ORLEANS_SPICE_PACK, "天禾 新奥尔良(嘟嘟)")
             ),
             listOf(
                 "400F 40min",

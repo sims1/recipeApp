@@ -19,7 +19,7 @@ enum class SpiceAndSauceType(private val value: String) : BasedIngredient {
     VEGETABLE_OIL("vegetable oil"),
     BLACK_VINEGAR("black vinegar"),
     SALT("salt"),
-    MARINATING_SPICE_PACK("Spicy/Orleans/Honey spice pack"),
+    ORLEANS_SPICE_PACK("Orleans spice pack(新奥尔良)"),
     ;
 
     override fun getValue() = value
