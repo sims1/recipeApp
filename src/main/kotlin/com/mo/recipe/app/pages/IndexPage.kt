@@ -7,6 +7,7 @@ import com.mo.recipe.app.components.shared.Footer
 import com.mo.recipe.app.components.shared.Header
 import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
+import com.mo.recipe.app.recipes.atomics.VegetableAndMeatType
 import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.*
 import react.FC
@@ -21,6 +22,7 @@ import react.useState
 
 val IndexPage = FC<Props> {
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
+    var selectedIngredientsState: Set<VegetableAndMeatType> by useState(emptySet())
     var selectedRecipesState: MutableMap<Recipe, Int> by useState(mutableMapOf())
 
     Header { }
@@ -43,6 +45,9 @@ val IndexPage = FC<Props> {
                 recipeTypes = RecipeType.values().toList()
                 onSelectedType = { selectedType -> selectedTypesState += selectedType }
                 onUnselectedType = { unselectedType -> selectedTypesState -= unselectedType }
+                ingredients = VegetableAndMeatType.values().toList()
+                onSelectedIngredient = { selectedIngredient -> selectedIngredientsState += selectedIngredient }
+                onUnselectedIngredient = { unselectedIngredient -> selectedIngredientsState -= unselectedIngredient }
             }
         }
 
@@ -55,6 +60,7 @@ val IndexPage = FC<Props> {
             RecipeTable {
                 recipes = InMemoryRecipeStore.getAll()
                 selectedTypes = selectedTypesState
+                selectedIngredients = selectedIngredientsState
                 onSelectRecipe = { recipe -> recipeIncrement(selectedRecipesState, recipe) }
             }
         }

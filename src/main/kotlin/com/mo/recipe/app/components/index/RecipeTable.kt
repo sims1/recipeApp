@@ -9,6 +9,7 @@ import react.dom.html.ReactHTML.td
 import react.dom.html.ReactHTML.tr
 import com.mo.recipe.app.recipes.atomics.Recipe
 import com.mo.recipe.app.recipes.atomics.RecipeType
+import com.mo.recipe.app.recipes.atomics.VegetableAndMeatType
 import csstype.*
 import csstype.Cursor.Companion.pointer
 import csstype.LineStyle.Companion.solid
@@ -27,13 +28,21 @@ import react.useState
 external interface RecipeTableProps : Props {
     var recipes: List<Recipe>
     var selectedTypes: Set<RecipeType>
+    var selectedIngredients: Set<VegetableAndMeatType>
     var onSelectRecipe: (Recipe) -> Unit
 }
 
 val RecipeTable = FC<RecipeTableProps> { props ->
-    val showRecipes = when (props.selectedTypes.isEmpty()) {
-        true -> props.recipes
-        else -> props.recipes.filter { recipe -> recipe.type in props.selectedTypes }
+    var showRecipes = props.recipes
+    if (props.selectedTypes.isNotEmpty()) {
+        showRecipes = props.recipes.filter { recipe -> recipe.type in props.selectedTypes }
+    }
+
+    if (props.selectedIngredients.isNotEmpty()) {
+        showRecipes = props.recipes.filter { recipe ->
+            val ingredients = recipe.vegetableAndMeat.map { ingredient -> ingredient.type }
+            props.selectedIngredients.intersect(ingredients).isNotEmpty()
+        }
     }
 
     section {
