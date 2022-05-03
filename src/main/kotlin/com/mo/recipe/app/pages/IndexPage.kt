@@ -1,5 +1,9 @@
 package com.mo.recipe.app.pages
 
+import com.mo.recipe.app.components.common.buttonFontColor
+import com.mo.recipe.app.components.common.commonButtonBorderRadiusAlias
+import com.mo.recipe.app.components.common.recipeNameColorAlias
+import com.mo.recipe.app.components.common.unimportantFontSizeAlias
 import com.mo.recipe.app.components.index.FilterSidebar
 import com.mo.recipe.app.components.index.RecipeTable
 import com.mo.recipe.app.components.index.SelectedRecipesPanel
@@ -10,11 +14,17 @@ import com.mo.recipe.app.recipes.atomics.RecipeType
 import com.mo.recipe.app.recipes.atomics.VegetableAndMeatType
 import com.mo.recipe.app.store.InMemoryRecipeStore
 import csstype.*
+import csstype.TextAlign.Companion.center
 import react.FC
 import react.Props
 import react.css.css
+import react.dom.html.ButtonType
+import react.dom.html.ReactHTML
+import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.section
+import react.router.NavigateOptions
+import react.router.useNavigate
 import react.useState
 
 // Following
@@ -26,6 +36,34 @@ val IndexPage = FC<Props> {
     var selectedRecipesState: MutableMap<Recipe, Int> by useState(mutableMapOf())
 
     Header { }
+
+    val navigate = useNavigate()
+    button {
+        css {
+            fontSize = unimportantFontSizeAlias
+            backgroundColor = recipeNameColorAlias
+            color = buttonFontColor
+            borderStyle = None.none
+            borderRadius = commonButtonBorderRadiusAlias
+            paddingLeft = 1.pc
+            paddingRight = 1.pc
+            paddingTop = 0.5.pc
+            paddingBottom = 0.5.pc
+            cursor = Cursor.pointer
+            marginBlock = 1.pc
+        }
+        type = ButtonType.button
+        onClick = {
+            navigate(
+                "/edit",
+                object : NavigateOptions {
+                    override var replace: Boolean? = true
+                    override var state: Any? = null
+                }
+            )
+        }
+        +"Add new recipe \uD83D\uDE0A"
+    }
 
     section {
         css {
@@ -43,8 +81,8 @@ val IndexPage = FC<Props> {
             }
             FilterSidebar {
                 recipeTypes = RecipeType.values().toList()
-                onSelectedType = { selectedType -> selectedTypesState += selectedType }
-                onUnselectedType = { unselectedType -> selectedTypesState -= unselectedType }
+                onSelectedType = { selectedType -> selectedTypesState = selectedTypesState + selectedType }
+                onUnselectedType = { unselectedType -> selectedTypesState = selectedTypesState - unselectedType }
                 ingredients = VegetableAndMeatType.values().toList()
                 onSelectedIngredient = { selectedIngredient -> selectedIngredientsState += selectedIngredient }
                 onUnselectedIngredient = { unselectedIngredient -> selectedIngredientsState -= unselectedIngredient }

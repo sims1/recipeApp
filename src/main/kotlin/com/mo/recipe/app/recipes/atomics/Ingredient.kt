@@ -1,24 +1,27 @@
 package com.mo.recipe.app.recipes.atomics
 
+
+val sortedVegetableAndMeatType = VegetableAndMeatType.values().sortedBy { it.getValue() }
+val sortedSpiceAndSauceType = SpiceAndSauceType.values().sortedBy { it.getValue() }
 enum class VegetableAndMeatType(private val value: String) : BasedIngredient {
-    CHICKEN_WING("chicken wing"),
-    GARLIC("garlic"),
-    POTATO("potato"),
-    STEAK("steak"),
-    SWEET_POTATO("sweet potato"),
-    ZUCCHINI("zucchini")
+    CHICKEN_WING("Chicken wing"),
+    GARLIC("Garlic"),
+    POTATO("Potato"),
+    STEAK("Steak"),
+    SWEET_POTATO("Sweet potato"),
+    ZUCCHINI("Zucchini")
     ;
 
     override fun getValue() = value
 }
 
 enum class SpiceAndSauceType(private val value: String) : BasedIngredient {
-    BUTTER("butter"),
+    BUTTER("Butter"),
     ITALIAN_HERB_SPICE_BLEND("Italian herb spice blend"),
-    PEPPER("pepper"),
-    VEGETABLE_OIL("vegetable oil"),
-    BLACK_VINEGAR("black vinegar"),
-    SALT("salt"),
+    PEPPER("Pepper"),
+    VEGETABLE_OIL("Vegetable oil"),
+    BLACK_VINEGAR("Black vinegar"),
+    SALT("Salt"),
     ORLEANS_SPICE_PACK("Orleans spice pack(新奥尔良)"),
     ;
 
@@ -34,7 +37,7 @@ data class Ingredient<out T : BasedIngredient>(
     fun getString(): String {
         var result = type.getValue()
         if (quantity != 1) {
-            result += " x $quantity $unit"
+            result += " x $quantity ${unit.value}"
         }
 
         if (description != null) {

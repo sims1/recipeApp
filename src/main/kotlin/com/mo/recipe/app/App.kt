@@ -1,5 +1,6 @@
 package com.mo.recipe.app
 
+import com.mo.recipe.app.pages.EditRecipePage
 import com.mo.recipe.app.pages.ComputedResultPage
 import com.mo.recipe.app.pages.IndexPage
 import react.FC
@@ -19,6 +20,10 @@ val App = FC<Props> {
             Route {
                 path = "/result"
                 element = ComputedResultPage.create()
+            }
+            Route {
+                path = "/edit"
+                element = EditRecipePage.create()
             }
         }
     }
