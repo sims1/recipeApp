@@ -1,5 +1,7 @@
 package com.mo.recipe.app.recipes.atomics
 
+import kotlinx.serialization.Serializable
+
 
 val sortedVegetableAndMeatType = VegetableAndMeatType.values().sortedBy { it.getValue() }
 val sortedSpiceAndSauceType = SpiceAndSauceType.values().sortedBy { it.getValue() }
@@ -28,6 +30,7 @@ enum class SpiceAndSauceType(private val value: String) : BasedIngredient {
     override fun getValue() = value
 }
 
+@Serializable
 data class Ingredient<out T : BasedIngredient>(
     val type: T,
     val description: String? = null,

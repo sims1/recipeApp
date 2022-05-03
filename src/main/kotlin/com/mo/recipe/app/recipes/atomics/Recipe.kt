@@ -1,5 +1,7 @@
 package com.mo.recipe.app.recipes.atomics
 
+import kotlinx.serialization.Serializable
+@Serializable
 class Recipe(
     val type: RecipeType,
     private val name: String,
@@ -13,7 +15,6 @@ class Recipe(
     fun getVegetableAndMeatString() = vegetableAndMeat.joinToString("\n") { it.getString() }
     fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { it.getString() }
     fun getCookingInstructionsString() = cookingInstructions.joinToString("\n")
-
     override fun toString(): String {
         return """
             {

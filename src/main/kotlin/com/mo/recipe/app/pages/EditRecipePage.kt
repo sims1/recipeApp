@@ -7,6 +7,9 @@ import com.mo.recipe.app.recipes.atomics.*
 import com.mo.recipe.app.recipes.atomics.SpiceAndSauceType
 import com.mo.recipe.app.store.TypeStringConverter
 import csstype.*
+import kotlinx.serialization.json.Json
+// https://stackoverflow.com/questions/65043370/type-mismatch-when-serializing-data-class
+import kotlinx.serialization.encodeToString
 import react.FC
 import react.Props
 import react.css.css
@@ -38,7 +41,7 @@ val EditRecipePage = FC<Props> {
     var spiceAndSauceUnitState: CookingUnit? by useState(null)
     var spiceAndSauceIngredientsState: List<Ingredient<SpiceAndSauceType>> by useState(emptyList())
 
-    var descriptionState: String? by useState(null)
+    var descriptionState: String by useState("")
 
     Header { }
 
@@ -365,7 +368,7 @@ val EditRecipePage = FC<Props> {
 
 
         p {
-            +"Description"
+            +"Cooking Instructions"
             br { }
             textarea {
                 rows = 4
@@ -391,14 +394,20 @@ val EditRecipePage = FC<Props> {
             }
             type = ButtonType.button
             onClick = {
-                println("""
-                    recipeNameState: $recipeNameState
-                    recipeTypeState: $recipeTypeState
-                    descriptionState: $descriptionState
-                    vegetableAndMeatIngredientsState: $vegetableAndMeatIngredientsState
-                    spiceAndSauceIngredientsState: $spiceAndSauceIngredientsState
-                    """
-                )
+                if (recipeNameState == null) {
+                    println("Recipe name is not set")
+                } else if (recipeTypeState == null) {
+                    println("Recipe type is not selected")
+                } else {
+                    val ingredient = Recipe(
+                        recipeTypeState!!,
+                        recipeNameState!!,
+                        vegetableAndMeatIngredientsState,
+                        spiceAndSauceIngredientsState,
+                        listOf(descriptionState)
+                    )
+                    println(Json.encodeToString(ingredient))
+                }
             }
             +"I'm Ling, and I want to add this recipe"
         }
