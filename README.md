@@ -14,3 +14,11 @@ This project is built with React and Kotlin/JS.
 
 ### v1.0
 - Display 3 recipes on a html page.
+
+### Study Notes
+
+1. [client 
+and 
+server](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)
+
+2. [kotlin/JS with react](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction)
