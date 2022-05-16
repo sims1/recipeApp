@@ -1,3 +1,4 @@
+import atomics.Recipe
 import io.ktor.http.*
 import io.ktor.client.*
 import io.ktor.client.request.*
@@ -25,4 +26,8 @@ suspend fun addShoppingListItem(shoppingListItem: ShoppingListItem) {
 
 suspend fun deleteShoppingListItem(shoppingListItem: ShoppingListItem) {
     jsonClient.delete<Unit>(endpoint + ShoppingListItem.path + "/${shoppingListItem.id}")
+}
+
+suspend fun getRecipeList(): List<Recipe> {
+    return jsonClient.get(endpoint + Recipe.all_path)
 }

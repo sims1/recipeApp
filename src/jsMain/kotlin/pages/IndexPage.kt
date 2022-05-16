@@ -14,6 +14,9 @@ import components.index.RecipeTable
 import components.index.SelectedRecipesPanel
 import store.InMemoryRecipeStore
 import csstype.*
+import getRecipeList
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import react.FC
 import react.Props
 import react.css.css
@@ -23,15 +26,28 @@ import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.section
 import react.router.NavigateOptions
 import react.router.useNavigate
+import react.useEffectOnce
 import react.useState
 
 // Following
 // https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction
 
-val IndexPage = FC<Props> {
+private val scope = MainScope()
+external interface IndexPageProps : Props {
+    var recipeList: List<Recipe>
+}
+
+val IndexPage = FC<IndexPageProps> {
+    var recipeListState by useState(emptyList<Recipe>())
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
     var selectedIngredientsState: Set<VegetableAndMeatType> by useState(emptySet())
     var selectedRecipesState: MutableMap<Recipe, Int> by useState(mutableMapOf())
+
+    useEffectOnce {
+        scope.launch {
+            recipeListState = getRecipeList()
+        }
+    }
 
     Header { }
 
@@ -94,7 +110,7 @@ val IndexPage = FC<Props> {
                 textAlign = TextAlign.center
             }
             RecipeTable {
-                recipes = InMemoryRecipeStore.getAll()
+                recipes = recipeListState
                 selectedTypes = selectedTypesState
                 selectedIngredients = selectedIngredientsState
                 onSelectRecipe = { recipe -> recipeIncrement(selectedRecipesState, recipe) }

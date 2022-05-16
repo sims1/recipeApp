@@ -1,3 +1,4 @@
+import atomics.Recipe
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.http.*
@@ -11,11 +12,13 @@ import io.ktor.server.netty.*
 import org.litote.kmongo.*
 import org.litote.kmongo.coroutine.*
 import org.litote.kmongo.reactivestreams.KMongo
-import com.mongodb.ConnectionString
 
 val client = KMongo.createClient().coroutine
-val database = client.getDatabase("shoppingList")
-val collection = database.getCollection<ShoppingListItem>()
+val recipesDatabase = client.getDatabase("recipes")
+val recipesCollection = recipesDatabase.getCollection<ShoppingListItem>()
+
+val shoppingListDatabase = client.getDatabase("shoppingList")
+val shoppingListCollection = shoppingListDatabase.getCollection<ShoppingListItem>()
 
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
@@ -44,17 +47,25 @@ fun main() {
             static("/") {
                 resources("")
             }
+            route(Recipe.all_path) {
+                get {
+                    call.respond(TemporaryInMemoryRecipeStore.getAll())
+                }
+            }
+            route(Recipe.create_path) {
+
+            }
             route(ShoppingListItem.path) {
                 get {
-                    call.respond(collection.find().toList())
+                    call.respond(shoppingListCollection.find().toList())
                 }
                 post {
-                    collection.insertOne(call.receive<ShoppingListItem>())
+                    shoppingListCollection.insertOne(call.receive<ShoppingListItem>())
                     call.respond(HttpStatusCode.OK)
                 }
                 delete("/{id}") {
                     val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
-                    collection.deleteOne(ShoppingListItem::id eq id)
+                    shoppingListCollection.deleteOne(ShoppingListItem::id eq id)
                     call.respond(HttpStatusCode.OK)
                 }
             }
