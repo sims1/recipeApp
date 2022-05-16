@@ -61,6 +61,13 @@ kotlin {
 
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react:$reactVersion")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:$reactVersion")
+
+                //Kotlin React CSS (chapter 3)
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-css:17.0.2-pre.298-kotlin-1.6.10")
+
+                // https://github.com/JetBrains/kotlin-wrappers/tree/master/kotlin-react-router-dom
+                //implementation(npm("react-router-dom", "6.2.1"))
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.2.1-pre.304-kotlin-1.6.10")
             }
         }
     }
