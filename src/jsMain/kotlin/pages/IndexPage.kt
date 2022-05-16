@@ -12,7 +12,6 @@ import components.common.unimportantFontSizeAlias
 import components.index.FilterSidebar
 import components.index.RecipeTable
 import components.index.SelectedRecipesPanel
-import store.InMemoryRecipeStore
 import csstype.*
 import getRecipeList
 import kotlinx.coroutines.MainScope
@@ -33,11 +32,8 @@ import react.useState
 // https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction
 
 private val scope = MainScope()
-external interface IndexPageProps : Props {
-    var recipeList: List<Recipe>
-}
 
-val IndexPage = FC<IndexPageProps> {
+val IndexPage = FC<Props> {
     var recipeListState by useState(emptyList<Recipe>())
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
     var selectedIngredientsState: Set<VegetableAndMeatType> by useState(emptySet())
@@ -51,33 +47,7 @@ val IndexPage = FC<IndexPageProps> {
 
     Header { }
 
-    val navigate = useNavigate()
-    button {
-        css {
-            fontSize = unimportantFontSizeAlias
-            backgroundColor = recipeNameColorAlias
-            color = buttonFontColor
-            borderStyle = None.none
-            borderRadius = commonButtonBorderRadiusAlias
-            paddingLeft = 1.pc
-            paddingRight = 1.pc
-            paddingTop = 0.5.pc
-            paddingBottom = 0.5.pc
-            cursor = Cursor.pointer
-            marginBlock = 1.pc
-        }
-        type = ButtonType.button
-        onClick = {
-            navigate(
-                "/edit",
-                object : NavigateOptions {
-                    override var replace: Boolean? = true
-                    override var state: Any? = null
-                }
-            )
-        }
-        +"Add new recipe \uD83D\uDE0A"
-    }
+    AddRecipeButton { }
 
     section {
         css {
@@ -95,11 +65,11 @@ val IndexPage = FC<IndexPageProps> {
             }
             FilterSidebar {
                 recipeTypes = RecipeType.values().toList()
-                onSelectedType = { selectedType -> selectedTypesState = selectedTypesState + selectedType }
-                onUnselectedType = { unselectedType -> selectedTypesState = selectedTypesState - unselectedType }
+                onSelectType = { selectedType -> selectedTypesState += selectedType }
+                onUnselectType = { unselectedType -> selectedTypesState -= unselectedType }
                 ingredients = VegetableAndMeatType.values().toList()
-                onSelectedIngredient = { selectedIngredient -> selectedIngredientsState += selectedIngredient }
-                onUnselectedIngredient = { unselectedIngredient -> selectedIngredientsState -= unselectedIngredient }
+                onSelectIngredient = { selectedIngredient -> selectedIngredientsState += selectedIngredient }
+                onUnselectIngredient = { unselectedIngredient -> selectedIngredientsState -= unselectedIngredient }
             }
         }
 
@@ -110,7 +80,7 @@ val IndexPage = FC<IndexPageProps> {
                 textAlign = TextAlign.center
             }
             RecipeTable {
-                recipes = recipeListState
+                allRecipes = recipeListState
                 selectedTypes = selectedTypesState
                 selectedIngredients = selectedIngredientsState
                 onSelectRecipe = { recipe -> recipeIncrement(selectedRecipesState, recipe) }
@@ -131,6 +101,36 @@ val IndexPage = FC<IndexPageProps> {
     }
 
     Footer { }
+}
+
+val AddRecipeButton = FC<Props> {
+    val navigate = useNavigate()
+    button {
+        css {
+            fontSize = unimportantFontSizeAlias
+            backgroundColor = recipeNameColorAlias
+            color = buttonFontColor
+            borderStyle = None.none
+            borderRadius = commonButtonBorderRadiusAlias
+            paddingLeft = 1.pc
+            paddingRight = 1.pc
+            paddingTop = 0.5.pc
+            paddingBottom = 0.5.pc
+            cursor = Cursor.pointer
+            marginBlock = 1.pc
+        }
+        type = ButtonType.button
+        onClick = {
+            navigate(
+                "/edit",
+                object : NavigateOptions {
+                    override var replace: Boolean? = false
+                    override var state: Any? = null
+                }
+            )
+        }
+        +"Add new recipe \uD83D\uDE0A"
+    }
 }
 
 private fun recipeIncrement(selectedRecipesState: MutableMap<Recipe, Int>, recipe: Recipe) {

@@ -20,11 +20,11 @@ import react.dom.html.ReactHTML.p
 
 external interface FilterSidebarProps : Props {
     var recipeTypes: List<RecipeType>
-    var onSelectedType: (RecipeType) -> Unit
-    var onUnselectedType: (RecipeType) -> Unit
+    var onSelectType: (RecipeType) -> Unit
+    var onUnselectType: (RecipeType) -> Unit
     var ingredients: List<VegetableAndMeatType>
-    var onSelectedIngredient: (VegetableAndMeatType) -> Unit
-    var onUnselectedIngredient: (VegetableAndMeatType) -> Unit
+    var onSelectIngredient: (VegetableAndMeatType) -> Unit
+    var onUnselectIngredient: (VegetableAndMeatType) -> Unit
 }
 
 val FilterSidebar = FC<FilterSidebarProps> { props ->
@@ -54,8 +54,8 @@ val FilterSidebar = FC<FilterSidebarProps> { props ->
                     value = recipeType.value
                     onChange = { event ->
                         when (event.target.checked) {
-                            true -> props.onSelectedType(recipeType)
-                            else -> props.onUnselectedType(recipeType)
+                            true -> props.onSelectType(recipeType)
+                            else -> props.onUnselectType(recipeType)
                         }
                     }
                 }
@@ -92,8 +92,8 @@ val FilterSidebar = FC<FilterSidebarProps> { props ->
                     value = ingredient.getValue()
                     onChange = { event ->
                         when (event.target.checked) {
-                            true -> props.onSelectedIngredient(ingredient)
-                            else -> props.onUnselectedIngredient(ingredient)
+                            true -> props.onSelectIngredient(ingredient)
+                            else -> props.onUnselectIngredient(ingredient)
                         }
                     }
                 }

@@ -25,22 +25,22 @@ import react.dom.html.ReactHTML.th
 import react.useState
 
 external interface RecipeTableProps : Props {
-    var recipes: List<Recipe>
+    var allRecipes: List<Recipe>
     var selectedTypes: Set<RecipeType>
     var selectedIngredients: Set<VegetableAndMeatType>
     var onSelectRecipe: (Recipe) -> Unit
 }
 
 val RecipeTable = FC<RecipeTableProps> { props ->
-    var showRecipes = props.recipes
+    var showRecipes = props.allRecipes
     if (props.selectedTypes.isNotEmpty()) {
-        showRecipes = props.recipes.filter { recipe -> recipe.type in props.selectedTypes }
+        showRecipes = showRecipes.filter { recipe -> recipe.type in props.selectedTypes }
     }
 
     if (props.selectedIngredients.isNotEmpty()) {
-        showRecipes = props.recipes.filter { recipe ->
+        showRecipes = showRecipes.filter { recipe ->
             val ingredients = recipe.vegetableAndMeat.map { ingredient -> ingredient.type }
-            props.selectedIngredients.intersect(ingredients).isNotEmpty()
+            props.selectedIngredients.intersect(ingredients.toSet()).isNotEmpty()
         }
     }
 
@@ -86,11 +86,9 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                                 css {
                                     onMouseEnter = {
                                         showRecipeDetailsState = recipe
-                                        println("showRecipeDetailsState = recipe")
                                     }
                                     onMouseLeave = {
                                         showRecipeDetailsState = null
-                                        println("showRecipeDetailsState = null")
                                     }
 
                                     fontFamily = textFontFamilyAlias
