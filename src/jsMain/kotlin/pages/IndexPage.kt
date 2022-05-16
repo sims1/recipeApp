@@ -33,11 +33,13 @@ import react.useState
 
 private val scope = MainScope()
 
+private typealias RecipeToIntMap = Map<Recipe, Int>
+
 val IndexPage = FC<Props> {
     var recipeListState by useState(emptyList<Recipe>())
     var selectedTypesState: Set<RecipeType> by useState(emptySet())
     var selectedIngredientsState: Set<VegetableAndMeatType> by useState(emptySet())
-    var selectedRecipesState: MutableMap<Recipe, Int> by useState(mutableMapOf())
+    var selectedRecipesState: RecipeToIntMap by useState(emptyMap())
 
     useEffectOnce {
         scope.launch {
@@ -83,7 +85,7 @@ val IndexPage = FC<Props> {
                 allRecipes = recipeListState
                 selectedTypes = selectedTypesState
                 selectedIngredients = selectedIngredientsState
-                onSelectRecipe = { recipe -> recipeIncrement(selectedRecipesState, recipe) }
+                onSelectRecipe = { recipe -> selectedRecipesState = selectedRecipesState.increment(recipe) }
             }
         }
 
@@ -94,8 +96,8 @@ val IndexPage = FC<Props> {
             }
             SelectedRecipesPanel {
                 selectedRecipes = selectedRecipesState
-                onRecipeIncrement = { recipe -> recipeIncrement(selectedRecipesState, recipe) }
-                onRecipeDecrement = { recipe -> recipeDecrement(selectedRecipesState, recipe) }
+                onRecipeIncrement = { recipe -> selectedRecipesState = selectedRecipesState.increment(recipe) }
+                onRecipeDecrement = { recipe -> selectedRecipesState = selectedRecipesState.decrement(recipe) }
             }
         }
     }
@@ -133,16 +135,20 @@ val AddRecipeButton = FC<Props> {
     }
 }
 
-private fun recipeIncrement(selectedRecipesState: MutableMap<Recipe, Int>, recipe: Recipe) {
-    when (val numOfSelected = selectedRecipesState[recipe]) {
-        null -> selectedRecipesState[recipe] = 1
-        else -> selectedRecipesState[recipe] = numOfSelected + 1
+private fun RecipeToIntMap.increment(recipe: Recipe): RecipeToIntMap {
+    val result = this.toMutableMap()
+    when (val numOfSelected = this[recipe]) {
+        null -> result[recipe] = 1
+        else -> result[recipe] = numOfSelected + 1
     }
+    return result
 }
 
-private fun recipeDecrement(selectedRecipesState: MutableMap<Recipe, Int>, recipe: Recipe) {
-    when(val numOfSelected = selectedRecipesState[recipe]!!) {
-        1 -> selectedRecipesState.remove(recipe)
-        else -> selectedRecipesState[recipe] = numOfSelected - 1
+private fun RecipeToIntMap.decrement(recipe: Recipe): RecipeToIntMap {
+    val result = this.toMutableMap()
+    when(val numOfSelected = this[recipe]!!) {
+        1 -> result.remove(recipe)
+        else -> result[recipe] = numOfSelected - 1
     }
+    return result
 }
