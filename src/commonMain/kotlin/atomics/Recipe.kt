@@ -28,8 +28,8 @@ class Recipe(
     }
 
     companion object {
-        const val index_path = "/"
         const val create_path = "/create"
-        const val all_path = "/all"
+        const val get_all_path = "/getall"
+        const val get_by_recipe_id_path = "/getbyrecipeid"
     }
 }

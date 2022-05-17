@@ -1,11 +1,15 @@
+import api.recipeIdKeyAttribute
+import api.recipeIdParameterKey
 import atomics.Recipe
 import io.ktor.http.*
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
+import io.ktor.util.*
 
 import kotlinx.browser.window
+import react.router.dom.createSearchParams
 
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
 
@@ -29,5 +33,12 @@ suspend fun deleteShoppingListItem(shoppingListItem: ShoppingListItem) {
 }
 
 suspend fun getRecipeList(): List<Recipe> {
-    return jsonClient.get(endpoint + Recipe.all_path)
+    return jsonClient.get(endpoint + Recipe.get_all_path)
+}
+suspend fun getRecipesById(recipeId: String): Recipe {
+    return jsonClient.get(endpoint + Recipe.get_by_recipe_id_path) {
+        contentType(ContentType.Application.Json)
+        parameter(recipeIdParameterKey, recipeId)
+        //setAttributes { this.put(recipeIdKeyAttribute, recipeId) }
+    }
 }
