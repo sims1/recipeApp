@@ -24,6 +24,18 @@ val shoppingListCollection = shoppingListDatabase.getCollection<ShoppingListItem
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
+// return true if inserted successfully
+// return false if already exists
+private suspend fun CoroutineCollection<Recipe>.insertIfNotExist(recipe: Recipe): Boolean {
+    return when (this.findOne(Recipe::id eq recipe.id)) {
+        null -> {
+            this.insertOne(recipe)
+            true
+        }
+        else -> false
+    }
+}
+
 fun main() {
     embeddedServer(Netty, 9090) {
         install(ContentNegotiation) {
@@ -53,9 +65,10 @@ fun main() {
                     val allRecipes = recipesCollection.find().toList()
                     if (allRecipes.isNotEmpty()) {
                         call.respond(allRecipes)
+                    } else {
+                        InMemoryRecipeStore.getAll().forEach { recipe -> recipesCollection.insertIfNotExist(recipe) }
+                        call.respond(recipesCollection.find().toList())
                     }
-                    //recipesCollection.insertMany(TemporaryInMemoryRecipeStore.getAll())
-                    call.respond(recipesCollection.find().toList())
                 }
             }
             route(Recipe.get_by_recipe_id_path) {
@@ -68,12 +81,9 @@ fun main() {
             route(Recipe.create_path) {
                 post {
                     val receivedRecipe = call.receive<Recipe>()
-                    val existingRecipe = recipesCollection.findOne(Recipe::id eq receivedRecipe.id)
-                    if (existingRecipe == null) {
-                        recipesCollection.insertOne(receivedRecipe)
-                        call.respond(HttpStatusCode.OK)
-                    } else {
-                        call.respond(HttpStatusCode.Conflict)
+                    when(recipesCollection.insertIfNotExist(receivedRecipe)) {
+                        true -> call.respond(HttpStatusCode.OK)
+                        else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }
             }

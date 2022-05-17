@@ -2,7 +2,7 @@ import atomics.Recipe
 import atomics.RecipeType
 import recipes.*
 
-class TemporaryInMemoryRecipeStore {
+class InMemoryRecipeStore {
 
     companion object {
         fun get(id: String): Recipe {
