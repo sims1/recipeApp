@@ -1,4 +1,3 @@
-import api.recipeIdKeyAttribute
 import api.recipeIdParameterKey
 import atomics.Recipe
 import io.ktor.application.*
@@ -11,7 +10,6 @@ import io.ktor.routing.*
 import io.ktor.serialization.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.util.*
 import org.litote.kmongo.*
 import org.litote.kmongo.coroutine.*
 import org.litote.kmongo.reactivestreams.KMongo
@@ -59,6 +57,12 @@ fun main() {
                 get {
                     val recipeId = call.parameters[recipeIdParameterKey]!!
                     call.respond(TemporaryInMemoryRecipeStore.get(recipeId))
+                }
+            }
+            route(Recipe.create_path) {
+                post {
+                    TemporaryInMemoryRecipeStore.add(call.receive<Recipe>())
+                    call.respond(HttpStatusCode.OK)
                 }
             }
             route(ShoppingListItem.path) {

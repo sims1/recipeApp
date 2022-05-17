@@ -1,10 +1,13 @@
 package pages
 
+import addRecipe
 import atomics.*
 import com.mo.recipe.app.components.shared.Footer
 import components.shared.Header
 import components.common.*
 import csstype.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 // https://stackoverflow.com/questions/65043370/type-mismatch-when-serializing-data-class
 import kotlinx.serialization.encodeToString
@@ -23,6 +26,8 @@ import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.select
 import react.dom.html.ReactHTML.textarea
 import react.useState
+
+private val scope = MainScope()
 
 val EditRecipePage = FC<Props> {
     var recipeNameState: String? by useState(null)
@@ -404,7 +409,9 @@ val EditRecipePage = FC<Props> {
                         spiceAndSauceIngredientsState,
                         listOf(descriptionState)
                     )
-                    println(Json.encodeToString(ingredient))
+                    scope.launch {
+                        addRecipe(ingredient)
+                    }
                 }
             }
             +"I'm Ling, and I want to add this recipe"

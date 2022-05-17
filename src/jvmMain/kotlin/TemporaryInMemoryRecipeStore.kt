@@ -16,7 +16,11 @@ class TemporaryInMemoryRecipeStore {
 
         fun getAll(): List<Recipe> = recipeList
 
-        private val recipeList: List<Recipe> = createRecipeList()
+        fun add(recipe: Recipe) {
+            recipeList.add(recipe)
+        }
+
+        private val recipeList: MutableList<Recipe> = createRecipeList().toMutableList()
         private val idToRecipe: Map<String, Recipe> = createRecipeMap()
 
         private fun createRecipeList(): List<Recipe> {
