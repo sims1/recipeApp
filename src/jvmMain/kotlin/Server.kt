@@ -67,8 +67,14 @@ fun main() {
             }
             route(Recipe.create_path) {
                 post {
-                    recipesCollection.insertOne(call.receive<Recipe>())
-                    call.respond(HttpStatusCode.OK)
+                    val receivedRecipe = call.receive<Recipe>()
+                    val existingRecipe = recipesCollection.findOne(Recipe::id eq receivedRecipe.id)
+                    if (existingRecipe == null) {
+                        recipesCollection.insertOne(receivedRecipe)
+                        call.respond(HttpStatusCode.OK)
+                    } else {
+                        call.respond(HttpStatusCode.Conflict)
+                    }
                 }
             }
             route(ShoppingListItem.path) {
