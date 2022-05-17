@@ -16,7 +16,7 @@ import org.litote.kmongo.reactivestreams.KMongo
 
 val client = KMongo.createClient().coroutine
 val recipesDatabase = client.getDatabase("recipes")
-val recipesCollection = recipesDatabase.getCollection<ShoppingListItem>()
+val recipesCollection = recipesDatabase.getCollection<Recipe>()
 
 val shoppingListDatabase = client.getDatabase("shoppingList")
 val shoppingListCollection = shoppingListDatabase.getCollection<ShoppingListItem>()
@@ -50,18 +50,24 @@ fun main() {
             }
             route(Recipe.get_all_path) {
                 get {
-                    call.respond(TemporaryInMemoryRecipeStore.getAll())
+                    val allRecipes = recipesCollection.find().toList()
+                    if (allRecipes.isNotEmpty()) {
+                        call.respond(allRecipes)
+                    }
+                    //recipesCollection.insertMany(TemporaryInMemoryRecipeStore.getAll())
+                    call.respond(recipesCollection.find().toList())
                 }
             }
             route(Recipe.get_by_recipe_id_path) {
                 get {
                     val recipeId = call.parameters[recipeIdParameterKey]!!
-                    call.respond(TemporaryInMemoryRecipeStore.get(recipeId))
+                    val recipe = recipesCollection.findOne(Recipe::id eq recipeId) as Recipe
+                    call.respond(recipe)
                 }
             }
             route(Recipe.create_path) {
                 post {
-                    TemporaryInMemoryRecipeStore.add(call.receive<Recipe>())
+                    recipesCollection.insertOne(call.receive<Recipe>())
                     call.respond(HttpStatusCode.OK)
                 }
             }
