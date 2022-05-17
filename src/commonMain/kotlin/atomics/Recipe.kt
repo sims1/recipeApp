@@ -10,7 +10,7 @@ class Recipe(
     private val cookingInstructions: List<String>,
     val id: String = name.filter { !it.isWhitespace() }
 ) {
-    fun getTypeString() = type.value
+    private fun getTypeString() = type.value
     fun getNameString() = name
     fun getVegetableAndMeatString() = vegetableAndMeat.joinToString("\n") { it.getString() }
     fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { it.getString() }

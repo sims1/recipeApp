@@ -18,9 +18,6 @@ val client = KMongo.createClient().coroutine
 val recipesDatabase = client.getDatabase("recipes")
 val recipesCollection = recipesDatabase.getCollection<Recipe>()
 
-val shoppingListDatabase = client.getDatabase("shoppingList")
-val shoppingListCollection = shoppingListDatabase.getCollection<ShoppingListItem>()
-
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
@@ -85,20 +82,6 @@ fun main() {
                         true -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
-                }
-            }
-            route(ShoppingListItem.path) {
-                get {
-                    call.respond(shoppingListCollection.find().toList())
-                }
-                post {
-                    shoppingListCollection.insertOne(call.receive<ShoppingListItem>())
-                    call.respond(HttpStatusCode.OK)
-                }
-                delete("/{id}") {
-                    val id = call.parameters["id"]?.toInt() ?: error("Invalid delete request")
-                    shoppingListCollection.deleteOne(ShoppingListItem::id eq id)
-                    call.respond(HttpStatusCode.OK)
                 }
             }
         }

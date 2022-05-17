@@ -14,21 +14,6 @@ val jsonClient = HttpClient {
     install(JsonFeature) { serializer = KotlinxSerializer() }
 }
 
-suspend fun getShoppingList(): List<ShoppingListItem> {
-    return jsonClient.get(endpoint + ShoppingListItem.path)
-}
-
-suspend fun addShoppingListItem(shoppingListItem: ShoppingListItem) {
-    jsonClient.post<Unit>(endpoint + ShoppingListItem.path) {
-        contentType(ContentType.Application.Json)
-        body = shoppingListItem
-    }
-}
-
-suspend fun deleteShoppingListItem(shoppingListItem: ShoppingListItem) {
-    jsonClient.delete<Unit>(endpoint + ShoppingListItem.path + "/${shoppingListItem.id}")
-}
-
 suspend fun getRecipeList(): List<Recipe> {
     return jsonClient.get(endpoint + Recipe.get_all_path)
 }
