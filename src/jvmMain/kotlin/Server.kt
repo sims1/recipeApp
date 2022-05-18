@@ -10,28 +10,11 @@ import io.ktor.routing.*
 import io.ktor.serialization.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import org.litote.kmongo.*
-import org.litote.kmongo.coroutine.*
-import org.litote.kmongo.reactivestreams.KMongo
-
-val client = KMongo.createClient().coroutine
-val recipesDatabase = client.getDatabase("recipes")
-val recipesCollection = recipesDatabase.getCollection<Recipe>()
+import store.InMemoryRecipeStore
+import store.MongoDBStore
 
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
-
-// return true if inserted successfully
-// return false if already exists
-private suspend fun CoroutineCollection<Recipe>.insertIfNotExist(recipe: Recipe): Boolean {
-    return when (this.findOne(Recipe::id eq recipe.id)) {
-        null -> {
-            this.insertOne(recipe)
-            true
-        }
-        else -> false
-    }
-}
 
 fun main() {
     embeddedServer(Netty, 9090) {
@@ -59,26 +42,26 @@ fun main() {
             }
             route(Recipe.get_all_path) {
                 get {
-                    val allRecipes = recipesCollection.find().toList()
+                    val allRecipes = MongoDBStore.getAll()
                     if (allRecipes.isNotEmpty()) {
                         call.respond(allRecipes)
                     } else {
-                        InMemoryRecipeStore.getAll().forEach { recipe -> recipesCollection.insertIfNotExist(recipe) }
-                        call.respond(recipesCollection.find().toList())
+                        InMemoryRecipeStore.getAll().forEach { recipe -> MongoDBStore.add(recipe) }
+                        call.respond(MongoDBStore.getAll())
                     }
                 }
             }
             route(Recipe.get_by_recipe_id_path) {
                 get {
                     val recipeId = call.parameters[recipeIdParameterKey]!!
-                    val recipe = recipesCollection.findOne(Recipe::id eq recipeId) as Recipe
+                    val recipe = MongoDBStore.get(recipeId)
                     call.respond(recipe)
                 }
             }
             route(Recipe.create_path) {
                 post {
                     val receivedRecipe = call.receive<Recipe>()
-                    when(recipesCollection.insertIfNotExist(receivedRecipe)) {
+                    when(MongoDBStore.add(receivedRecipe)) {
                         true -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }

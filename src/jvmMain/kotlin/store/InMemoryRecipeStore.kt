@@ -1,3 +1,5 @@
+package store
+
 import atomics.Recipe
 import atomics.RecipeType
 import recipes.*
