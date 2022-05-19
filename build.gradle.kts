@@ -11,6 +11,11 @@ plugins {
     kotlin("multiplatform") version "1.6.10"
     application //to run JVM part
     kotlin("plugin.serialization") version "1.6.10"
+
+    // mandatory to resolve build issues, like use word default in generated js for production mode, see
+    // https://plugins.gradle.org/plugin/com.github.turansky.kfc.legacy-union
+    // https://github.com/turansky/kfc-plugins
+    id("com.github.turansky.kfc.legacy-union") version "4.88.0"
 }
 
 group = "org.example"
