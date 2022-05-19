@@ -1,4 +1,4 @@
-package com.mo.recipe.app.components.shared
+package components.shared
 
 import components.common.unimportantColorAlias
 import csstype.TextAlign.Companion.center
@@ -15,7 +15,7 @@ val Footer = FC<Props> {
             color = unimportantColorAlias
         }
         p {
-            +"V2.0"
+            +"V3.0"
         }
     }
 }

@@ -2,7 +2,7 @@ package pages
 
 import atomics.Recipe
 import components.result.CookingDetails
-import com.mo.recipe.app.components.shared.Footer
+import components.shared.Footer
 import components.shared.Header
 import components.result.ShoppingListTable
 import store.deserialize

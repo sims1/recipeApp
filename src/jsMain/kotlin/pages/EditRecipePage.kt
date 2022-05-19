@@ -2,15 +2,13 @@ package pages
 
 import addRecipe
 import atomics.*
-import com.mo.recipe.app.components.shared.Footer
+import components.shared.Footer
 import components.shared.Header
 import components.common.*
 import csstype.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
 // https://stackoverflow.com/questions/65043370/type-mismatch-when-serializing-data-class
-import kotlinx.serialization.encodeToString
 import react.FC
 import react.Props
 import react.css.css

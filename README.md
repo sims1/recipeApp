@@ -6,6 +6,12 @@ This project is built with React and Kotlin/JS.
 
 # Release notes
 
+### v3.0
+- Use ktor to build asynchronous server and client
+- Switch from in-memory store to MongoDB
+- Allows adding recipe
+- Minor: allow some components to do real-time re-rendering
+
 ### v2.0
 - Implement the basics, which includes
   - Selecting from a list of Ling's favorite recipes.

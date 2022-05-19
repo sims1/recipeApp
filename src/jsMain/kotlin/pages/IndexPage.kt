@@ -3,7 +3,7 @@ package pages
 import atomics.Recipe
 import atomics.RecipeType
 import atomics.VegetableAndMeatType
-import com.mo.recipe.app.components.shared.Footer
+import components.shared.Footer
 import components.shared.Header
 import components.common.buttonFontColor
 import components.common.commonButtonBorderRadiusAlias
