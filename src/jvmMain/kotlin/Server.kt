@@ -70,8 +70,8 @@ fun main() {
                     call.respond(inMemoryRecipeStore.getAll())
 
                     // write in-memory recipe into mongodb
-                    inMemoryRecipeStore.getAll().forEach { recipe -> mongoDBRecipeStore.add(recipe) }
-                    call.respond(mongoDBRecipeStore.getAll())
+                    //inMemoryRecipeStore.getAll().forEach { recipe -> mongoDBRecipeStore.add(recipe) }
+                    //call.respond(mongoDBRecipeStore.getAll())
                 }
             }
             // debug purpose

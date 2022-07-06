@@ -1,9 +1,9 @@
 package store
 
 import atomics.Recipe
-import java.io.File
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import java.io.File
 
 class InFileRecipeStore(
     override val recipeList: List<Recipe> = createRecipeList(),
@@ -13,13 +13,7 @@ class InFileRecipeStore(
     companion object {
 
         private fun createRecipeList(): List<Recipe> {
-            val s = System.getProperty("user.dir")
-            println(s)
-            val inputString = File(s,"src/RecipeBackUp.txt")
-                .inputStream()
-                .bufferedReader()
-                .use { it.readText() }
-            println(inputString)
+            val inputString = this::class.java.getResource("/RecipeBackUp.txt").readText()
             return Json.decodeFromString(inputString)
         }
     }
