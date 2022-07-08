@@ -13,11 +13,18 @@ import io.ktor.server.netty.*
 import store.InFileRecipeStore
 import store.InMemoryRecipeStore
 import store.MongoDBRecipeStore
+import store.image.InFileImageStore
+import java.io.File
 
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
-private val mongoDBRecipeStore = MongoDBRecipeStore()
+//private val recipeStore = MongoDBRecipeStore()
+private val recipeStore = InMemoryRecipeStore()
+//private val recipeStore = InFileRecipeStore()
+
+private val imageStore = InFileImageStore()
+
 fun main() {
     embeddedServer(Netty, 9090) {
         install(ContentNegotiation) {
@@ -44,23 +51,31 @@ fun main() {
             }
             route(Recipe.get_all_path) {
                 get {
-                    call.respond(mongoDBRecipeStore.getAll())
+                    call.respond(recipeStore.getAll())
                 }
             }
             route(Recipe.get_by_recipe_id_path) {
                 get {
                     val recipeId = call.parameters[recipeIdParameterKey]!!
-                    val recipe = mongoDBRecipeStore.get(recipeId)
+                    val recipe = recipeStore.get(recipeId)
                     call.respond(recipe)
                 }
             }
             route(Recipe.create_path) {
                 post {
                     val receivedRecipe = call.receive<Recipe>()
-                    when(mongoDBRecipeStore.add(receivedRecipe)) {
+                    when(recipeStore.add(receivedRecipe)) {
                         true -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
+                }
+            }
+            route(Recipe.get_image_by_recipe_id_path) {
+                get {
+                    val recipeId = call.parameters[recipeIdParameterKey]!!
+                    //val recipe = imageStore.get(recipeId)
+                    val recipeImage = imageStore.get(recipeId)
+                    call.respondFile(recipeImage)
                 }
             }
             // debug purpose
@@ -72,13 +87,6 @@ fun main() {
                     // write in-memory recipe into mongodb
                     //inMemoryRecipeStore.getAll().forEach { recipe -> mongoDBRecipeStore.add(recipe) }
                     //call.respond(mongoDBRecipeStore.getAll())
-                }
-            }
-            // debug purpose
-            route(Recipe.get_in_file_path) {
-                get {
-                    val inFileRecipeStore = InFileRecipeStore()
-                    call.respond(inFileRecipeStore.getAll())
                 }
             }
         }

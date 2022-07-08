@@ -21,7 +21,6 @@ suspend fun getRecipesById(recipeId: String): Recipe {
     return jsonClient.get(endpoint + Recipe.get_by_recipe_id_path) {
         contentType(ContentType.Application.Json)
         parameter(recipeIdParameterKey, recipeId)
-        //setAttributes { this.put(recipeIdKeyAttribute, recipeId) }
     }
 }
 

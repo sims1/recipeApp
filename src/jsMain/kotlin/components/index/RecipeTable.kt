@@ -1,5 +1,6 @@
 package components.index
 
+import api.recipeIdParameterKey
 import atomics.Recipe
 import atomics.RecipeType
 import atomics.VegetableAndMeatType
@@ -66,7 +67,7 @@ val RecipeTable = FC<RecipeTableProps> { props ->
                     css {
                         gridArea = GridArea("RecipeImage")
                     }
-                    RecipeImage { }
+                    RecipeImage { recipeId = recipe.id }
                 }
                 div {
                     css {
@@ -133,10 +134,13 @@ val RecipeTable = FC<RecipeTableProps> { props ->
     }
 }
 
-private val RecipeImage = FC<Props> {
+private interface RecipeImageProps : Props {
+    var recipeId: String
+}
+
+private val RecipeImage = FC<RecipeImageProps> { props ->
     img {
-        src = "tasty_stuff.PNG"
-        alt = "tasty stuff"
+        src = "getImageByRecipeId?$recipeIdParameterKey=${props.recipeId}"
         height = 200.0
         width = 150.0
     }

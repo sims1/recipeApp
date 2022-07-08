@@ -33,5 +33,6 @@ class Recipe(
         const val get_in_memory_path = "/getinmemory"
         const val get_in_file_path = "/getinfile"
         const val get_by_recipe_id_path = "/getbyrecipeid"
+        const val get_image_by_recipe_id_path= "/getImageByRecipeId"
     }
 }
