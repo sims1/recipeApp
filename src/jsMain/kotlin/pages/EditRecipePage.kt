@@ -6,6 +6,11 @@ import components.shared.Footer
 import components.shared.Header
 import components.common.*
 import csstype.*
+import csstype.LineStyle.Companion.solid
+import csstype.Position.Companion.absolute
+import csstype.Position.Companion.fixed
+import csstype.Position.Companion.relative
+import csstype.TextAlign.Companion.center
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 // https://stackoverflow.com/questions/65043370/type-mismatch-when-serializing-data-class
@@ -14,6 +19,7 @@ import react.Props
 import react.css.css
 import react.dom.html.ButtonType
 import react.dom.html.InputType
+import react.dom.html.ReactHTML.body
 import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
@@ -43,6 +49,9 @@ val EditRecipePage = FC<Props> {
     var spiceAndSauceIngredientsState: List<Ingredient<SpiceAndSauceType>> by useState(emptyList())
 
     var descriptionState: String by useState("")
+
+    var showPopUpWindow: Boolean by useState(false)
+    var popUpWindowMessage: String by useState("")
 
     Header { }
 
@@ -397,8 +406,10 @@ val EditRecipePage = FC<Props> {
             onClick = {
                 if (recipeNameState == null) {
                     println("Recipe name is not set")
+                    popUpWindowMessage = "Recipe name is not set!"
                 } else if (recipeTypeState == null) {
                     println("Recipe type is not selected")
+                    popUpWindowMessage = "Recipe type is not selected!"
                 } else {
                     val ingredient = Recipe(
                         recipeTypeState!!,
@@ -407,12 +418,54 @@ val EditRecipePage = FC<Props> {
                         spiceAndSauceIngredientsState,
                         listOf(descriptionState)
                     )
+                    popUpWindowMessage = "Congratulations! Recipe $recipeNameState is added!"
                     scope.launch {
                         addRecipe(ingredient)
                     }
                 }
+                showPopUpWindow = true
             }
             +"I'm Ling, and I want to add this recipe"
+        }
+
+        if (showPopUpWindow) {
+            div {
+                css {
+                    textAlign = center
+                    position = fixed
+                    zIndex = ZIndex(99)
+                    left = 35.pc
+                    top = 10.pc
+                    padding = 2.pc
+
+                    fontFamily = textFontFamilyAlias
+                    fontSize = textFontSizeAlias
+
+                    borderStyle = solid
+                    borderWidth = 0.2.pc
+                    borderRadius = commonBorderRadiusAlias
+                    borderColor = recipeNameColorAlias
+                    backgroundColor = hoverColorAlias
+                }
+                p {
+                    +popUpWindowMessage
+                }
+
+                button {
+                    css {
+                        onMouseDown = { showPopUpWindow = false }
+
+                        color = NamedColor.white
+                        backgroundColor = recipeNameColorAlias
+                        borderColor = recipeNameColorAlias
+                        borderRadius = commonButtonBorderRadiusAlias
+                        height = 2.pc
+                        width = 6.pc
+                        cursor = Cursor.pointer
+                    }
+                    +"OK"
+                }
+            }
         }
     }
 

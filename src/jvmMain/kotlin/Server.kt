@@ -20,6 +20,8 @@ import java.io.File
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
 //private val recipeStore = MongoDBRecipeStore()
+
+// the following 2 lines are for testing only
 private val recipeStore = InMemoryRecipeStore()
 //private val recipeStore = InFileRecipeStore()
 
