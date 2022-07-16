@@ -29,6 +29,7 @@ class Recipe(
 
     companion object {
         const val create_path = "/create"
+        const val log_in_path = "/login"
         const val get_all_path = "/getall"
         const val get_in_memory_path = "/getinmemory"
         const val get_in_file_path = "/getinfile"

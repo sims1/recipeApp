@@ -1,5 +1,9 @@
+import api.authTokenParameterKey
+import api.loginIdParameterKey
+import api.loginPasswordParameterKey
 import api.recipeIdParameterKey
 import atomics.Recipe
+import auth.InFileAuthenticator
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.http.*
@@ -10,11 +14,8 @@ import io.ktor.routing.*
 import io.ktor.serialization.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import store.InFileRecipeStore
 import store.InMemoryRecipeStore
-import store.MongoDBRecipeStore
 import store.image.InFileImageStore
-import java.io.File
 
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
@@ -26,6 +27,8 @@ private val recipeStore = InMemoryRecipeStore()
 //private val recipeStore = InFileRecipeStore()
 
 private val imageStore = InFileImageStore()
+
+private val authenticator = InFileAuthenticator()
 
 fun main() {
     embeddedServer(Netty, 9090) {
@@ -54,6 +57,18 @@ fun main() {
             route(Recipe.get_all_path) {
                 get {
                     call.respond(recipeStore.getAll())
+                }
+            }
+            route(Recipe.log_in_path) {
+                post {
+                    val loginId = call.parameters[loginIdParameterKey]
+                    val loginPassword = call.parameters[loginPasswordParameterKey]
+                    val authToken = call.parameters[authTokenParameterKey]
+                    call.respond(authenticator.authenticate(
+                        id = loginId,
+                        password = loginPassword,
+                        authToken = authToken
+                    ))
                 }
             }
             route(Recipe.get_by_recipe_id_path) {

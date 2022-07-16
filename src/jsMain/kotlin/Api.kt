@@ -1,4 +1,4 @@
-import api.recipeIdParameterKey
+import api.*
 import atomics.Recipe
 import io.ktor.http.*
 import io.ktor.client.*
@@ -28,5 +28,20 @@ suspend fun addRecipe(recipe: Recipe) {
     jsonClient.post<Unit>(endpoint + Recipe.create_path) {
         contentType(ContentType.Application.Json)
         body = recipe
+    }
+}
+
+suspend fun authenticate(id: String, password: String): AuthResult {
+    return jsonClient.post(endpoint + Recipe.log_in_path) {
+        contentType(ContentType.Application.Json)
+        parameter(loginIdParameterKey, id)
+        parameter(loginPasswordParameterKey, password)
+    }
+}
+
+suspend fun authenticate(authToken: String): AuthResult {
+    return jsonClient.post(endpoint + Recipe.log_in_path) {
+        contentType(ContentType.Application.Json)
+        parameter(authTokenParameterKey, authToken)
     }
 }
