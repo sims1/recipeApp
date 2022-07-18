@@ -1,9 +1,10 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 
 val ktorVersion = "2.0.3"
-val serializationVersion = "1.3.3"
 val logbackVersion = "1.2.11"
-val reactVersion = "17.0.2-pre.299-kotlin-1.6.10"
+val log4jVersion = "2.18.0"
+val reactVersion = "17.0.2-pre.299-kotlin-1.6.10" // "18.0.0-pre.331-kotlin-1.6.20"
+val reactRouterDomVersion = "6.2.1-pre.304-kotlin-1.6.10" //"6.3.0-pre.357"
 val kmongoVersion = "4.6.1"
 
 plugins {
@@ -54,7 +55,12 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 //implementation("io.ktor:ktor-server-auth:$ktorVersion")
                 implementation("io.ktor:ktor-server-auth-jwt:$ktorVersion")
+
+                // https://ktor.io/docs/logging.html#configure-logger
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
+                implementation("org.apache.logging.log4j:log4j-core:$log4jVersion")
+                implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion")
+
                 implementation("org.litote.kmongo:kmongo-coroutine-serialization:$kmongoVersion")
             }
         }
@@ -70,11 +76,11 @@ kotlin {
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:$reactVersion")
 
                 //Kotlin React CSS (chapter 3)
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-css:17.0.2-pre.298-kotlin-1.6.10")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-css:$reactVersion")
 
                 // https://github.com/JetBrains/kotlin-wrappers/tree/master/kotlin-react-router-dom
                 //implementation(npm("react-router-dom", "6.2.1"))
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.2.1-pre.304-kotlin-1.6.10")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:$reactRouterDomVersion")
             }
         }
     }
