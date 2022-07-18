@@ -1,28 +1,17 @@
 package auth
 
+import api.AuthRequest
 import api.AuthResult
-import api.authTokenParameterKey
+import api.ReAuthRequest
 
 class InFileAuthenticator: Authenticator {
-
-    override fun authenticate(id: String?, password: String?, authToken: String?): AuthResult {
-        return when (authToken) {
-            null -> authenticate(id, password)
-            else -> reAuthenticate(authToken)
-        }
+    override fun authenticate(authRequest: AuthRequest): AuthResult {
+        println("authenticating with id ${authRequest.id} password ${authRequest.password}")
+        return AuthResult(true) // todo
     }
 
-    private fun authenticate(id: String?, password: String?): AuthResult {
-        println("authenticating with id $id password $password")
-        return when {
-            id == null -> AuthResult(false, "id is not set")
-            password == null -> AuthResult(false, "password is not set")
-            else -> AuthResult(true)
-        }
-    }
-
-    private fun reAuthenticate(authToken: String): AuthResult {
-        println("authenticated with authToken $authToken")
+    override fun reAuthenticate(reAuthRequest: ReAuthRequest): AuthResult {
+        println("authenticated with authToken ${reAuthRequest.authToken}")
         return AuthResult(true)
     }
 }

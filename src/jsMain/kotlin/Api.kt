@@ -1,47 +1,49 @@
 import api.*
 import atomics.Recipe
-import io.ktor.http.*
 import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.engine.js.*
+import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.json.serializer.KotlinxSerializer
-
-import kotlinx.browser.window
+import io.ktor.client.statement.*
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.browser.*
 
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
 
-val jsonClient = HttpClient {
-    install(JsonFeature) { serializer = KotlinxSerializer() }
+val jsonClient = HttpClient(Js) {
+    install(ContentNegotiation) { json() }
 }
 
 suspend fun getRecipeList(): List<Recipe> {
-    return jsonClient.get(endpoint + Recipe.get_all_path)
+    println(endpoint + Recipe.get_all_path)
+    return jsonClient.get(endpoint + Recipe.get_all_path).body()
 }
 suspend fun getRecipesById(recipeId: String): Recipe {
     return jsonClient.get(endpoint + Recipe.get_by_recipe_id_path) {
         contentType(ContentType.Application.Json)
         parameter(recipeIdParameterKey, recipeId)
+    }.body()
+}
+
+suspend fun addRecipe(recipe: Recipe): HttpResponse {
+    return jsonClient.post(endpoint + Recipe.create_path) {
+        contentType(ContentType.Application.Json)
+        setBody(recipe)
     }
 }
 
-suspend fun addRecipe(recipe: Recipe) {
-    jsonClient.post<Unit>(endpoint + Recipe.create_path) {
+suspend fun authenticate(id: String, password: String): HttpResponse {
+    return jsonClient.post(endpoint + Recipe.auth_path) {
         contentType(ContentType.Application.Json)
-        body = recipe
+        setBody(AuthRequest(id, password))
     }
 }
 
-suspend fun authenticate(id: String, password: String): AuthResult {
-    return jsonClient.post(endpoint + Recipe.log_in_path) {
+suspend fun reAuthenticate(authToken: String): HttpResponse {
+    return jsonClient.post(endpoint + Recipe.reauth_path) {
         contentType(ContentType.Application.Json)
-        parameter(loginIdParameterKey, id)
-        parameter(loginPasswordParameterKey, password)
-    }
-}
-
-suspend fun authenticate(authToken: String): AuthResult {
-    return jsonClient.post(endpoint + Recipe.log_in_path) {
-        contentType(ContentType.Application.Json)
-        parameter(authTokenParameterKey, authToken)
+        setBody(ReAuthRequest(authToken))
     }
 }

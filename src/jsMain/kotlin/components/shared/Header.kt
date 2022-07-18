@@ -5,6 +5,7 @@ import components.common.*
 import csstype.*
 import csstype.FontWeight.Companion.bolder
 import csstype.TextAlign.Companion.center
+import io.ktor.http.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import react.FC
@@ -108,17 +109,17 @@ val Header = FC<Props> {
                 }
                 br { }
                 button {
-                    css {
-                        onMouseDown = {
-                            scope.launch {
-                                val authResult = authenticate(loginId, loginPassword)
-                                if (authResult.isAuthenticated) {
-                                    loginState = LoginState.LOGGED_IN_AS_LING
-                                    showLoginPopUp = false
-                                }
+                    onMouseDown = {
+                        scope.launch {
+                            val httpResponse = authenticate(loginId, loginPassword)
+                            loginState = when (httpResponse.status) {
+                                HttpStatusCode.OK -> LoginState.LOGGED_IN_AS_LING
+                                else -> LoginState.GUEST
                             }
+                            showLoginPopUp = false
                         }
-
+                    }
+                    css {
                         color = NamedColor.white
                         backgroundColor = recipeNameColorAlias
                         borderColor = recipeNameColorAlias
