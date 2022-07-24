@@ -1,23 +1,26 @@
 import api.*
 import atomics.Recipe
-import auth.InFileAuthenticator
+import auth.AuthConfig.Companion.AUDIENCE
+import auth.AuthConfig.Companion.ISSUER
+import auth.InMemoryAuthenticator
+import auth.JWTAuthenticator
+import store.InMemoryRecipeStore
+import store.image.InFileImageStore
+
 import io.ktor.http.*
-import io.ktor.http.content.*
 import io.ktor.serialization.kotlinx.json.*
-import io.ktor.server.plugins.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.compression.*
-import io.ktor.server.plugins.cors.routing.CORS
-import store.InMemoryRecipeStore
-import store.image.InFileImageStore
-
 import io.ktor.server.http.content.*
 import io.ktor.server.application.*
+import io.ktor.server.auth.*
+import io.ktor.server.auth.jwt.*
 import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.util.*
 
 
@@ -32,7 +35,7 @@ private val recipeStore = InMemoryRecipeStore()
 
 private val imageStore = InFileImageStore()
 
-private val authenticator = InFileAuthenticator()
+private val authenticator = JWTAuthenticator()
 
 fun main() {
     embeddedServer(Netty, 9090) {
@@ -47,6 +50,26 @@ fun main() {
         }
         install(Compression) {
             gzip()
+        }
+        install(Authentication) {
+            jwt("auth-jwt") {
+                realm = "Access to 'hello'"
+                verifier(ISSUER, AUDIENCE, authenticator.algorithm) {
+                    acceptLeeway(3)
+                }
+                validate { credential ->
+                    val id = credential.payload.getClaim(JWTAuthenticator.CLAIM_KEY_USER_ID).asString()
+                    val password = credential.payload.getClaim(JWTAuthenticator.CLAIM_KEY_USER_PASSWORD).asString()
+                    if (InMemoryAuthenticator.verify(id, password)) {
+                        JWTPrincipal(credential.payload)
+                    } else {
+                        null
+                    }
+                }
+                challenge { _, _ ->
+                    call.respond(HttpStatusCode.Unauthorized, "Token is not valid or has expired")
+                }
+            }
         }
         routing {
             get("/") {
@@ -67,14 +90,21 @@ fun main() {
                 post {
                     val authRequest = call.receive<AuthRequest>()
                     val authResult = authenticator.authenticate(authRequest)
-                    call.respond(authResult.toHttpStatusCode(), authResult.reason)
+                    call.respond(authResult)
                 }
             }
-            route(Recipe.reauth_path) {
-                post {
-                    val reAuthRequest = call.receive<ReAuthRequest>()
-                    val authResult = authenticator.reAuthenticate(reAuthRequest)
-                    call.respond(authResult.toHttpStatusCode(), authResult.reason)
+            authenticate("auth-jwt") {
+                post(Recipe.create_path) {
+                    val principal = call.principal<JWTPrincipal>()
+                    val username = principal!!.payload.getClaim("username").asString()
+                    val expiresAt = principal.expiresAt?.time?.minus(System.currentTimeMillis())
+                    call.respondText("Hello, $username! Token is expired at $expiresAt ms.")
+
+                    val receivedRecipe = call.receive<Recipe>()
+                    when(recipeStore.add(receivedRecipe)) {
+                        true -> call.respond(HttpStatusCode.OK)
+                        else -> call.respond(HttpStatusCode.Conflict)
+                    }
                 }
             }
             route(Recipe.get_by_recipe_id_path) {
@@ -82,15 +112,6 @@ fun main() {
                     val recipeId = call.request.queryParameters.getOrFail(recipeIdParameterKey)
                     val recipe = recipeStore.get(recipeId)
                     call.respond(recipe)
-                }
-            }
-            route(Recipe.create_path) {
-                post {
-                    val receivedRecipe = call.receive<Recipe>()
-                    when(recipeStore.add(receivedRecipe)) {
-                        true -> call.respond(HttpStatusCode.OK)
-                        else -> call.respond(HttpStatusCode.Conflict)
-                    }
                 }
             }
             route(Recipe.get_image_by_recipe_id_path) {

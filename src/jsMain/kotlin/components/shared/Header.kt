@@ -5,7 +5,6 @@ import components.common.*
 import csstype.*
 import csstype.FontWeight.Companion.bolder
 import csstype.TextAlign.Companion.center
-import io.ktor.http.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import react.FC
@@ -21,10 +20,6 @@ import react.dom.html.ReactHTML.p
 import react.useState
 
 private val scope = MainScope()
-private enum class LoginState(val message: String) {
-    GUEST("Log in"),
-    LOGGED_IN_AS_LING("Hi, Ling!")
-}
 
 val Header = FC<Props> {
     var loginState: LoginState by useState(LoginState.GUEST)
@@ -111,11 +106,7 @@ val Header = FC<Props> {
                 button {
                     onMouseDown = {
                         scope.launch {
-                            val httpResponse = authenticate(loginId, loginPassword)
-                            loginState = when (httpResponse.status) {
-                                HttpStatusCode.OK -> LoginState.LOGGED_IN_AS_LING
-                                else -> LoginState.GUEST
-                            }
+                            loginState = authenticate(loginId, loginPassword)
                             showLoginPopUp = false
                         }
                     }

@@ -16,7 +16,11 @@ data class AuthRequest(val id: String, val password:String)
 data class ReAuthRequest(val authToken: String)
 
 @Serializable
-data class AuthResult(val isAuthenticated: Boolean, val reason: String = "") {
+data class AuthResult(
+    val isAuthenticated: Boolean,
+    val reason: String = "",
+    val token: String = ""
+) {
     fun toHttpStatusCode(): HttpStatusCode = when {
         isAuthenticated -> HttpStatusCode.OK
         else -> HttpStatusCode.Unauthorized
