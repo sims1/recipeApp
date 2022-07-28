@@ -15,6 +15,8 @@ val textFontSizeAlias = 1.2.em
 
 val unimportantFontSizeAlias = 0.8.em
 
+val headerLoginFontSizeAlias = 0.5.em
+
 // border
 val commonBorderRadiusAlias = 10.px
 val commonButtonBorderRadiusAlias = 5.px

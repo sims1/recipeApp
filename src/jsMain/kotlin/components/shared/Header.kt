@@ -1,6 +1,7 @@
 package components.shared
 
-import authenticate
+import authenticateWithAuthToken
+import authenticateWithPassword
 import components.common.*
 import csstype.*
 import csstype.FontWeight.Companion.bolder
@@ -51,21 +52,40 @@ val Header = FC<Props> {
                 fontSize = unimportantFontSizeAlias
             }
 
-            button {
-                css {
-                    onMouseDown = {
-                        showLoginPopUp = true
-                    }
-
-                    color = recipeNameColorAlias
-                    borderStyle = LineStyle.hidden
-                    backgroundColor = NamedColor.white
-                    height = 2.pc
-                    cursor = Cursor.pointer
+            if (loginState == LoginState.GUEST) {
+                scope.launch {
+                    loginState = authenticateWithAuthToken()
                 }
-                +loginState.message
+            }
+
+            if (loginState == LoginState.GUEST) {
+                button {
+                    css {
+                        onMouseDown = {
+                            showLoginPopUp = true
+                        }
+
+                        color = recipeNameColorAlias
+                        borderStyle = LineStyle.hidden
+                        backgroundColor = NamedColor.white
+                        fontSize = headerLoginFontSizeAlias
+                        fontFamily = textFontFamilyAlias
+                        height = 2.pc
+                        cursor = Cursor.pointer
+                    }
+                    +loginState.message
+                }
+            } else {
+                p {
+                    css {
+                        fontSize = headerLoginFontSizeAlias
+                        fontFamily = textFontFamilyAlias
+                    }
+                    +loginState.message
+                }
             }
         }
+
         if (showLoginPopUp) {
             div {
                 css {
@@ -106,7 +126,7 @@ val Header = FC<Props> {
                 button {
                     onMouseDown = {
                         scope.launch {
-                            loginState = authenticate(loginId, loginPassword)
+                            loginState = authenticateWithPassword(loginId, loginPassword)
                             showLoginPopUp = false
                         }
                     }

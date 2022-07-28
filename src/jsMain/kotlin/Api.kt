@@ -17,8 +17,6 @@ import auth.AUTH_TOKEN_EXPIRY_IN_MILLI_SECONDS
 import components.common.LoginState
 import kotlin.js.Date
 
-val cookiesStorage = AcceptAllCookiesStorage()
-
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
 
 val jsonClient = HttpClient(Js) {
@@ -26,19 +24,14 @@ val jsonClient = HttpClient(Js) {
     install(Auth) {
         bearer {
             loadTokens {
-                println("loadTokens 1")
-                // Load tokens from a local storage and return them as the 'BearerTokens' instance
-                val authToken = cookiesStorage.get(Url(endpoint + Recipe.auth_path))
-                println("loadTokens 2 $authToken")
-                when (authToken.isNullOrEmpty() || authToken.last() != null) {
-                    true -> null
-                    else -> BearerTokens(authToken.last().value, "dummyToken")
-                }
+                println("loadTokens")
+                AuthTokenStorage.get()
+            }
+            refreshTokens {
+                println("refreshTokens")
+                AuthTokenStorage.get()
             }
         }
-    }
-    install(HttpCookies) {
-        storage = cookiesStorage
     }
 }
 
@@ -61,24 +54,32 @@ suspend fun addRecipe(recipe: Recipe): HttpResponse {
     }
 }
 
-suspend fun authenticate(id: String, password: String): LoginState {
-    val result: AuthResult = jsonClient.post(endpoint + Recipe.auth_path) {
+suspend fun authenticateWithAuthToken(): LoginState {
+    println("authenticateWithAuthToken")
+    AuthTokenStorage.getString()?.let {
+        val authResult: AuthResult = jsonClient.post(endpoint + Recipe.reauth_path) {
+            contentType(ContentType.Application.Json)
+            bearerAuth(it)
+        }.body()
+        return authenticate(authResult)
+    }
+    return LoginState.GUEST
+}
+suspend fun authenticateWithPassword(id: String, password: String): LoginState {
+    println("authenticateWithPassword")
+    val authResult: AuthResult = jsonClient.post(endpoint + Recipe.auth_path) {
         contentType(ContentType.Application.Json)
         setBody(AuthRequest(id, password))
     }.body()
-    return when {
-        result.isAuthenticated -> {
-            cookiesStorage.addCookie(
-                endpoint + Recipe.auth_path,
-                Cookie(
-                    "authToken",
-                    result.token,
-                    expires = GMTDate(Date.now().toLong() + AUTH_TOKEN_EXPIRY_IN_MILLI_SECONDS)
-                )
-            )
-            LoginState.LOGGED_IN_AS_LING
-        }
-        else -> LoginState.GUEST
+    return authenticate(authResult)
+}
+
+private fun authenticate(authResult: AuthResult): LoginState {
+    return if (authResult.isAuthenticated) {
+        AuthTokenStorage.set(authResult.token)
+        LoginState.LOGGED_IN_AS_LING
+    } else {
+        LoginState.GUEST
     }
 }
 

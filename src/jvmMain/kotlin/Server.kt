@@ -94,6 +94,13 @@ fun main() {
                 }
             }
             authenticate("auth-jwt") {
+                route(Recipe.reauth_path) {
+                    post {
+                        call.respond(AuthResult(true))
+                    }
+                }
+            }
+            //authenticate("auth-jwt") {
                 post(Recipe.create_path) {
                     val principal = call.principal<JWTPrincipal>()
                     val username = principal!!.payload.getClaim("username").asString()
@@ -106,7 +113,7 @@ fun main() {
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }
-            }
+            //}
             route(Recipe.get_by_recipe_id_path) {
                 get {
                     val recipeId = call.request.queryParameters.getOrFail(recipeIdParameterKey)
