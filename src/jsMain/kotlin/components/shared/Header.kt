@@ -1,6 +1,6 @@
 package components.shared
 
-import authenticateWithAuthToken
+import reAuthenticateWithAuthToken
 import authenticateWithPassword
 import components.common.*
 import csstype.*
@@ -54,7 +54,7 @@ val Header = FC<Props> {
 
             if (loginState == LoginState.GUEST) {
                 scope.launch {
-                    loginState = authenticateWithAuthToken()
+                    loginState = reAuthenticateWithAuthToken()
                 }
             }
 
@@ -69,7 +69,7 @@ val Header = FC<Props> {
                         borderStyle = LineStyle.hidden
                         backgroundColor = NamedColor.white
                         fontSize = headerLoginFontSizeAlias
-                        fontFamily = textFontFamilyAlias
+                        fontFamily = unimportantFontFamilyAlias
                         height = 2.pc
                         cursor = Cursor.pointer
                     }
@@ -79,7 +79,8 @@ val Header = FC<Props> {
                 p {
                     css {
                         fontSize = headerLoginFontSizeAlias
-                        fontFamily = textFontFamilyAlias
+                        fontFamily = unimportantFontFamilyAlias
+                        fontWeight = FontWeight.normal
                     }
                     +loginState.message
                 }

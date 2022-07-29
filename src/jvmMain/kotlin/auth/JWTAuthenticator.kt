@@ -1,8 +1,5 @@
 package auth
 
-import api.AuthRequest
-import api.AuthResult
-import api.ReAuthRequest
 import auth.JWTAuthenticator.Companion.CLAIM_KEY_USER_ID
 import auth.JWTAuthenticator.Companion.CLAIM_KEY_USER_PASSWORD
 import com.auth0.jwt.JWT
@@ -26,20 +23,12 @@ class JWTAuthenticator: Authenticator {
         this.algorithm = Algorithm.RSA256(pair.public as RSAPublicKey, pair.private as RSAPrivateKey)
     }
 
-    override fun authenticate(authRequest: AuthRequest): AuthResult {
+    override fun authenticate(authRequest: AuthRequest): Boolean {
         println("authenticating with id ${authRequest.id} password ${authRequest.password}")
-        return when (InMemoryAuthenticator.verify(authRequest.id, authRequest.password)) {
-            true -> AuthResult(true, token = generateJWTToken(authRequest.id, authRequest.password))
-            else -> AuthResult(false, reason = "Unauthenticated due to mismatch username and password")
-        }
+        return InMemoryAuthenticator.verify(authRequest.id, authRequest.password)
     }
 
-    override fun reAuthenticate(reAuthRequest: ReAuthRequest): AuthResult {
-        println("authenticated with authToken ${reAuthRequest.authToken}")
-        return AuthResult(true)
-    }
-
-    private fun generateJWTToken(userid: String, password: String): String {
+    fun generateJWTToken(userid: String, password: String): String {
         return JWT.create()
             .withAudience(AuthConfig.AUDIENCE)
             .withIssuer(AuthConfig.ISSUER)
@@ -53,6 +42,7 @@ class JWTAuthenticator: Authenticator {
 
         const val CLAIM_KEY_USER_ID = "user_id"
         const val CLAIM_KEY_USER_PASSWORD = "user_password"
+        const val UNAUTHORIZED_REASON = "Unauthenticated due to mismatch username and password"
     }
 }
 

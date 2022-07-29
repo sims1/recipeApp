@@ -1,4 +1,12 @@
 package auth
 
-const val AUTH_TOKEN_EXPIRY_IN_DAYS= 7
-const val AUTH_TOKEN_EXPIRY_IN_MILLI_SECONDS: Int = AUTH_TOKEN_EXPIRY_IN_DAYS * 24 * 60 * 60 * 1000
+import kotlinx.serialization.Serializable
+
+//const val AUTH_TOKEN_EXPIRY_IN_DAYS= 7
+//const val AUTH_TOKEN_EXPIRY_IN_MILLI_SECONDS: Int = AUTH_TOKEN_EXPIRY_IN_DAYS * 24 * 60 * 60 * 1000
+
+const val AUTH_TOKEN_EXPIRY_IN_MINUTES= 1
+const val AUTH_TOKEN_EXPIRY_IN_MILLI_SECONDS: Int = AUTH_TOKEN_EXPIRY_IN_MINUTES * 60 * 1000
+
+@Serializable
+data class AuthRequest(val id: String, val password:String)

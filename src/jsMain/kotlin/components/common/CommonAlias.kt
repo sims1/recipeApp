@@ -13,9 +13,10 @@ val h2FontSizeAlias = 1.3.em
 val textFontFamilyAlias = FontFamily.monospace
 val textFontSizeAlias = 1.2.em
 
+val unimportantFontFamilyAlias = FontFamily.sansSerif
 val unimportantFontSizeAlias = 0.8.em
 
-val headerLoginFontSizeAlias = 0.5.em
+val headerLoginFontSizeAlias = 0.4.em
 
 // border
 val commonBorderRadiusAlias = 10.px

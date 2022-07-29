@@ -1,9 +1,11 @@
-import api.*
+import api.recipeIdParameterKey
 import atomics.Recipe
 import auth.AuthConfig.Companion.AUDIENCE
 import auth.AuthConfig.Companion.ISSUER
+import auth.AuthRequest
 import auth.InMemoryAuthenticator
 import auth.JWTAuthenticator
+import auth.JWTAuthenticator.Companion.UNAUTHORIZED_REASON
 import store.InMemoryRecipeStore
 import store.image.InFileImageStore
 
@@ -89,14 +91,20 @@ fun main() {
             route(Recipe.auth_path) {
                 post {
                     val authRequest = call.receive<AuthRequest>()
-                    val authResult = authenticator.authenticate(authRequest)
-                    call.respond(authResult)
+                    when {
+                        authenticator.authenticate(authRequest) ->
+                            call.respond(HttpStatusCode.OK, authenticator.generateJWTToken(
+                                authRequest.id,
+                                authRequest.password)
+                            )
+                        else -> call.respond(HttpStatusCode.Unauthorized, UNAUTHORIZED_REASON)
+                    }
                 }
             }
             authenticate("auth-jwt") {
                 route(Recipe.reauth_path) {
                     post {
-                        call.respond(AuthResult(true))
+                        call.respond(HttpStatusCode.OK)
                     }
                 }
             }
