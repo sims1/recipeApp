@@ -8,5 +8,7 @@ import kotlinx.serialization.Serializable
 const val AUTH_TOKEN_EXPIRY_IN_MINUTES= 1
 const val AUTH_TOKEN_EXPIRY_IN_MILLI_SECONDS: Int = AUTH_TOKEN_EXPIRY_IN_MINUTES * 60 * 1000
 
+const val AUTH_TOKEN_COOKIE_ID = "AuthToken"
+
 @Serializable
 data class AuthRequest(val id: String, val password:String)

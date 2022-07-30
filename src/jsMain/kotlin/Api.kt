@@ -1,5 +1,6 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
+import auth.AUTH_TOKEN_COOKIE_ID
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.js.*
@@ -13,8 +14,11 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.browser.*
 import auth.AuthRequest
 import components.common.LoginState
+import io.ktor.client.plugins.cookies.*
 
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
+
+val cookieStorage = AcceptAllCookiesStorage()
 
 val jsonClient = HttpClient(Js) {
     install(ContentNegotiation) { json() }
@@ -30,6 +34,7 @@ val jsonClient = HttpClient(Js) {
             }
         }
     }
+    install(HttpCookies) { storage = cookieStorage }
 }
 
 suspend fun getRecipeList(): List<Recipe> {
@@ -53,6 +58,7 @@ suspend fun addRecipe(recipe: Recipe): HttpResponse {
 
 suspend fun reAuthenticateWithAuthToken(): LoginState {
     println("authenticateWithAuthToken")
+    loadAuthTokenFromCookieToAuthHeader()
     AuthTokenStorage.getString()?.let {
         val response: HttpResponse = jsonClient.post(endpoint + Recipe.reauth_path) {
             contentType(ContentType.Application.Json)
@@ -71,7 +77,7 @@ suspend fun authenticateWithPassword(id: String, password: String): LoginState {
         contentType(ContentType.Application.Json)
         setBody(AuthRequest(id, password))
     }
-    println("authenticateWithPassword response: $response response.bodyAsText():${response.bodyAsText()}")
+    println("authenticateWithPassword response: $response")
     return when (response.status) {
         HttpStatusCode.OK -> {
             AuthTokenStorage.set(response.body())
@@ -79,5 +85,13 @@ suspend fun authenticateWithPassword(id: String, password: String): LoginState {
         } else -> {
             LoginState.GUEST
         }
+    }
+}
+
+suspend fun loadAuthTokenFromCookieToAuthHeader() {
+    println("loadAuthTokenFromCookieToAuthHeader: ${jsonClient.cookies(endpoint)[AUTH_TOKEN_COOKIE_ID]}")
+    println("cookieStorage ${cookieStorage.get(Url(endpoint))}")
+    jsonClient.cookies(endpoint + Recipe.auth_path)[AUTH_TOKEN_COOKIE_ID]?.value?.let {
+        AuthTokenStorage.set(it)
     }
 }

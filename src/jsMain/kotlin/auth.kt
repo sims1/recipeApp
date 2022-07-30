@@ -3,7 +3,8 @@ import io.ktor.client.plugins.auth.providers.*
 class AuthTokenStorage {
     companion object {
 
-        fun get(): BearerTokens? {
+        suspend fun get(): BearerTokens? {
+            loadAuthTokenFromCookieToAuthHeader()
             return authToken?.let { BearerTokens(authToken!!, "dummyToken") }
         }
 

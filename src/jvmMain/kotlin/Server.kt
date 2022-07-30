@@ -6,6 +6,7 @@ import auth.AuthRequest
 import auth.InMemoryAuthenticator
 import auth.JWTAuthenticator
 import auth.JWTAuthenticator.Companion.UNAUTHORIZED_REASON
+import cookie.CookieLexer
 import store.InMemoryRecipeStore
 import store.image.InFileImageStore
 
@@ -92,11 +93,11 @@ fun main() {
                 post {
                     val authRequest = call.receive<AuthRequest>()
                     when {
-                        authenticator.authenticate(authRequest) ->
-                            call.respond(HttpStatusCode.OK, authenticator.generateJWTToken(
-                                authRequest.id,
-                                authRequest.password)
-                            )
+                        authenticator.authenticate(authRequest) -> {
+                            val authToken = authenticator.generateJWTToken(authRequest.id, authRequest.password)
+                            call.response.header(HttpHeaders.SetCookie, CookieLexer.build(authToken))
+                            call.respond(HttpStatusCode.OK)
+                        }
                         else -> call.respond(HttpStatusCode.Unauthorized, UNAUTHORIZED_REASON)
                     }
                 }
