@@ -1,12 +1,12 @@
 package components.common
 
 import atomics.SpiceAndSauceType
-import atomics.VegetableAndMeatType
+import atomics.IngredientType
 
 class TypeStringConverter {
 
     companion object {
-        fun getVegetableAndMeatType(input: String): VegetableAndMeatType? {
+        fun getVegetableAndMeatType(input: String): IngredientType? {
             return vegetableAndMeatStringToTypeMap[input]
         }
 
@@ -14,7 +14,7 @@ class TypeStringConverter {
             return spiceAndSauceTypeStringToTypeMap[input]
         }
 
-        private val vegetableAndMeatStringToTypeMap = VegetableAndMeatType.values().associateBy { it.getValue() }
+        private val vegetableAndMeatStringToTypeMap = IngredientType.values().associateBy { it.getValue() }
         private val spiceAndSauceTypeStringToTypeMap = SpiceAndSauceType.values().associateBy { it.getValue() }
     }
 

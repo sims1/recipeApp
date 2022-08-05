@@ -1,5 +1,5 @@
 package atomics
 
-interface BasedIngredient {
+interface BaseIngredient {
     fun getValue(): String
 }

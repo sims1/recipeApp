@@ -8,7 +8,7 @@ class OrleansChickenWing {
         val recipe = Recipe(
             "Orleans Chicken Wing",
             listOf(
-                Ingredient(VegetableAndMeatType.CHICKEN_WING)
+                Ingredient(IngredientType.CHICKEN_WING)
             ),
             listOf(
                 Ingredient(SpiceAndSauceType.ORLEANS_SPICE_PACK, "天禾 新奥尔良(嘟嘟)")

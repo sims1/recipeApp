@@ -8,7 +8,7 @@ class OvenSteak {
         val recipe = Recipe(
             "Oven Steak",
             listOf(
-                Ingredient(VegetableAndMeatType.STEAK)
+                Ingredient(IngredientType.STEAK)
             ),
             listOf(
                 Ingredient(SpiceAndSauceType.SALT),

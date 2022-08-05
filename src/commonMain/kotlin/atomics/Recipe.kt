@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class Recipe(
     private val name: String,
-    val mainIngredients: List<Ingredient<VegetableAndMeatType>>,
+    val mainIngredients: List<Ingredient<IngredientType>>,
     val spicesAndSauces: List<Ingredient<SpiceAndSauceType>>,
     val tags: List<Tag>,
     private val cookingInstructions: List<String>,

@@ -2,22 +2,22 @@ package atomics
 
 import kotlinx.serialization.Serializable
 
-
-val sortedVegetableAndMeatType = VegetableAndMeatType.values().sortedBy { it.getValue() }
+val sortedIngredientType = IngredientType.values().sortedBy { it.getValue() }
 val sortedSpiceAndSauceType = SpiceAndSauceType.values().sortedBy { it.getValue() }
-enum class VegetableAndMeatType(private val value: String) : BasedIngredient {
+enum class IngredientType(private val value: String, val isMainIngredient: Boolean = true) : BaseIngredient {
     CHICKEN_WING("Chicken wing"),
-    GARLIC("Garlic"),
     POTATO("Potato"),
     STEAK("Steak"),
     SWEET_POTATO("Sweet potato"),
-    ZUCCHINI("Zucchini")
+    ZUCCHINI("Zucchini"),
+
+    GARLIC("Garlic", isMainIngredient = false),
     ;
 
     override fun getValue() = value
 }
 
-enum class SpiceAndSauceType(private val value: String) : BasedIngredient {
+enum class SpiceAndSauceType(private val value: String) : BaseIngredient {
     BUTTER("Butter"),
     ITALIAN_HERB_SPICE_BLEND("Italian herb spice blend"),
     PEPPER("Pepper"),
@@ -31,7 +31,7 @@ enum class SpiceAndSauceType(private val value: String) : BasedIngredient {
 }
 
 @Serializable
-data class Ingredient<out T : BasedIngredient>(
+data class Ingredient<out T : BaseIngredient>(
     val type: T,
     val description: String? = null,
     val quantity: Int = 1,

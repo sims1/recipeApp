@@ -33,12 +33,12 @@ private val scope = MainScope()
 
 val EditRecipePage = FC<Props> {
     var recipeNameState: String? by useState(null)
-    var recipeTypeState: Tag? by useState(null)
+    var recipeTagsState: List<Tag> by useState(emptyList())
 
-    var vegetableAndMeatTypeState: VegetableAndMeatType? by useState(null)
+    var ingredientTypeState: IngredientType? by useState(null)
     var vegetableAndMeatDescriptionState: String? by useState(null)
     var vegetableAndMeatQuantityState: Int? by useState(null)
-    var vegetableAndMeatIngredientsState: List<Ingredient<VegetableAndMeatType>> by useState(emptyList())
+    var vegetableAndMeatIngredientsState: List<Ingredient<IngredientType>> by useState(emptyList())
 
     var spiceAndSauceTypeState: SpiceAndSauceType? by useState(null)
     var spiceAndSauceDescriptionState: String? by useState(null)
@@ -65,6 +65,8 @@ val EditRecipePage = FC<Props> {
         input {
             css {
                 fontSize = h2FontSizeAlias
+                textAlign = center
+                margin = Auto.auto
             }
             type = InputType.text
             placeholder = "Recipe Name"
@@ -73,20 +75,29 @@ val EditRecipePage = FC<Props> {
 
         br { }
 
-        Tag.values().toList().map { recipeType ->
-            label {
+        Tag.values().toList().map { tag ->
+            button {
                 css {
                     fontFamily = textFontFamilyAlias
-                    fontSize = textFontSizeAlias
+                    fontSize = unimportantFontSizeAlias
+                    backgroundColor = recipeNameColorAlias
+                    color = buttonFontColor
+                    borderStyle = None.none
+                    borderRadius = commonButtonBorderRadiusAlias
+                    paddingLeft = 1.pc
+                    paddingRight = 1.pc
+                    paddingTop = 0.5.pc
+                    paddingBottom = 0.5.pc
+                    marginRight = 0.3.pc
+                    marginBottom = 0.5.pc
+                    cursor = Cursor.pointer
                 }
-                input {
-                    type = InputType.radio
-                    value = recipeType.value
-                    name = "recipeType"
-                    onChange = { recipeTypeState = recipeType }
+                type = ButtonType.button
+                onClick = {
+                    recipeTagsState = recipeTagsState + tag
                 }
+                +tag.value
             }
-            +"${recipeType.value}   "
         }
 
         div {
@@ -136,10 +147,10 @@ val EditRecipePage = FC<Props> {
                     }
                     type = ButtonType.button
                     onClick = {
-                        if (vegetableAndMeatTypeState != null) {
+                        if (ingredientTypeState != null) {
                             vegetableAndMeatIngredientsState = vegetableAndMeatIngredientsState +
                                 Ingredient(
-                                    vegetableAndMeatTypeState!!,
+                                    ingredientTypeState!!,
                                     vegetableAndMeatDescriptionState,
                                     vegetableAndMeatQuantityState ?: 1
                                 )
@@ -159,10 +170,10 @@ val EditRecipePage = FC<Props> {
                     name = "VegetableAndMeatType"
                     id = "VegetableAndMeatType"
                     onChange = { event ->
-                        vegetableAndMeatTypeState = TypeStringConverter.getVegetableAndMeatType(event.target.value)
+                        ingredientTypeState = TypeStringConverter.getVegetableAndMeatType(event.target.value)
                     }
                     option { +"Select vegetable or meat" }
-                    sortedVegetableAndMeatType.map { ingredient ->
+                    sortedIngredientType.map { ingredient ->
                         option {
                             value = ingredient.getValue()
                             +ingredient.getValue()
@@ -404,13 +415,13 @@ val EditRecipePage = FC<Props> {
             onClick = {
                 when {
                     recipeNameState == null -> popUpWindowMessage = "Recipe name is not set!"
-                    recipeTypeState == null -> popUpWindowMessage = "Recipe type is not selected!"
+                    recipeTagsState.isEmpty() -> popUpWindowMessage = "Please choose at least 1 tag"
                     else -> {
                         val ingredient = Recipe(
-                            recipeTypeState!!,
                             recipeNameState!!,
                             vegetableAndMeatIngredientsState,
                             spiceAndSauceIngredientsState,
+                            recipeTagsState,
                             listOf(descriptionState)
                         )
                         scope.launch {

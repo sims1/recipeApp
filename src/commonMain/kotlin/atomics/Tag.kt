@@ -1,15 +1,16 @@
 package atomics
 
 enum class Tag(val value:String) {
-    CHICKEN("chicken"),
-    BEEF("beef"),
-    LAMB("lamb"),
-    SEAFOOD("seafood"),
+    CHICKEN("Chicken"),
+    BEEF("Beef"),
+    LAMB("Lamb"),
+    PORK("Pork"),
+    SEAFOOD("Seafood"),
 
     MEAT_AND_VEGETABLE("Meat&Vegetable"),
     VEGETABLE("Vegetable"),
-    SOUP("soup"),
-    DESERT("Desert"),
+    SOUP("Soup"),
     CARB("Carb"),
+    DESERT("Desert"),
     SAUCE("Sauce"),
 }

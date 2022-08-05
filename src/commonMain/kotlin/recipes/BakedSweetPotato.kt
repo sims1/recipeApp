@@ -2,7 +2,7 @@ package recipes
 
 import atomics.Ingredient
 import atomics.Tag
-import atomics.VegetableAndMeatType
+import atomics.IngredientType
 import atomics.Recipe
 
 class BakedSweetPotato {
@@ -11,7 +11,7 @@ class BakedSweetPotato {
         val recipe = Recipe(
             "Baked Sweet Potato",
             listOf(
-                Ingredient(VegetableAndMeatType.SWEET_POTATO)
+                Ingredient(IngredientType.SWEET_POTATO)
             ),
             listOf(),
             listOf(Tag.CARB),

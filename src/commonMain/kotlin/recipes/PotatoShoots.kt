@@ -8,7 +8,7 @@ class PotatoShoots {
         val recipe = Recipe(
             "Potato Shoots",
             listOf(
-                Ingredient(VegetableAndMeatType.POTATO)
+                Ingredient(IngredientType.POTATO)
             ),
             listOf(
                 Ingredient(SpiceAndSauceType.VEGETABLE_OIL),

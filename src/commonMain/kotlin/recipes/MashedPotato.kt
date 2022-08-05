@@ -8,8 +8,8 @@ class MashedPotato {
         val recipe = Recipe(
             "Mashed Potato",
             listOf(
-                Ingredient(VegetableAndMeatType.POTATO),
-                Ingredient(VegetableAndMeatType.GARLIC)
+                Ingredient(IngredientType.POTATO),
+                Ingredient(IngredientType.GARLIC)
             ),
             listOf(
                 Ingredient(SpiceAndSauceType.BUTTER),

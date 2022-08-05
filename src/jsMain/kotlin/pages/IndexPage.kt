@@ -2,7 +2,7 @@ package pages
 
 import atomics.Recipe
 import atomics.Tag
-import atomics.VegetableAndMeatType
+import atomics.IngredientType
 import components.shared.Footer
 import components.shared.Header
 import components.common.buttonFontColor
@@ -38,7 +38,7 @@ private typealias RecipeToIntMap = Map<Recipe, Int>
 val IndexPage = FC<Props> {
     var recipeListState by useState(emptyList<Recipe>())
     var selectedTagsState: Set<Tag> by useState(emptySet())
-    var selectedIngredientsState: Set<VegetableAndMeatType> by useState(emptySet())
+    var selectedIngredientsState: Set<IngredientType> by useState(emptySet())
     var selectedRecipesState: RecipeToIntMap by useState(emptyMap())
 
     useEffectOnce {
@@ -69,7 +69,7 @@ val IndexPage = FC<Props> {
                 recipeTypes = Tag.values().toList()
                 onSelectType = { selectedType -> selectedTagsState += selectedType }
                 onUnselectType = { unselectedType -> selectedTagsState -= unselectedType }
-                ingredients = VegetableAndMeatType.values().toList()
+                ingredients = IngredientType.values().toList()
                 onSelectIngredient = { selectedIngredient -> selectedIngredientsState += selectedIngredient }
                 onUnselectIngredient = { unselectedIngredient -> selectedIngredientsState -= unselectedIngredient }
             }

@@ -1,7 +1,7 @@
 package components.index
 
 import atomics.Tag
-import atomics.VegetableAndMeatType
+import atomics.IngredientType
 import components.common.commonBorderRadiusAlias
 import components.common.recipeNameColorAlias
 import components.common.textFontFamilyAlias
@@ -22,9 +22,9 @@ external interface FilterSidebarProps : Props {
     var recipeTypes: List<Tag>
     var onSelectType: (Tag) -> Unit
     var onUnselectType: (Tag) -> Unit
-    var ingredients: List<VegetableAndMeatType>
-    var onSelectIngredient: (VegetableAndMeatType) -> Unit
-    var onUnselectIngredient: (VegetableAndMeatType) -> Unit
+    var ingredients: List<IngredientType>
+    var onSelectIngredient: (IngredientType) -> Unit
+    var onUnselectIngredient: (IngredientType) -> Unit
 }
 
 val FilterSidebar = FC<FilterSidebarProps> { props ->
@@ -79,9 +79,11 @@ val FilterSidebar = FC<FilterSidebarProps> { props ->
                 fontFamily = textFontFamilyAlias
                 fontSize = textFontSizeAlias
             }
-            +"Ingredients"
+            +"Main Ingredients"
         }
-        props.ingredients.map { ingredient ->
+        props.ingredients
+            .filter { ingredientType -> ingredientType.isMainIngredient }
+            .map { ingredient ->
             label {
                 css {
                     fontFamily = textFontFamilyAlias

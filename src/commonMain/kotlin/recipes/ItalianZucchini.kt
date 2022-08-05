@@ -8,7 +8,7 @@ class ItalianZucchini {
         val recipe = Recipe(
             "Italian Zucchini",
             listOf(
-                Ingredient(VegetableAndMeatType.ZUCCHINI)
+                Ingredient(IngredientType.ZUCCHINI)
             ),
             listOf(
                 Ingredient(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
