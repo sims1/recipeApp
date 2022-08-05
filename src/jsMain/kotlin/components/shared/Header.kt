@@ -18,6 +18,7 @@ import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.header
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.p
+import react.useEffectOnce
 import react.useState
 
 private val scope = MainScope()
@@ -29,8 +30,10 @@ val Header = FC<Props> {
     var loginId: String by useState("")
     var loginPassword: String by useState("")
 
-    scope.launch {
-        loginState = reAuthenticateWithAuthToken()
+    useEffectOnce {
+        scope.launch {
+            loginState = reAuthenticateWithAuthToken()
+        }
     }
 
     header {
