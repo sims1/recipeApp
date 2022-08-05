@@ -13,6 +13,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.browser.*
 import auth.AuthRequest
 import components.common.LoginState
+import io.ktor.client.plugins.cookies.*
 
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
 
@@ -21,7 +22,6 @@ val jsonClient = HttpClient(Js) {
 }
 
 suspend fun getRecipeList(): List<Recipe> {
-    println(endpoint + Recipe.get_all_path)
     return jsonClient.get(endpoint + Recipe.get_all_path).body()
 }
 suspend fun getRecipesById(recipeId: String): Recipe {
@@ -32,7 +32,6 @@ suspend fun getRecipesById(recipeId: String): Recipe {
 }
 
 suspend fun addRecipe(recipe: Recipe): HttpResponse {
-    jsonClient
     return jsonClient.post(endpoint + Recipe.create_path) {
         contentType(ContentType.Application.Json)
         setBody(recipe)
@@ -40,32 +39,21 @@ suspend fun addRecipe(recipe: Recipe): HttpResponse {
 }
 
 suspend fun reAuthenticateWithAuthToken(): LoginState {
-    println("authenticateWithAuthToken")
-    AuthTokenStorage.getString()?.let {
-        val response: HttpResponse = jsonClient.post(endpoint + Recipe.reauth_path) {
-            contentType(ContentType.Application.Json)
-            bearerAuth(it)
-        }
-        println("authenticateWithAuthToken response: $response")
-        if (response.status == HttpStatusCode.OK) {
-            return LoginState.LOGGED_IN_AS_LING
-        }
+    val response: HttpResponse = jsonClient.post(endpoint + Recipe.reauth_path) {
+        contentType(ContentType.Application.Json)
     }
-    return LoginState.GUEST
+    return when (response.status) {
+        HttpStatusCode.OK -> LoginState.LOGGED_IN_AS_LING
+        else -> LoginState.GUEST
+    }
 }
 suspend fun authenticateWithPassword(id: String, password: String): LoginState {
-    println("authenticateWithPassword")
     val response: HttpResponse = jsonClient.post(endpoint + Recipe.auth_path) {
         contentType(ContentType.Application.Json)
         setBody(AuthRequest(id, password))
     }
-    println("authenticateWithPassword response: $response response.bodyAsText():${response.bodyAsText()}")
     return when (response.status) {
-        HttpStatusCode.OK -> {
-            AuthTokenStorage.set(response.body())
-            LoginState.LOGGED_IN_AS_LING
-        } else -> {
-            LoginState.GUEST
-        }
+        HttpStatusCode.OK -> LoginState.LOGGED_IN_AS_LING
+        else -> LoginState.GUEST
     }
 }

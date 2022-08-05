@@ -29,6 +29,10 @@ val Header = FC<Props> {
     var loginId: String by useState("")
     var loginPassword: String by useState("")
 
+    scope.launch {
+        loginState = reAuthenticateWithAuthToken()
+    }
+
     header {
         css {
             textAlign = center
@@ -50,12 +54,6 @@ val Header = FC<Props> {
 
                 fontFamily = textFontFamilyAlias
                 fontSize = unimportantFontSizeAlias
-            }
-
-            if (loginState == LoginState.GUEST) {
-                scope.launch {
-                    loginState = reAuthenticateWithAuthToken()
-                }
             }
 
             if (loginState == LoginState.GUEST) {

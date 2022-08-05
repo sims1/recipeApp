@@ -7,10 +7,9 @@ import components.shared.Header
 import components.common.*
 import csstype.*
 import csstype.LineStyle.Companion.solid
-import csstype.Position.Companion.absolute
 import csstype.Position.Companion.fixed
-import csstype.Position.Companion.relative
 import csstype.TextAlign.Companion.center
+import io.ktor.http.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 // https://stackoverflow.com/questions/65043370/type-mismatch-when-serializing-data-class
@@ -19,7 +18,6 @@ import react.Props
 import react.css.css
 import react.dom.html.ButtonType
 import react.dom.html.InputType
-import react.dom.html.ReactHTML.body
 import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
@@ -404,26 +402,30 @@ val EditRecipePage = FC<Props> {
             }
             type = ButtonType.button
             onClick = {
-                if (recipeNameState == null) {
-                    popUpWindowMessage = "Recipe name is not set!"
-                } else if (recipeTypeState == null) {
-                    popUpWindowMessage = "Recipe type is not selected!"
-                } else {
-                    val ingredient = Recipe(
-                        recipeTypeState!!,
-                        recipeNameState!!,
-                        vegetableAndMeatIngredientsState,
-                        spiceAndSauceIngredientsState,
-                        listOf(descriptionState)
-                    )
-                    popUpWindowMessage = "Congratulations! Recipe $recipeNameState is added!"
-                    scope.launch {
-                        addRecipe(ingredient)
+                when {
+                    recipeNameState == null -> popUpWindowMessage = "Recipe name is not set!"
+                    recipeTypeState == null -> popUpWindowMessage = "Recipe type is not selected!"
+                    else -> {
+                        val ingredient = Recipe(
+                            recipeTypeState!!,
+                            recipeNameState!!,
+                            vegetableAndMeatIngredientsState,
+                            spiceAndSauceIngredientsState,
+                            listOf(descriptionState)
+                        )
+                        scope.launch {
+                            popUpWindowMessage = when (addRecipe(ingredient).status) {
+                                HttpStatusCode.OK -> "Congratulations! Recipe $recipeNameState is added!"
+                                HttpStatusCode.Conflict -> "Error since a recipe with the same name already exists"
+                                HttpStatusCode.Unauthorized -> "Please log in first"
+                                else -> "Unknown error occurred, please contact Ling"
+                            }
+                        }
                     }
                 }
                 showPopUpWindow = true
             }
-            +"I'm Ling, and I want to add this recipe"
+            +"Add recipe"
         }
 
         if (showPopUpWindow) {
