@@ -405,10 +405,8 @@ val EditRecipePage = FC<Props> {
             type = ButtonType.button
             onClick = {
                 if (recipeNameState == null) {
-                    println("Recipe name is not set")
                     popUpWindowMessage = "Recipe name is not set!"
                 } else if (recipeTypeState == null) {
-                    println("Recipe type is not selected")
                     popUpWindowMessage = "Recipe type is not selected!"
                 } else {
                     val ingredient = Recipe(

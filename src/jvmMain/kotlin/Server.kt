@@ -1,11 +1,10 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
-import auth.AuthConfig.Companion.AUDIENCE
-import auth.AuthConfig.Companion.ISSUER
+import auth.AUTH_TOKEN_EXPIRY_IN_SECONDS
 import auth.AuthRequest
-import auth.InMemoryAuthenticator
-import auth.JWTAuthenticator
-import auth.JWTAuthenticator.Companion.UNAUTHORIZED_REASON
+import auth.Authenticator
+import auth.JWTVerifier.Companion.UNAUTHORIZED_REASON
+import auth.UserSession
 import store.InMemoryRecipeStore
 import store.image.InFileImageStore
 
@@ -23,6 +22,7 @@ import io.ktor.server.auth.*
 import io.ktor.server.auth.jwt.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
+import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 
 
@@ -36,8 +36,6 @@ private val recipeStore = InMemoryRecipeStore()
 //private val recipeStore = InFileRecipeStore()
 
 private val imageStore = InFileImageStore()
-
-private val authenticator = JWTAuthenticator()
 
 fun main() {
     embeddedServer(Netty, 9090) {
@@ -53,23 +51,22 @@ fun main() {
         install(Compression) {
             gzip()
         }
+        install(Sessions) {
+            cookie<UserSession>("user_session") {
+                cookie.path = "/"
+                cookie.maxAgeInSeconds = AUTH_TOKEN_EXPIRY_IN_SECONDS
+            }
+        }
         install(Authentication) {
-            jwt("auth-jwt") {
-                realm = "Access to 'hello'"
-                verifier(ISSUER, AUDIENCE, authenticator.algorithm) {
-                    acceptLeeway(3)
-                }
-                validate { credential ->
-                    val id = credential.payload.getClaim(JWTAuthenticator.CLAIM_KEY_USER_ID).asString()
-                    val password = credential.payload.getClaim(JWTAuthenticator.CLAIM_KEY_USER_PASSWORD).asString()
-                    if (InMemoryAuthenticator.verify(id, password)) {
-                        JWTPrincipal(credential.payload)
-                    } else {
-                        null
+            session<UserSession>("reauth-session") {
+                validate { session ->
+                    when {
+                        Authenticator.authenticate(session) -> session
+                        else -> null
                     }
                 }
-                challenge { _, _ ->
-                    call.respond(HttpStatusCode.Unauthorized, "Token is not valid or has expired")
+                challenge {
+                    call.respond(HttpStatusCode.Unauthorized, "Token is invalid or has expired")
                 }
             }
         }
@@ -91,37 +88,31 @@ fun main() {
             route(Recipe.auth_path) {
                 post {
                     val authRequest = call.receive<AuthRequest>()
-                    when {
-                        authenticator.authenticate(authRequest) ->
-                            call.respond(HttpStatusCode.OK, authenticator.generateJWTToken(
-                                authRequest.id,
-                                authRequest.password)
-                            )
-                        else -> call.respond(HttpStatusCode.Unauthorized, UNAUTHORIZED_REASON)
+                    when(val authToken = Authenticator.authenticate(authRequest)) {
+                        null -> call.respond(HttpStatusCode.Unauthorized, UNAUTHORIZED_REASON)
+                        else -> {
+                            call.sessions.set(UserSession(authRequest.id, authToken))
+                            call.respond(HttpStatusCode.OK, authToken)
+                        }
                     }
                 }
             }
-            authenticate("auth-jwt") {
+            authenticate("reauth-session") {
                 route(Recipe.reauth_path) {
                     post {
                         call.respond(HttpStatusCode.OK)
                     }
                 }
             }
-            //authenticate("auth-jwt") {
+            authenticate("reauth-session") {
                 post(Recipe.create_path) {
-                    val principal = call.principal<JWTPrincipal>()
-                    val username = principal!!.payload.getClaim("username").asString()
-                    val expiresAt = principal.expiresAt?.time?.minus(System.currentTimeMillis())
-                    call.respondText("Hello, $username! Token is expired at $expiresAt ms.")
-
                     val receivedRecipe = call.receive<Recipe>()
-                    when(recipeStore.add(receivedRecipe)) {
-                        true -> call.respond(HttpStatusCode.OK)
+                    when {
+                        recipeStore.add(receivedRecipe) -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }
-            //}
+            }
             route(Recipe.get_by_recipe_id_path) {
                 get {
                     val recipeId = call.request.queryParameters.getOrFail(recipeIdParameterKey)

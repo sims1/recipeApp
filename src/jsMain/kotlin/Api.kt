@@ -18,18 +18,6 @@ val endpoint = window.location.origin // only needed until https://youtrack.jetb
 
 val jsonClient = HttpClient(Js) {
     install(ContentNegotiation) { json() }
-    install(Auth) {
-        bearer {
-            loadTokens {
-                println("loadTokens")
-                AuthTokenStorage.get()
-            }
-            refreshTokens {
-                println("refreshTokens")
-                AuthTokenStorage.get()
-            }
-        }
-    }
 }
 
 suspend fun getRecipeList(): List<Recipe> {

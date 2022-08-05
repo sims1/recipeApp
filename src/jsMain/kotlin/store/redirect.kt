@@ -15,7 +15,6 @@ suspend fun DeserializableRedirectType.deserialize(): SerializableRedirectType {
     return this.associate {
         val items = it.split(" ")
         val recipeId = items[0]
-        println("recipeId: $recipeId")
         val recipe = getRecipesById(recipeId)
         val quantity = items[1].toInt()
         recipe to quantity

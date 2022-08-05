@@ -27,13 +27,9 @@ val ComputedResultPage = FC<Props> {
 
     useEffectOnce {
         scope.launch {
-            println("useEffectOnce")
             selectedRecipes = selectedRecipeIds.deserialize()
-            println(selectedRecipes)
         }
     }
-    println("before Header")
-    println(selectedRecipes)
 
     Header { }
 
