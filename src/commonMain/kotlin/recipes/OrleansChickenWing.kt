@@ -14,9 +14,7 @@ class OrleansChickenWing {
                 Ingredient(SpiceAndSauceType.ORLEANS_SPICE_PACK, "天禾 新奥尔良(嘟嘟)")
             ),
             listOf(Tag.CHICKEN),
-            listOf(
-                "400F 40min",
-            )
+            "400F 40min",
         )
     }
 }

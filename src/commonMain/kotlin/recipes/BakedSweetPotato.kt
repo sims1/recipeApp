@@ -15,12 +15,10 @@ class BakedSweetPotato {
             ),
             listOf(),
             listOf(Tag.CARB),
-            listOf(
-                "using fork to poke holes on sweet potatoes",
-                "put into cold oven",
-                "425F 75min",
-                "turn off oven, leave it in oven for another 30min"
-            )
+            "using fork to poke holes on sweet potatoes\n" +
+            "put into cold oven\n" +
+            "425F 75min\n" +
+            "turn off oven, leave it in oven for another 30min\n"
         )
     }
 }

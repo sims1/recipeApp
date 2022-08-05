@@ -61,7 +61,7 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
                 }
                 CookingInstructions {
                     gridAreaName = "CookingInstructions"
-                    cookingInstructions = recipe.getCookingInstructionsString()
+                    cookingInstructions = recipe.cookingInstructions
                 }
             }
         }

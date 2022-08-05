@@ -17,10 +17,8 @@ class MashedPotato {
                 Ingredient(SpiceAndSauceType.PEPPER)
             ),
             listOf(Tag.CARB),
-            listOf(
-                "steam potato slices and 1 garlic",
-                "add all spices and mash"
-            )
+            "steam potato slices and 1 garlic\n" +
+            "add all spices and mash\n"
         )
     }
 }

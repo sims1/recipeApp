@@ -422,7 +422,7 @@ val EditRecipePage = FC<Props> {
                             vegetableAndMeatIngredientsState,
                             spiceAndSauceIngredientsState,
                             recipeTagsState,
-                            listOf(descriptionState)
+                            descriptionState
                         )
                         scope.launch {
                             popUpWindowMessage = when (addRecipe(ingredient).status) {

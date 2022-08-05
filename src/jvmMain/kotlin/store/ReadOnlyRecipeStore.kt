@@ -33,7 +33,7 @@ abstract class ReadOnlyRecipeStore : RecipeStore {
             listOf(),
             listOf(),
             listOf(Tag.VEGETABLE),
-            listOf(),
+            "",
         )
     }
 }

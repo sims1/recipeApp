@@ -16,9 +16,7 @@ class PotatoShoots {
                 Ingredient(SpiceAndSauceType.BLACK_VINEGAR)
             ),
             listOf(Tag.CARB, Tag.VEGETABLE),
-            listOf(
-                "cook!"
-            )
+            "cook!"
         )
     }
 }

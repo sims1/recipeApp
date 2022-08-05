@@ -16,7 +16,7 @@ class ItalianZucchini {
                 Ingredient(SpiceAndSauceType.PEPPER)
             ),
             listOf(Tag.VEGETABLE),
-            listOf("450F 12min")
+            "450F 12min"
         )
     }
 }

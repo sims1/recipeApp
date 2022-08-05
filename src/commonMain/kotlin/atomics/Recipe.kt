@@ -7,14 +7,14 @@ class Recipe(
     val mainIngredients: List<Ingredient<IngredientType>>,
     val spicesAndSauces: List<Ingredient<SpiceAndSauceType>>,
     val tags: List<Tag>,
-    private val cookingInstructions: List<String>,
+    val cookingInstructions: String,
     val id: String = name.filter { !it.isWhitespace() }
 ) {
     private fun getTagsString() = tags.joinToString("\n") { it.value }
     fun getNameString() = name
     fun getVegetableAndMeatString() = mainIngredients.joinToString("\n") { it.getString() }
     fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { it.getString() }
-    fun getCookingInstructionsString() = cookingInstructions.joinToString("\n")
+
     override fun toString(): String {
         return """
             {
@@ -22,7 +22,7 @@ class Recipe(
                 Name: ${getNameString()},
                 VegetableAndMeat: ${getVegetableAndMeatString()},
                 SpicesAndSauces: ${getSpicesAndSaucesString()},
-                CookingInstructions: ${getCookingInstructionsString()}
+                CookingInstructions: $cookingInstructions
             }
             """
     }
