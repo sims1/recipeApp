@@ -2,7 +2,7 @@ package components.index
 
 import api.recipeIdParameterKey
 import atomics.Recipe
-import atomics.RecipeType
+import atomics.Tag
 import atomics.VegetableAndMeatType
 import react.FC
 import react.Props
@@ -27,20 +27,20 @@ import react.useState
 
 external interface RecipeTableProps : Props {
     var allRecipes: List<Recipe>
-    var selectedTypes: Set<RecipeType>
+    var selectedTags: Set<Tag>
     var selectedIngredients: Set<VegetableAndMeatType>
     var onSelectRecipe: (Recipe) -> Unit
 }
 
 val RecipeTable = FC<RecipeTableProps> { props ->
     var showRecipes = props.allRecipes
-    if (props.selectedTypes.isNotEmpty()) {
-        showRecipes = showRecipes.filter { recipe -> recipe.type in props.selectedTypes }
+    if (props.selectedTags.isNotEmpty()) {
+        showRecipes = showRecipes.filter { recipe -> recipe.tags.intersect(props.selectedTags).isNotEmpty() }
     }
 
     if (props.selectedIngredients.isNotEmpty()) {
         showRecipes = showRecipes.filter { recipe ->
-            val ingredients = recipe.vegetableAndMeat.map { ingredient -> ingredient.type }
+            val ingredients = recipe.mainIngredients.map { ingredient -> ingredient.type }
             props.selectedIngredients.intersect(ingredients.toSet()).isNotEmpty()
         }
     }

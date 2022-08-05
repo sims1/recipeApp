@@ -1,7 +1,7 @@
 package pages
 
 import atomics.Recipe
-import atomics.RecipeType
+import atomics.Tag
 import atomics.VegetableAndMeatType
 import components.shared.Footer
 import components.shared.Header
@@ -37,7 +37,7 @@ private typealias RecipeToIntMap = Map<Recipe, Int>
 
 val IndexPage = FC<Props> {
     var recipeListState by useState(emptyList<Recipe>())
-    var selectedTypesState: Set<RecipeType> by useState(emptySet())
+    var selectedTagsState: Set<Tag> by useState(emptySet())
     var selectedIngredientsState: Set<VegetableAndMeatType> by useState(emptySet())
     var selectedRecipesState: RecipeToIntMap by useState(emptyMap())
 
@@ -66,9 +66,9 @@ val IndexPage = FC<Props> {
                 width = 15.pc
             }
             FilterSidebar {
-                recipeTypes = RecipeType.values().toList()
-                onSelectType = { selectedType -> selectedTypesState += selectedType }
-                onUnselectType = { unselectedType -> selectedTypesState -= unselectedType }
+                recipeTypes = Tag.values().toList()
+                onSelectType = { selectedType -> selectedTagsState += selectedType }
+                onUnselectType = { unselectedType -> selectedTagsState -= unselectedType }
                 ingredients = VegetableAndMeatType.values().toList()
                 onSelectIngredient = { selectedIngredient -> selectedIngredientsState += selectedIngredient }
                 onUnselectIngredient = { unselectedIngredient -> selectedIngredientsState -= unselectedIngredient }
@@ -83,7 +83,7 @@ val IndexPage = FC<Props> {
             }
             RecipeTable {
                 allRecipes = recipeListState
-                selectedTypes = selectedTypesState
+                selectedTags = selectedTagsState
                 selectedIngredients = selectedIngredientsState
                 onSelectRecipe = { recipe -> selectedRecipesState = selectedRecipesState.increment(recipe) }
             }

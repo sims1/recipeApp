@@ -3,22 +3,22 @@ package atomics
 import kotlinx.serialization.Serializable
 @Serializable
 class Recipe(
-    val type: RecipeType,
     private val name: String,
-    val vegetableAndMeat: List<Ingredient<VegetableAndMeatType>>,
+    val mainIngredients: List<Ingredient<VegetableAndMeatType>>,
     val spicesAndSauces: List<Ingredient<SpiceAndSauceType>>,
+    val tags: List<Tag>,
     private val cookingInstructions: List<String>,
     val id: String = name.filter { !it.isWhitespace() }
 ) {
-    private fun getTypeString() = type.value
+    private fun getTagsString() = tags.joinToString("\n") { it.value }
     fun getNameString() = name
-    fun getVegetableAndMeatString() = vegetableAndMeat.joinToString("\n") { it.getString() }
+    fun getVegetableAndMeatString() = mainIngredients.joinToString("\n") { it.getString() }
     fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { it.getString() }
     fun getCookingInstructionsString() = cookingInstructions.joinToString("\n")
     override fun toString(): String {
         return """
             {
-                Type: ${getTypeString()},
+                Type: ${getTagsString()},
                 Name: ${getNameString()},
                 VegetableAndMeat: ${getVegetableAndMeatString()},
                 SpicesAndSauces: ${getSpicesAndSaucesString()},

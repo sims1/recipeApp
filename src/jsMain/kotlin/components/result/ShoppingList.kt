@@ -33,7 +33,7 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
         }
         val neededVegetableAndMeatMap = mutableMapOf<VegetableAndMeatType, Int>()
         props.recipes.forEach { (recipe, recipeQuantity) ->
-            recipe.vegetableAndMeat.forEach { ingredient ->
+            recipe.mainIngredients.forEach { ingredient ->
                 val newQuantity = when (val currentQuantity = neededVegetableAndMeatMap[ingredient.type]) {
                     null -> ingredient.quantity * recipeQuantity
                     else -> ingredient.quantity * recipeQuantity + currentQuantity

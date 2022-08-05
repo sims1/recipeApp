@@ -6,7 +6,6 @@ class PotatoShoots {
 
     companion object {
         val recipe = Recipe(
-            RecipeType.CARB,
             "Potato Shoots",
             listOf(
                 Ingredient(VegetableAndMeatType.POTATO)
@@ -16,6 +15,7 @@ class PotatoShoots {
                 Ingredient(SpiceAndSauceType.SALT),
                 Ingredient(SpiceAndSauceType.BLACK_VINEGAR)
             ),
+            listOf(Tag.CARB, Tag.VEGETABLE),
             listOf(
                 "cook!"
             )

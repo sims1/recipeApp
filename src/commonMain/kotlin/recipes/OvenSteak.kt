@@ -6,7 +6,6 @@ class OvenSteak {
 
     companion object {
         val recipe = Recipe(
-            RecipeType.MEAT,
             "Oven Steak",
             listOf(
                 Ingredient(VegetableAndMeatType.STEAK)
@@ -15,6 +14,7 @@ class OvenSteak {
                 Ingredient(SpiceAndSauceType.SALT),
                 Ingredient(SpiceAndSauceType.PEPPER)
             ),
+            listOf(Tag.BEEF),
             listOf(
                 "leave it out of fridge for 30min to warm up to room temperature",
                 "pat dry steak, add salt and pepper",

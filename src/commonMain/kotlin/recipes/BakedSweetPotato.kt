@@ -1,7 +1,7 @@
 package recipes
 
 import atomics.Ingredient
-import atomics.RecipeType
+import atomics.Tag
 import atomics.VegetableAndMeatType
 import atomics.Recipe
 
@@ -9,12 +9,12 @@ class BakedSweetPotato {
 
     companion object {
         val recipe = Recipe(
-            RecipeType.CARB,
             "Baked Sweet Potato",
             listOf(
                 Ingredient(VegetableAndMeatType.SWEET_POTATO)
             ),
             listOf(),
+            listOf(Tag.CARB),
             listOf(
                 "using fork to poke holes on sweet potatoes",
                 "put into cold oven",

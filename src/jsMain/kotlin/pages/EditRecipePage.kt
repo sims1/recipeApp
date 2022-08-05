@@ -33,7 +33,7 @@ private val scope = MainScope()
 
 val EditRecipePage = FC<Props> {
     var recipeNameState: String? by useState(null)
-    var recipeTypeState: RecipeType? by useState(null)
+    var recipeTypeState: Tag? by useState(null)
 
     var vegetableAndMeatTypeState: VegetableAndMeatType? by useState(null)
     var vegetableAndMeatDescriptionState: String? by useState(null)
@@ -73,7 +73,7 @@ val EditRecipePage = FC<Props> {
 
         br { }
 
-        RecipeType.values().toList().map { recipeType ->
+        Tag.values().toList().map { recipeType ->
             label {
                 css {
                     fontFamily = textFontFamilyAlias

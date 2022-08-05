@@ -1,7 +1,7 @@
 package store
 
 import atomics.Recipe
-import atomics.RecipeType
+import atomics.Tag
 
 abstract class ReadOnlyRecipeStore : RecipeStore {
 
@@ -29,10 +29,10 @@ abstract class ReadOnlyRecipeStore : RecipeStore {
         }
 
         private val defaultRecipe = Recipe(
-            RecipeType.MEAT,
             "Default Recipe",
             listOf(),
             listOf(),
+            listOf(Tag.VEGETABLE),
             listOf(),
         )
     }

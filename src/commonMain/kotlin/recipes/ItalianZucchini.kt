@@ -6,7 +6,6 @@ class ItalianZucchini {
 
     companion object {
         val recipe = Recipe(
-            RecipeType.VEGETABLE,
             "Italian Zucchini",
             listOf(
                 Ingredient(VegetableAndMeatType.ZUCCHINI)
@@ -16,6 +15,7 @@ class ItalianZucchini {
                 Ingredient(SpiceAndSauceType.SALT),
                 Ingredient(SpiceAndSauceType.PEPPER)
             ),
+            listOf(Tag.VEGETABLE),
             listOf("450F 12min")
         )
     }
