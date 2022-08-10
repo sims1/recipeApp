@@ -24,6 +24,7 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.server.util.*
+import store.InFileRecipeStore
 
 
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
@@ -32,8 +33,8 @@ import io.ktor.server.util.*
 //private val recipeStore = MongoDBRecipeStore()
 
 // the following 2 lines are for testing only
-private val recipeStore = InMemoryRecipeStore()
-//private val recipeStore = InFileRecipeStore()
+//private val recipeStore = InMemoryRecipeStore()
+private val recipeStore = InFileRecipeStore()
 
 private val imageStore = InFileImageStore()
 
