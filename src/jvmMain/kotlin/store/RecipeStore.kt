@@ -11,4 +11,6 @@ interface RecipeStore {
     // return true if inserted successfully or
     // return false if not inserted, might due to already exists or the store is read only
     suspend fun add(recipe: Recipe): Boolean = false
+
+    fun shutDown() {}
 }

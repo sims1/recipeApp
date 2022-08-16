@@ -2,9 +2,20 @@ package store.image
 
 import java.io.File
 
-interface ImageStore {
+abstract class ImageStore {
 
-    fun get(recipeId: String): File
+    suspend fun get(id: String): File = getOrNull(id) ?: defaultImage
 
-    fun save(fileName: String, file: ByteArray)
+    abstract suspend fun getOrNull(id: String): File?
+
+    abstract suspend fun save(id: String, file: ByteArray)
+
+    open fun shutDown() {}
+
+    companion object {
+
+        private const val DEFAULT_IMAGE_NAME = "recipeImage/default.PNG"
+        val defaultImage = File(this::class.java.classLoader.getResource(DEFAULT_IMAGE_NAME)!!.toURI())
+    }
+
 }

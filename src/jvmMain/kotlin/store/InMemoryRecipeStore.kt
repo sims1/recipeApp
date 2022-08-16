@@ -6,7 +6,7 @@ import recipes.*
 class InMemoryRecipeStore(
     override val recipeList: List<Recipe> = createRecipeList(),
     override val idToRecipe: Map<String, Recipe> = recipeList.toRecipeMap()
-    ) : ReadOnlyRecipeStore() {
+) : ReadOnlyRecipeStore() {
 
     companion object {
 

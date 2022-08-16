@@ -28,21 +28,24 @@ import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.InFileRecipeStore
 import store.MongoDBRecipeStore
+import store.image.MongoDBImageStore
 import java.io.File
+import java.util.concurrent.TimeUnit
 
 
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
-private val recipeStore = MongoDBRecipeStore()
+private val recipeStore =
+    MongoDBRecipeStore()
+    //InMemoryRecipeStore() // testing only
+    //InFileRecipeStore() // testing only
 
-// the following 2 lines are for testing only
-//private val recipeStore = InMemoryRecipeStore()
-//private val recipeStore = InFileRecipeStore()
-
-private val imageStore = InFileImageStore()
+private val imageStore =
+    // InFileImageStore()
+    MongoDBImageStore()
 fun main() {
-    embeddedServer(Netty, 9090) {
+    val server = embeddedServer(Netty, 9090) {
         install(ContentNegotiation) {
             json()
         }
@@ -119,13 +122,17 @@ fun main() {
             }
 
             post(Recipe.create_picture_path) {
+                var recipeId = ""
                 val multipartData = call.receiveMultipart()
                 multipartData.forEachPart { part ->
                     when (part) {
+                        is PartData.FormItem -> {
+                            recipeId = part.value
+                        }
                         is PartData.FileItem -> {
-                            val fileName = part.originalFileName as String
                             val fileBytes = part.streamProvider().readBytes()
-                            imageStore.save(fileName, fileBytes)
+                            println("recipeId: $recipeId")
+                            imageStore.save(recipeId, fileBytes)
                             call.respond(HttpStatusCode.OK)
                         }
                         else -> {
@@ -134,8 +141,6 @@ fun main() {
                         }
                     }
                 }
-
-                call.respond(HttpStatusCode.OK)
             }
 
             route(Recipe.get_by_recipe_id_path) {
@@ -164,4 +169,10 @@ fun main() {
             }
         }
     }.start(wait = true)
+
+    Runtime.getRuntime().addShutdownHook(Thread {
+        server.stop(1, 5, TimeUnit.SECONDS)
+        recipeStore.shutDown()
+        imageStore.shutDown()
+    })
 }

@@ -6,6 +6,8 @@ val log4jVersion = "2.18.0"
 val reactVersion = "17.0.2-pre.299-kotlin-1.6.10" // "18.0.0-pre.331-kotlin-1.6.20"
 val reactRouterDomVersion = "6.2.1-pre.304-kotlin-1.6.10" //"6.3.0-pre.357"
 val kmongoVersion = "4.6.1"
+val redisClientVersion = "0.7.1"
+val kotlinCoroutinesVersion = "1.6.4"
 
 plugins {
     kotlin("multiplatform") version "1.6.21"
@@ -36,7 +38,7 @@ kotlin {
     }
     sourceSets {
         val commonMain by getting {
-            dependencies { }
+            dependencies {}
         }
         val commonTest by getting {
             dependencies {
@@ -63,6 +65,9 @@ kotlin {
                 implementation("org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion")
 
                 implementation("org.litote.kmongo:kmongo-coroutine-serialization:$kmongoVersion")
+
+                //implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+                implementation("io.github.crackthecodeabhi:kreds:$redisClientVersion")
             }
         }
 
@@ -109,7 +114,7 @@ tasks.getByName<Jar>("jvmJar") {
 tasks {
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "17"
         }
     }
 }

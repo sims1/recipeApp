@@ -74,6 +74,7 @@ suspend fun uploadRecipePicture(recipeId: String, recipeImage: File): HttpRespon
         setBody(
             MultiPartFormDataContent(
                 formData {
+                    append("description", recipeId)
                     append("image", fileInBytes, Headers.build {
                         append(HttpHeaders.ContentType, "image/png")
                         append(HttpHeaders.ContentDisposition, "filename=\"$recipeId.png\"")

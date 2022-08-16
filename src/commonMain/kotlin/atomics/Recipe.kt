@@ -1,5 +1,7 @@
 package atomics
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 @Serializable
 class Recipe(
@@ -8,7 +10,7 @@ class Recipe(
     val spicesAndSauces: List<Ingredient<SpiceAndSauceType>>,
     val tags: List<Tag>,
     val cookingInstructions: String,
-    val id: String = name.filter { !it.isWhitespace() }
+    @Contextual @SerialName("_id") val id: String = name.filter { !it.isWhitespace() }
 ) {
     private fun getTagsString() = tags.joinToString("\n") { it.value }
     fun getNameString() = name
