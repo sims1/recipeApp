@@ -1,4 +1,5 @@
 import api.recipeIdParameterKey
+import api.recipeImageParameterKey
 import atomics.Recipe
 import auth.AUTH_TOKEN_EXPIRY_IN_SECONDS
 import auth.AuthRequest
@@ -9,6 +10,7 @@ import store.InMemoryRecipeStore
 import store.image.InFileImageStore
 
 import io.ktor.http.*
+import io.ktor.http.content.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
@@ -25,19 +27,20 @@ import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.InFileRecipeStore
+import store.MongoDBRecipeStore
+import java.io.File
 
 
 // if slow, set env variable ORG_GRADLE_PROJECT_isProduction=true
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
-//private val recipeStore = MongoDBRecipeStore()
+private val recipeStore = MongoDBRecipeStore()
 
 // the following 2 lines are for testing only
 //private val recipeStore = InMemoryRecipeStore()
-private val recipeStore = InFileRecipeStore()
+//private val recipeStore = InFileRecipeStore()
 
 private val imageStore = InFileImageStore()
-
 fun main() {
     embeddedServer(Netty, 9090) {
         install(ContentNegotiation) {
@@ -72,6 +75,9 @@ fun main() {
             }
         }
         routing {
+            var fileDescription = ""
+            var fileName = ""
+
             get("/") {
                 call.respondText(
                     this::class.java.classLoader.getResource("index.html")!!.readText(),
@@ -89,7 +95,7 @@ fun main() {
             route(Recipe.auth_path) {
                 post {
                     val authRequest = call.receive<AuthRequest>()
-                    when(val authToken = Authenticator.authenticate(authRequest)) {
+                    when (val authToken = Authenticator.authenticate(authRequest)) {
                         null -> call.respond(HttpStatusCode.Unauthorized, UNAUTHORIZED_REASON)
                         else -> {
                             call.sessions.set(UserSession(authRequest.id, authToken))
@@ -114,6 +120,29 @@ fun main() {
                     }
                 }
             }
+
+            post(Recipe.create_picture_path) {
+                val multipartData = call.receiveMultipart()
+                multipartData.forEachPart { part ->
+                    when (part) {
+                        is PartData.FormItem -> {
+                            fileDescription = part.value
+                            println("fileDescription: " + fileDescription)
+                        }
+                        is PartData.FileItem -> {
+                            fileName = part.originalFileName as String
+                            val fileBytes = part.streamProvider().readBytes()
+                            println("fileName: $fileName")
+                            println("fileBytes.size: " + fileBytes.size)
+                            File("/Users/linghe/Desktop/recipeImages/$fileName").writeBytes(fileBytes)
+                        }
+                        else -> println("Error while assembling multipart: ${part.javaClass.canonicalName}")
+                    }
+                }
+
+                call.respond(HttpStatusCode.OK)
+            }
+
             route(Recipe.get_by_recipe_id_path) {
                 get {
                     val recipeId = call.request.queryParameters.getOrFail(recipeIdParameterKey)
@@ -133,11 +162,9 @@ fun main() {
             route(Recipe.get_in_memory_path) {
                 get {
                     val inMemoryRecipeStore = InMemoryRecipeStore()
-                    call.respond(inMemoryRecipeStore.getAll())
-
                     // write in-memory recipe into mongodb
-                    //inMemoryRecipeStore.getAll().forEach { recipe -> mongoDBRecipeStore.add(recipe) }
-                    //call.respond(mongoDBRecipeStore.getAll())
+                    inMemoryRecipeStore.getAll().forEach { recipe -> recipeStore.add(recipe) }
+                    call.respond(inMemoryRecipeStore.getAll())
                 }
             }
         }

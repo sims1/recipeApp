@@ -12,6 +12,8 @@ import csstype.TextAlign.Companion.center
 import io.ktor.http.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import org.w3c.files.File
+import org.w3c.files.get
 // https://stackoverflow.com/questions/65043370/type-mismatch-when-serializing-data-class
 import react.FC
 import react.Props
@@ -28,6 +30,7 @@ import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.select
 import react.dom.html.ReactHTML.textarea
 import react.useState
+import uploadRecipePicture
 
 private val scope = MainScope()
 
@@ -46,6 +49,7 @@ val EditRecipePage = FC<Props> {
     var spiceAndSauceUnitState: CookingUnit? by useState(null)
     var spiceAndSauceIngredientsState: List<Ingredient<SpiceAndSauceType>> by useState(emptyList())
 
+    var recipeImageState: File? by useState(null)
     var descriptionState: String by useState("")
 
     var showPopUpWindow: Boolean by useState(false)
@@ -106,6 +110,7 @@ val EditRecipePage = FC<Props> {
                 gridTemplateAreas = GridTemplateAreas(
                     GridArea("VegetableAndMeatSelection Selected"),
                     GridArea("SpiceAndSauceSelection Selected"),
+                    GridArea("UploadPictures UploadPictures"),
                 )
 
                 backgroundColor = recipeColorAlias
@@ -149,11 +154,11 @@ val EditRecipePage = FC<Props> {
                     onClick = {
                         if (ingredientTypeState != null) {
                             vegetableAndMeatIngredientsState = vegetableAndMeatIngredientsState +
-                                Ingredient(
-                                    ingredientTypeState!!,
-                                    vegetableAndMeatDescriptionState,
-                                    vegetableAndMeatQuantityState ?: 1
-                                )
+                                    Ingredient(
+                                        ingredientTypeState!!,
+                                        vegetableAndMeatDescriptionState,
+                                        vegetableAndMeatQuantityState ?: 1
+                                    )
                         }
                     }
                     +"Add vegetable or meat"
@@ -237,12 +242,12 @@ val EditRecipePage = FC<Props> {
                     type = ButtonType.button
                     onClick = {
                         spiceAndSauceIngredientsState = spiceAndSauceIngredientsState +
-                            Ingredient(
-                                spiceAndSauceTypeState!!,
-                                spiceAndSauceDescriptionState,
-                                spiceAndSauceQuantityState ?: 1,
-                                spiceAndSauceUnitState ?: CookingUnit.DEFAULT
-                            )
+                                Ingredient(
+                                    spiceAndSauceTypeState!!,
+                                    spiceAndSauceDescriptionState,
+                                    spiceAndSauceQuantityState ?: 1,
+                                    spiceAndSauceUnitState ?: CookingUnit.DEFAULT
+                                )
                     }
                     +"Add spice or sauce"
                 }
@@ -383,8 +388,23 @@ val EditRecipePage = FC<Props> {
                     }
                 }
             }
-        }
+            div {
+                css {
+                    gridArea = GridArea("UploadPictures")
+                    zIndex = ZIndex(99)
+                }
 
+                input {
+                    type = InputType.file
+                    accept = "image/png"
+                    onChange = { event ->
+                        val file = event.target.files!![0]!!
+                        recipeImageState = file
+                        println("file.name: ${file.name}, file.size: ${file.size}")
+                    }
+                }
+            }
+        }
 
         p {
             +"Cooking Instructions"
@@ -417,7 +437,7 @@ val EditRecipePage = FC<Props> {
                     recipeNameState == null -> popUpWindowMessage = "Recipe name is not set!"
                     recipeTagsState.isEmpty() -> popUpWindowMessage = "Please choose at least 1 tag"
                     else -> {
-                        val ingredient = Recipe(
+                        val recipe = Recipe(
                             recipeNameState!!,
                             vegetableAndMeatIngredientsState,
                             spiceAndSauceIngredientsState,
@@ -425,8 +445,11 @@ val EditRecipePage = FC<Props> {
                             descriptionState
                         )
                         scope.launch {
-                            popUpWindowMessage = when (addRecipe(ingredient).status) {
-                                HttpStatusCode.OK -> "Congratulations! Recipe $recipeNameState is added!"
+                            popUpWindowMessage = when (addRecipe(recipe).status) {
+                                HttpStatusCode.OK -> {
+                                    recipeImageState?.let { uploadRecipePicture(recipe.id, it) }
+                                    "Congratulations! Recipe $recipeNameState is added!"
+                                }
                                 HttpStatusCode.Conflict -> "Error since a recipe with the same name already exists"
                                 HttpStatusCode.Unauthorized -> "Please log in first"
                                 else -> "Unknown error occurred, please contact Ling"

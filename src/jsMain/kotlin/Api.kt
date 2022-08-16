@@ -1,19 +1,29 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
+import atomics.Recipe.Companion.create_picture_path
+import auth.AuthRequest
+import components.common.LoginState
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.js.*
-import io.ktor.client.plugins.auth.*
-import io.ktor.client.plugins.auth.providers.*
+import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
+import io.ktor.client.request.forms.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.browser.*
-import auth.AuthRequest
-import components.common.LoginState
-import io.ktor.client.plugins.cookies.*
+import kotlinx.coroutines.await
+import org.khronos.webgl.ArrayBuffer
+import org.khronos.webgl.Uint8Array
+import org.khronos.webgl.get
+import org.w3c.files.File
+import org.w3c.files.FileReader
+import kotlin.js.Promise
+import kotlin.js.Promise.Companion.reject
+import kotlin.js.Promise.Companion.resolve
+
 
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
 
@@ -55,5 +65,49 @@ suspend fun authenticateWithPassword(id: String, password: String): LoginState {
     return when (response.status) {
         HttpStatusCode.OK -> LoginState.LOGGED_IN_AS_LING
         else -> LoginState.GUEST
+    }
+}
+
+suspend fun uploadRecipePicture(recipeId: String, recipeImage: File) {
+    val fileInBytes = fileToByteArray(recipeImage).await()
+    println("before setBody fileInBytes.size: " + fileInBytes.size)
+    jsonClient.post(endpoint + create_picture_path) {
+        setBody(
+            MultiPartFormDataContent(
+                formData {
+                    append("description", "Ktor logo")
+                    append("image", fileInBytes, Headers.build {
+                        append(HttpHeaders.ContentType, "image/png")
+                        append(HttpHeaders.ContentDisposition, "filename=\"$recipeId.png\"")
+                    })
+                },
+                boundary = "WebAppBoundary"
+            )
+        )
+        onUpload { bytesSentTotal, contentLength ->
+            println("Sent $bytesSentTotal bytes from $contentLength")
+        }
+    }
+}
+
+private fun fileToByteArray(file: File) = Promise<ByteArray> { resolve, reject ->
+    try {
+        val reader = FileReader()
+        var fileByteArray = byteArrayOf()
+        reader.readAsArrayBuffer(file);
+        reader.onloadend = {
+            if (reader.readyState == FileReader.DONE) {
+                val arrayBuffer = reader.result as ArrayBuffer
+                val array = Uint8Array(arrayBuffer)
+                for (i in 0..array.length) {
+                    fileByteArray += array[i]
+                }
+                println("in fileByteArray.size: " + fileByteArray.size)
+            }
+            resolve(fileByteArray)
+        }
+    }
+    catch (e: Exception) {
+        reject(e)
     }
 }
