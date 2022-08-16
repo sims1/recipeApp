@@ -13,10 +13,16 @@ class InFileImageStore: ImageStore {
         }
     }
 
+    override fun save(fileName: String, file: ByteArray) {
+        File("$IMAGE_DIR/$fileName").writeBytes(file)
+    }
+
     companion object {
 
         private const val DEFAULT_IMAGE_DIR = "recipeImage"
         private const val DEFAULT_IMAGE_NAME = "$DEFAULT_IMAGE_DIR/default.PNG"
         private val defaultImage = File(this::class.java.classLoader.getResource(DEFAULT_IMAGE_NAME).toURI())
+
+        private const val IMAGE_DIR = "/Users/linghe/Desktop/recipeImages"
     }
 }

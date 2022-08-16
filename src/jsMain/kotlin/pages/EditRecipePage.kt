@@ -447,8 +447,14 @@ val EditRecipePage = FC<Props> {
                         scope.launch {
                             popUpWindowMessage = when (addRecipe(recipe).status) {
                                 HttpStatusCode.OK -> {
-                                    recipeImageState?.let { uploadRecipePicture(recipe.id, it) }
-                                    "Congratulations! Recipe $recipeNameState is added!"
+                                    val response = recipeImageState?.let {
+                                        popUpWindowMessage = "Creating recipe in progress..."
+                                        uploadRecipePicture(recipe.id, it)
+                                    }
+                                    when(response?.status) {
+                                        HttpStatusCode.OK -> "Congratulations! Recipe $recipeNameState is added!"
+                                        else -> "Error while uploading recipe picture"
+                                    }
                                 }
                                 HttpStatusCode.Conflict -> "Error since a recipe with the same name already exists"
                                 HttpStatusCode.Unauthorized -> "Please log in first"

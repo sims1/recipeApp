@@ -75,9 +75,6 @@ fun main() {
             }
         }
         routing {
-            var fileDescription = ""
-            var fileName = ""
-
             get("/") {
                 call.respondText(
                     this::class.java.classLoader.getResource("index.html")!!.readText(),
@@ -125,18 +122,16 @@ fun main() {
                 val multipartData = call.receiveMultipart()
                 multipartData.forEachPart { part ->
                     when (part) {
-                        is PartData.FormItem -> {
-                            fileDescription = part.value
-                            println("fileDescription: " + fileDescription)
-                        }
                         is PartData.FileItem -> {
-                            fileName = part.originalFileName as String
+                            val fileName = part.originalFileName as String
                             val fileBytes = part.streamProvider().readBytes()
-                            println("fileName: $fileName")
-                            println("fileBytes.size: " + fileBytes.size)
-                            File("/Users/linghe/Desktop/recipeImages/$fileName").writeBytes(fileBytes)
+                            imageStore.save(fileName, fileBytes)
+                            call.respond(HttpStatusCode.OK)
                         }
-                        else -> println("Error while assembling multipart: ${part.javaClass.canonicalName}")
+                        else -> {
+                            println("Error while assembling multipart: ${part.javaClass.canonicalName}")
+                            call.respond(HttpStatusCode.InternalServerError)
+                        }
                     }
                 }
 

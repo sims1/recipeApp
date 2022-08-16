@@ -68,14 +68,12 @@ suspend fun authenticateWithPassword(id: String, password: String): LoginState {
     }
 }
 
-suspend fun uploadRecipePicture(recipeId: String, recipeImage: File) {
+suspend fun uploadRecipePicture(recipeId: String, recipeImage: File): HttpResponse {
     val fileInBytes = fileToByteArray(recipeImage).await()
-    println("before setBody fileInBytes.size: " + fileInBytes.size)
-    jsonClient.post(endpoint + create_picture_path) {
+    return jsonClient.post(endpoint + create_picture_path) {
         setBody(
             MultiPartFormDataContent(
                 formData {
-                    append("description", "Ktor logo")
                     append("image", fileInBytes, Headers.build {
                         append(HttpHeaders.ContentType, "image/png")
                         append(HttpHeaders.ContentDisposition, "filename=\"$recipeId.png\"")
@@ -85,7 +83,7 @@ suspend fun uploadRecipePicture(recipeId: String, recipeImage: File) {
             )
         )
         onUpload { bytesSentTotal, contentLength ->
-            println("Sent $bytesSentTotal bytes from $contentLength")
+            //println("Sent $bytesSentTotal bytes from $contentLength")
         }
     }
 }
@@ -102,7 +100,6 @@ private fun fileToByteArray(file: File) = Promise<ByteArray> { resolve, reject -
                 for (i in 0..array.length) {
                     fileByteArray += array[i]
                 }
-                println("in fileByteArray.size: " + fileByteArray.size)
             }
             resolve(fileByteArray)
         }
