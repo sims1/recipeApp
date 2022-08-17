@@ -1,4 +1,4 @@
-package store
+package store.recipe
 
 import atomics.Recipe
 import kotlinx.serialization.decodeFromString

@@ -1,13 +1,11 @@
 import api.recipeIdParameterKey
-import api.recipeImageParameterKey
 import atomics.Recipe
 import auth.AUTH_TOKEN_EXPIRY_IN_SECONDS
 import auth.AuthRequest
 import auth.Authenticator
 import auth.JWTVerifier.Companion.UNAUTHORIZED_REASON
 import auth.UserSession
-import store.InMemoryRecipeStore
-import store.image.InFileImageStore
+import store.recipe.InMemoryRecipeStore
 
 import io.ktor.http.*
 import io.ktor.http.content.*
@@ -21,15 +19,12 @@ import io.ktor.server.plugins.compression.*
 import io.ktor.server.http.content.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
-import io.ktor.server.auth.jwt.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.server.util.*
-import store.InFileRecipeStore
-import store.MongoDBRecipeStore
+import store.recipe.MongoDBRecipeStore
 import store.image.MongoDBImageStore
-import java.io.File
 import java.util.concurrent.TimeUnit
 
 

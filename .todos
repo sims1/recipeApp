@@ -1,21 +1,11 @@
-release 2.0 - basics
 
-styling header/footer
+put metadata in redis
 add tons of recipes
-filter by oven
-release 2.1 - more recipes+features
-
 add more pictures
-change colors more
-add about (2 ppl meal)
-release 2.2 - cosmetics changes
-
 refactor css extensions more
 react tutorial
 html tutorial
 css tutorial
 release 2.3 - refactor
 
-maybe future
-think about pros&cons of using database(json)
 
