@@ -24,10 +24,7 @@ import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.recipe.MongoDBRecipeStore
-import store.image.MongoDBImageStore
 import store.image.RedisImageStore
-import store.image.TestingImageStore
-import store.recipe.InFileRecipeStore
 import java.util.concurrent.TimeUnit
 
 
@@ -35,9 +32,9 @@ import java.util.concurrent.TimeUnit
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
 private val recipeStore =
-    //MongoDBRecipeStore()
+    MongoDBRecipeStore()
     //InMemoryRecipeStore() // testing only
-    InFileRecipeStore() // testing only
+    //InFileRecipeStore() // testing only
 
 private val imageStore =
     //MongoDBImageStore()
@@ -157,7 +154,7 @@ fun main() {
                 }
             }
             // debug purpose
-            route(Recipe.get_in_memory_path) {
+            route(Recipe.load_in_memory_into_current_db_path) {
                 get {
                     val inMemoryRecipeStore = InMemoryRecipeStore()
                     // write in-memory recipe into mongodb

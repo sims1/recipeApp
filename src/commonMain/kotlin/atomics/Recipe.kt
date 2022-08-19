@@ -2,7 +2,7 @@ package atomics
 
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+
 @Serializable
 class Recipe(
     private val name: String,
@@ -35,7 +35,7 @@ class Recipe(
         const val auth_path = "/auth"
         const val reauth_path = "/reauth"
         const val get_all_path = "/getall"
-        const val get_in_memory_path = "/getinmemory"
+        const val load_in_memory_into_current_db_path = "/loadinmemoryintocurrentdb"
         const val get_in_file_path = "/getinfile"
         const val get_by_recipe_id_path = "/getbyrecipeid"
         const val get_image_by_recipe_id_path= "/getImageByRecipeId"
