@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 class RecipeImage(
     @Contextual @SerialName("_id") val id: String,
-    val image: ByteArray
+    val image: String
 )

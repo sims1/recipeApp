@@ -19,6 +19,8 @@ abstract class ReadOnlyRecipeStore : RecipeStore {
 
     override suspend fun getAll(): List<Recipe> = recipeList
 
+    override suspend fun add(recipe: Recipe): Boolean = false
+
     companion object {
 
         @JvmStatic

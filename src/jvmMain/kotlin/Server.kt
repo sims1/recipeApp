@@ -25,6 +25,8 @@ import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.recipe.MongoDBRecipeStore
 import store.image.MongoDBImageStore
+import store.image.RedisImageStore
+import store.image.TestingImageStore
 import java.util.concurrent.TimeUnit
 
 
@@ -37,8 +39,10 @@ private val recipeStore =
     //InFileRecipeStore() // testing only
 
 private val imageStore =
-    // InFileImageStore()
-    MongoDBImageStore()
+    //MongoDBImageStore()
+    RedisImageStore()
+    //InFileImageStore() // testing only
+    //TestingImageStore() // testing only
 fun main() {
     val server = embeddedServer(Netty, 9090) {
         install(ContentNegotiation) {
@@ -126,7 +130,6 @@ fun main() {
                         }
                         is PartData.FileItem -> {
                             val fileBytes = part.streamProvider().readBytes()
-                            println("recipeId: $recipeId")
                             imageStore.save(recipeId, fileBytes)
                             call.respond(HttpStatusCode.OK)
                         }
@@ -148,7 +151,6 @@ fun main() {
             route(Recipe.get_image_by_recipe_id_path) {
                 get {
                     val recipeId = call.request.queryParameters.getOrFail(recipeIdParameterKey)
-                    //val recipe = imageStore.get(recipeId)
                     val recipeImage = imageStore.get(recipeId)
                     call.respondFile(recipeImage)
                 }
