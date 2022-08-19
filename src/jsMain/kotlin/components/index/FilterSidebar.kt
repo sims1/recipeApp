@@ -1,7 +1,7 @@
 package components.index
 
 import atomics.Tag
-import atomics.IngredientType
+import atomics.ingredient.IngredientType
 import components.common.commonBorderRadiusAlias
 import components.common.recipeNameColorAlias
 import components.common.textFontFamilyAlias

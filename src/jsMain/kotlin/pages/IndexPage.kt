@@ -2,7 +2,7 @@ package pages
 
 import atomics.Recipe
 import atomics.Tag
-import atomics.IngredientType
+import atomics.ingredient.IngredientType
 import components.shared.Footer
 import components.shared.Header
 import components.common.buttonFontColor

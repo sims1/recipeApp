@@ -2,6 +2,7 @@ package pages
 
 import addRecipe
 import atomics.*
+import atomics.ingredient.*
 import components.shared.Footer
 import components.shared.Header
 import components.common.*

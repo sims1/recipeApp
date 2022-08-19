@@ -1,7 +1,7 @@
 package components.common
 
-import atomics.SpiceAndSauceType
-import atomics.IngredientType
+import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.IngredientType
 
 class TypeStringConverter {
 

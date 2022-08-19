@@ -1,8 +1,8 @@
 package recipes
 
-import atomics.Ingredient
+import atomics.ingredient.Ingredient
 import atomics.Tag
-import atomics.IngredientType
+import atomics.ingredient.IngredientType
 import atomics.Recipe
 
 class BakedSweetPotato {

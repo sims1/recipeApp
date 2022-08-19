@@ -1,6 +1,9 @@
 package recipes
 
 import atomics.*
+import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientType
+import atomics.ingredient.SpiceAndSauceType
 
 class OvenSteak {
 

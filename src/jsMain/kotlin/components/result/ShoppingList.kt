@@ -1,7 +1,7 @@
 package components.result
 
 import atomics.Recipe
-import atomics.IngredientType
+import atomics.ingredient.IngredientType
 import components.common.*
 import csstype.*
 import react.FC

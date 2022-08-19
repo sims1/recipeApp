@@ -38,7 +38,9 @@ kotlin {
     }
     sourceSets {
         val commonMain by getting {
-            dependencies {}
+            dependencies {
+                //implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+            }
         }
         val commonTest by getting {
             dependencies {

@@ -1,7 +1,11 @@
 package atomics
 
+import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientType
+import atomics.ingredient.SpiceAndSauceType
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 class Recipe(

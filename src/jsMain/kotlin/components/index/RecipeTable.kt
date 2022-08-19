@@ -3,7 +3,7 @@ package components.index
 import api.recipeIdParameterKey
 import atomics.Recipe
 import atomics.Tag
-import atomics.IngredientType
+import atomics.ingredient.IngredientType
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML.pre
