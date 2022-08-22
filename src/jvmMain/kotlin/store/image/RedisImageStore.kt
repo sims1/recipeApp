@@ -19,7 +19,7 @@ class RedisImageStore: ImageStore() {
         runBlocking {
             val job = launch(Dispatchers.Default) {
                 client.use { client ->
-                    client.get(id)?.let {
+                    client.hget(imageMap, id)?.let {
                         result = File.createTempFile("temp", null)
                             .apply { writeBytes(it.decodeBase64Bytes()) }
                     }
@@ -35,7 +35,7 @@ class RedisImageStore: ImageStore() {
         runBlocking {
             val job = launch(Dispatchers.Default) {
                 client.use { client ->
-                    client.set(id, file.encodeBase64())
+                    client.hset(imageMap, id to file.encodeBase64())
                 } // <--- the client/connection to redis is closed.
             }
             job.join() // wait for the co-routine to complete
@@ -47,6 +47,11 @@ class RedisImageStore: ImageStore() {
             client.close()
             shutdown() // shutdown the Kreds Event loop.
         }
+    }
+
+    companion object {
+
+        private const val imageMap = "ImageMap"
     }
 
 }
