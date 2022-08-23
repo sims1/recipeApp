@@ -23,8 +23,10 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.server.util.*
+import store.DatabaseClients
 import store.recipe.MongoDBRecipeStore
 import store.image.RedisImageStore
+import store.recipe.RedisRecipeStore
 import java.util.concurrent.TimeUnit
 
 
@@ -32,7 +34,8 @@ import java.util.concurrent.TimeUnit
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
 private val recipeStore =
-    MongoDBRecipeStore()
+    //MongoDBRecipeStore()
+    RedisRecipeStore()
     //InMemoryRecipeStore() // testing only
     //InFileRecipeStore() // testing only
 
@@ -169,5 +172,6 @@ fun main() {
         server.stop(1, 5, TimeUnit.SECONDS)
         recipeStore.shutDown()
         imageStore.shutDown()
+        DatabaseClients.shutDown()
     })
 }

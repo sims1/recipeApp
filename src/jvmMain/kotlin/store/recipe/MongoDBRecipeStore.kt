@@ -4,12 +4,11 @@ import atomics.Recipe
 import org.litote.kmongo.coroutine.coroutine
 import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
+import store.DatabaseClients
 
 class MongoDBRecipeStore : RecipeStore {
 
-    private val client = KMongo.createClient().coroutine
-
-    private val recipeDatabase = client.getDatabase("recipes")
+    private val recipeDatabase = DatabaseClients.mongoDBClient.getDatabase("recipes")
     private val recipeCollection = recipeDatabase.getCollection<Recipe>()
 
     override suspend fun get(id: String): Recipe {
@@ -28,10 +27,6 @@ class MongoDBRecipeStore : RecipeStore {
             }
             else -> false
         }
-    }
-
-    override fun shutDown() {
-        client.close()
     }
 
 }
