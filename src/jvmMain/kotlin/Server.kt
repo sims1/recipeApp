@@ -24,7 +24,6 @@ import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.DatabaseClients
-import store.recipe.MongoDBRecipeStore
 import store.image.RedisImageStore
 import store.recipe.RedisRecipeStore
 import java.util.concurrent.TimeUnit
@@ -157,7 +156,7 @@ fun main() {
                 }
             }
             // debug purpose
-            route(Recipe.load_in_memory_into_current_db_path) {
+            route(Recipe.load_from_in_memory_path) {
                 get {
                     val inMemoryRecipeStore = InMemoryRecipeStore()
                     // write in-memory recipe into mongodb

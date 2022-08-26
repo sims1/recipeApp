@@ -39,7 +39,7 @@ class Recipe(
         const val auth_path = "/auth"
         const val reauth_path = "/reauth"
         const val get_all_path = "/getall"
-        const val load_in_memory_into_current_db_path = "/loadinmemoryintocurrentdb"
+        const val load_from_in_memory_path = "/loadfrominmemory"
         const val get_in_file_path = "/getinfile"
         const val get_by_recipe_id_path = "/getbyrecipeid"
         const val get_image_by_recipe_id_path= "/getImageByRecipeId"
