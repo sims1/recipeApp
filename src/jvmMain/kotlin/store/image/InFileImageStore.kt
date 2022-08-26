@@ -18,6 +18,7 @@ class InFileImageStore: ImageStore() {
 
     companion object {
         private const val DEFAULT_IMAGE_DIR = "recipeImage"
-        private const val IMAGE_DIR = "/Users/linghe/Desktop/recipeImages"
+        private const val IMAGE_DIR = "/home/ling/recipe"
+            //"/Users/linghe/Desktop/recipeImages"
     }
 }

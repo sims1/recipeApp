@@ -1,6 +1,8 @@
 package store.image
 
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 abstract class ImageStore {
 
@@ -15,7 +17,14 @@ abstract class ImageStore {
     companion object {
 
         private const val DEFAULT_IMAGE_NAME = "recipeImage/default.PNG"
-        val defaultImage = File(this::class.java.classLoader.getResource(DEFAULT_IMAGE_NAME)!!.toURI())
+        val defaultImage = createDefaultImage()
+
+        private fun createDefaultImage(): File {
+            val inputStream = this::class.java.classLoader.getResourceAsStream(DEFAULT_IMAGE_NAME)!!
+            val file = File.createTempFile("temp", null)
+            Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING)
+            return file
+        }
     }
 
 }
