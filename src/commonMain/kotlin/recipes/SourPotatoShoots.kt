@@ -5,11 +5,11 @@ import atomics.ingredient.Ingredient
 import atomics.ingredient.IngredientType
 import atomics.ingredient.SpiceAndSauceType
 
-class PotatoShoots {
+class SourPotatoShoots {
 
     companion object {
         val recipe = Recipe(
-            "Potato Shoots",
+            "Sour Potato Shoots",
             listOf(
                 Ingredient(IngredientType.POTATO)
             ),
@@ -19,7 +19,8 @@ class PotatoShoots {
                 Ingredient(SpiceAndSauceType.BLACK_VINEGAR)
             ),
             listOf(Tag.CARB, Tag.VEGETABLE),
-            "cook!"
+            "Oil + potato shoots\n"
+                + "add black vinegar"
         )
     }
 }

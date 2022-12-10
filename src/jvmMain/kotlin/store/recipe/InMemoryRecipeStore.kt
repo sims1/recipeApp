@@ -16,7 +16,7 @@ class InMemoryRecipeStore(
                 BakedSweetPotato.recipe,
                 ItalianZucchini.recipe,
                 MashedPotato.recipe,
-                PotatoShoots.recipe,
+                SourPotatoShoots.recipe,
                 OvenSteak.recipe,
             )
 

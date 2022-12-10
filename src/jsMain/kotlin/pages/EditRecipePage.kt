@@ -449,11 +449,12 @@ val EditRecipePage = FC<Props> {
                             popUpWindowMessage = when (addRecipe(recipe).status) {
                                 HttpStatusCode.OK -> {
                                     val response = recipeImageState?.let {
+                                        println("Creating recipe in progress...")
                                         popUpWindowMessage = "Creating recipe in progress..."
                                         uploadRecipePicture(recipe.id, it)
                                     }
                                     when(response?.status) {
-                                        HttpStatusCode.OK -> "Congratulations! Recipe $recipeNameState is added!"
+                                        HttpStatusCode.OK, null -> "Congratulations! Recipe $recipeNameState is added!"
                                         else -> "Error while uploading recipe picture"
                                     }
                                 }

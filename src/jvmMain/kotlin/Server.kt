@@ -25,6 +25,7 @@ import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
+import store.recipe.InFileRecipeStore
 import store.recipe.RedisRecipeStore
 import java.util.concurrent.TimeUnit
 
@@ -36,6 +37,10 @@ private val recipeStore =
     //MongoDBRecipeStore()
     RedisRecipeStore()
     //InMemoryRecipeStore() // testing only
+// how to back up
+// 1. go to http://0.0.0.0:9090/getall
+// 2. copy the content, and paste in RecipeBackUp.txt
+// 3. enable the next line
     //InFileRecipeStore() // testing only
 
 private val imageStore =
@@ -52,6 +57,8 @@ fun main() {
             allowMethod(HttpMethod.Get)
             allowMethod(HttpMethod.Post)
             allowMethod(HttpMethod.Delete)
+            //allowNonSimpleContentTypes = true
+            allowHeader(HttpHeaders.ContentType)
             anyHost()
         }
         install(Compression) {
@@ -156,6 +163,14 @@ fun main() {
                 }
             }
             // debug purpose
+            route(Recipe.load_from_in_file_path) {
+                get {
+                    val inFileRecipeStore = InFileRecipeStore()
+                    // write in-file recipe into mongodb
+                    inFileRecipeStore.getAll().forEach { recipe -> recipeStore.add(recipe) }
+                    call.respond(inFileRecipeStore.getAll())
+                }
+            }
             route(Recipe.load_from_in_memory_path) {
                 get {
                     val inMemoryRecipeStore = InMemoryRecipeStore()

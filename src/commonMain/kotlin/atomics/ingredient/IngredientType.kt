@@ -12,19 +12,40 @@ enum class IngredientType(private val value: String, val isMainIngredient: Boole
     BACON("Bacon"),
     STEAK("Steak"),
     PORK_BITS("Pork bits"),
+    CANTONESE_SAUSAGE("Cantonese sausage(广东腊肠)"),
+    EGG("Egg"),
+    SOFT_TOFU("Soft tofu"),
+    MEDIUM_TOFU("Medium tofu"),
+    FIRM_TOFU("Firm tofu"),
+    TOFU_SHEET("Tofu sheet(豆腐皮)"),
+    FRIED_TOFU("Fried tofu(油豆腐)"),
+    GLUTEN("Gluten(面筋)"),
 
     POTATO("Potato"),
     SWEET_POTATO("Sweet potato"),
     ZUCCHINI("Zucchini"),
     EGGPLANT("Eggplant"),
     ENOKI("Enoki"),
+    CARROT("Carrot"),
+    ONION("Onion"),
+    KERNEL_CORN("Kernel corn(玉米粒)"),
+    TASTY_MUSHROOM("Tasty mushroom(香菇)"),
 
     PICKLE_MUSTARD("Pickle mustard (酸芥菜)"),
     PICKLE_CABBAGE("Pickle cabbage (东北酸白菜)"),
     KIMCHI("Kimchi (韩国泡菜)"),
     LONG_CHILI("Long chili"),
+
+    GINGER("Ginger"),
+    BASIL("Basil"),
+    CORIANDER("Coriander(香菜)"),
+    GREEN_ONION("Green Onion"),
     GARLIC("Garlic", isMainIngredient = false),
     SMALL_RED_CHILI("Small red chili (小米辣)", isMainIngredient = false),
+
+    ALL_PURPOSE_FLOUR("All purpose flour"),
+    RICE("Rice"),
+    RICE_PAPER("Rice Paper(越南米纸)"),
 
     ;
 
