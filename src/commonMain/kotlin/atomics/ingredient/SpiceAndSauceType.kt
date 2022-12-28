@@ -20,6 +20,8 @@ enum class SpiceAndSauceType(private val value: String) : BaseIngredient {
     CUMIN("Cumin(孜然)"),
     CHILI_POWDER("Chili Powder"),
     DRY_CHILI("Dry Chili"),
+    CURRY_SPICE_BLEND("Curry spice blend"),
+    CURRY_PASTE("Curry paste"),
 
     ITALIAN_HERB_SPICE_BLEND("Italian herb spice blend"),
     ORLEANS_SPICE_PACK("Orleans spice pack(新奥尔良)"),
