@@ -24,7 +24,7 @@ import react.useState
 private val scope = MainScope()
 
 val Header = FC<Props> {
-    var loginState: LoginState by useState(LoginState.GUEST)
+    var loginState: LoginState by useState(LoginState.guest())
     var showLoginPopUp: Boolean by useState(false)
 
     var loginId: String by useState("")
@@ -59,7 +59,7 @@ val Header = FC<Props> {
                 fontSize = unimportantFontSizeAlias
             }
 
-            if (loginState == LoginState.GUEST) {
+            if (loginState.isGuest()) {
                 button {
                     css {
                         onMouseDown = {

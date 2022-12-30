@@ -106,7 +106,7 @@ fun main() {
                         null -> call.respond(HttpStatusCode.Unauthorized, UNAUTHORIZED_REASON)
                         else -> {
                             call.sessions.set(UserSession(authRequest.id, authToken))
-                            call.respond(HttpStatusCode.OK, authToken)
+                            call.respond(HttpStatusCode.OK, authRequest.id)
                         }
                     }
                 }
@@ -114,7 +114,8 @@ fun main() {
             authenticate("reauth-session") {
                 route(Recipe.reauth_path) {
                     post {
-                        call.respond(HttpStatusCode.OK)
+                        val userSession = call.sessions.get<UserSession>()!!
+                        call.respond(HttpStatusCode.OK, userSession.name)
                     }
                 }
             }

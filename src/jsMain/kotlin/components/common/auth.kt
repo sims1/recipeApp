@@ -1,6 +1,16 @@
 package components.common
 
-enum class LoginState(val message: String) {
-    GUEST("Log in"),
-    LOGGED_IN_AS_LING("Hi, Ling!")
+class LoginState private constructor(private val userName: String? = null) {
+
+    var message: String = when (userName) {
+        null ->  "Log in"
+        else -> "Hi, $userName!"
+    }
+    fun isGuest() = (userName == null)
+
+    companion object {
+
+        fun guest() = LoginState()
+        fun loginAs(userName: String) = LoginState(userName)
+    }
 }

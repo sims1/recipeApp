@@ -10,7 +10,8 @@ class InMemoryAuthenticator {
 
         private val credentialMap = mapOf(
             LING to "ok",
-            "Neil" to "ok"
+            "Neil" to "ok",
+            "Kate" to "ok"
         )
     }
 

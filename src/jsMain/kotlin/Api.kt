@@ -53,8 +53,8 @@ suspend fun reAuthenticateWithAuthToken(): LoginState {
         contentType(ContentType.Application.Json)
     }
     return when (response.status) {
-        HttpStatusCode.OK -> LoginState.LOGGED_IN_AS_LING
-        else -> LoginState.GUEST
+        HttpStatusCode.OK -> LoginState.loginAs(response.body())
+        else -> LoginState.guest()
     }
 }
 suspend fun authenticateWithPassword(id: String, password: String): LoginState {
@@ -63,8 +63,8 @@ suspend fun authenticateWithPassword(id: String, password: String): LoginState {
         setBody(AuthRequest(id, password))
     }
     return when (response.status) {
-        HttpStatusCode.OK -> LoginState.LOGGED_IN_AS_LING
-        else -> LoginState.GUEST
+        HttpStatusCode.OK -> LoginState.loginAs(response.body())
+        else -> LoginState.guest()
     }
 }
 
