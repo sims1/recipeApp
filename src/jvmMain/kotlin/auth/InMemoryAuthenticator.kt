@@ -8,7 +8,10 @@ class InMemoryAuthenticator {
             return (credentialValue != null && credentialValue == password)
         }
 
-        private val credentialMap = mapOf("Ling" to "ok")
+        private val credentialMap = mapOf(
+            LING to "ok",
+            "Neil" to "ok"
+        )
     }
 
 }

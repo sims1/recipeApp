@@ -26,6 +26,7 @@ import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
 import store.recipe.InFileRecipeStore
+import store.recipe.MongoDBRecipeStore
 import store.recipe.RedisRecipeStore
 import java.util.concurrent.TimeUnit
 
@@ -34,8 +35,8 @@ import java.util.concurrent.TimeUnit
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
 private val recipeStore =
-    //MongoDBRecipeStore()
-    RedisRecipeStore()
+    MongoDBRecipeStore()
+    //RedisRecipeStore()
     //InMemoryRecipeStore() // testing only
 // how to back up
 // 1. go to http://0.0.0.0:9090/getall
@@ -120,8 +121,12 @@ fun main() {
             authenticate("reauth-session") {
                 post(Recipe.create_path) {
                     val receivedRecipe = call.receive<Recipe>()
+                    val recipe = when(val userName = call.principal<UserSession>()?.name) {
+                        null -> receivedRecipe
+                        else -> receivedRecipe.createNewWithAuthor(userName)
+                    }
                     when {
-                        recipeStore.add(receivedRecipe) -> call.respond(HttpStatusCode.OK)
+                        recipeStore.add(recipe) -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }
@@ -166,7 +171,7 @@ fun main() {
             route(Recipe.load_from_in_file_path) {
                 get {
                     val inFileRecipeStore = InFileRecipeStore()
-                    // write in-file recipe into mongodb
+                    // write in-file recipe into recipeStore
                     inFileRecipeStore.getAll().forEach { recipe -> recipeStore.add(recipe) }
                     call.respond(inFileRecipeStore.getAll())
                 }
@@ -174,7 +179,7 @@ fun main() {
             route(Recipe.load_from_in_memory_path) {
                 get {
                     val inMemoryRecipeStore = InMemoryRecipeStore()
-                    // write in-memory recipe into mongodb
+                    // write in-memory recipe into recipeStore
                     inMemoryRecipeStore.getAll().forEach { recipe -> recipeStore.add(recipe) }
                     call.respond(inMemoryRecipeStore.getAll())
                 }

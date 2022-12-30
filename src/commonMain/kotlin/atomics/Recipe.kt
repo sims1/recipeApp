@@ -3,20 +3,34 @@ package atomics
 import atomics.ingredient.Ingredient
 import atomics.ingredient.IngredientType
 import atomics.ingredient.SpiceAndSauceType
+import auth.LING
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 class Recipe(
-    private val name: String,
+    val name: String,
     val mainIngredients: List<Ingredient<IngredientType>>,
     val spicesAndSauces: List<Ingredient<SpiceAndSauceType>>,
     val tags: List<Tag>,
     val cookingInstructions: String,
+    val author: String = LING,
     @Contextual @SerialName("_id") val id: String = name.filter { !it.isWhitespace() }
 ) {
     private fun getTagsString() = tags.joinToString("\n") { it.value }
+
+    fun createNewWithAuthor(newAuthor: String): Recipe {
+        return Recipe(
+            name = this.name,
+            mainIngredients = this.mainIngredients,
+            spicesAndSauces = this.spicesAndSauces,
+            tags = this.tags,
+            cookingInstructions = this.cookingInstructions,
+            author = newAuthor,
+            id = this.id
+        )
+    }
     fun getNameString() = name
     fun getVegetableAndMeatString() = mainIngredients.joinToString("\n") { it.getString() }
     fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { it.getString() }
