@@ -12,8 +12,7 @@
       "name":"Chicken wing"
    },
    {
-      "name":"Bacon",
-      "isMainIngredient":false
+      "name":"Bacon"
    },
    {
       "name":"Salmon"
@@ -24,6 +23,9 @@
    {
       "name":"Pork"
    },
+   {
+         "name":"Ground Pork"
+      },
    {
       "name":"Cantonese sausage(广东腊肠)"
    },
@@ -46,16 +48,13 @@
       "name":"Firm Tofu"
    },
    {
-      "name":"Tofu sheet(豆腐皮)",
-      "isMainIngredient":false
+      "name":"Tofu sheet(豆腐皮)"
    },
    {
-      "name":"Fried tofu(油豆腐)",
-      "isMainIngredient":false
+      "name":"Fried tofu(油豆腐)"
    },
    {
-      "name":"Gluten(面筋)",
-      "isMainIngredient":false
+      "name":"Gluten(面筋)"
    },
    {
       "name":"Sweet potato"
@@ -69,9 +68,6 @@
    {
       "name":"Garlic",
       "isMainIngredient":false
-   },
-   {
-      "name":"Zucchini"
    },
    {
       "name":"Eggplant"
@@ -168,8 +164,7 @@
       "isMainIngredient":false
    },
    {
-      "name":"All purpose flour",
-      "isMainIngredient":false
+      "name":"All purpose flour"
    },
    {
       "name":"Rice"

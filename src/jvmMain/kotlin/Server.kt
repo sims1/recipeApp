@@ -29,6 +29,7 @@ import store.ingredientType.InFileIngredientTypeStore
 import store.ingredientType.InMemoryIngredientTypeStore
 import store.ingredientType.MongoDBIngredientTypeStore
 import store.recipe.InFileRecipeStore
+import store.recipe.MongoDBRecipeStore
 import java.util.concurrent.TimeUnit
 
 
@@ -36,9 +37,9 @@ import java.util.concurrent.TimeUnit
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
 private val recipeStore =
-    //MongoDBRecipeStore()
+    MongoDBRecipeStore()
     //RedisRecipeStore()
-    InMemoryRecipeStore() // testing only
+    //InMemoryRecipeStore() // testing only
 // how to back up
 // 1. go to http://0.0.0.0:9090/getall
 // 2. copy the content, and paste in RecipeBackUp.txt

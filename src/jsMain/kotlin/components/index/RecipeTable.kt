@@ -175,7 +175,7 @@ private val RecipeHoverBox = FC<RecipeHoverBoxProps> { props ->
                     borderColor = NamedColor.lightgrey
                     borderStyle = LineStyle.solid
                 }
-                th { +"Stocked Ingredients" }
+                th { +"Other Ingredients" }
                 td { pre { +props.recipeitem.getSpicesAndSaucesString() } }
             }
             tr {

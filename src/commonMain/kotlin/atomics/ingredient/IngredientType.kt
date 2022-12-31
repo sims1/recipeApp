@@ -34,47 +34,4 @@ class IngredientType(val name: String, val isMainIngredient: Boolean = true) : B
     override fun getValue(): String {
         return name
     }
-
-/*
-
-
-    ZUCCHINI("Zucchini"),
-    EGGPLANT("Eggplant"),
-    ENOKI("Enoki"),
-    CARROT("Carrot"),
-    ONION("Onion"),
-    KERNEL_CORN("Kernel corn(玉米粒)"),
-    TASTY_MUSHROOM("Tasty mushroom(香菇)"),
-    CAULIFLOWER("Cauliflower"),
-    SHALLOT("Shallot"),
-    GREEN_PEAS("Green Peas"),
-    CELERY("Celery"),
-    LEMON("Lemon"),
-
-    PICKLE_MUSTARD("Pickle mustard (酸芥菜)"),
-    PICKLE_CABBAGE("Pickle cabbage (东北酸白菜)"),
-    KIMCHI("Kimchi (韩国泡菜)"),
-    LONG_CHILI("Long chili"),
-
-    MILK("Milk"),
-    MOZZARELLA("Mozzarella"),
-    COCONUT_MILK("Coconut milk"),
-
-    GINGER("Ginger"),
-    BASIL("Basil"),
-    CORIANDER("Coriander(香菜)"),
-    GREEN_ONION("Green Onion"),
-    GARLIC("Garlic", isMainIngredient = false),
-    SMALL_RED_CHILI("Small red chili (小米辣)", isMainIngredient = false),
-    CHICKEN_BROTH("Chicken broth"),
-
-    ALL_PURPOSE_FLOUR("All purpose flour"),
-    RICE("Rice"),
-    RICE_PAPER("Rice Paper(越南米纸)"),
-    CIABATTA_BREAD("Ciabatta bread"),
-    MACARONI("Macaroni"),
-    PASTA("Pasta"),
-
-    ;
-*/
 }
