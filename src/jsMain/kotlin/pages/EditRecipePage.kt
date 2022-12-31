@@ -203,7 +203,6 @@ val EditRecipePage = FC<Props> {
                         }
                     }
                 }
-                /*
                 span { +" " }
                 button {
                     css {
@@ -221,7 +220,6 @@ val EditRecipePage = FC<Props> {
                     }
                     +"+"
                 }
-                */
                 p {
                     +"Quantity "
                     input {
