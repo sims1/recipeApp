@@ -1,34 +1,37 @@
 package atomics.ingredient
 
-val sortedSpiceAndSauceType = SpiceAndSauceType.values().sortedBy { it.getValue() }
+import kotlinx.serialization.Serializable
 
-enum class SpiceAndSauceType(private val value: String) : BaseIngredient {
-    VEGETABLE_OIL("Vegetable oil"),
-    OLIVE_OIL("Olive Oil"),
-    SEASAME_OIL("Seasame Oil(芝麻油)"),
-    NUMB_SPICE_OIL("Numb Spice OIl(花椒油)"),
+@Serializable
+class SpiceAndSauceType(val name: String) : BaseIngredient {
 
-    SOY_SAUCE("Soy Sauce"),
-    COOKING_WINE("Cooking Wine(料酒)"),
-    BLACK_VINEGAR("Black vinegar"),
-    BLACK_BEAN_CHILI_SAUCE("Black Bean Chili Sauce(老干妈豆豉)"),
-    BROAD_BEAN_SAUCE("Broad Bean Sauce(豆瓣酱)"),
+    companion object {
+        val VEGETABLE_OIL = SpiceAndSauceType("Vegetable oil")
+        val OLIVE_OIL = SpiceAndSauceType("Olive Oil")
+        val SEASAME_OIL = SpiceAndSauceType("Seasame Oil(芝麻油)")
+        val NUMB_SPICE_OIL = SpiceAndSauceType("Numb Spice OIl(花椒油)")
 
-    SALT("Salt"),
-    HERBAMARE_SALT("Herbamare Salt"),
-    PEPPER("Pepper"),
-    CUMIN("Cumin(孜然)"),
-    CHILI_POWDER("Chili Powder"),
-    DRY_CHILI("Dry Chili"),
-    CURRY_SPICE_BLEND("Curry spice blend"),
-    CURRY_PASTE("Curry paste"),
+        val SOY_SAUCE = SpiceAndSauceType("Soy Sauce")
+        val COOKING_WINE = SpiceAndSauceType("Cooking Wine")
+        val BLACK_VINEGAR = SpiceAndSauceType("Black vinegar")
+        val BLACK_BEAN_CHILI_SAUCE = SpiceAndSauceType("Black Bean Chili Sauce(老干妈豆豉)")
+        val BROAD_BEAN_SAUCE = SpiceAndSauceType("Broad Bean Sauce(豆瓣酱)")
 
-    ITALIAN_HERB_SPICE_BLEND("Italian herb spice blend"),
-    ORLEANS_SPICE_PACK("Orleans spice pack(新奥尔良)"),
+        val SALT = SpiceAndSauceType("Salt")
+        val HERBAMARE_SALT = SpiceAndSauceType("Herbamare Salt")
+        val PEPPER = SpiceAndSauceType("Pepper")
+        val CUMIN = SpiceAndSauceType("Cumin(孜然)")
+        val CHILI_POWDER = SpiceAndSauceType("Chili Powder")
+        val DRY_CHILI = SpiceAndSauceType("Dry Chili")
+        val CURRY_SPICE_BLEND = SpiceAndSauceType("Curry spice blend")
+        val CURRY_PASTE = SpiceAndSauceType("Curry paste")
 
-    BUTTER("Butter"),
-    CORN_STARCH("Corn Starch"),
-    ;
+        val ITALIAN_HERB_SPICE_BLEND = SpiceAndSauceType("Italian herb spice blend")
+        val ORLEANS_SPICE_PACK = SpiceAndSauceType("Orleans spice pack(新奥尔良)")
 
-    override fun getValue() = value
+        val BUTTER = SpiceAndSauceType("Butter")
+        val CORN_STARCH = SpiceAndSauceType("Corn Starch")
+    }
+
+    override fun getValue() = name
 }

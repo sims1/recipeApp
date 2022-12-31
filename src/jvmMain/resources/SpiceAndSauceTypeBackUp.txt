@@ -1,0 +1,28 @@
+[
+   {"name":"Chicken wing"},
+   {"name":"Vegetable oil"},
+   {"name":"Olive Oil"},
+   {"name":"Seasame Oil(芝麻油)"},
+   {"name":"Numb Spice Oil(花椒油)"},
+
+   {"name":"Soy Sauce"},
+   {"name":"Cooking Wine"},
+   {"name":"Black vinegar"},
+   {"name":"Black Bean Chili Sauce(老干妈豆豉)"},
+   {"name":"Broad Bean Sauce(豆瓣酱)"},
+
+   {"name":"Salt"},
+   {"name":"Herbamare Salt"},
+   {"name":"Pepper"},
+   {"name":"Cumin(孜然)"},
+   {"name":"Chili Powder"},
+   {"name":"Dry Chili"},
+   {"name":"Curry spice blend"},
+   {"name":"Curry paste"},
+
+   {"name":"Italian herb spice blend"},
+   {"name":"Orleans spice pack(新奥尔良)"},
+
+   {"name":"Butter"},
+   {"name":"Corn Starch"}
+]

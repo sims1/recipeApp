@@ -18,14 +18,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "spicesAndSauces":[
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
-      ],
+      "spicesAndSauces":[],
       "tags":[
          "VEGETABLE",
          "CARB"
@@ -55,20 +48,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "spicesAndSauces":[
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
-      ],
+      "spicesAndSauces":[      ],
       "tags":[
          "CARB"
       ],
@@ -122,12 +102,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "MEAT_AND_VEGETABLE"
@@ -198,12 +172,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "MEAT_AND_VEGETABLE"
@@ -234,19 +202,7 @@
       ],
       "spicesAndSauces":[
          {
-            "type":"BUTTER",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"PEPPER",
+            "type":{"name":"Butter"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -306,31 +262,19 @@
       ],
       "spicesAndSauces":[
          {
-            "type":"SEASAME_OIL",
+            "type":   {"name":"Seasame Oil(芝麻油)"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
-            "type":"SOY_SAUCE",
+            "type":   {"name":"Soy Sauce"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
-            "type":"CHILI_POWDER",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SALT",
+            "type": {"name":"Chili Powder"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -355,24 +299,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"PEPPER",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "CARB"
@@ -430,13 +356,7 @@
       ],
       "spicesAndSauces":[
          {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SOY_SAUCE",
+            "type":   {"name":"Soy Sauce"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -487,19 +407,13 @@
       ],
       "spicesAndSauces":[
          {
-            "type":"CURRY_PASTE",
+            "type":   {"name":"Curry spice blend"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
-            "type":"CURRY_SPICE_BLEND",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"VEGETABLE_OIL",
+            "type":   {"name":"Curry paste"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -524,24 +438,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"PEPPER",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "SEAFOOD"
@@ -590,13 +486,7 @@
       ],
       "spicesAndSauces":[
          {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SOY_SAUCE",
+            "type":   {"name":"Soy Sauce"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -621,18 +511,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"PEPPER",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "VEGETABLE"
@@ -654,19 +532,7 @@
       ],
       "spicesAndSauces":[
          {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"BLACK_VINEGAR",
+            "type":   {"name":"Black vinegar"},
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -713,18 +579,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"PEPPER",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "BEEF"
@@ -753,18 +607,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "CARB"
@@ -785,12 +627,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "CARB"
@@ -821,15 +657,9 @@
       ],
       "spicesAndSauces":[
          {
-            "type":"DRY_CHILI",
+            "type":   {"name":"Dry Chili"},
             "description":null,
             "quantity":5,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
             "unit":"DEFAULT"
          }
       ],
@@ -895,24 +725,6 @@
          }
       ],
       "spicesAndSauces":[
-         {
-            "type":"VEGETABLE_OIL",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"SALT",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":"PEPPER",
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
       ],
       "tags":[
          "SEAFOOD"

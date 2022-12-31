@@ -10,11 +10,9 @@ class TypeStringConverter {
             return IngredientType(input)
         }
 
-        fun getSpiceAndSauceType(input: String): SpiceAndSauceType? {
-            return spiceAndSauceTypeStringToTypeMap[input]
+        fun getSpiceAndSauceType(input: String): SpiceAndSauceType {
+            return SpiceAndSauceType(input)
         }
-
-        private val spiceAndSauceTypeStringToTypeMap = SpiceAndSauceType.values().associateBy { it.getValue() }
     }
 
 }

@@ -30,6 +30,9 @@ import store.ingredientType.InMemoryIngredientTypeStore
 import store.ingredientType.MongoDBIngredientTypeStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
+import store.spiceAndSauceType.InFileSpiceAndSauceTypeStore
+import store.spiceAndSauceType.InMemorySpiceAndSauceTypeStore
+import store.spiceAndSauceType.MongoDBSpiceAndSauceTypeStore
 import java.util.concurrent.TimeUnit
 
 
@@ -38,7 +41,7 @@ import java.util.concurrent.TimeUnit
 
 private val recipeStore =
     MongoDBRecipeStore()
-    //RedisRecipeStore()
+    //RedisRecipeStore() // not used
     //InMemoryRecipeStore() // testing only
 // how to back up
 // 1. go to http://0.0.0.0:9090/getall
@@ -50,6 +53,11 @@ private val ingredientTypeStore =
     MongoDBIngredientTypeStore()
     //InMemoryIngredientTypeStore() // testing only
     //InFileIngredientTypeStore()  // backup only
+
+private val spiceAndSauceTypeStore =
+    MongoDBSpiceAndSauceTypeStore()
+    //InMemorySpiceAndSauceTypeStore() // testing only
+    //InFileSpiceAndSauceTypeStore()  // backup only
 
 private val imageStore =
     //MongoDBImageStore()
@@ -109,6 +117,11 @@ fun main() {
             route(Recipe.get_ingredient_types_path) {
                 get {
                     call.respond(ingredientTypeStore.getAll().sortedBy { it.getValue() })
+                }
+            }
+            route(Recipe.get_spice_and_sauce_types_path) {
+                get {
+                    call.respond(spiceAndSauceTypeStore.getAll().sortedBy { it.getValue() })
                 }
             }
             route(Recipe.auth_path) {
@@ -203,6 +216,14 @@ fun main() {
                     // write in-file IngredientType into ingredientTypeStore
                     inFileIngredientTypeStore.getAll().forEach { ingredientType -> ingredientTypeStore.add(ingredientType) }
                     call.respond(inFileIngredientTypeStore.getAll())
+                }
+            }
+            route(Recipe.load_spice_and_sauce_type_from_in_file_path) {
+                get {
+                    val inFileSpiceAndSauceTypeStore = InFileSpiceAndSauceTypeStore()
+                    // write in-file SpiceAndSauceType into spiceAndSauceTypeStore
+                    inFileSpiceAndSauceTypeStore.getAll().forEach { spiceAndSauceType -> spiceAndSauceTypeStore.add(spiceAndSauceType) }
+                    call.respond(inFileSpiceAndSauceTypeStore.getAll())
                 }
             }
         }

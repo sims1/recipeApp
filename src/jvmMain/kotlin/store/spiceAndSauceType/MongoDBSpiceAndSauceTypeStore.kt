@@ -1,22 +1,22 @@
-package store.ingredientType
+package store.spiceAndSauceType
 
-import atomics.ingredient.IngredientType
+import atomics.ingredient.SpiceAndSauceType
 import org.litote.kmongo.eq
 import store.DatabaseClients
 
-class MongoDBIngredientTypeStore : IngredientTypeStore {
+class MongoDBSpiceAndSauceTypeStore : SpiceAndSauceTypeStore {
 
-    private val ingredientTypeDatabase = DatabaseClients.mongoDBClient.getDatabase("ingredientType")
-    private val ingredientTypeCollection = ingredientTypeDatabase.getCollection<IngredientType>()
+    private val spiceAndSauceTypeDatabase = DatabaseClients.mongoDBClient.getDatabase("spiceAndSauceType")
+    private val spiceAndSauceTypeCollection = spiceAndSauceTypeDatabase.getCollection<SpiceAndSauceType>()
 
-    override suspend fun getAll(): List<IngredientType> = ingredientTypeCollection.find().toList()
+    override suspend fun getAll(): List<SpiceAndSauceType> = spiceAndSauceTypeCollection.find().toList()
 
     // return true if inserted successfully
     // return false if already exists
-    override suspend fun add(ingredientType: IngredientType): Boolean {
-        return when (ingredientTypeCollection.findOne(IngredientType::name eq ingredientType.name)) {
+    override suspend fun add(spiceAndSauceType: SpiceAndSauceType): Boolean {
+        return when (spiceAndSauceTypeCollection.findOne(SpiceAndSauceType::name eq spiceAndSauceType.name)) {
             null -> {
-                ingredientTypeCollection.insertOne(ingredientType)
+                spiceAndSauceTypeCollection.insertOne(spiceAndSauceType)
                 true
             }
             else -> false

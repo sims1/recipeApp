@@ -11,6 +11,7 @@ import csstype.LineStyle.Companion.solid
 import csstype.Position.Companion.fixed
 import csstype.TextAlign.Companion.center
 import getListOfIngredientTypes
+import getListOfSpiceAndSauceTypes
 import io.ktor.http.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -30,6 +31,7 @@ import react.dom.html.ReactHTML.label
 import react.dom.html.ReactHTML.option
 import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.select
+import react.dom.html.ReactHTML.span
 import react.dom.html.ReactHTML.textarea
 import react.useEffectOnce
 import react.useState
@@ -55,14 +57,19 @@ val EditRecipePage = FC<Props> {
     var recipeImageState: File? by useState(null)
     var descriptionState: String by useState("")
 
-    var showPopUpWindow: Boolean by useState(false)
-    var popUpWindowMessage: String by useState("")
+    var showConfirmationPopUpWindow: Boolean by useState(false)
+    var confirmationPopUpWindowMessage: String by useState("")
+
+    var showAddIngredientPopUpWindow: Boolean by useState(false)
+    var showIsMainIngredientCheckBoxInPopUpWindow: Boolean by useState(false)
 
     var ingredientTypesState: List<IngredientType> by useState(emptyList())
+    var spiceAndSauceTypesState: List<SpiceAndSauceType> by useState(emptyList())
 
     useEffectOnce {
         scope.launch {
             ingredientTypesState = getListOfIngredientTypes()
+            spiceAndSauceTypesState = getListOfSpiceAndSauceTypes()
         }
     }
 
@@ -196,7 +203,25 @@ val EditRecipePage = FC<Props> {
                         }
                     }
                 }
-
+                /*
+                span { +" " }
+                button {
+                    css {
+                        fontFamily = textFontFamilyAlias
+                        fontSize = unimportantFontSizeAlias
+                        backgroundColor = recipeNameColorAlias
+                        color = buttonFontColor
+                        borderRadius = roundBorderRadius
+                        borderWidth = 0.pc
+                        cursor = Cursor.pointer
+                    }
+                    type = ButtonType.button
+                    onClick = {
+                        println("Add new vegetable or meat")
+                    }
+                    +"+"
+                }
+                */
                 p {
                     +"Quantity "
                     input {
@@ -276,7 +301,7 @@ val EditRecipePage = FC<Props> {
                         spiceAndSauceTypeState = TypeStringConverter.getSpiceAndSauceType(event.target.value)
                     }
                     option { +"Select spice or sauce" }
-                    sortedSpiceAndSauceType.map { ingredient ->
+                    spiceAndSauceTypesState.map { ingredient ->
                         option {
                             value = ingredient.getValue()
                             +ingredient.getValue()
@@ -445,8 +470,8 @@ val EditRecipePage = FC<Props> {
             type = ButtonType.button
             onClick = {
                 when {
-                    recipeNameState == null -> popUpWindowMessage = "Recipe name is not set!"
-                    recipeTagsState.isEmpty() -> popUpWindowMessage = "Please choose at least 1 tag"
+                    recipeNameState == null -> confirmationPopUpWindowMessage = "Recipe name is not set!"
+                    recipeTagsState.isEmpty() -> confirmationPopUpWindowMessage = "Please choose at least 1 tag"
                     else -> {
                         val recipe = Recipe(
                             recipeNameState!!,
@@ -456,11 +481,11 @@ val EditRecipePage = FC<Props> {
                             descriptionState
                         )
                         scope.launch {
-                            popUpWindowMessage = when (addRecipe(recipe).status) {
+                            confirmationPopUpWindowMessage = when (addRecipe(recipe).status) {
                                 HttpStatusCode.OK -> {
                                     val response = recipeImageState?.let {
                                         println("Creating recipe in progress...")
-                                        popUpWindowMessage = "Creating recipe in progress..."
+                                        confirmationPopUpWindowMessage = "Creating recipe in progress..."
                                         uploadRecipePicture(recipe.id, it)
                                     }
                                     when(response?.status) {
@@ -475,12 +500,12 @@ val EditRecipePage = FC<Props> {
                         }
                     }
                 }
-                showPopUpWindow = true
+                showConfirmationPopUpWindow = true
             }
             +"Add recipe"
         }
 
-        if (showPopUpWindow) {
+        if (showConfirmationPopUpWindow) {
             div {
                 css {
                     textAlign = center
@@ -500,12 +525,12 @@ val EditRecipePage = FC<Props> {
                     backgroundColor = hoverColorAlias
                 }
                 p {
-                    +popUpWindowMessage
+                    +confirmationPopUpWindowMessage
                 }
 
                 button {
                     css {
-                        onMouseDown = { showPopUpWindow = false }
+                        onMouseDown = { showConfirmationPopUpWindow = false }
 
                         color = NamedColor.white
                         backgroundColor = recipeNameColorAlias

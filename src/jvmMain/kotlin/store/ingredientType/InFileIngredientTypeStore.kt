@@ -14,6 +14,7 @@ class InFileIngredientTypeStore(
     }
 
     override suspend fun add(ingredientType: IngredientType): Boolean = false
+
     companion object {
 
         private fun createIngredientTypeList(): List<IngredientType> {

@@ -1,23 +1,24 @@
-package store.ingredientType
+package store.spiceAndSauceType
 
-import atomics.ingredient.IngredientType
+import atomics.ingredient.SpiceAndSauceType
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class InFileIngredientTypeStore(
-    private val ingredientTypeList: List<IngredientType> = createIngredientTypeList(),
-): IngredientTypeStore {
+class InFileSpiceAndSauceTypeStore(
+    private val spiceAndSauceTypeList: List<SpiceAndSauceType> = create(),
+): SpiceAndSauceTypeStore {
 
 
-    override suspend fun getAll(): List<IngredientType> {
-        return ingredientTypeList
+    override suspend fun getAll(): List<SpiceAndSauceType> {
+        return spiceAndSauceTypeList
     }
 
-    override suspend fun add(ingredientType: IngredientType): Boolean = false
+    override suspend fun add(spiceAndSauceType: SpiceAndSauceType): Boolean = false
+
     companion object {
 
-        private fun createIngredientTypeList(): List<IngredientType> {
-            val inputString = this::class.java.getResource("/IngredientTypeBackUp.txt").readText()
+        private fun create(): List<SpiceAndSauceType> {
+            val inputString = this::class.java.getResource("/SpiceAndSauceTypeBackUp.txt").readText()
             return Json.decodeFromString(inputString)
         }
     }
