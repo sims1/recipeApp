@@ -1,1 +1,190 @@
-[{"name": "Chicken wing"}]
+[
+   {
+      "name":"Chicken wing"
+   },
+   {
+      "name":"Chicken breast"
+   },
+   {
+      "name":"Chicken thigh"
+   },
+   {
+      "name":"Chicken wing"
+   },
+   {
+      "name":"Bacon",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Salmon"
+   },
+   {
+      "name":"Steak"
+   },
+   {
+      "name":"Pork"
+   },
+   {
+      "name":"Cantonese sausage(广东腊肠)"
+   },
+   {
+      "name":"Egg"
+   },
+   {
+      "name":"Tuna"
+   },
+   {
+      "name":"Basa"
+   },
+   {
+      "name":"Soft Tofu"
+   },
+   {
+      "name":"Medium Tofu"
+   },
+   {
+      "name":"Firm Tofu"
+   },
+   {
+      "name":"Tofu sheet(豆腐皮)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Fried tofu(油豆腐)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Gluten(面筋)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Sweet potato"
+   },
+   {
+      "name":"Zucchini"
+   },
+   {
+      "name":"Potato"
+   },
+   {
+      "name":"Garlic",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Zucchini"
+   },
+   {
+      "name":"Eggplant"
+   },
+   {
+      "name":"Enoki"
+   },
+   {
+      "name":"Carrot"
+   },
+   {
+      "name":"Onion",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Kernel corn(玉米粒)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Tasty mushroom(香菇)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Cauliflower"
+   },
+   {
+      "name":"Shallot",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Green Peas",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Celery"
+   },
+   {
+      "name":"Lemon",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Pickle mustard (酸芥菜)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Pickle cabbage (东北酸白菜)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Kimchi (韩国泡菜)"
+   },
+   {
+      "name":"Long chili",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Milk",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Mozzarella",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Coconut milk",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Ginger",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Basil",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Coriander(香菜)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Green Onion",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Garlic",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Small red chili (小米辣)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Chicken broth",
+      "isMainIngredient":false
+   },
+   {
+      "name":"All purpose flour",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Rice"
+   },
+   {
+      "name":"Rice Paper(越南米纸)",
+      "isMainIngredient":false
+   },
+   {
+      "name":"Ciabatta bread"
+   },
+   {
+      "name":"Macaroni"
+   },
+   {
+      "name":"Pasta"
+   }
+]
