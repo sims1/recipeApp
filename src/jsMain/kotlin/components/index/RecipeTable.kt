@@ -40,8 +40,9 @@ val RecipeTable = FC<RecipeTableProps> { props ->
 
     if (props.selectedIngredients.isNotEmpty()) {
         showRecipes = showRecipes.filter { recipe ->
-            val ingredients = recipe.mainIngredients.map { ingredient -> ingredient.type }
-            props.selectedIngredients.intersect(ingredients.toSet()).isNotEmpty()
+            val ingredients = recipe.mainIngredients.map { ingredient -> ingredient.type.getValue() }
+            props.selectedIngredients.map { it.getValue() }
+                .intersect(ingredients.toSet()).isNotEmpty()
         }
     }
 

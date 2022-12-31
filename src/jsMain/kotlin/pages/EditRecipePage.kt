@@ -10,6 +10,7 @@ import csstype.*
 import csstype.LineStyle.Companion.solid
 import csstype.Position.Companion.fixed
 import csstype.TextAlign.Companion.center
+import getListOfIngredientTypes
 import io.ktor.http.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -30,6 +31,7 @@ import react.dom.html.ReactHTML.option
 import react.dom.html.ReactHTML.p
 import react.dom.html.ReactHTML.select
 import react.dom.html.ReactHTML.textarea
+import react.useEffectOnce
 import react.useState
 import uploadRecipePicture
 
@@ -55,6 +57,14 @@ val EditRecipePage = FC<Props> {
 
     var showPopUpWindow: Boolean by useState(false)
     var popUpWindowMessage: String by useState("")
+
+    var ingredientTypesState: List<IngredientType> by useState(emptyList())
+
+    useEffectOnce {
+        scope.launch {
+            ingredientTypesState = getListOfIngredientTypes()
+        }
+    }
 
     Header { }
 
@@ -179,7 +189,7 @@ val EditRecipePage = FC<Props> {
                         ingredientTypeState = TypeStringConverter.getVegetableAndMeatType(event.target.value)
                     }
                     option { +"Select vegetable or meat" }
-                    sortedIngredientType.map { ingredient ->
+                    ingredientTypesState.map { ingredient ->
                         option {
                             value = ingredient.getValue()
                             +ingredient.getValue()

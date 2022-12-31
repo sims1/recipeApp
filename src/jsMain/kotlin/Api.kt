@@ -1,6 +1,7 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
 import atomics.Recipe.Companion.create_picture_path
+import atomics.ingredient.IngredientType
 import auth.AuthRequest
 import components.common.LoginState
 import io.ktor.client.*
@@ -39,6 +40,10 @@ suspend fun getRecipesById(recipeId: String): Recipe {
         contentType(ContentType.Application.Json)
         parameter(recipeIdParameterKey, recipeId)
     }.body()
+}
+
+suspend fun getListOfIngredientTypes(): List<IngredientType> {
+    return jsonClient.get(endpoint + Recipe.get_ingredient_types_path).body()
 }
 
 suspend fun addRecipe(recipe: Recipe): HttpResponse {

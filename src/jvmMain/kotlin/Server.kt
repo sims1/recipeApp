@@ -25,6 +25,7 @@ import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
+import store.ingredientType.InMemoryIngredientTypeStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
 import store.recipe.RedisRecipeStore
@@ -35,19 +36,24 @@ import java.util.concurrent.TimeUnit
 // https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/04_Frontend_Setup
 
 private val recipeStore =
-    MongoDBRecipeStore()
+    //MongoDBRecipeStore()
     //RedisRecipeStore()
-    //InMemoryRecipeStore() // testing only
+    InMemoryRecipeStore() // testing only
 // how to back up
 // 1. go to http://0.0.0.0:9090/getall
 // 2. copy the content, and paste in RecipeBackUp.txt
 // 3. enable the next line
-    //InFileRecipeStore() // testing only
+    //InFileRecipeStore() // backup only
+
+private val ingredientTypeStore =
+    //MongoDBIngredientTypeStore()
+    InMemoryIngredientTypeStore() // testing only
+    //InFileIngredientTypeStore()  // backup only
 
 private val imageStore =
     //MongoDBImageStore()
     RedisImageStore()
-    //InFileImageStore() // testing only
+    //InFileImageStore() // backup only
     //TestingImageStore() // testing only
 fun main() {
     val server = embeddedServer(Netty, 9090) {
@@ -97,6 +103,11 @@ fun main() {
             route(Recipe.get_all_path) {
                 get {
                     call.respond(recipeStore.getAll())
+                }
+            }
+            route(Recipe.get_ingredient_types_path) {
+                get {
+                    call.respond(ingredientTypeStore.getAll())
                 }
             }
             route(Recipe.auth_path) {

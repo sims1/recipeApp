@@ -56,6 +56,7 @@ class Recipe(
         const val load_from_in_file_path = "/loadfrominfile"
         const val load_from_in_memory_path = "/loadfrominmemory"
         const val get_by_recipe_id_path = "/getbyrecipeid"
-        const val get_image_by_recipe_id_path= "/getImageByRecipeId"
+        const val get_image_by_recipe_id_path = "/getImageByRecipeId"
+        const val get_ingredient_types_path = "/getIngredientTypesPath"
     }
 }
