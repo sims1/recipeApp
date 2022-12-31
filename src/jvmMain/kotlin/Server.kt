@@ -108,7 +108,7 @@ fun main() {
             }
             route(Recipe.get_ingredient_types_path) {
                 get {
-                    call.respond(ingredientTypeStore.getAll())
+                    call.respond(ingredientTypeStore.getAll().sortedBy { it.getValue() })
                 }
             }
             route(Recipe.auth_path) {
