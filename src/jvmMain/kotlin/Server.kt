@@ -25,10 +25,9 @@ import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
+import store.ingredientType.InFileIngredientTypeStore
 import store.ingredientType.InMemoryIngredientTypeStore
 import store.recipe.InFileRecipeStore
-import store.recipe.MongoDBRecipeStore
-import store.recipe.RedisRecipeStore
 import java.util.concurrent.TimeUnit
 
 
@@ -47,8 +46,8 @@ private val recipeStore =
 
 private val ingredientTypeStore =
     //MongoDBIngredientTypeStore()
-    InMemoryIngredientTypeStore() // testing only
-    //InFileIngredientTypeStore()  // backup only
+    //InMemoryIngredientTypeStore() // testing only
+    InFileIngredientTypeStore()  // backup only
 
 private val imageStore =
     //MongoDBImageStore()
@@ -180,7 +179,15 @@ fun main() {
                 }
             }
             // debug purpose
-            route(Recipe.load_from_in_file_path) {
+            route(Recipe.load_recipe_from_in_memory_path) {
+                get {
+                    val inMemoryRecipeStore = InMemoryRecipeStore()
+                    // write in-memory recipe into recipeStore
+                    inMemoryRecipeStore.getAll().forEach { recipe -> recipeStore.add(recipe) }
+                    call.respond(inMemoryRecipeStore.getAll())
+                }
+            }
+            route(Recipe.load_recipe_from_in_file_path) {
                 get {
                     val inFileRecipeStore = InFileRecipeStore()
                     // write in-file recipe into recipeStore
@@ -188,12 +195,12 @@ fun main() {
                     call.respond(inFileRecipeStore.getAll())
                 }
             }
-            route(Recipe.load_from_in_memory_path) {
+            route(Recipe.load_ingredient_type_from_in_file_path) {
                 get {
-                    val inMemoryRecipeStore = InMemoryRecipeStore()
-                    // write in-memory recipe into recipeStore
-                    inMemoryRecipeStore.getAll().forEach { recipe -> recipeStore.add(recipe) }
-                    call.respond(inMemoryRecipeStore.getAll())
+                    val inFileIngredientTypeStore = InFileIngredientTypeStore()
+                    // write in-file IngredientType into ingredientTypeStore
+                    inFileIngredientTypeStore.getAll().forEach { ingredientType -> ingredientTypeStore.add(ingredientType) }
+                    call.respond(inFileIngredientTypeStore.getAll())
                 }
             }
         }

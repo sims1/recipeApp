@@ -1,6 +1,5 @@
 package store.ingredientType
 
-import atomics.Recipe
 import atomics.ingredient.IngredientType
 
 interface IngredientTypeStore {
@@ -9,7 +8,7 @@ interface IngredientTypeStore {
 
     // return true if inserted successfully or
     // return false if not inserted, might due to already exists or the store is read only
-    suspend fun add(recipe: Recipe): Boolean
+    suspend fun add(ingredientType: IngredientType): Boolean
 
     fun shutDown() {}
 }
