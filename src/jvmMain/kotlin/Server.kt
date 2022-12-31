@@ -27,6 +27,7 @@ import store.DatabaseClients
 import store.image.RedisImageStore
 import store.ingredientType.InFileIngredientTypeStore
 import store.ingredientType.InMemoryIngredientTypeStore
+import store.ingredientType.MongoDBIngredientTypeStore
 import store.recipe.InFileRecipeStore
 import java.util.concurrent.TimeUnit
 
@@ -45,9 +46,9 @@ private val recipeStore =
     //InFileRecipeStore() // backup only
 
 private val ingredientTypeStore =
-    //MongoDBIngredientTypeStore()
+    MongoDBIngredientTypeStore()
     //InMemoryIngredientTypeStore() // testing only
-    InFileIngredientTypeStore()  // backup only
+    //InFileIngredientTypeStore()  // backup only
 
 private val imageStore =
     //MongoDBImageStore()

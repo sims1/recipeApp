@@ -1,1 +1,1 @@
-[{"value": "Chicken wing"}]
+[{"name": "Chicken wing"}]

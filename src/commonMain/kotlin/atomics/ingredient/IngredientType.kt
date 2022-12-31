@@ -2,11 +2,8 @@ package atomics.ingredient
 
 import kotlinx.serialization.Serializable
 
-
-//val sortedIngredientType = IngredientType.values().sortedBy { it.getValue() }
-
 @Serializable
-class IngredientType(private val value: String, val isMainIngredient: Boolean = true) : BaseIngredient {
+class IngredientType(val name: String, val isMainIngredient: Boolean = true) : BaseIngredient {
 
     companion object {
         val CHICKEN_BREAST = IngredientType("Chicken breast")
@@ -34,7 +31,9 @@ class IngredientType(private val value: String, val isMainIngredient: Boolean = 
         val GARLIC = IngredientType("Garlic", isMainIngredient = false)
     }
 
-    override fun getValue() = value
+    override fun getValue(): String {
+        return name
+    }
 
 /*
 
