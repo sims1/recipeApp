@@ -1,5 +1,7 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
+import atomics.ingredient.IngredientType
+import atomics.ingredient.SpiceAndSauceType
 import auth.AUTH_TOKEN_EXPIRY_IN_SECONDS
 import auth.AuthRequest
 import auth.Authenticator
@@ -153,6 +155,22 @@ fun main() {
                     }
                     when {
                         recipeStore.add(recipe) -> call.respond(HttpStatusCode.OK)
+                        else -> call.respond(HttpStatusCode.Conflict)
+                    }
+                }
+
+                post(Recipe.add_ingredient_type) {
+                    val ingredientType = call.receive<IngredientType>()
+                    when {
+                        ingredientTypeStore.add(ingredientType) -> call.respond(HttpStatusCode.OK)
+                        else -> call.respond(HttpStatusCode.Conflict)
+                    }
+                }
+
+                post(Recipe.add_spice_and_sauce_type) {
+                    val spiceAndSauceType = call.receive<SpiceAndSauceType>()
+                    when {
+                        spiceAndSauceTypeStore.add(spiceAndSauceType) -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }

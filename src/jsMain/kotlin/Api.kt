@@ -51,6 +51,20 @@ suspend fun getListOfSpiceAndSauceTypes(): List<SpiceAndSauceType> {
     return jsonClient.get(endpoint + Recipe.get_spice_and_sauce_types_path).body()
 }
 
+suspend fun addIngredientType(ingredientType: IngredientType): HttpResponse {
+    return jsonClient.post(endpoint + Recipe.add_ingredient_type) {
+        contentType(ContentType.Application.Json)
+        setBody(ingredientType)
+    }
+}
+
+suspend fun addSpiceAndSauceType(spiceAndSauceType: SpiceAndSauceType): HttpResponse {
+    return jsonClient.post(endpoint + Recipe.add_spice_and_sauce_type) {
+        contentType(ContentType.Application.Json)
+        setBody(spiceAndSauceType)
+    }
+}
+
 suspend fun addRecipe(recipe: Recipe): HttpResponse {
     return jsonClient.post(endpoint + Recipe.create_path) {
         contentType(ContentType.Application.Json)

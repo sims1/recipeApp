@@ -48,8 +48,10 @@ class Recipe(
     }
 
     companion object {
-        const val create_path = "/create"
-        const val create_picture_path = "/createpicture"
+        const val create_path = "/createRecipe"
+        const val create_picture_path = "/createPicture"
+        const val add_ingredient_type = "/addIngredientType"
+        const val add_spice_and_sauce_type = "/addSpiceAndSauceType"
         const val auth_path = "/auth"
         const val reauth_path = "/reauth"
         const val get_all_path = "/getAllRecipe"

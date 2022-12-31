@@ -1,6 +1,8 @@
 package pages
 
+import addIngredientType
 import addRecipe
+import addSpiceAndSauceType
 import atomics.*
 import atomics.ingredient.*
 import components.shared.Footer
@@ -39,6 +41,45 @@ import uploadRecipePicture
 
 private val scope = MainScope()
 
+class PopUpWindowConfig(
+    val show: Boolean = false,
+    val message: String = "",
+    val showAddIngredientComponents: Boolean = false
+) {
+    fun newWithField(
+        newShow: Boolean = show,
+        newMessage: String = message,
+        newShowAddIngredientTextBox: Boolean = showAddIngredientComponents
+    ): PopUpWindowConfig {
+        return PopUpWindowConfig(
+            show = newShow,
+            message = newMessage,
+            showAddIngredientComponents = newShowAddIngredientTextBox
+        )
+    }
+}
+
+class AddIngredientConfig(
+    val name: String = "",
+    val ingredientType: AddIngredientType = AddIngredientType.OTHER_INGREDIENT
+) {
+    fun newWithField(
+        newName: String = name,
+        newAddIngredientType: AddIngredientType = ingredientType,
+    ): AddIngredientConfig {
+        return AddIngredientConfig(
+            name = newName,
+            ingredientType = newAddIngredientType
+        )
+    }
+
+    enum class AddIngredientType(val value: String) {
+        MAIN_INGREDIENT("Main Ingredient"),
+        OTHER_INGREDIENT("Other Ingredient"),
+        SPICES_AND_SAUCE("Spices/Sauce")
+    }
+}
+
 val EditRecipePage = FC<Props> {
     var recipeNameState: String? by useState(null)
     var recipeTagsState: List<Tag> by useState(emptyList())
@@ -57,11 +98,9 @@ val EditRecipePage = FC<Props> {
     var recipeImageState: File? by useState(null)
     var descriptionState: String by useState("")
 
-    var showConfirmationPopUpWindow: Boolean by useState(false)
-    var confirmationPopUpWindowMessage: String by useState("")
+    var popUpWindowConfigState: PopUpWindowConfig by useState(PopUpWindowConfig())
 
-    var showAddIngredientPopUpWindow: Boolean by useState(false)
-    var showIsMainIngredientCheckBoxInPopUpWindow: Boolean by useState(false)
+    var addIngredientConfigState: AddIngredientConfig by useState(AddIngredientConfig())
 
     var ingredientTypesState: List<IngredientType> by useState(emptyList())
     var spiceAndSauceTypesState: List<SpiceAndSauceType> by useState(emptyList())
@@ -216,7 +255,11 @@ val EditRecipePage = FC<Props> {
                     }
                     type = ButtonType.button
                     onClick = {
-                        println("Add new vegetable or meat")
+                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
+                            newShow = true,
+                            newMessage = "",
+                            newShowAddIngredientTextBox = true,
+                        )
                     }
                     +"+"
                 }
@@ -468,8 +511,16 @@ val EditRecipePage = FC<Props> {
             type = ButtonType.button
             onClick = {
                 when {
-                    recipeNameState == null -> confirmationPopUpWindowMessage = "Recipe name is not set!"
-                    recipeTagsState.isEmpty() -> confirmationPopUpWindowMessage = "Please choose at least 1 tag"
+                    recipeNameState == null -> {
+                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
+                            newMessage = "Recipe name is not set!"
+                        )
+                    }
+                    recipeTagsState.isEmpty() -> {
+                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
+                            newMessage = "Please choose at least 1 tag"
+                        )
+                    }
                     else -> {
                         val recipe = Recipe(
                             recipeNameState!!,
@@ -479,11 +530,13 @@ val EditRecipePage = FC<Props> {
                             descriptionState
                         )
                         scope.launch {
-                            confirmationPopUpWindowMessage = when (addRecipe(recipe).status) {
+                            val message = when (addRecipe(recipe).status) {
                                 HttpStatusCode.OK -> {
                                     val response = recipeImageState?.let {
                                         println("Creating recipe in progress...")
-                                        confirmationPopUpWindowMessage = "Creating recipe in progress..."
+                                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
+                                            newMessage = "Creating recipe in progress..."
+                                        )
                                         uploadRecipePicture(recipe.id, it)
                                     }
                                     when(response?.status) {
@@ -495,15 +548,21 @@ val EditRecipePage = FC<Props> {
                                 HttpStatusCode.Unauthorized -> "Please log in first"
                                 else -> "Unknown error occurred, please contact Ling"
                             }
+                            popUpWindowConfigState = popUpWindowConfigState.newWithField(
+                                newMessage = message
+                            )
                         }
                     }
                 }
-                showConfirmationPopUpWindow = true
+                popUpWindowConfigState = popUpWindowConfigState.newWithField(
+                    newShow = true,
+                    newShowAddIngredientTextBox = false
+                )
             }
             +"Add recipe"
         }
 
-        if (showConfirmationPopUpWindow) {
+        if (popUpWindowConfigState.show) {
             div {
                 css {
                     textAlign = center
@@ -523,22 +582,103 @@ val EditRecipePage = FC<Props> {
                     backgroundColor = hoverColorAlias
                 }
                 p {
-                    +confirmationPopUpWindowMessage
+                    +popUpWindowConfigState.message
                 }
-
-                button {
-                    css {
-                        onMouseDown = { showConfirmationPopUpWindow = false }
-
-                        color = NamedColor.white
-                        backgroundColor = recipeNameColorAlias
-                        borderColor = recipeNameColorAlias
-                        borderRadius = commonButtonBorderRadiusAlias
-                        height = 2.pc
-                        width = 6.pc
-                        cursor = Cursor.pointer
+                if (popUpWindowConfigState.showAddIngredientComponents) {
+                    input {
+                        css {
+                            fontSize = textFontSizeAlias
+                            textAlign = center
+                            margin = Auto.auto
+                        }
+                        type = InputType.text
+                        placeholder = "Ingredient Name"
+                        onChange = { event ->
+                            addIngredientConfigState = addIngredientConfigState.newWithField(newName = event.target.value)
+                        }
                     }
-                    +"OK"
+                    p { +"" }
+
+                    AddIngredientConfig.AddIngredientType.values().map { addIngredientType ->
+                        label {
+                            css {
+                                fontFamily = textFontFamilyAlias
+                                fontSize = textFontSizeAlias
+                            }
+                            input {
+                                type = InputType.radio
+                                value = addIngredientType.value
+                                name = "ingredientUnit"
+                                onChange = {
+                                    addIngredientConfigState = addIngredientConfigState.newWithField(newAddIngredientType = addIngredientType)
+                                }
+                            }
+                        }
+                        +addIngredientType.value
+                        p { +"" }
+                    }
+                    button {
+                        css {
+                            color = NamedColor.white
+                            backgroundColor = recipeNameColorAlias
+                            borderColor = recipeNameColorAlias
+                            borderRadius = commonButtonBorderRadiusAlias
+                            height = 2.pc
+                            width = 6.pc
+                            cursor = Cursor.pointer
+
+                            onClick = {
+                                scope.launch {
+                                    val result = when(addIngredientConfigState.ingredientType) {
+                                        AddIngredientConfig.AddIngredientType.MAIN_INGREDIENT -> {
+                                            addIngredientType(
+                                                IngredientType(addIngredientConfigState.name, true)
+                                            )
+                                        }
+                                        AddIngredientConfig.AddIngredientType.OTHER_INGREDIENT -> {
+                                            addIngredientType(
+                                                IngredientType(addIngredientConfigState.name, false)
+                                            )
+                                        }
+                                        AddIngredientConfig.AddIngredientType.SPICES_AND_SAUCE -> {
+                                            addSpiceAndSauceType(SpiceAndSauceType(addIngredientConfigState.name))
+                                        }
+                                    }
+                                    val popUpMessage = when (result.status) {
+                                        HttpStatusCode.OK -> "Congratulations! Ingredient ${addIngredientConfigState.name} is added!"
+                                        HttpStatusCode.Conflict -> "Error since an ingredient with the same name already exists"
+                                        HttpStatusCode.Unauthorized -> "Please log in first"
+                                        else -> "Unknown error occurred, please contact Ling"
+                                    }
+                                    popUpWindowConfigState = PopUpWindowConfig(
+                                        show = true,
+                                        message = popUpMessage
+                                    )
+                                }
+                            }
+                        }
+                        +"Add"
+                    }
+                }
+                else {
+                    button {
+                        css {
+                            color = NamedColor.white
+                            backgroundColor = recipeNameColorAlias
+                            borderColor = recipeNameColorAlias
+                            borderRadius = commonButtonBorderRadiusAlias
+                            height = 2.pc
+                            width = 6.pc
+                            cursor = Cursor.pointer
+
+                            onClick = {
+                                popUpWindowConfigState = popUpWindowConfigState.newWithField(
+                                    newShow = false
+                                )
+                            }
+                        }
+                        +"OK"
+                    }
                 }
             }
         }
