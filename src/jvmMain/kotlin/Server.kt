@@ -27,8 +27,8 @@ import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
-import store.ingredientType.InFileIngredientTypeStore
-import store.ingredientType.MongoDBIngredientTypeStore
+import store.ingredientType.InFileIngredientStore
+import store.ingredientType.MongoDBIngredientStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
 import store.spiceAndSauceType.InFileSpiceAndSauceTypeStore
@@ -49,10 +49,10 @@ private val recipeStore =
 // 3. enable the next line
     //InFileRecipeStore() // backup only
 
-private val ingredientTypeStore =
-    MongoDBIngredientTypeStore()
-    //InMemoryIngredientTypeStore() // testing only
-    //InFileIngredientTypeStore()  // backup only
+private val ingredientStore =
+    MongoDBIngredientStore()
+    //InMemoryIngredientStore() // testing only
+    //InFileIngredientStore()  // backup only
 
 private val spiceAndSauceTypeStore =
     MongoDBSpiceAndSauceTypeStore()
@@ -114,9 +114,9 @@ fun main() {
                     call.respond(recipeStore.getAll())
                 }
             }
-            route(Recipe.get_ingredient_types_path) {
+            route(Recipe.get_ingredients_path) {
                 get {
-                    call.respond(ingredientTypeStore.getAll().sortedBy { it.getValue() })
+                    call.respond(ingredientStore.getAll().sortedBy { it.getValue() })
                 }
             }
             route(Recipe.get_spice_and_sauce_types_path) {
@@ -157,10 +157,10 @@ fun main() {
                     }
                 }
 
-                post(Recipe.add_ingredient_type) {
+                post(Recipe.add_ingredient) {
                     val ingredient = call.receive<Ingredient>()
                     when {
-                        ingredientTypeStore.add(ingredient) -> call.respond(HttpStatusCode.OK)
+                        ingredientStore.add(ingredient) -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }
@@ -226,12 +226,12 @@ fun main() {
                     call.respond(inFileRecipeStore.getAll())
                 }
             }
-            route(Recipe.load_ingredient_type_from_in_file_path) {
+            route(Recipe.load_ingredients_from_in_file_path) {
                 get {
-                    val inFileIngredientTypeStore = InFileIngredientTypeStore()
-                    // write in-file IngredientType into ingredientTypeStore
-                    inFileIngredientTypeStore.getAll().forEach { ingredientType -> ingredientTypeStore.add(ingredientType) }
-                    call.respond(inFileIngredientTypeStore.getAll())
+                    val inFileIngredientStore = InFileIngredientStore()
+                    // write in-file Ingredient into ingredientStore
+                    inFileIngredientStore.getAll().forEach { ingredient -> ingredientStore.add(ingredient) }
+                    call.respond(inFileIngredientStore.getAll())
                 }
             }
             route(Recipe.load_spice_and_sauce_type_from_in_file_path) {

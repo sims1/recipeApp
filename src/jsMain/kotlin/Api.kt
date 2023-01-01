@@ -41,16 +41,16 @@ suspend fun getRecipesById(recipeId: String): Recipe {
     }.body()
 }
 
-suspend fun getListOfIngredientTypes(): List<Ingredient> {
-    return jsonClient.get(endpoint + Recipe.get_ingredient_types_path).body()
+suspend fun getListOfIngredients(): List<Ingredient> {
+    return jsonClient.get(endpoint + Recipe.get_ingredients_path).body()
 }
 
 suspend fun getListOfSpiceAndSauceTypes(): List<Seasoning> {
     return jsonClient.get(endpoint + Recipe.get_spice_and_sauce_types_path).body()
 }
 
-suspend fun addIngredientType(ingredient: Ingredient): HttpResponse {
-    return jsonClient.post(endpoint + Recipe.add_ingredient_type) {
+suspend fun addIngredient(ingredient: Ingredient): HttpResponse {
+    return jsonClient.post(endpoint + Recipe.add_ingredient) {
         contentType(ContentType.Application.Json)
         setBody(ingredient)
     }

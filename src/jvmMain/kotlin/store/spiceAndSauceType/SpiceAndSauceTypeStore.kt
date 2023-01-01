@@ -8,7 +8,7 @@ interface SpiceAndSauceTypeStore {
 
     // return true if inserted successfully or
     // return false if not inserted, might due to already exists or the store is read only
-    suspend fun add(ingredientType: Seasoning): Boolean
+    suspend fun add(seasoning: Seasoning): Boolean
 
     fun shutDown() {}
 }

@@ -49,7 +49,7 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
             .flatMap { recipe -> recipe.spicesAndSauces }
             .map { ingredient -> ingredient.type }
             .distinct()
-            .joinToString("\n") { ingredientType -> ingredientType.getValue() }
+            .joinToString("\n") { ingredient -> ingredient.getValue() }
 
         table {
             css {

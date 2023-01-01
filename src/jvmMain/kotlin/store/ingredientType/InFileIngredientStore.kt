@@ -4,9 +4,9 @@ import atomics.ingredient.Ingredient
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class InFileIngredientTypeStore(
-    private val ingredientList: List<Ingredient> = createIngredientTypeList(),
-): IngredientTypeStore {
+class InFileIngredientStore(
+    private val ingredientList: List<Ingredient> = createIngredientList(),
+): IngredientStore {
 
 
     override suspend fun getAll(): List<Ingredient> {
@@ -17,8 +17,8 @@ class InFileIngredientTypeStore(
 
     companion object {
 
-        private fun createIngredientTypeList(): List<Ingredient> {
-            val inputString = this::class.java.getResource("/IngredientTypeBackUp.txt").readText()
+        private fun createIngredientList(): List<Ingredient> {
+            val inputString = this::class.java.getResource("/IngredientsBackUp.txt").readText()
             return Json.decodeFromString(inputString)
         }
     }

@@ -2,9 +2,9 @@ package store.ingredientType
 
 import atomics.ingredient.Ingredient
 
-class InMemoryIngredientTypeStore(
-    private val ingredientList: List<Ingredient> = createIngredientTypeList(),
-): IngredientTypeStore {
+class InMemoryIngredientStore(
+    private val ingredientList: List<Ingredient> = create(),
+): IngredientStore {
 
     override suspend fun getAll(): List<Ingredient> {
         return ingredientList
@@ -14,7 +14,7 @@ class InMemoryIngredientTypeStore(
 
     companion object {
 
-        private fun createIngredientTypeList(): List<Ingredient> {
+        private fun create(): List<Ingredient> {
             return listOf(
                 Ingredient.CHICKEN_BREAST,
                 Ingredient.CHICKEN_THIGH,

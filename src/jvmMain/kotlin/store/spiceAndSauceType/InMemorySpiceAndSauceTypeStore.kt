@@ -10,7 +10,7 @@ class InMemorySpiceAndSauceTypeStore(
         return seasoningList
     }
 
-    override suspend fun add(ingredientType: Seasoning): Boolean = false
+    override suspend fun add(seasoning: Seasoning): Boolean = false
 
     companion object {
 

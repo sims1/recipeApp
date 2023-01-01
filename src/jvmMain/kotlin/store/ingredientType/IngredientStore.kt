@@ -2,7 +2,7 @@ package store.ingredientType
 
 import atomics.ingredient.Ingredient
 
-interface IngredientTypeStore {
+interface IngredientStore {
 
     suspend fun getAll(): List<Ingredient>
 

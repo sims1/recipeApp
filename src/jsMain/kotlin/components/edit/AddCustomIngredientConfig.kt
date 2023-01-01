@@ -2,16 +2,16 @@ package components.edit
 
 class AddCustomIngredientConfig(
     val name: String? = null,
-    val ingredientType: AddIngredientType = AddIngredientType.OTHER_INGREDIENT
+    val ingredient: AddIngredientType = AddIngredientType.OTHER_INGREDIENT
 ) {
     fun isValid() = (name != null)
     fun newWithField(
         newName: String? = name,
-        newAddIngredientType: AddIngredientType = ingredientType,
+        newAddIngredientType: AddIngredientType = ingredient,
     ): AddCustomIngredientConfig {
         return AddCustomIngredientConfig(
             name = newName,
-            ingredientType = newAddIngredientType
+            ingredient = newAddIngredientType
         )
     }
 

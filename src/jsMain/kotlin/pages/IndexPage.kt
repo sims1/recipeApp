@@ -13,7 +13,7 @@ import components.index.FilterSidebar
 import components.index.RecipeTable
 import components.index.SelectedRecipesPanel
 import csstype.*
-import getListOfIngredientTypes
+import getListOfIngredients
 import getRecipeList
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -42,12 +42,12 @@ val IndexPage = FC<Props> {
     var selectedIngredientsState: Set<Ingredient> by useState(emptySet())
     var selectedRecipesState: RecipeToIntMap by useState(emptyMap())
 
-    var ingredientTypesState: List<Ingredient> by useState(emptyList())
+    var ingredientsState: List<Ingredient> by useState(emptyList())
 
     useEffectOnce {
         scope.launch {
             recipeListState = getRecipeList()
-            ingredientTypesState = getListOfIngredientTypes()
+            ingredientsState = getListOfIngredients()
         }
     }
 
@@ -73,7 +73,7 @@ val IndexPage = FC<Props> {
                 recipeTypes = Tag.values().toList()
                 onSelectType = { selectedType -> selectedTagsState += selectedType }
                 onUnselectType = { unselectedType -> selectedTagsState -= unselectedType }
-                ingredients = ingredientTypesState
+                ingredients = ingredientsState
                 onSelectIngredient = { selectedIngredient -> selectedIngredientsState += selectedIngredient }
                 onUnselectIngredient = { unselectedIngredient -> selectedIngredientsState -= unselectedIngredient }
             }

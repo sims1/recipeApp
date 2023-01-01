@@ -1,6 +1,6 @@
 package pages
 
-import addIngredientType
+import addIngredient
 import addRecipe
 import addSpiceAndSauceType
 import atomics.*
@@ -16,7 +16,7 @@ import csstype.*
 import csstype.LineStyle.Companion.solid
 import csstype.Position.Companion.fixed
 import csstype.TextAlign.Companion.center
-import getListOfIngredientTypes
+import getListOfIngredients
 import getListOfSpiceAndSauceTypes
 import io.ktor.http.*
 import kotlinx.coroutines.MainScope
@@ -63,12 +63,12 @@ val EditRecipePage = FC<Props> {
 
     var showAddIngredientDetails: Boolean by useState(false)
 
-    var ingredientTypesState: List<Ingredient> by useState(emptyList())
+    var selectedIngredientsState: List<Ingredient> by useState(emptyList())
     var spiceAndSauceTypesState: List<Seasoning> by useState(emptyList())
 
     useEffectOnce {
         scope.launch {
-            ingredientTypesState = getListOfIngredientTypes()
+            selectedIngredientsState = getListOfIngredients()
             spiceAndSauceTypesState = getListOfSpiceAndSauceTypes()
         }
     }
@@ -171,7 +171,7 @@ val EditRecipePage = FC<Props> {
                         )
                     }
                     option { +"Select vegetable or meat" }
-                    ingredientTypesState.map { ingredient ->
+                    selectedIngredientsState.map { ingredient ->
                         option {
                             value = ingredient.getValue()
                             +ingredient.getValue()
@@ -624,14 +624,14 @@ val EditRecipePage = FC<Props> {
                                 scope.launch {
                                     var popUpMessage: String
                                     if (addCustomIngredientConfigState.isValid()) {
-                                        val result = when (addCustomIngredientConfigState.ingredientType) {
+                                        val result = when (addCustomIngredientConfigState.ingredient) {
                                             AddCustomIngredientConfig.AddIngredientType.MAIN_INGREDIENT -> {
-                                                addIngredientType(
+                                                addIngredient(
                                                     Ingredient(addCustomIngredientConfigState.name!!, true)
                                                 )
                                             }
                                             AddCustomIngredientConfig.AddIngredientType.OTHER_INGREDIENT -> {
-                                                addIngredientType(
+                                                addIngredient(
                                                     Ingredient(addCustomIngredientConfigState.name!!, false)
                                                 )
                                             }

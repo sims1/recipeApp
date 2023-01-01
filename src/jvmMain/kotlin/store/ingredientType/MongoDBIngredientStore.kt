@@ -4,10 +4,10 @@ import atomics.ingredient.Ingredient
 import org.litote.kmongo.eq
 import store.DatabaseClients
 
-class MongoDBIngredientTypeStore : IngredientTypeStore {
+class MongoDBIngredientStore : IngredientStore {
 
-    private val ingredientTypeDatabase = DatabaseClients.mongoDBClient.getDatabase("ingredientType")
-    private val ingredientCollection = ingredientTypeDatabase.getCollection<Ingredient>()
+    private val ingredientDatabase = DatabaseClients.mongoDBClient.getDatabase("Ingredients")
+    private val ingredientCollection = ingredientDatabase.getCollection<Ingredient>()
 
     override suspend fun getAll(): List<Ingredient> = ingredientCollection.find().toList()
 
