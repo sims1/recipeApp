@@ -50,7 +50,7 @@ val EditRecipePage = FC<Props> {
     var recipeTagsState: List<Tag> by useState(emptyList())
 
     var selectedVegetableAndMeatConfigState: SelectedVegetableAndMeatConfig by useState(SelectedVegetableAndMeatConfig())
-    var vegetableAndMeatIngredientsState: List<IngredientDetails<IngredientType>> by useState(emptyList())
+    var vegetableAndMeatIngredientsState: List<IngredientDetails<Ingredient>> by useState(emptyList())
 
     var selectedSpiceAndSauceConfigState: SelectedSpiceAndSauceConfig by useState(SelectedSpiceAndSauceConfig())
     var spiceAndSauceIngredientsState: List<IngredientDetails<SpiceAndSauceType>> by useState(emptyList())
@@ -63,7 +63,7 @@ val EditRecipePage = FC<Props> {
 
     var showAddIngredientDetails: Boolean by useState(false)
 
-    var ingredientTypesState: List<IngredientType> by useState(emptyList())
+    var ingredientTypesState: List<Ingredient> by useState(emptyList())
     var spiceAndSauceTypesState: List<SpiceAndSauceType> by useState(emptyList())
 
     useEffectOnce {
@@ -627,12 +627,12 @@ val EditRecipePage = FC<Props> {
                                         val result = when (addCustomIngredientConfigState.ingredientType) {
                                             AddCustomIngredientConfig.AddIngredientType.MAIN_INGREDIENT -> {
                                                 addIngredientType(
-                                                    IngredientType(addCustomIngredientConfigState.name!!, true)
+                                                    Ingredient(addCustomIngredientConfigState.name!!, true)
                                                 )
                                             }
                                             AddCustomIngredientConfig.AddIngredientType.OTHER_INGREDIENT -> {
                                                 addIngredientType(
-                                                    IngredientType(addCustomIngredientConfigState.name!!, false)
+                                                    Ingredient(addCustomIngredientConfigState.name!!, false)
                                                 )
                                             }
                                             AddCustomIngredientConfig.AddIngredientType.SPICES_AND_SAUCE -> {

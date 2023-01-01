@@ -1,7 +1,7 @@
 package components.result
 
 import atomics.Recipe
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import components.common.*
 import csstype.*
 import react.FC
@@ -31,7 +31,7 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
         css {
             marginTop = 1.pc
         }
-        val neededVegetableAndMeatMap = mutableMapOf<IngredientType, Int>()
+        val neededVegetableAndMeatMap = mutableMapOf<Ingredient, Int>()
         props.recipes.forEach { (recipe, recipeQuantity) ->
             recipe.mainIngredients.forEach { ingredient ->
                 val newQuantity = when (val currentQuantity = neededVegetableAndMeatMap[ingredient.type]) {

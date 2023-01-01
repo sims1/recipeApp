@@ -2,7 +2,7 @@ package recipes
 
 import atomics.*
 import atomics.ingredient.IngredientDetails
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import atomics.ingredient.SpiceAndSauceType
 
 class MashedPotato {
@@ -11,8 +11,8 @@ class MashedPotato {
         val recipe = Recipe(
             "Mashed Potato",
             listOf(
-                IngredientDetails(IngredientType.POTATO),
-                IngredientDetails(IngredientType.GARLIC)
+                IngredientDetails(Ingredient.POTATO),
+                IngredientDetails(Ingredient.GARLIC)
             ),
             listOf(
                 IngredientDetails(SpiceAndSauceType.BUTTER),

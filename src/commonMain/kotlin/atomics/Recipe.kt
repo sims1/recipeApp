@@ -1,7 +1,7 @@
 package atomics
 
 import atomics.ingredient.IngredientDetails
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import atomics.ingredient.SpiceAndSauceType
 import auth.LING
 import kotlinx.serialization.Contextual
@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class Recipe(
     val name: String,
-    val mainIngredients: List<IngredientDetails<IngredientType>>,
+    val mainIngredients: List<IngredientDetails<Ingredient>>,
     val spicesAndSauces: List<IngredientDetails<SpiceAndSauceType>>,
     val tags: List<Tag>,
     val cookingInstructions: String,

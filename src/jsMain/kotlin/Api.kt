@@ -1,7 +1,7 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
 import atomics.Recipe.Companion.create_picture_path
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import atomics.ingredient.SpiceAndSauceType
 import auth.AuthRequest
 import components.common.LoginState
@@ -23,8 +23,6 @@ import org.khronos.webgl.get
 import org.w3c.files.File
 import org.w3c.files.FileReader
 import kotlin.js.Promise
-import kotlin.js.Promise.Companion.reject
-import kotlin.js.Promise.Companion.resolve
 
 
 val endpoint = window.location.origin // only needed until https://youtrack.jetbrains.com/issue/KTOR-453 is resolved
@@ -43,7 +41,7 @@ suspend fun getRecipesById(recipeId: String): Recipe {
     }.body()
 }
 
-suspend fun getListOfIngredientTypes(): List<IngredientType> {
+suspend fun getListOfIngredientTypes(): List<Ingredient> {
     return jsonClient.get(endpoint + Recipe.get_ingredient_types_path).body()
 }
 
@@ -51,10 +49,10 @@ suspend fun getListOfSpiceAndSauceTypes(): List<SpiceAndSauceType> {
     return jsonClient.get(endpoint + Recipe.get_spice_and_sauce_types_path).body()
 }
 
-suspend fun addIngredientType(ingredientType: IngredientType): HttpResponse {
+suspend fun addIngredientType(ingredient: Ingredient): HttpResponse {
     return jsonClient.post(endpoint + Recipe.add_ingredient_type) {
         contentType(ContentType.Application.Json)
-        setBody(ingredientType)
+        setBody(ingredient)
     }
 }
 

@@ -2,7 +2,7 @@ package pages
 
 import atomics.Recipe
 import atomics.Tag
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import components.shared.Footer
 import components.shared.Header
 import components.common.buttonFontColor
@@ -39,10 +39,10 @@ private typealias RecipeToIntMap = Map<Recipe, Int>
 val IndexPage = FC<Props> {
     var recipeListState by useState(emptyList<Recipe>())
     var selectedTagsState: Set<Tag> by useState(emptySet())
-    var selectedIngredientsState: Set<IngredientType> by useState(emptySet())
+    var selectedIngredientsState: Set<Ingredient> by useState(emptySet())
     var selectedRecipesState: RecipeToIntMap by useState(emptyMap())
 
-    var ingredientTypesState: List<IngredientType> by useState(emptyList())
+    var ingredientTypesState: List<Ingredient> by useState(emptyList())
 
     useEffectOnce {
         scope.launch {

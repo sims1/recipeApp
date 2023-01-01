@@ -3,7 +3,7 @@ package components.index
 import api.recipeIdParameterKey
 import atomics.Recipe
 import atomics.Tag
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML.pre
@@ -28,7 +28,7 @@ import react.useState
 external interface RecipeTableProps : Props {
     var allRecipes: List<Recipe>
     var selectedTags: Set<Tag>
-    var selectedIngredients: Set<IngredientType>
+    var selectedIngredients: Set<Ingredient>
     var onSelectRecipe: (Recipe) -> Unit
 }
 

@@ -1,6 +1,6 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import atomics.ingredient.SpiceAndSauceType
 import auth.AUTH_TOKEN_EXPIRY_IN_SECONDS
 import auth.AuthRequest
@@ -28,12 +28,10 @@ import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
 import store.ingredientType.InFileIngredientTypeStore
-import store.ingredientType.InMemoryIngredientTypeStore
 import store.ingredientType.MongoDBIngredientTypeStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
 import store.spiceAndSauceType.InFileSpiceAndSauceTypeStore
-import store.spiceAndSauceType.InMemorySpiceAndSauceTypeStore
 import store.spiceAndSauceType.MongoDBSpiceAndSauceTypeStore
 import java.util.concurrent.TimeUnit
 
@@ -160,9 +158,9 @@ fun main() {
                 }
 
                 post(Recipe.add_ingredient_type) {
-                    val ingredientType = call.receive<IngredientType>()
+                    val ingredient = call.receive<Ingredient>()
                     when {
-                        ingredientTypeStore.add(ingredientType) -> call.respond(HttpStatusCode.OK)
+                        ingredientTypeStore.add(ingredient) -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }

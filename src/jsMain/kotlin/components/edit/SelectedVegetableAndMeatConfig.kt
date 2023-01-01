@@ -1,16 +1,16 @@
 package components.edit
 
 import atomics.ingredient.IngredientDetails
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 
 class SelectedVegetableAndMeatConfig(
-    private val selected: IngredientType? = null,
+    private val selected: Ingredient? = null,
     private val description: String? = null,
     private val quantity: Int? = 1
 ) {
     fun isValid() = (selected != null)
 
-    fun getIngredient(): IngredientDetails<IngredientType> {
+    fun getIngredient(): IngredientDetails<Ingredient> {
         return IngredientDetails(
             selected!!,
             description,
@@ -19,7 +19,7 @@ class SelectedVegetableAndMeatConfig(
     }
 
     fun newWithField(
-        newSelected: IngredientType? = selected,
+        newSelected: Ingredient? = selected,
         newDescription: String? = description,
         newQuantity: Int? = quantity
     ): SelectedVegetableAndMeatConfig {

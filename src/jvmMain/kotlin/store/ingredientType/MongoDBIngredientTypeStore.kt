@@ -1,22 +1,22 @@
 package store.ingredientType
 
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 import org.litote.kmongo.eq
 import store.DatabaseClients
 
 class MongoDBIngredientTypeStore : IngredientTypeStore {
 
     private val ingredientTypeDatabase = DatabaseClients.mongoDBClient.getDatabase("ingredientType")
-    private val ingredientTypeCollection = ingredientTypeDatabase.getCollection<IngredientType>()
+    private val ingredientCollection = ingredientTypeDatabase.getCollection<Ingredient>()
 
-    override suspend fun getAll(): List<IngredientType> = ingredientTypeCollection.find().toList()
+    override suspend fun getAll(): List<Ingredient> = ingredientCollection.find().toList()
 
     // return true if inserted successfully
     // return false if already exists
-    override suspend fun add(ingredientType: IngredientType): Boolean {
-        return when (ingredientTypeCollection.findOne(IngredientType::name eq ingredientType.name)) {
+    override suspend fun add(ingredient: Ingredient): Boolean {
+        return when (ingredientCollection.findOne(Ingredient::name eq ingredient.name)) {
             null -> {
-                ingredientTypeCollection.insertOne(ingredientType)
+                ingredientCollection.insertOne(ingredient)
                 true
             }
             else -> false

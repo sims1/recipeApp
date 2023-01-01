@@ -1,26 +1,26 @@
 package store.ingredientType
 
-import atomics.ingredient.IngredientType
+import atomics.ingredient.Ingredient
 
 class InMemoryIngredientTypeStore(
-    private val ingredientTypeList: List<IngredientType> = createIngredientTypeList(),
+    private val ingredientList: List<Ingredient> = createIngredientTypeList(),
 ): IngredientTypeStore {
 
-    override suspend fun getAll(): List<IngredientType> {
-        return ingredientTypeList
+    override suspend fun getAll(): List<Ingredient> {
+        return ingredientList
     }
 
-    override suspend fun add(ingredientType: IngredientType): Boolean = false
+    override suspend fun add(ingredient: Ingredient): Boolean = false
 
     companion object {
 
-        private fun createIngredientTypeList(): List<IngredientType> {
+        private fun createIngredientTypeList(): List<Ingredient> {
             return listOf(
-                IngredientType.CHICKEN_BREAST,
-                IngredientType.CHICKEN_THIGH,
-                IngredientType.CHICKEN_WING,
+                Ingredient.CHICKEN_BREAST,
+                Ingredient.CHICKEN_THIGH,
+                Ingredient.CHICKEN_WING,
 
-                IngredientType.GARLIC,
+                Ingredient.GARLIC,
             )
         }
     }
