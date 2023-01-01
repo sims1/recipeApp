@@ -4,7 +4,7 @@ import atomics.CookingUnit
 import atomics.ingredient.IngredientDetails
 import atomics.ingredient.Seasoning
 
-class SelectedSpiceAndSauceConfig(
+class SelectedSeasoningConfig(
     private val selected: Seasoning? = null,
     private val description: String? = null,
     private val quantity: Int? = null,
@@ -26,8 +26,8 @@ class SelectedSpiceAndSauceConfig(
         newDescription: String? = description,
         newQuantity: Int? = quantity,
         newUnit: CookingUnit? = unit
-    ): SelectedSpiceAndSauceConfig {
-        return SelectedSpiceAndSauceConfig(
+    ): SelectedSeasoningConfig {
+        return SelectedSeasoningConfig(
             selected = newSelected,
             description = newDescription,
             quantity = newQuantity,

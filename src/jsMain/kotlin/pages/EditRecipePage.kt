@@ -8,10 +8,10 @@ import atomics.ingredient.*
 import components.shared.Footer
 import components.shared.Header
 import components.common.*
-import components.edit.AddCustomIngredientConfig
+import components.edit.CreateCustomIngredientConfig
 import components.edit.PopUpWindowConfig
-import components.edit.SelectedSpiceAndSauceConfig
-import components.edit.SelectedVegetableAndMeatConfig
+import components.edit.SelectedSeasoningConfig
+import components.edit.SelectedIngredientConfig
 import csstype.*
 import csstype.LineStyle.Companion.solid
 import csstype.Position.Companion.fixed
@@ -49,17 +49,17 @@ val EditRecipePage = FC<Props> {
     var recipeNameState: String? by useState(null)
     var recipeTagsState: List<Tag> by useState(emptyList())
 
-    var selectedVegetableAndMeatConfigState: SelectedVegetableAndMeatConfig by useState(SelectedVegetableAndMeatConfig())
-    var vegetableAndMeatIngredientsState: List<IngredientDetails<Ingredient>> by useState(emptyList())
+    var selectedIngredientConfigState: SelectedIngredientConfig by useState(SelectedIngredientConfig())
+    var selectedIngredientsState: List<IngredientDetails<Ingredient>> by useState(emptyList())
 
-    var selectedSpiceAndSauceConfigState: SelectedSpiceAndSauceConfig by useState(SelectedSpiceAndSauceConfig())
-    var spiceAndSauceIngredientsState: List<IngredientDetails<Seasoning>> by useState(emptyList())
+    var selectedSeasoningConfigState: SelectedSeasoningConfig by useState(SelectedSeasoningConfig())
+    var selectedSeasoningsState: List<IngredientDetails<Seasoning>> by useState(emptyList())
 
     var recipeImageState: File? by useState(null)
-    var descriptionState: String by useState("")
+    var recipeDescriptionState: String by useState("")
 
     var popUpWindowConfigState: PopUpWindowConfig by useState(PopUpWindowConfig())
-    var addCustomIngredientConfigState: AddCustomIngredientConfig by useState(AddCustomIngredientConfig())
+    var createCustomIngredientConfigState: CreateCustomIngredientConfig by useState(CreateCustomIngredientConfig())
 
     var showAddIngredientDetails: Boolean by useState(false)
 
@@ -166,7 +166,7 @@ val EditRecipePage = FC<Props> {
                     name = "VegetableAndMeatType"
                     id = "VegetableAndMeatType"
                     onChange = { event ->
-                        selectedVegetableAndMeatConfigState = selectedVegetableAndMeatConfigState.newWithField(
+                        selectedIngredientConfigState = selectedIngredientConfigState.newWithField(
                             newSelected = TypeStringConverter.getVegetableAndMeatType(event.target.value)
                         )
                     }
@@ -224,7 +224,7 @@ val EditRecipePage = FC<Props> {
                         }
                         type = InputType.number
                         onChange = { event ->
-                            selectedVegetableAndMeatConfigState = selectedVegetableAndMeatConfigState.newWithField(
+                            selectedIngredientConfigState = selectedIngredientConfigState.newWithField(
                                 newQuantity = event.target.value.toIntOrNull()
                             )
                         }
@@ -240,7 +240,7 @@ val EditRecipePage = FC<Props> {
                         }
                         type = InputType.text
                         onChange = { event ->
-                            selectedVegetableAndMeatConfigState = selectedVegetableAndMeatConfigState.newWithField(
+                            selectedIngredientConfigState = selectedIngredientConfigState.newWithField(
                                 newDescription = event.target.value
                             )
                         }
@@ -264,9 +264,9 @@ val EditRecipePage = FC<Props> {
                     }
                     type = ButtonType.button
                     onClick = {
-                        if (selectedVegetableAndMeatConfigState.isValid()) {
-                            vegetableAndMeatIngredientsState = vegetableAndMeatIngredientsState +
-                                    selectedVegetableAndMeatConfigState.getIngredient()
+                        if (selectedIngredientConfigState.isValid()) {
+                            selectedIngredientsState = selectedIngredientsState +
+                                    selectedIngredientConfigState.getIngredient()
                         }
                     }
                     +"Add vegetable or meat"
@@ -297,7 +297,7 @@ val EditRecipePage = FC<Props> {
                     name = "SeasoningType"
                     id = "SeasoningType"
                     onChange = { event ->
-                        selectedSpiceAndSauceConfigState = selectedSpiceAndSauceConfigState.newWithField(
+                        selectedSeasoningConfigState = selectedSeasoningConfigState.newWithField(
                             newSelected = TypeStringConverter.getSeasoningType(event.target.value)
                         )
                     }
@@ -318,7 +318,7 @@ val EditRecipePage = FC<Props> {
                         }
                         type = InputType.number
                         onChange = { event ->
-                            selectedSpiceAndSauceConfigState = selectedSpiceAndSauceConfigState.newWithField(
+                            selectedSeasoningConfigState = selectedSeasoningConfigState.newWithField(
                                 newQuantity = event.target.value.toIntOrNull()
                             )
                         }
@@ -338,7 +338,7 @@ val EditRecipePage = FC<Props> {
                                 value = ingredientUnit.value
                                 name = "ingredientUnit"
                                 onChange = {
-                                    selectedSpiceAndSauceConfigState = selectedSpiceAndSauceConfigState.newWithField(
+                                    selectedSeasoningConfigState = selectedSeasoningConfigState.newWithField(
                                         newUnit = ingredientUnit
                                     )
                                 }
@@ -357,7 +357,7 @@ val EditRecipePage = FC<Props> {
                         }
                         type = InputType.text
                         onChange = { event ->
-                            selectedSpiceAndSauceConfigState = selectedSpiceAndSauceConfigState.newWithField(
+                            selectedSeasoningConfigState = selectedSeasoningConfigState.newWithField(
                                 newDescription = event.target.value
                             )
                         }
@@ -381,8 +381,8 @@ val EditRecipePage = FC<Props> {
                     }
                     type = ButtonType.button
                     onClick = {
-                        spiceAndSauceIngredientsState =spiceAndSauceIngredientsState +
-                                selectedSpiceAndSauceConfigState.getIngredient()
+                        selectedSeasoningsState =selectedSeasoningsState +
+                                selectedSeasoningConfigState.getIngredient()
                     }
                     +"Add spice or sauce"
                 }
@@ -401,7 +401,7 @@ val EditRecipePage = FC<Props> {
                     }
                     +"Vegetable and Meat"
                 }
-                vegetableAndMeatIngredientsState.map { ingredient ->
+                selectedIngredientsState.map { ingredient ->
                     p {
                         css {
                             fontFamily = textFontFamilyAlias
@@ -418,7 +418,7 @@ val EditRecipePage = FC<Props> {
                             }
                             type = ButtonType.button
                             onClick = {
-                                vegetableAndMeatIngredientsState = vegetableAndMeatIngredientsState - ingredient
+                                selectedIngredientsState = selectedIngredientsState - ingredient
                             }
                             +"x"
                         }
@@ -433,7 +433,7 @@ val EditRecipePage = FC<Props> {
                     }
                     +"Spice and Sauce"
                 }
-                spiceAndSauceIngredientsState.map { ingredient ->
+                selectedSeasoningsState.map { ingredient ->
                     p {
                         css {
                             fontFamily = textFontFamilyAlias
@@ -450,7 +450,7 @@ val EditRecipePage = FC<Props> {
                             }
                             type = ButtonType.button
                             onClick = {
-                                spiceAndSauceIngredientsState = spiceAndSauceIngredientsState - ingredient
+                                selectedSeasoningsState = selectedSeasoningsState - ingredient
                             }
                             +"x"
                         }
@@ -482,7 +482,7 @@ val EditRecipePage = FC<Props> {
             textarea {
                 rows = 4
                 cols = 50
-                onChange = { event -> descriptionState = event.target.value }
+                onChange = { event -> recipeDescriptionState = event.target.value }
             }
         }
 
@@ -517,10 +517,10 @@ val EditRecipePage = FC<Props> {
                     else -> {
                         val recipe = Recipe(
                             recipeNameState!!,
-                            vegetableAndMeatIngredientsState,
-                            spiceAndSauceIngredientsState,
+                            selectedIngredientsState,
+                            selectedSeasoningsState,
                             recipeTagsState,
-                            descriptionState
+                            recipeDescriptionState
                         )
                         scope.launch {
                             val message = when (addRecipe(recipe).status) {
@@ -587,12 +587,12 @@ val EditRecipePage = FC<Props> {
                         type = InputType.text
                         placeholder = "Ingredient Name"
                         onChange = { event ->
-                            addCustomIngredientConfigState = addCustomIngredientConfigState.newWithField(newName = event.target.value)
+                            createCustomIngredientConfigState = createCustomIngredientConfigState.newWithField(newName = event.target.value)
                         }
                     }
                     p { +"" }
 
-                    AddCustomIngredientConfig.AddIngredientType.values().map { addIngredientType ->
+                    CreateCustomIngredientConfig.CreateIngredientType.values().map { addIngredientType ->
                         label {
                             css {
                                 fontFamily = textFontFamilyAlias
@@ -603,7 +603,7 @@ val EditRecipePage = FC<Props> {
                                 value = addIngredientType.value
                                 name = "ingredientUnit"
                                 onChange = {
-                                    addCustomIngredientConfigState = addCustomIngredientConfigState.newWithField(newAddIngredientType = addIngredientType)
+                                    createCustomIngredientConfigState = createCustomIngredientConfigState.newWithField(newCreateIngredientType = addIngredientType)
                                 }
                             }
                         }
@@ -623,24 +623,24 @@ val EditRecipePage = FC<Props> {
                             onClick = {
                                 scope.launch {
                                     var popUpMessage: String
-                                    if (addCustomIngredientConfigState.isValid()) {
-                                        val result = when (addCustomIngredientConfigState.ingredient) {
-                                            AddCustomIngredientConfig.AddIngredientType.MAIN_INGREDIENT -> {
+                                    if (createCustomIngredientConfigState.isValid()) {
+                                        val result = when (createCustomIngredientConfigState.ingredient) {
+                                            CreateCustomIngredientConfig.CreateIngredientType.MAIN_INGREDIENT -> {
                                                 addIngredient(
-                                                    Ingredient(addCustomIngredientConfigState.name!!, true)
+                                                    Ingredient(createCustomIngredientConfigState.name!!, true)
                                                 )
                                             }
-                                            AddCustomIngredientConfig.AddIngredientType.OTHER_INGREDIENT -> {
+                                            CreateCustomIngredientConfig.CreateIngredientType.OTHER_INGREDIENT -> {
                                                 addIngredient(
-                                                    Ingredient(addCustomIngredientConfigState.name!!, false)
+                                                    Ingredient(createCustomIngredientConfigState.name!!, false)
                                                 )
                                             }
-                                            AddCustomIngredientConfig.AddIngredientType.SPICES_AND_SAUCE -> {
-                                                addSeasoning(Seasoning(addCustomIngredientConfigState.name!!))
+                                            CreateCustomIngredientConfig.CreateIngredientType.SPICES_AND_SAUCE -> {
+                                                addSeasoning(Seasoning(createCustomIngredientConfigState.name!!))
                                             }
                                         }
                                         popUpMessage = when (result.status) {
-                                            HttpStatusCode.OK -> "Congratulations! Ingredient ${addCustomIngredientConfigState.name} is added!"
+                                            HttpStatusCode.OK -> "Congratulations! Ingredient ${createCustomIngredientConfigState.name} is added!"
                                             HttpStatusCode.Conflict -> "Error since an ingredient with the same name already exists"
                                             HttpStatusCode.Unauthorized -> "Please log in first"
                                             else -> "Unknown error occurred, please contact Ling"
@@ -655,7 +655,7 @@ val EditRecipePage = FC<Props> {
                                 }
                             }
                         }
-                        +"Add"
+                        +"Create"
                     }
                 }
                 else {

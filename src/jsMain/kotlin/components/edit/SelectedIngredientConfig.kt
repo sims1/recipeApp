@@ -3,7 +3,7 @@ package components.edit
 import atomics.ingredient.IngredientDetails
 import atomics.ingredient.Ingredient
 
-class SelectedVegetableAndMeatConfig(
+class SelectedIngredientConfig(
     private val selected: Ingredient? = null,
     private val description: String? = null,
     private val quantity: Int? = 1
@@ -22,8 +22,8 @@ class SelectedVegetableAndMeatConfig(
         newSelected: Ingredient? = selected,
         newDescription: String? = description,
         newQuantity: Int? = quantity
-    ): SelectedVegetableAndMeatConfig {
-        return SelectedVegetableAndMeatConfig(
+    ): SelectedIngredientConfig {
+        return SelectedIngredientConfig(
             selected = newSelected,
             description = newDescription,
             quantity = newQuantity,
