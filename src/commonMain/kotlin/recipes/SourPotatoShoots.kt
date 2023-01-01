@@ -1,7 +1,7 @@
 package recipes
 
 import atomics.*
-import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientDetails
 import atomics.ingredient.IngredientType
 import atomics.ingredient.SpiceAndSauceType
 
@@ -11,12 +11,12 @@ class SourPotatoShoots {
         val recipe = Recipe(
             "Sour Potato Shoots",
             listOf(
-                Ingredient(IngredientType.POTATO)
+                IngredientDetails(IngredientType.POTATO)
             ),
             listOf(
-                Ingredient(SpiceAndSauceType.VEGETABLE_OIL),
-                Ingredient(SpiceAndSauceType.SALT),
-                Ingredient(SpiceAndSauceType.BLACK_VINEGAR)
+                IngredientDetails(SpiceAndSauceType.VEGETABLE_OIL),
+                IngredientDetails(SpiceAndSauceType.SALT),
+                IngredientDetails(SpiceAndSauceType.BLACK_VINEGAR)
             ),
             listOf(Tag.CARB, Tag.VEGETABLE),
             "Oil + potato shoots\n"

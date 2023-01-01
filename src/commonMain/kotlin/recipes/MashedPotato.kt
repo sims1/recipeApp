@@ -1,7 +1,7 @@
 package recipes
 
 import atomics.*
-import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientDetails
 import atomics.ingredient.IngredientType
 import atomics.ingredient.SpiceAndSauceType
 
@@ -11,13 +11,13 @@ class MashedPotato {
         val recipe = Recipe(
             "Mashed Potato",
             listOf(
-                Ingredient(IngredientType.POTATO),
-                Ingredient(IngredientType.GARLIC)
+                IngredientDetails(IngredientType.POTATO),
+                IngredientDetails(IngredientType.GARLIC)
             ),
             listOf(
-                Ingredient(SpiceAndSauceType.BUTTER),
-                Ingredient(SpiceAndSauceType.SALT),
-                Ingredient(SpiceAndSauceType.PEPPER)
+                IngredientDetails(SpiceAndSauceType.BUTTER),
+                IngredientDetails(SpiceAndSauceType.SALT),
+                IngredientDetails(SpiceAndSauceType.PEPPER)
             ),
             listOf(Tag.CARB),
             "steam potato slices and 1 garlic\n" +

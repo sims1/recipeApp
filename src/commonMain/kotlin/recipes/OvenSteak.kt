@@ -1,7 +1,7 @@
 package recipes
 
 import atomics.*
-import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientDetails
 import atomics.ingredient.IngredientType
 import atomics.ingredient.SpiceAndSauceType
 
@@ -11,11 +11,11 @@ class OvenSteak {
         val recipe = Recipe(
             "Oven Steak",
             listOf(
-                Ingredient(IngredientType.STEAK)
+                IngredientDetails(IngredientType.STEAK)
             ),
             listOf(
-                Ingredient(SpiceAndSauceType.SALT),
-                Ingredient(SpiceAndSauceType.PEPPER)
+                IngredientDetails(SpiceAndSauceType.SALT),
+                IngredientDetails(SpiceAndSauceType.PEPPER)
             ),
             listOf(Tag.BEEF),
             "leave it out of fridge for 30min to warm up to room temperature\n" +

@@ -50,10 +50,10 @@ val EditRecipePage = FC<Props> {
     var recipeTagsState: List<Tag> by useState(emptyList())
 
     var selectedVegetableAndMeatConfigState: SelectedVegetableAndMeatConfig by useState(SelectedVegetableAndMeatConfig())
-    var vegetableAndMeatIngredientsState: List<Ingredient<IngredientType>> by useState(emptyList())
+    var vegetableAndMeatIngredientsState: List<IngredientDetails<IngredientType>> by useState(emptyList())
 
     var selectedSpiceAndSauceConfigState: SelectedSpiceAndSauceConfig by useState(SelectedSpiceAndSauceConfig())
-    var spiceAndSauceIngredientsState: List<Ingredient<SpiceAndSauceType>> by useState(emptyList())
+    var spiceAndSauceIngredientsState: List<IngredientDetails<SpiceAndSauceType>> by useState(emptyList())
 
     var recipeImageState: File? by useState(null)
     var descriptionState: String by useState("")

@@ -4,7 +4,7 @@ import atomics.CookingUnit
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Ingredient<out T : BaseIngredient>(
+data class IngredientDetails<out T : BaseIngredient>(
     val type: T,
     val description: String? = null,
     val quantity: Int = 1,

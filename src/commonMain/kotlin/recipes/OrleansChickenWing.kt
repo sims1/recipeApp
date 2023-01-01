@@ -1,7 +1,7 @@
 package recipes
 
 import atomics.*
-import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientDetails
 import atomics.ingredient.IngredientType
 import atomics.ingredient.SpiceAndSauceType
 
@@ -11,10 +11,10 @@ class OrleansChickenWing {
         val recipe = Recipe(
             "Orleans Chicken Wing",
             listOf(
-                Ingredient(IngredientType.CHICKEN_WING)
+                IngredientDetails(IngredientType.CHICKEN_WING)
             ),
             listOf(
-                Ingredient(SpiceAndSauceType.ORLEANS_SPICE_PACK, "天禾 新奥尔良(嘟嘟)")
+                IngredientDetails(SpiceAndSauceType.ORLEANS_SPICE_PACK, "天禾 新奥尔良(嘟嘟)")
             ),
             listOf(Tag.CHICKEN),
             "400F 40min",

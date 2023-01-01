@@ -1,6 +1,6 @@
 package components.edit
 
-import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientDetails
 import atomics.ingredient.IngredientType
 
 class SelectedVegetableAndMeatConfig(
@@ -10,8 +10,8 @@ class SelectedVegetableAndMeatConfig(
 ) {
     fun isValid() = (selected != null)
 
-    fun getIngredient(): Ingredient<IngredientType> {
-        return Ingredient(
+    fun getIngredient(): IngredientDetails<IngredientType> {
+        return IngredientDetails(
             selected!!,
             description,
             quantity ?: 1

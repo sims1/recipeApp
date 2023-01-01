@@ -1,7 +1,7 @@
 package recipes
 
 import atomics.*
-import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientDetails
 import atomics.ingredient.IngredientType
 import atomics.ingredient.SpiceAndSauceType
 
@@ -11,12 +11,12 @@ class ItalianZucchini {
         val recipe = Recipe(
             "Italian Zucchini",
             listOf(
-                Ingredient(IngredientType.ZUCCHINI)
+                IngredientDetails(IngredientType.ZUCCHINI)
             ),
             listOf(
-                Ingredient(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
-                Ingredient(SpiceAndSauceType.SALT),
-                Ingredient(SpiceAndSauceType.PEPPER)
+                IngredientDetails(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
+                IngredientDetails(SpiceAndSauceType.SALT),
+                IngredientDetails(SpiceAndSauceType.PEPPER)
             ),
             listOf(Tag.VEGETABLE),
             "450F 12min"

@@ -1,7 +1,7 @@
 package components.edit
 
 import atomics.CookingUnit
-import atomics.ingredient.Ingredient
+import atomics.ingredient.IngredientDetails
 import atomics.ingredient.SpiceAndSauceType
 
 class SelectedSpiceAndSauceConfig(
@@ -12,8 +12,8 @@ class SelectedSpiceAndSauceConfig(
 ) {
     fun isValid() = (selected != null)
 
-    fun getIngredient(): Ingredient<SpiceAndSauceType> {
-        return Ingredient(
+    fun getIngredient(): IngredientDetails<SpiceAndSauceType> {
+        return IngredientDetails(
             selected!!,
             description,
             quantity ?: 1,
