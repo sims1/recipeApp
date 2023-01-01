@@ -1,4 +1,4 @@
-package store.spiceAndSauceType
+package store.seasoning
 
 import atomics.ingredient.Seasoning
 

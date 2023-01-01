@@ -31,8 +31,8 @@ import store.ingredient.InFileIngredientStore
 import store.ingredient.MongoDBIngredientStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
-import store.spiceAndSauceType.InFileSpiceAndSauceTypeStore
-import store.spiceAndSauceType.MongoDBSpiceAndSauceTypeStore
+import store.seasoning.InFileSpiceAndSauceTypeStore
+import store.seasoning.MongoDBSpiceAndSauceTypeStore
 import java.util.concurrent.TimeUnit
 
 
