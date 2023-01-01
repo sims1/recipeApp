@@ -6,7 +6,7 @@ import store.DatabaseClients
 
 class MongoDBSeasoningStore : SeasoningStore {
 
-    private val seasoningDatabase = DatabaseClients.mongoDBClient.getDatabase("spiceAndSauceType")
+    private val seasoningDatabase = DatabaseClients.mongoDBClient.getDatabase("Seasonings")
     private val seasoningCollection = seasoningDatabase.getCollection<Seasoning>()
 
     override suspend fun getAll(): List<Seasoning> = seasoningCollection.find().toList()

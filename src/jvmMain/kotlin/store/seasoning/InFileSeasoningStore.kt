@@ -18,7 +18,7 @@ class InFileSeasoningStore(
     companion object {
 
         private fun create(): List<Seasoning> {
-            val inputString = this::class.java.getResource("/SpiceAndSauceTypeBackUp.txt").readText()
+            val inputString = this::class.java.getResource("/SeasoningsBackUp.txt").readText()
             return Json.decodeFromString(inputString)
         }
     }
