@@ -27,8 +27,8 @@ import io.ktor.server.sessions.*
 import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
-import store.ingredientType.InFileIngredientStore
-import store.ingredientType.MongoDBIngredientStore
+import store.ingredient.InFileIngredientStore
+import store.ingredient.MongoDBIngredientStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
 import store.spiceAndSauceType.InFileSpiceAndSauceTypeStore

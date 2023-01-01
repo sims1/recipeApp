@@ -1,4 +1,4 @@
-package store.ingredientType
+package store.ingredient
 
 import atomics.ingredient.Ingredient
 
