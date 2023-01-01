@@ -3,7 +3,7 @@ package recipes
 import atomics.*
 import atomics.ingredient.IngredientDetails
 import atomics.ingredient.Ingredient
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 
 class OrleansChickenWing {
 
@@ -14,7 +14,7 @@ class OrleansChickenWing {
                 IngredientDetails(Ingredient.CHICKEN_WING)
             ),
             listOf(
-                IngredientDetails(SpiceAndSauceType.ORLEANS_SPICE_PACK, "天禾 新奥尔良(嘟嘟)")
+                IngredientDetails(Seasoning.ORLEANS_SPICE_PACK, "天禾 新奥尔良(嘟嘟)")
             ),
             listOf(Tag.CHICKEN),
             "400F 40min",

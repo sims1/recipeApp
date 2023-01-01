@@ -3,7 +3,7 @@ package recipes
 import atomics.*
 import atomics.ingredient.IngredientDetails
 import atomics.ingredient.Ingredient
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 
 class SourPotatoShoots {
 
@@ -14,9 +14,9 @@ class SourPotatoShoots {
                 IngredientDetails(Ingredient.POTATO)
             ),
             listOf(
-                IngredientDetails(SpiceAndSauceType.VEGETABLE_OIL),
-                IngredientDetails(SpiceAndSauceType.SALT),
-                IngredientDetails(SpiceAndSauceType.BLACK_VINEGAR)
+                IngredientDetails(Seasoning.VEGETABLE_OIL),
+                IngredientDetails(Seasoning.SALT),
+                IngredientDetails(Seasoning.BLACK_VINEGAR)
             ),
             listOf(Tag.CARB, Tag.VEGETABLE),
             "Oil + potato shoots\n"

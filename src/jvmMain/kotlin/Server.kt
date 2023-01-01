@@ -1,7 +1,7 @@
 import api.recipeIdParameterKey
 import atomics.Recipe
 import atomics.ingredient.Ingredient
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 import auth.AUTH_TOKEN_EXPIRY_IN_SECONDS
 import auth.AuthRequest
 import auth.Authenticator
@@ -166,9 +166,9 @@ fun main() {
                 }
 
                 post(Recipe.add_spice_and_sauce_type) {
-                    val spiceAndSauceType = call.receive<SpiceAndSauceType>()
+                    val seasoning = call.receive<Seasoning>()
                     when {
-                        spiceAndSauceTypeStore.add(spiceAndSauceType) -> call.respond(HttpStatusCode.OK)
+                        spiceAndSauceTypeStore.add(seasoning) -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }

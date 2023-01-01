@@ -3,7 +3,7 @@ package recipes
 import atomics.*
 import atomics.ingredient.IngredientDetails
 import atomics.ingredient.Ingredient
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 
 class ItalianZucchini {
 
@@ -14,9 +14,9 @@ class ItalianZucchini {
                 IngredientDetails(Ingredient.ZUCCHINI)
             ),
             listOf(
-                IngredientDetails(SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND),
-                IngredientDetails(SpiceAndSauceType.SALT),
-                IngredientDetails(SpiceAndSauceType.PEPPER)
+                IngredientDetails(Seasoning.ITALIAN_HERB_SPICE_BLEND),
+                IngredientDetails(Seasoning.SALT),
+                IngredientDetails(Seasoning.PEPPER)
             ),
             listOf(Tag.VEGETABLE),
             "450F 12min"

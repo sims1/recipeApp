@@ -1,6 +1,6 @@
 package components.common
 
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 import atomics.ingredient.Ingredient
 
 class TypeStringConverter {
@@ -10,8 +10,8 @@ class TypeStringConverter {
             return Ingredient(input)
         }
 
-        fun getSpiceAndSauceType(input: String): SpiceAndSauceType {
-            return SpiceAndSauceType(input)
+        fun getSpiceAndSauceType(input: String): Seasoning {
+            return Seasoning(input)
         }
     }
 

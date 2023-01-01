@@ -53,7 +53,7 @@ val EditRecipePage = FC<Props> {
     var vegetableAndMeatIngredientsState: List<IngredientDetails<Ingredient>> by useState(emptyList())
 
     var selectedSpiceAndSauceConfigState: SelectedSpiceAndSauceConfig by useState(SelectedSpiceAndSauceConfig())
-    var spiceAndSauceIngredientsState: List<IngredientDetails<SpiceAndSauceType>> by useState(emptyList())
+    var spiceAndSauceIngredientsState: List<IngredientDetails<Seasoning>> by useState(emptyList())
 
     var recipeImageState: File? by useState(null)
     var descriptionState: String by useState("")
@@ -64,7 +64,7 @@ val EditRecipePage = FC<Props> {
     var showAddIngredientDetails: Boolean by useState(false)
 
     var ingredientTypesState: List<Ingredient> by useState(emptyList())
-    var spiceAndSauceTypesState: List<SpiceAndSauceType> by useState(emptyList())
+    var spiceAndSauceTypesState: List<Seasoning> by useState(emptyList())
 
     useEffectOnce {
         scope.launch {
@@ -636,7 +636,7 @@ val EditRecipePage = FC<Props> {
                                                 )
                                             }
                                             AddCustomIngredientConfig.AddIngredientType.SPICES_AND_SAUCE -> {
-                                                addSpiceAndSauceType(SpiceAndSauceType(addCustomIngredientConfigState.name!!))
+                                                addSpiceAndSauceType(Seasoning(addCustomIngredientConfigState.name!!))
                                             }
                                         }
                                         popUpMessage = when (result.status) {

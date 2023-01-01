@@ -2,17 +2,17 @@ package components.edit
 
 import atomics.CookingUnit
 import atomics.ingredient.IngredientDetails
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 
 class SelectedSpiceAndSauceConfig(
-    private val selected: SpiceAndSauceType? = null,
+    private val selected: Seasoning? = null,
     private val description: String? = null,
     private val quantity: Int? = null,
     private val unit: CookingUnit? = null
 ) {
     fun isValid() = (selected != null)
 
-    fun getIngredient(): IngredientDetails<SpiceAndSauceType> {
+    fun getIngredient(): IngredientDetails<Seasoning> {
         return IngredientDetails(
             selected!!,
             description,
@@ -22,7 +22,7 @@ class SelectedSpiceAndSauceConfig(
     }
 
     fun newWithField(
-        newSelected: SpiceAndSauceType? = selected,
+        newSelected: Seasoning? = selected,
         newDescription: String? = description,
         newQuantity: Int? = quantity,
         newUnit: CookingUnit? = unit

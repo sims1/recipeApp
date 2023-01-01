@@ -3,7 +3,7 @@ package recipes
 import atomics.*
 import atomics.ingredient.IngredientDetails
 import atomics.ingredient.Ingredient
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 
 class OvenSteak {
 
@@ -14,8 +14,8 @@ class OvenSteak {
                 IngredientDetails(Ingredient.STEAK)
             ),
             listOf(
-                IngredientDetails(SpiceAndSauceType.SALT),
-                IngredientDetails(SpiceAndSauceType.PEPPER)
+                IngredientDetails(Seasoning.SALT),
+                IngredientDetails(Seasoning.PEPPER)
             ),
             listOf(Tag.BEEF),
             "leave it out of fridge for 30min to warm up to room temperature\n" +

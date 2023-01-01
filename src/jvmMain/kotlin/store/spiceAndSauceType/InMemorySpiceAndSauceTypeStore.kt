@@ -1,46 +1,46 @@
 package store.spiceAndSauceType
 
-import atomics.ingredient.SpiceAndSauceType
+import atomics.ingredient.Seasoning
 
 class InMemorySpiceAndSauceTypeStore(
-    private val spiceAndSauceTypeList: List<SpiceAndSauceType> = create(),
+    private val seasoningList: List<Seasoning> = create(),
 ): SpiceAndSauceTypeStore {
 
-    override suspend fun getAll(): List<SpiceAndSauceType> {
-        return spiceAndSauceTypeList
+    override suspend fun getAll(): List<Seasoning> {
+        return seasoningList
     }
 
-    override suspend fun add(ingredientType: SpiceAndSauceType): Boolean = false
+    override suspend fun add(ingredientType: Seasoning): Boolean = false
 
     companion object {
 
-        private fun create(): List<SpiceAndSauceType> {
+        private fun create(): List<Seasoning> {
             return listOf(
-                SpiceAndSauceType.VEGETABLE_OIL,
-                SpiceAndSauceType.OLIVE_OIL,
-                SpiceAndSauceType.SEASAME_OIL,
-                SpiceAndSauceType.NUMB_SPICE_OIL,
+                Seasoning.VEGETABLE_OIL,
+                Seasoning.OLIVE_OIL,
+                Seasoning.SEASAME_OIL,
+                Seasoning.NUMB_SPICE_OIL,
 
-                SpiceAndSauceType.SOY_SAUCE,
-                SpiceAndSauceType.COOKING_WINE,
-                SpiceAndSauceType.BLACK_VINEGAR,
-                SpiceAndSauceType.BLACK_BEAN_CHILI_SAUCE,
-                SpiceAndSauceType.BROAD_BEAN_SAUCE,
+                Seasoning.SOY_SAUCE,
+                Seasoning.COOKING_WINE,
+                Seasoning.BLACK_VINEGAR,
+                Seasoning.BLACK_BEAN_CHILI_SAUCE,
+                Seasoning.BROAD_BEAN_SAUCE,
 
-                SpiceAndSauceType.SALT,
-                SpiceAndSauceType.HERBAMARE_SALT,
-                SpiceAndSauceType.PEPPER,
-                SpiceAndSauceType.CUMIN,
-                SpiceAndSauceType.CHILI_POWDER,
-                SpiceAndSauceType.DRY_CHILI,
-                SpiceAndSauceType.CURRY_SPICE_BLEND,
-                SpiceAndSauceType.CURRY_PASTE,
+                Seasoning.SALT,
+                Seasoning.HERBAMARE_SALT,
+                Seasoning.PEPPER,
+                Seasoning.CUMIN,
+                Seasoning.CHILI_POWDER,
+                Seasoning.DRY_CHILI,
+                Seasoning.CURRY_SPICE_BLEND,
+                Seasoning.CURRY_PASTE,
 
-                SpiceAndSauceType.ITALIAN_HERB_SPICE_BLEND,
-                SpiceAndSauceType.ORLEANS_SPICE_PACK,
+                Seasoning.ITALIAN_HERB_SPICE_BLEND,
+                Seasoning.ORLEANS_SPICE_PACK,
 
-                SpiceAndSauceType.BUTTER,
-                SpiceAndSauceType.CORN_STARCH,
+                Seasoning.BUTTER,
+                Seasoning.CORN_STARCH,
             )
         }
     }
