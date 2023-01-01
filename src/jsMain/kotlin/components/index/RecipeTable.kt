@@ -168,7 +168,7 @@ private val RecipeHoverBox = FC<RecipeHoverBoxProps> { props ->
                     borderStyle = LineStyle.solid
                 }
                 th { +"Main Ingredients" }
-                td { pre { +props.recipeitem.getVegetableAndMeatString() } }
+                td { pre { +props.recipeitem.getIngredientString() } }
             }
             tr {
                 css {

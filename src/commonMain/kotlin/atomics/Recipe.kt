@@ -32,7 +32,7 @@ class Recipe(
         )
     }
     fun getNameString() = name
-    fun getVegetableAndMeatString() = mainIngredients.joinToString("\n") { it.getString() }
+    fun getIngredientString() = mainIngredients.joinToString("\n") { it.getString() }
     fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { it.getString() }
 
     override fun toString(): String {
@@ -40,7 +40,7 @@ class Recipe(
             {
                 Type: ${getTagsString()},
                 Name: ${getNameString()},
-                VegetableAndMeat: ${getVegetableAndMeatString()},
+                VegetableAndMeat: ${getIngredientString()},
                 SpicesAndSauces: ${getSpicesAndSaucesString()},
                 CookingInstructions: $cookingInstructions
             }

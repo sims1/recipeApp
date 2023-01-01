@@ -31,17 +31,17 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
         css {
             marginTop = 1.pc
         }
-        val neededVegetableAndMeatMap = mutableMapOf<Ingredient, Int>()
+        val neededIngredientMap = mutableMapOf<Ingredient, Int>()
         props.recipes.forEach { (recipe, recipeQuantity) ->
             recipe.mainIngredients.forEach { ingredient ->
-                val newQuantity = when (val currentQuantity = neededVegetableAndMeatMap[ingredient.type]) {
+                val newQuantity = when (val currentQuantity = neededIngredientMap[ingredient.type]) {
                     null -> ingredient.quantity * recipeQuantity
                     else -> ingredient.quantity * recipeQuantity + currentQuantity
                 }
-                neededVegetableAndMeatMap[ingredient.type] = newQuantity
+                neededIngredientMap[ingredient.type] = newQuantity
             }
         }
-        val neededVegetableAndMeat = neededVegetableAndMeatMap
+        val neededIngredients = neededIngredientMap
             .map { (ingredient, quantity) -> "${ingredient.getValue()} x $quantity" }
             .joinToString("\n")
 
@@ -68,7 +68,7 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
 
             tbody {
                 tr {
-                    td { +neededVegetableAndMeat }
+                    td { +neededIngredients }
                     td { +neededSpicesAndSauces }
                 }
             }
