@@ -25,6 +25,7 @@ import react.Props
 import react.css.css
 import react.dom.html.ButtonType
 import react.dom.html.InputType
+import react.dom.html.ReactHTML
 import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
@@ -60,11 +61,12 @@ class PopUpWindowConfig(
 }
 
 class AddIngredientConfig(
-    val name: String = "",
+    val name: String? = null,
     val ingredientType: AddIngredientType = AddIngredientType.OTHER_INGREDIENT
 ) {
+    fun isValid() = (name != null)
     fun newWithField(
-        newName: String = name,
+        newName: String? = name,
         newAddIngredientType: AddIngredientType = ingredientType,
     ): AddIngredientConfig {
         return AddIngredientConfig(
@@ -99,8 +101,9 @@ val EditRecipePage = FC<Props> {
     var descriptionState: String by useState("")
 
     var popUpWindowConfigState: PopUpWindowConfig by useState(PopUpWindowConfig())
-
     var addIngredientConfigState: AddIngredientConfig by useState(AddIngredientConfig())
+
+    var showAddIngredientDetails: Boolean by useState(false)
 
     var ingredientTypesState: List<IngredientType> by useState(emptyList())
     var spiceAndSauceTypesState: List<SpiceAndSauceType> by useState(emptyList())
@@ -194,33 +197,6 @@ val EditRecipePage = FC<Props> {
                     fontSize = unimportantFontSizeAlias
                 }
 
-                button {
-                    css {
-                        fontSize = unimportantFontSizeAlias
-                        backgroundColor = recipeNameColorAlias
-                        color = buttonFontColor
-                        borderStyle = None.none
-                        borderRadius = commonButtonBorderRadiusAlias
-                        paddingLeft = 1.pc
-                        paddingRight = 1.pc
-                        paddingTop = 0.5.pc
-                        paddingBottom = 0.5.pc
-                        cursor = Cursor.pointer
-                    }
-                    type = ButtonType.button
-                    onClick = {
-                        if (ingredientTypeState != null) {
-                            vegetableAndMeatIngredientsState = vegetableAndMeatIngredientsState +
-                                    Ingredient(
-                                        ingredientTypeState!!,
-                                        vegetableAndMeatDescriptionState,
-                                        vegetableAndMeatQuantityState ?: 1
-                                    )
-                        }
-                    }
-                    +"Add vegetable or meat"
-                }
-
                 br { }
 
                 select {
@@ -261,7 +237,24 @@ val EditRecipePage = FC<Props> {
                             newShowAddIngredientTextBox = true,
                         )
                     }
+                    onMouseEnter = {
+                        showAddIngredientDetails = true
+                    }
+                    onMouseLeave = {
+                        showAddIngredientDetails = false
+                    }
                     +"+"
+                }
+                if (showAddIngredientDetails) {
+                    span {
+                        css {
+                            fontSize = unimportantFontSizeAlias
+                            backgroundColor = hoverColorAlias
+                            borderColor = NamedColor.lightgrey
+                            borderStyle = solid
+                        }
+                        +"Missing ingredient? Add it!"
+                    }
                 }
                 p {
                     +"Quantity "
@@ -287,21 +280,6 @@ val EditRecipePage = FC<Props> {
                 }
 
                 br { }
-            }
-
-            div {
-                css {
-                    gridArea = GridArea("SpiceAndSauceSelection")
-                    backgroundColor = recipeColorAlias
-                    width = 30.pc
-
-                    padding = 1.pc
-                    borderRadius = commonBorderRadiusAlias
-
-                    whiteSpace = WhiteSpace.preWrap
-                    fontFamily = textFontFamilyAlias
-                    fontSize = unimportantFontSizeAlias
-                }
 
                 button {
                     css {
@@ -318,15 +296,31 @@ val EditRecipePage = FC<Props> {
                     }
                     type = ButtonType.button
                     onClick = {
-                        spiceAndSauceIngredientsState = spiceAndSauceIngredientsState +
-                                Ingredient(
-                                    spiceAndSauceTypeState!!,
-                                    spiceAndSauceDescriptionState,
-                                    spiceAndSauceQuantityState ?: 1,
-                                    spiceAndSauceUnitState ?: CookingUnit.DEFAULT
-                                )
+                        if (ingredientTypeState != null) {
+                            vegetableAndMeatIngredientsState = vegetableAndMeatIngredientsState +
+                                    Ingredient(
+                                        ingredientTypeState!!,
+                                        vegetableAndMeatDescriptionState,
+                                        vegetableAndMeatQuantityState ?: 1
+                                    )
+                        }
                     }
-                    +"Add spice or sauce"
+                    +"Add vegetable or meat"
+                }
+            }
+
+            div {
+                css {
+                    gridArea = GridArea("SpiceAndSauceSelection")
+                    backgroundColor = recipeColorAlias
+                    width = 30.pc
+
+                    padding = 1.pc
+                    borderRadius = commonBorderRadiusAlias
+
+                    whiteSpace = WhiteSpace.preWrap
+                    fontFamily = textFontFamilyAlias
+                    fontSize = unimportantFontSizeAlias
                 }
 
                 br { }
@@ -393,6 +387,32 @@ val EditRecipePage = FC<Props> {
                 }
 
                 br { }
+
+                button {
+                    css {
+                        fontSize = unimportantFontSizeAlias
+                        backgroundColor = recipeNameColorAlias
+                        color = buttonFontColor
+                        borderStyle = None.none
+                        borderRadius = commonButtonBorderRadiusAlias
+                        paddingLeft = 1.pc
+                        paddingRight = 1.pc
+                        paddingTop = 0.5.pc
+                        paddingBottom = 0.5.pc
+                        cursor = Cursor.pointer
+                    }
+                    type = ButtonType.button
+                    onClick = {
+                        spiceAndSauceIngredientsState = spiceAndSauceIngredientsState +
+                                Ingredient(
+                                    spiceAndSauceTypeState!!,
+                                    spiceAndSauceDescriptionState,
+                                    spiceAndSauceQuantityState ?: 1,
+                                    spiceAndSauceUnitState ?: CookingUnit.DEFAULT
+                                )
+                    }
+                    +"Add spice or sauce"
+                }
             }
 
             div {
@@ -629,26 +649,31 @@ val EditRecipePage = FC<Props> {
 
                             onClick = {
                                 scope.launch {
-                                    val result = when(addIngredientConfigState.ingredientType) {
-                                        AddIngredientConfig.AddIngredientType.MAIN_INGREDIENT -> {
-                                            addIngredientType(
-                                                IngredientType(addIngredientConfigState.name, true)
-                                            )
+                                    var popUpMessage: String
+                                    if (addIngredientConfigState.isValid()) {
+                                        val result = when (addIngredientConfigState.ingredientType) {
+                                            AddIngredientConfig.AddIngredientType.MAIN_INGREDIENT -> {
+                                                addIngredientType(
+                                                    IngredientType(addIngredientConfigState.name!!, true)
+                                                )
+                                            }
+                                            AddIngredientConfig.AddIngredientType.OTHER_INGREDIENT -> {
+                                                addIngredientType(
+                                                    IngredientType(addIngredientConfigState.name!!, false)
+                                                )
+                                            }
+                                            AddIngredientConfig.AddIngredientType.SPICES_AND_SAUCE -> {
+                                                addSpiceAndSauceType(SpiceAndSauceType(addIngredientConfigState.name!!))
+                                            }
                                         }
-                                        AddIngredientConfig.AddIngredientType.OTHER_INGREDIENT -> {
-                                            addIngredientType(
-                                                IngredientType(addIngredientConfigState.name, false)
-                                            )
+                                        popUpMessage = when (result.status) {
+                                            HttpStatusCode.OK -> "Congratulations! Ingredient ${addIngredientConfigState.name} is added!"
+                                            HttpStatusCode.Conflict -> "Error since an ingredient with the same name already exists"
+                                            HttpStatusCode.Unauthorized -> "Please log in first"
+                                            else -> "Unknown error occurred, please contact Ling"
                                         }
-                                        AddIngredientConfig.AddIngredientType.SPICES_AND_SAUCE -> {
-                                            addSpiceAndSauceType(SpiceAndSauceType(addIngredientConfigState.name))
-                                        }
-                                    }
-                                    val popUpMessage = when (result.status) {
-                                        HttpStatusCode.OK -> "Congratulations! Ingredient ${addIngredientConfigState.name} is added!"
-                                        HttpStatusCode.Conflict -> "Error since an ingredient with the same name already exists"
-                                        HttpStatusCode.Unauthorized -> "Please log in first"
-                                        else -> "Unknown error occurred, please contact Ling"
+                                    } else {
+                                        popUpMessage = "Please enter the ingredient name first"
                                     }
                                     popUpWindowConfigState = PopUpWindowConfig(
                                         show = true,
