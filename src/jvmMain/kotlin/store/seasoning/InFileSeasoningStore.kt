@@ -4,9 +4,9 @@ import atomics.ingredient.Seasoning
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class InFileSpiceAndSauceTypeStore(
+class InFileSeasoningStore(
     private val seasoningList: List<Seasoning> = create(),
-): SpiceAndSauceTypeStore {
+): SeasoningStore {
 
 
     override suspend fun getAll(): List<Seasoning> {

@@ -2,7 +2,7 @@ package pages
 
 import addIngredient
 import addRecipe
-import addSpiceAndSauceType
+import addSeasoning
 import atomics.*
 import atomics.ingredient.*
 import components.shared.Footer
@@ -17,7 +17,7 @@ import csstype.LineStyle.Companion.solid
 import csstype.Position.Companion.fixed
 import csstype.TextAlign.Companion.center
 import getListOfIngredients
-import getListOfSpiceAndSauceTypes
+import getListOfSeasonings
 import io.ktor.http.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -63,13 +63,13 @@ val EditRecipePage = FC<Props> {
 
     var showAddIngredientDetails: Boolean by useState(false)
 
-    var selectedIngredientsState: List<Ingredient> by useState(emptyList())
-    var spiceAndSauceTypesState: List<Seasoning> by useState(emptyList())
+    var allIngredientsState: List<Ingredient> by useState(emptyList())
+    var allSeasoningState: List<Seasoning> by useState(emptyList())
 
     useEffectOnce {
         scope.launch {
-            selectedIngredientsState = getListOfIngredients()
-            spiceAndSauceTypesState = getListOfSpiceAndSauceTypes()
+            allIngredientsState = getListOfIngredients()
+            allSeasoningState = getListOfSeasonings()
         }
     }
 
@@ -171,7 +171,7 @@ val EditRecipePage = FC<Props> {
                         )
                     }
                     option { +"Select vegetable or meat" }
-                    selectedIngredientsState.map { ingredient ->
+                    allIngredientsState.map { ingredient ->
                         option {
                             value = ingredient.getValue()
                             +ingredient.getValue()
@@ -294,15 +294,15 @@ val EditRecipePage = FC<Props> {
                         fontSize = unimportantFontSizeAlias
                         marginTop = 1.pc
                     }
-                    name = "SpiceAndSauceType"
-                    id = "SpiceAndSauceType"
+                    name = "SeasoningType"
+                    id = "SeasoningType"
                     onChange = { event ->
                         selectedSpiceAndSauceConfigState = selectedSpiceAndSauceConfigState.newWithField(
-                            newSelected = TypeStringConverter.getSpiceAndSauceType(event.target.value)
+                            newSelected = TypeStringConverter.getSeasoningType(event.target.value)
                         )
                     }
                     option { +"Select spice or sauce" }
-                    spiceAndSauceTypesState.map { ingredient ->
+                    allSeasoningState.map { ingredient ->
                         option {
                             value = ingredient.getValue()
                             +ingredient.getValue()
@@ -636,7 +636,7 @@ val EditRecipePage = FC<Props> {
                                                 )
                                             }
                                             AddCustomIngredientConfig.AddIngredientType.SPICES_AND_SAUCE -> {
-                                                addSpiceAndSauceType(Seasoning(addCustomIngredientConfigState.name!!))
+                                                addSeasoning(Seasoning(addCustomIngredientConfigState.name!!))
                                             }
                                         }
                                         popUpMessage = when (result.status) {

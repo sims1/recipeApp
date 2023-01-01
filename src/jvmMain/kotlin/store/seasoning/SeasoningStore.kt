@@ -2,7 +2,7 @@ package store.seasoning
 
 import atomics.ingredient.Seasoning
 
-interface SpiceAndSauceTypeStore {
+interface SeasoningStore {
 
     suspend fun getAll(): List<Seasoning>
 

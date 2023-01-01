@@ -2,9 +2,9 @@ package store.seasoning
 
 import atomics.ingredient.Seasoning
 
-class InMemorySpiceAndSauceTypeStore(
+class InMemorySeasoningStore(
     private val seasoningList: List<Seasoning> = create(),
-): SpiceAndSauceTypeStore {
+): SeasoningStore {
 
     override suspend fun getAll(): List<Seasoning> {
         return seasoningList

@@ -31,8 +31,8 @@ import store.ingredient.InFileIngredientStore
 import store.ingredient.MongoDBIngredientStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
-import store.seasoning.InFileSpiceAndSauceTypeStore
-import store.seasoning.MongoDBSpiceAndSauceTypeStore
+import store.seasoning.InFileSeasoningStore
+import store.seasoning.MongoDBSeasoningStore
 import java.util.concurrent.TimeUnit
 
 
@@ -54,10 +54,10 @@ private val ingredientStore =
     //InMemoryIngredientStore() // testing only
     //InFileIngredientStore()  // backup only
 
-private val spiceAndSauceTypeStore =
-    MongoDBSpiceAndSauceTypeStore()
-    //InMemorySpiceAndSauceTypeStore() // testing only
-    //InFileSpiceAndSauceTypeStore()  // backup only
+private val seasoningStore =
+    MongoDBSeasoningStore()
+    //InMemorySeasoningStore() // testing only
+    //InFileSeasoningStore()  // backup only
 
 private val imageStore =
     //MongoDBImageStore()
@@ -119,9 +119,9 @@ fun main() {
                     call.respond(ingredientStore.getAll().sortedBy { it.getValue() })
                 }
             }
-            route(Recipe.get_spice_and_sauce_types_path) {
+            route(Recipe.get_seasoning_path) {
                 get {
-                    call.respond(spiceAndSauceTypeStore.getAll().sortedBy { it.getValue() })
+                    call.respond(seasoningStore.getAll().sortedBy { it.getValue() })
                 }
             }
             route(Recipe.auth_path) {
@@ -165,10 +165,10 @@ fun main() {
                     }
                 }
 
-                post(Recipe.add_spice_and_sauce_type) {
+                post(Recipe.add_seasoning) {
                     val seasoning = call.receive<Seasoning>()
                     when {
-                        spiceAndSauceTypeStore.add(seasoning) -> call.respond(HttpStatusCode.OK)
+                        seasoningStore.add(seasoning) -> call.respond(HttpStatusCode.OK)
                         else -> call.respond(HttpStatusCode.Conflict)
                     }
                 }
@@ -234,12 +234,12 @@ fun main() {
                     call.respond(inFileIngredientStore.getAll())
                 }
             }
-            route(Recipe.load_spice_and_sauce_type_from_in_file_path) {
+            route(Recipe.load_seasoning_from_in_file_path) {
                 get {
-                    val inFileSpiceAndSauceTypeStore = InFileSpiceAndSauceTypeStore()
-                    // write in-file SpiceAndSauceType into spiceAndSauceTypeStore
-                    inFileSpiceAndSauceTypeStore.getAll().forEach { spiceAndSauceType -> spiceAndSauceTypeStore.add(spiceAndSauceType) }
-                    call.respond(inFileSpiceAndSauceTypeStore.getAll())
+                    val inFileSeasoningStore = InFileSeasoningStore()
+                    // write in-file Seasoning into seasoningStore
+                    inFileSeasoningStore.getAll().forEach { seasoning -> seasoningStore.add(seasoning) }
+                    call.respond(inFileSeasoningStore.getAll())
                 }
             }
         }

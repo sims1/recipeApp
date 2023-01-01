@@ -4,10 +4,10 @@ import atomics.ingredient.Seasoning
 import org.litote.kmongo.eq
 import store.DatabaseClients
 
-class MongoDBSpiceAndSauceTypeStore : SpiceAndSauceTypeStore {
+class MongoDBSeasoningStore : SeasoningStore {
 
-    private val spiceAndSauceTypeDatabase = DatabaseClients.mongoDBClient.getDatabase("spiceAndSauceType")
-    private val seasoningCollection = spiceAndSauceTypeDatabase.getCollection<Seasoning>()
+    private val seasoningDatabase = DatabaseClients.mongoDBClient.getDatabase("spiceAndSauceType")
+    private val seasoningCollection = seasoningDatabase.getCollection<Seasoning>()
 
     override suspend fun getAll(): List<Seasoning> = seasoningCollection.find().toList()
 

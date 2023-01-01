@@ -10,7 +10,7 @@ class TypeStringConverter {
             return Ingredient(input)
         }
 
-        fun getSpiceAndSauceType(input: String): Seasoning {
+        fun getSeasoningType(input: String): Seasoning {
             return Seasoning(input)
         }
     }

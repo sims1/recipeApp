@@ -45,8 +45,8 @@ suspend fun getListOfIngredients(): List<Ingredient> {
     return jsonClient.get(endpoint + Recipe.get_ingredients_path).body()
 }
 
-suspend fun getListOfSpiceAndSauceTypes(): List<Seasoning> {
-    return jsonClient.get(endpoint + Recipe.get_spice_and_sauce_types_path).body()
+suspend fun getListOfSeasonings(): List<Seasoning> {
+    return jsonClient.get(endpoint + Recipe.get_seasoning_path).body()
 }
 
 suspend fun addIngredient(ingredient: Ingredient): HttpResponse {
@@ -56,8 +56,8 @@ suspend fun addIngredient(ingredient: Ingredient): HttpResponse {
     }
 }
 
-suspend fun addSpiceAndSauceType(seasoning: Seasoning): HttpResponse {
-    return jsonClient.post(endpoint + Recipe.add_spice_and_sauce_type) {
+suspend fun addSeasoning(seasoning: Seasoning): HttpResponse {
+    return jsonClient.post(endpoint + Recipe.add_seasoning) {
         contentType(ContentType.Application.Json)
         setBody(seasoning)
     }
