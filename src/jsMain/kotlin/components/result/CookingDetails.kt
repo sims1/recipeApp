@@ -56,7 +56,7 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
                 }
                 Ingredients {
                     gridAreaName = "Ingredients"
-                    vegetableAndMeat = recipe.getVegetableAndMeatString()
+                    ingredient = recipe.getVegetableAndMeatString()
                     spicesAndSauces = recipe.getSpicesAndSaucesString()
                 }
                 CookingInstructions {
@@ -93,7 +93,7 @@ private val RecipeName = FC<RecipeNameProps> { props ->
 
 private interface IngredientsProps : Props {
     var gridAreaName: String
-    var vegetableAndMeat: String
+    var ingredient: String
     var spicesAndSauces: String
 }
 
@@ -113,7 +113,7 @@ private val Ingredients = FC<IngredientsProps> { props ->
             css {
                 gridArea = GridArea("VegetableAndMeat")
             }
-            +props.vegetableAndMeat
+            +props.ingredient
         }
         div {
             css {
