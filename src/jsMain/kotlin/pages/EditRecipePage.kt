@@ -126,7 +126,7 @@ val EditRecipePage = FC<Props> {
             css {
                 display = Display.grid
                 gridTemplateAreas = GridTemplateAreas(
-                    GridArea("VegetableAndMeatSelection Selected"),
+                    GridArea("IngredientSelection Selected"),
                     GridArea("SpiceAndSauceSelection Selected"),
                     GridArea("UploadPictures UploadPictures"),
                 )
@@ -143,7 +143,7 @@ val EditRecipePage = FC<Props> {
 
             div {
                 css {
-                    gridArea = GridArea("VegetableAndMeatSelection")
+                    gridArea = GridArea("IngredientSelection")
                     backgroundColor = recipeColorAlias
                     width = 30.pc
 
@@ -163,11 +163,11 @@ val EditRecipePage = FC<Props> {
                         fontSize = unimportantFontSizeAlias
                         marginTop = 1.pc
                     }
-                    name = "VegetableAndMeatType"
-                    id = "VegetableAndMeatType"
+                    name = "Ingredient"
+                    id = "Ingredient"
                     onChange = { event ->
                         selectedIngredientConfigState = selectedIngredientConfigState.newWithField(
-                            newSelected = TypeStringConverter.getVegetableAndMeatType(event.target.value)
+                            newSelected = Ingredient(event.target.value)
                         )
                     }
                     option { +"Select vegetable or meat" }
@@ -298,7 +298,7 @@ val EditRecipePage = FC<Props> {
                     id = "SeasoningType"
                     onChange = { event ->
                         selectedSeasoningConfigState = selectedSeasoningConfigState.newWithField(
-                            newSelected = TypeStringConverter.getSeasoningType(event.target.value)
+                            newSelected = Seasoning(event.target.value)
                         )
                     }
                     option { +"Select spice or sauce" }
@@ -592,7 +592,7 @@ val EditRecipePage = FC<Props> {
                     }
                     p { +"" }
 
-                    CreateCustomIngredientConfig.CreateIngredientType.values().map { addIngredientType ->
+                    CreateCustomIngredientConfig.CreateIngredientType.values().map { createIngredientType ->
                         label {
                             css {
                                 fontFamily = textFontFamilyAlias
@@ -600,14 +600,14 @@ val EditRecipePage = FC<Props> {
                             }
                             input {
                                 type = InputType.radio
-                                value = addIngredientType.value
+                                value = createIngredientType.value
                                 name = "ingredientUnit"
                                 onChange = {
-                                    createCustomIngredientConfigState = createCustomIngredientConfigState.newWithField(newCreateIngredientType = addIngredientType)
+                                    createCustomIngredientConfigState = createCustomIngredientConfigState.newWithField(newCreateIngredientType = createIngredientType)
                                 }
                             }
                         }
-                        +addIngredientType.value
+                        +createIngredientType.value
                         p { +"" }
                     }
                     button {

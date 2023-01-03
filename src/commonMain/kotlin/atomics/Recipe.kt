@@ -40,7 +40,7 @@ class Recipe(
             {
                 Type: ${getTagsString()},
                 Name: ${getNameString()},
-                VegetableAndMeat: ${getIngredientString()},
+                mainIngredients: ${getIngredientString()},
                 SpicesAndSauces: ${getSpicesAndSaucesString()},
                 CookingInstructions: $cookingInstructions
             }
