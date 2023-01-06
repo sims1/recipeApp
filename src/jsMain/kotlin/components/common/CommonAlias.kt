@@ -16,7 +16,7 @@ val textFontSizeAlias = 1.2.em
 val unimportantFontFamilyAlias = FontFamily.sansSerif
 val unimportantFontSizeAlias = 0.8.em
 
-val headerLoginFontSizeAlias = 0.4.em
+val headerLoginFontSizeAlias = 1.2.em
 
 // border
 val commonBorderRadiusAlias = 10.px
@@ -34,3 +34,5 @@ val unimportantColorAlias = NamedColor.grey
 val hoverColorAlias = NamedColor.mistyrose
 
 val buttonFontColor = NamedColor.white
+
+val mainPageColor = NamedColor.white

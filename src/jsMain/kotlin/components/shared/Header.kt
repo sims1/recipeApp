@@ -3,6 +3,7 @@ package components.shared
 import reAuthenticateWithAuthToken
 import authenticateWithPassword
 import components.common.*
+import components.shared.header.LoginState
 import csstype.*
 import csstype.FontWeight.Companion.bolder
 import csstype.TextAlign.Companion.center
@@ -11,6 +12,7 @@ import kotlinx.coroutines.launch
 import react.FC
 import react.Props
 import react.css.css
+import react.dom.html.ButtonType
 import react.dom.html.InputType
 import react.dom.html.ReactHTML.br
 import react.dom.html.ReactHTML.button
@@ -18,6 +20,8 @@ import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.header
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.p
+import react.router.NavigateOptions
+import react.router.useNavigate
 import react.useEffectOnce
 import react.useState
 
@@ -37,15 +41,35 @@ val Header = FC<Props> {
     }
 
     header {
-        css {
-            textAlign = center
-            fontSize = h1FontSizeAlias
-            fontFamily = fancyH1FontFamilyAlias
-            fontWeight = bolder
-            color = recipeNameColorAlias
-        }
-        p {
-            +"Ling's favourite recipes"
+        div {
+            css {
+                textAlign = center
+                paddingTop = 3.pc
+                paddingBottom = 3.pc
+            }
+            val navigate = useNavigate()
+            button {
+                css {
+                    fontSize = h1FontSizeAlias
+                    fontFamily = fancyH1FontFamilyAlias
+                    fontWeight = bolder
+                    color = recipeNameColorAlias
+                    backgroundColor = mainPageColor
+                    borderWidth = 0.pc
+                    cursor = Cursor.pointer
+                }
+                type = ButtonType.button
+                onClick = {
+                    navigate(
+                        "/",
+                        object : NavigateOptions {
+                            override var replace: Boolean? = false
+                            override var state: Any? = null
+                        }
+                    )
+                }
+                +"Ling's favourite recipes"
+            }
         }
 
         div {
@@ -98,6 +122,9 @@ val Header = FC<Props> {
                     top = 10.pc
                     padding = 2.pc
 
+                    width = 10.pc
+                    padding = 2.pc
+
                     fontFamily = textFontFamilyAlias
                     fontSize = textFontSizeAlias
 
@@ -109,7 +136,8 @@ val Header = FC<Props> {
                 }
                 input {
                     css {
-                        width = 10.pc
+                        width = 7.pc
+                        marginBottom = 0.5.pc
                     }
                     type = InputType.text
                     onChange = { event -> loginId = event.target.value }
@@ -118,7 +146,8 @@ val Header = FC<Props> {
                 br { }
                 input {
                     css {
-                        width = 10.pc
+                        width = 7.pc
+                        marginBottom = 1.pc
                     }
                     type = InputType.text
                     onChange = { event -> loginPassword = event.target.value }

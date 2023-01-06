@@ -1,4 +1,4 @@
-package components.common
+package components.shared.header
 
 class LoginState private constructor(private val userName: String? = null) {
 

@@ -4,7 +4,7 @@ import atomics.Recipe.Companion.create_picture_path
 import atomics.ingredient.Ingredient
 import atomics.ingredient.Seasoning
 import auth.AuthRequest
-import components.common.LoginState
+import components.shared.header.LoginState
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.js.*
