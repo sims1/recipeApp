@@ -33,7 +33,7 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
         }
         val neededIngredientMap = mutableMapOf<Ingredient, Int>()
         props.recipes.forEach { (recipe, recipeQuantity) ->
-            recipe.mainIngredients.forEach { ingredient ->
+            recipe.ingredients.forEach { ingredient ->
                 val newQuantity = when (val currentQuantity = neededIngredientMap[ingredient.type]) {
                     null -> ingredient.quantity * recipeQuantity
                     else -> ingredient.quantity * recipeQuantity + currentQuantity
@@ -46,7 +46,7 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
             .joinToString("\n")
 
         val neededSeasonings = props.recipes.keys
-            .flatMap { recipe -> recipe.seasoning }
+            .flatMap { recipe -> recipe.seasonings }
             .map { ingredient -> ingredient.type }
             .distinct()
             .joinToString("\n") { ingredient -> ingredient.getValue() }

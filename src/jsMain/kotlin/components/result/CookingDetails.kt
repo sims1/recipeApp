@@ -56,8 +56,8 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
                 }
                 Ingredients {
                     gridAreaName = "Ingredients"
-                    ingredient = recipe.getIngredientString()
-                    seasoning = recipe.getSeasoningString()
+                    ingredient = recipe.getIngredientsString()
+                    seasoning = recipe.getSeasoningsString()
                 }
                 CookingInstructions {
                     gridAreaName = "CookingInstructions"

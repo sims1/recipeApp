@@ -40,7 +40,7 @@ val RecipeTable = FC<RecipeTableProps> { props ->
 
     if (props.selectedIngredients.isNotEmpty()) {
         showRecipes = showRecipes.filter { recipe ->
-            val ingredients = recipe.mainIngredients.map { ingredient -> ingredient.type.getValue() }
+            val ingredients = recipe.ingredients.map { ingredient -> ingredient.type.getValue() }
             props.selectedIngredients.map { it.getValue() }
                 .intersect(ingredients.toSet()).isNotEmpty()
         }
@@ -168,7 +168,7 @@ private val RecipeHoverBox = FC<RecipeHoverBoxProps> { props ->
                     borderStyle = LineStyle.solid
                 }
                 th { +"Main Ingredients" }
-                td { pre { +props.recipeitem.getIngredientString() } }
+                td { pre { +props.recipeitem.getIngredientsString() } }
             }
             tr {
                 css {
@@ -176,7 +176,7 @@ private val RecipeHoverBox = FC<RecipeHoverBoxProps> { props ->
                     borderStyle = LineStyle.solid
                 }
                 th { +"Other Ingredients" }
-                td { pre { +props.recipeitem.getSeasoningString() } }
+                td { pre { +props.recipeitem.getSeasoningsString() } }
             }
             tr {
                 css {

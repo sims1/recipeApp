@@ -1,7 +1,7 @@
 [
    {
       "name":"Green Onion Potato Shoots",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                            "name":"Green Onion",
@@ -18,7 +18,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[],
+      "seasonings":[],
       "tags":[
          "VEGETABLE",
          "CARB"
@@ -28,7 +28,7 @@
    },
    {
       "name":"Kimchi Fried Rice",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{"name": "Kimchi"},
             "description":null,
@@ -48,7 +48,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[      ],
+      "seasonings":[      ],
       "tags":[
          "CARB"
       ],
@@ -57,7 +57,7 @@
    },
    {
       "name":"Chicken noodle soup",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{"name": "Onion"},
             "description":null,
@@ -101,7 +101,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "MEAT_AND_VEGETABLE"
@@ -111,7 +111,7 @@
    },
    {
       "name":"Tuna macaroni casserole",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{"name": "Macaroni"},
             "description":null,
@@ -171,7 +171,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "MEAT_AND_VEGETABLE"
@@ -181,7 +181,7 @@
    },
    {
       "name":"Mashed Potato",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Potato"
@@ -200,7 +200,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
          {
             "type":{"name":"Butter"},
             "description":null,
@@ -216,7 +216,7 @@
    },
    {
       "name":"Kimchi tofu soup",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Kimchi (韩国泡菜)"
@@ -260,7 +260,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
          {
             "type":   {"name":"Seasame Oil(芝麻油)"},
             "description":null,
@@ -288,7 +288,7 @@
    },
    {
       "name":"Croutons",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Ciabatta bread"
@@ -298,7 +298,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "CARB"
@@ -308,7 +308,7 @@
    },
    {
       "name":"Oven Chicken Wing",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Chicken wing"
@@ -318,7 +318,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[],
+      "seasonings":[],
       "tags":[
          "CHICKEN"
       ],
@@ -327,7 +327,7 @@
    },
    {
       "name":"Sausage Fried Rice",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Cantonese sausage(广东腊肠)"
@@ -354,7 +354,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
          {
             "type":   {"name":"Soy Sauce"},
             "description":null,
@@ -370,7 +370,7 @@
    },
    {
       "name":"Curry fish",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Basa"
@@ -405,7 +405,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
          {
             "type":   {"name":"Curry spice blend"},
             "description":null,
@@ -427,7 +427,7 @@
    },
    {
       "name":"Oven salmon",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Salmon"
@@ -437,7 +437,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "SEAFOOD"
@@ -447,7 +447,7 @@
    },
    {
       "name":"Pickle Chicken",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Chicken thigh"
@@ -484,7 +484,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
          {
             "type":   {"name":"Soy Sauce"},
             "description":null,
@@ -500,7 +500,7 @@
    },
    {
       "name":"Italian Zucchini",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Zucchini"
@@ -510,7 +510,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "VEGETABLE"
@@ -520,7 +520,7 @@
    },
    {
       "name":"Potato Shoots",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Potato"
@@ -530,7 +530,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
          {
             "type":   {"name":"Black vinegar"},
             "description":null,
@@ -547,7 +547,7 @@
    },
    {
       "name":"Baked Sweet Potato",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Sweet potato"
@@ -557,7 +557,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
 
       ],
       "tags":[
@@ -568,7 +568,7 @@
    },
    {
       "name":"Oven Steak",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Steak"
@@ -578,7 +578,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "BEEF"
@@ -588,7 +588,7 @@
    },
    {
       "name":"Kimchi Egg Fried Rice",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Kimchi (韩国泡菜)"
@@ -606,7 +606,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "CARB"
@@ -616,7 +616,7 @@
    },
    {
       "name":"Crispy smashed potato",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Potato"
@@ -626,7 +626,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "CARB"
@@ -636,7 +636,7 @@
    },
    {
       "name":"Spicy Potato Shoots",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Potato"
@@ -655,7 +655,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
          {
             "type":   {"name":"Dry Chili"},
             "description":null,
@@ -672,7 +672,7 @@
    },
    {
       "name":"Potato wedge",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Potato"
@@ -682,7 +682,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
 
       ],
       "tags":[
@@ -693,7 +693,7 @@
    },
    {
       "name":"Sweet potato wedge",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Sweet potato"
@@ -703,7 +703,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
 
       ],
       "tags":[
@@ -714,7 +714,7 @@
    },
    {
       "name":"Pan fried salmon",
-      "mainIngredients":[
+      "ingredients":[
          {
             "type":{
                          "name":"Salmon"
@@ -724,7 +724,7 @@
             "unit":"DEFAULT"
          }
       ],
-      "seasoning":[
+      "seasonings":[
       ],
       "tags":[
          "SEAFOOD"
