@@ -1,185 +1,214 @@
 [
    {
-      "name":"Chicken wing"
+      "name":"Chicken wing",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Chicken breast"
+      "name":"Chicken breast",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Chicken thigh"
+      "name":"Chicken thigh",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Chicken wing"
+      "name":"Bacon",
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"Bacon"
+      "name":"Salmon",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Salmon"
+      "name":"Steak",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Steak"
+      "name":"Pork",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Pork"
+      "name":"Ground Pork",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-         "name":"Ground Pork"
-      },
-   {
-      "name":"Cantonese sausage(广东腊肠)"
+      "name":"Cantonese sausage(广东腊肠)",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Egg"
+      "name":"Egg",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Tuna"
+      "name":"Tuna",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Basa"
+      "name":"Basa",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Soft Tofu"
+      "name":"Soft Tofu",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Medium Tofu"
+      "name":"Medium Tofu",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Firm Tofu"
+      "name":"Firm Tofu",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Tofu sheet(豆腐皮)"
+      "name":"Tofu sheet(豆腐皮)",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Fried tofu(油豆腐)"
+      "name":"Fried tofu(油豆腐)",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Gluten(面筋)"
+      "name":"Gluten(面筋)",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Sweet potato"
+      "name":"Sweet potato",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Zucchini"
+      "name":"Zucchini",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Potato"
+      "name":"Potato",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
       "name":"Garlic",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"Eggplant"
+      "name":"Eggplant",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Enoki"
+      "name":"Enoki",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Carrot"
+      "name":"Carrot",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
       "name":"Onion",
-      "isMainIngredient":false
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
       "name":"Kernel corn(玉米粒)",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Tasty mushroom(香菇)",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"Cauliflower"
+      "name":"Cauliflower",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
       "name":"Shallot",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Green Peas",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"Celery"
+      "name":"Celery",
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Lemon",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Pickle mustard (酸芥菜)",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Pickle cabbage (东北酸白菜)",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"Kimchi (韩国泡菜)"
+      "name":"Kimchi (韩国泡菜)",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
       "name":"Long chili",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Milk",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Mozzarella",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Coconut milk",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Ginger",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Basil",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Coriander(香菜)",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Green Onion",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Garlic",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Small red chili (小米辣)",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
       "name":"Chicken broth",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"All purpose flour"
+      "name":"All purpose flour",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Rice"
+      "name":"Rice",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
       "name":"Rice Paper(越南米纸)",
-      "isMainIngredient":false
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"Ciabatta bread"
+      "name":"Ciabatta bread",
+      "ingredientType":"MINOR_INGREDIENT"
    },
    {
-      "name":"Macaroni"
+      "name":"Macaroni",
+      "ingredientType":"MAJOR_INGREDIENT"
    },
    {
-      "name":"Pasta"
+      "name":"Pasta",
+      "ingredientType":"MAJOR_INGREDIENT"
    }
 ]

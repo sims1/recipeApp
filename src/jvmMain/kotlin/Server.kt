@@ -28,10 +28,12 @@ import io.ktor.server.util.*
 import store.DatabaseClients
 import store.image.RedisImageStore
 import store.ingredient.InFileIngredientStore
+import store.ingredient.InMemoryIngredientStore
 import store.ingredient.MongoDBIngredientStore
 import store.recipe.InFileRecipeStore
 import store.recipe.MongoDBRecipeStore
 import store.seasoning.InFileSeasoningStore
+import store.seasoning.InMemorySeasoningStore
 import store.seasoning.MongoDBSeasoningStore
 import java.util.concurrent.TimeUnit
 
@@ -42,21 +44,21 @@ import java.util.concurrent.TimeUnit
 private val recipeStore =
     //MongoDBRecipeStore()
     //RedisRecipeStore() // not used
-    //InMemoryRecipeStore() // testing only
+    InMemoryRecipeStore() // testing only
 // how to back up
 // 1. go to http://0.0.0.0:9090/getall
 // 2. copy the content, and paste in RecipeBackUp.txt
 // 3. enable the next line
-    InFileRecipeStore() // backup only
+    //InFileRecipeStore() // backup only
 
 private val ingredientStore =
-    MongoDBIngredientStore()
+    //MongoDBIngredientStore()
     //InMemoryIngredientStore() // testing only
-    //InFileIngredientStore()  // backup only
+    InFileIngredientStore()  // backup only
 
 private val seasoningStore =
-    MongoDBSeasoningStore()
-    //InMemorySeasoningStore() // testing only
+    //MongoDBSeasoningStore()
+    InMemorySeasoningStore() // testing only
     //InFileSeasoningStore()  // backup only
 
 private val imageStore =
