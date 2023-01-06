@@ -45,8 +45,8 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
             .map { (ingredient, quantity) -> "${ingredient.getValue()} x $quantity" }
             .joinToString("\n")
 
-        val neededSpicesAndSauces = props.recipes.keys
-            .flatMap { recipe -> recipe.spicesAndSauces }
+        val neededSeasonings = props.recipes.keys
+            .flatMap { recipe -> recipe.seasoning }
             .map { ingredient -> ingredient.type }
             .distinct()
             .joinToString("\n") { ingredient -> ingredient.getValue() }
@@ -69,7 +69,7 @@ val ShoppingListTable = FC<ShoppingListTableProps> { props ->
             tbody {
                 tr {
                     td { +neededIngredients }
-                    td { +neededSpicesAndSauces }
+                    td { +neededSeasonings }
                 }
             }
         }

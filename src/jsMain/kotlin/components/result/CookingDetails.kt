@@ -57,7 +57,7 @@ val CookingDetails = FC<CookingDetailsProps> { props ->
                 Ingredients {
                     gridAreaName = "Ingredients"
                     ingredient = recipe.getIngredientString()
-                    spicesAndSauces = recipe.getSpicesAndSaucesString()
+                    seasoning = recipe.getSeasoningString()
                 }
                 CookingInstructions {
                     gridAreaName = "CookingInstructions"
@@ -94,7 +94,7 @@ private val RecipeName = FC<RecipeNameProps> { props ->
 private interface IngredientsProps : Props {
     var gridAreaName: String
     var ingredient: String
-    var spicesAndSauces: String
+    var seasoning: String
 }
 
 private val Ingredients = FC<IngredientsProps> { props ->
@@ -107,19 +107,19 @@ private val Ingredients = FC<IngredientsProps> { props ->
             borderRadius = commonBorderRadiusAlias
             marginBottom = 0.5.pc
 
-            gridTemplateAreas = GridTemplateAreas(GridArea("Ingredient SpicesAndSauces"))
+            gridTemplateAreas = GridTemplateAreas(GridArea("Ingredients Seasonings"))
         }
         div {
             css {
-                gridArea = GridArea("Ingredient")
+                gridArea = GridArea("Ingredients")
             }
             +props.ingredient
         }
         div {
             css {
-                gridArea = GridArea("SpicesAndSauces")
+                gridArea = GridArea("Seasonings")
             }
-            +props.spicesAndSauces
+            +props.seasoning
         }
     }
 }

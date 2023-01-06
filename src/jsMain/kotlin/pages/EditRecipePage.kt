@@ -127,7 +127,7 @@ val EditRecipePage = FC<Props> {
                 display = Display.grid
                 gridTemplateAreas = GridTemplateAreas(
                     GridArea("IngredientSelection Selected"),
-                    GridArea("SpiceAndSauceSelection Selected"),
+                    GridArea("SeasoningSelection Selected"),
                     GridArea("UploadPictures UploadPictures"),
                 )
 
@@ -275,7 +275,7 @@ val EditRecipePage = FC<Props> {
 
             div {
                 css {
-                    gridArea = GridArea("SpiceAndSauceSelection")
+                    gridArea = GridArea("SeasoningSelection")
                     backgroundColor = recipeColorAlias
                     width = 30.pc
 
@@ -301,7 +301,7 @@ val EditRecipePage = FC<Props> {
                             newSelected = Seasoning(event.target.value)
                         )
                     }
-                    option { +"Select spice or sauce" }
+                    option { +"Select seasoning" }
                     allSeasoningState.map { ingredient ->
                         option {
                             value = ingredient.getValue()
@@ -384,7 +384,7 @@ val EditRecipePage = FC<Props> {
                         selectedSeasoningsState =selectedSeasoningsState +
                                 selectedSeasoningConfigState.getIngredient()
                     }
-                    +"Add spice or sauce"
+                    +"Add seasoning"
                 }
             }
 
@@ -431,7 +431,7 @@ val EditRecipePage = FC<Props> {
                         fontFamily = h2FontFamilyAlias
                         fontSize = unimportantFontSizeAlias
                     }
-                    +"Spice and Sauce"
+                    +"Seasoning"
                 }
                 selectedSeasoningsState.map { ingredient ->
                     p {
@@ -635,7 +635,7 @@ val EditRecipePage = FC<Props> {
                                                     Ingredient(createCustomIngredientConfigState.name!!, false)
                                                 )
                                             }
-                                            CreateCustomIngredientConfig.CreateIngredientType.SPICES_AND_SAUCE -> {
+                                            CreateCustomIngredientConfig.CreateIngredientType.SEASONING -> {
                                                 addSeasoning(Seasoning(createCustomIngredientConfigState.name!!))
                                             }
                                         }

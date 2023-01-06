@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 class Recipe(
     val name: String,
     val mainIngredients: List<IngredientDetails<Ingredient>>,
-    val spicesAndSauces: List<IngredientDetails<Seasoning>>,
+    val seasoning: List<IngredientDetails<Seasoning>>,
     val tags: List<Tag>,
     val cookingInstructions: String,
     val author: String = LING,
@@ -24,7 +24,7 @@ class Recipe(
         return Recipe(
             name = this.name,
             mainIngredients = this.mainIngredients,
-            spicesAndSauces = this.spicesAndSauces,
+            seasoning = this.seasoning,
             tags = this.tags,
             cookingInstructions = this.cookingInstructions,
             author = newAuthor,
@@ -33,7 +33,7 @@ class Recipe(
     }
     fun getNameString() = name
     fun getIngredientString() = mainIngredients.joinToString("\n") { it.getString() }
-    fun getSpicesAndSaucesString() = spicesAndSauces.joinToString("\n") { it.getString() }
+    fun getSeasoningString() = seasoning.joinToString("\n") { it.getString() }
 
     override fun toString(): String {
         return """
@@ -41,7 +41,7 @@ class Recipe(
                 Type: ${getTagsString()},
                 Name: ${getNameString()},
                 mainIngredients: ${getIngredientString()},
-                SpicesAndSauces: ${getSpicesAndSaucesString()},
+                Seasoning: ${getSeasoningString()},
                 CookingInstructions: $cookingInstructions
             }
             """

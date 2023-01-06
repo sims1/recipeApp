@@ -18,6 +18,6 @@ class CreateCustomIngredientConfig(
     enum class CreateIngredientType(val value: String) {
         MAIN_INGREDIENT("Main Ingredient"),
         OTHER_INGREDIENT("Other Ingredient"),
-        SPICES_AND_SAUCE("Spices/Sauce")
+        SEASONING("Seasoning")
     }
 }
