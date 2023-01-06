@@ -2,50 +2,36 @@ package atomics.ingredient
 
 import kotlinx.serialization.Serializable
 
-enum class IngredientType(val value: String) {
-    MAJOR_INGREDIENT("MajorIngredient"),
-    MINOR_INGREDIENT("MinorIngredient"),
-    SEASONING_INGREDIENT("Seasoning"),
-}
-
 @Serializable
-class Ingredient(val name: String, val ingredientType: IngredientType) : BaseIngredient {
+class Ingredient(val name: String, val isMainIngredient: Boolean = true) : BaseIngredient {
 
     companion object {
-        val CHICKEN_BREAST = Ingredient("Chicken breast", IngredientType.MAJOR_INGREDIENT)
-        val CHICKEN_THIGH = Ingredient("Chicken thigh", IngredientType.MAJOR_INGREDIENT)
-        val CHICKEN_WING = Ingredient("Chicken wing", IngredientType.MAJOR_INGREDIENT)
-        val BACON = Ingredient("Bacon", IngredientType.MAJOR_INGREDIENT)
-        val SALMON = Ingredient("Salmon", IngredientType.MAJOR_INGREDIENT)
-        val STEAK = Ingredient("Steak", IngredientType.MAJOR_INGREDIENT)
-        val PORK_BITS = Ingredient("Pork", IngredientType.MAJOR_INGREDIENT)
-        val CANTONESE_SAUSAGE = Ingredient("Cantonese sausage(广东腊肠)", IngredientType.MAJOR_INGREDIENT)
-        val EGG = Ingredient("Egg", IngredientType.MAJOR_INGREDIENT)
-        val TUNA = Ingredient("Tuna", IngredientType.MAJOR_INGREDIENT)
-        val BASA = Ingredient("Basa", IngredientType.MAJOR_INGREDIENT)
-        val SOFT_TOFU = Ingredient("Soft", IngredientType.MAJOR_INGREDIENT)
-        val MEDIUM_TOFU = Ingredient("Medium tofu", IngredientType.MAJOR_INGREDIENT)
-        val FIRM_TOFU = Ingredient("Firm tofu", IngredientType.MAJOR_INGREDIENT)
-        val TOFU_SHEET = Ingredient("Tofu sheet(豆腐皮)", IngredientType.MAJOR_INGREDIENT)
-        val FRIED_TOFU = Ingredient("Fried tofu(油豆腐)", IngredientType.MAJOR_INGREDIENT)
-        val GLUTEN = Ingredient("Gluten(面筋)", IngredientType.MAJOR_INGREDIENT)
+        val CHICKEN_BREAST = Ingredient("Chicken breast")
+        val CHICKEN_THIGH = Ingredient("Chicken thigh")
+        val CHICKEN_WING = Ingredient("Chicken wing")
+        val BACON = Ingredient("Bacon")
+        val SALMON = Ingredient("Salmon")
+        val STEAK = Ingredient("Steak")
+        val PORK_BITS = Ingredient("Pork")
+        val CANTONESE_SAUSAGE = Ingredient("Cantonese sausage(广东腊肠)")
+        val EGG = Ingredient("Egg")
+        val TUNA = Ingredient("Tuna")
+        val BASA = Ingredient("Basa")
+        val SOFT_TOFU = Ingredient("Soft")
+        val MEDIUM_TOFU = Ingredient("Medium tofu")
+        val FIRM_TOFU = Ingredient("Firm tofu")
+        val TOFU_SHEET = Ingredient("Tofu sheet(豆腐皮)", false)
+        val FRIED_TOFU = Ingredient("Fried tofu(油豆腐)", false)
+        val GLUTEN = Ingredient("Gluten(面筋)", false)
 
-        val SWEET_POTATO = Ingredient("Sweet potato", IngredientType.MAJOR_INGREDIENT)
-        val ZUCCHINI = Ingredient("Zucchini", IngredientType.MAJOR_INGREDIENT)
-        val POTATO = Ingredient("Potato", IngredientType.MAJOR_INGREDIENT)
+        val SWEET_POTATO = Ingredient("Sweet potato")
+        val ZUCCHINI = Ingredient("Zucchini")
+        val POTATO = Ingredient("Potato")
 
-        val GARLIC = Ingredient("Garlic", IngredientType.MINOR_INGREDIENT)
+        val GARLIC = Ingredient("Garlic", isMainIngredient = false)
     }
 
     override fun getValue(): String {
         return name
-    }
-
-    fun isMajorIngredient(): Boolean {
-        return ingredientType == IngredientType.MAJOR_INGREDIENT
-    }
-
-    fun isSeasoning(): Boolean {
-        return ingredientType == IngredientType.SEASONING_INGREDIENT
     }
 }

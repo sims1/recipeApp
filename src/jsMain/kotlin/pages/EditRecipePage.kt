@@ -167,7 +167,7 @@ val EditRecipePage = FC<Props> {
                     id = "Ingredient"
                     onChange = { event ->
                         selectedIngredientConfigState = selectedIngredientConfigState.newWithField(
-                            newSelected = Ingredient(event.target.value, IngredientType.MAJOR_INGREDIENT)
+                            newSelected = Ingredient(event.target.value)
                         )
                     }
                     option { +"Select vegetable or meat" }
@@ -627,12 +627,12 @@ val EditRecipePage = FC<Props> {
                                         val result = when (createCustomIngredientConfigState.ingredient) {
                                             CreateCustomIngredientConfig.CreateIngredientType.MAIN_INGREDIENT -> {
                                                 addIngredient(
-                                                    Ingredient(createCustomIngredientConfigState.name!!, IngredientType.MAJOR_INGREDIENT)
+                                                    Ingredient(createCustomIngredientConfigState.name!!, true)
                                                 )
                                             }
                                             CreateCustomIngredientConfig.CreateIngredientType.OTHER_INGREDIENT -> {
                                                 addIngredient(
-                                                    Ingredient(createCustomIngredientConfigState.name!!, IngredientType.MAJOR_INGREDIENT)
+                                                    Ingredient(createCustomIngredientConfigState.name!!, false)
                                                 )
                                             }
                                             CreateCustomIngredientConfig.CreateIngredientType.SEASONING -> {

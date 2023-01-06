@@ -82,7 +82,7 @@ val FilterSidebar = FC<FilterSidebarProps> { props ->
             +"Main Ingredients"
         }
         props.ingredients
-            .filter { ingredient -> ingredient.isMajorIngredient() }
+            .filter { ingredient -> ingredient.isMainIngredient }
             .map { ingredient ->
             label {
                 css {
