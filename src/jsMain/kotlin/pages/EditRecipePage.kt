@@ -81,18 +81,21 @@ val EditRecipePage = FC<Props> {
             fontSize = h2FontSizeAlias
         }
 
-        input {
+        div {
             css {
-                fontSize = h2FontSizeAlias
                 textAlign = center
-                margin = Auto.auto
             }
-            type = InputType.text
-            placeholder = "Recipe Name"
-            onChange = { event -> recipeNameState = event.target.value }
+            input {
+                css {
+                    textAlign = center
+                    fontSize = h2FontSizeAlias
+                    margin = Auto.auto
+                }
+                type = InputType.text
+                placeholder = "Recipe Name"
+                onChange = { event -> recipeNameState = event.target.value }
+            }
         }
-
-        br { }
 
         Tag.values().toList().map { tag ->
             val width = when (recipeTagConfig.isSelected(tag)) {
