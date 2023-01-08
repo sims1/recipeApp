@@ -8,10 +8,7 @@ import atomics.ingredient.*
 import components.shared.Footer
 import components.shared.Header
 import components.common.*
-import components.edit.CreateCustomIngredientConfig
-import components.edit.PopUpWindowConfig
-import components.edit.SelectedSeasoningConfig
-import components.edit.SelectedIngredientConfig
+import components.edit.*
 import csstype.*
 import csstype.LineStyle.Companion.solid
 import csstype.Position.Companion.fixed
@@ -47,7 +44,7 @@ private val scope = MainScope()
 
 val EditRecipePage = FC<Props> {
     var recipeNameState: String? by useState(null)
-    var recipeTagsState: List<Tag> by useState(emptyList())
+    var recipeTagConfig: RecipeTagConfig by useState(RecipeTagConfig())
 
     var selectedIngredientConfigState: SelectedIngredientConfig by useState(SelectedIngredientConfig())
     var selectedIngredientsState: List<IngredientDetails<Ingredient>> by useState(emptyList())
@@ -98,13 +95,18 @@ val EditRecipePage = FC<Props> {
         br { }
 
         Tag.values().toList().map { tag ->
+            val width = when (recipeTagConfig.isSelected(tag)) {
+                true -> 0.2.pc
+                else -> 0.pc
+            }
             button {
                 css {
                     fontFamily = textFontFamilyAlias
                     fontSize = unimportantFontSizeAlias
                     backgroundColor = recipeNameColorAlias
                     color = buttonFontColor
-                    borderStyle = None.none
+                    borderWidth = width
+                    borderColor = hoverColorAlias
                     borderRadius = commonButtonBorderRadiusAlias
                     paddingLeft = 1.pc
                     paddingRight = 1.pc
@@ -116,7 +118,7 @@ val EditRecipePage = FC<Props> {
                 }
                 type = ButtonType.button
                 onClick = {
-                    recipeTagsState = recipeTagsState + tag
+                    recipeTagConfig = recipeTagConfig.newWithClick(tag)
                 }
                 +tag.value
             }
@@ -509,7 +511,7 @@ val EditRecipePage = FC<Props> {
                             newMessage = "Recipe name is not set!"
                         )
                     }
-                    recipeTagsState.isEmpty() -> {
+                    recipeTagConfig.isNoneSelected() -> {
                         popUpWindowConfigState = popUpWindowConfigState.newWithField(
                             newMessage = "Please choose at least 1 tag"
                         )
@@ -519,7 +521,7 @@ val EditRecipePage = FC<Props> {
                             recipeNameState!!,
                             selectedIngredientsState,
                             selectedSeasoningsState,
-                            recipeTagsState,
+                            recipeTagConfig.getSelectedTags(),
                             recipeDescriptionState
                         )
                         scope.launch {
