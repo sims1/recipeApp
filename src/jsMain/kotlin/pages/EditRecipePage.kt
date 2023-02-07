@@ -196,10 +196,9 @@ val EditRecipePage = FC<Props> {
                     }
                     type = ButtonType.button
                     onClick = {
-                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
-                            newShow = true,
-                            newMessage = "",
-                            newShowAddIngredientTextBox = true,
+                        popUpWindowConfigState = PopUpWindowConfig(
+                            show = true,
+                            showAddIngredientComponents = true
                         )
                     }
                     onMouseEnter = {
@@ -510,13 +509,17 @@ val EditRecipePage = FC<Props> {
             onClick = {
                 when {
                     recipeNameState == null -> {
-                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
-                            newMessage = "Recipe name is not set!"
+                        popUpWindowConfigState = PopUpWindowConfig(
+                            show = true,
+                            message = "Recipe name is not set!",
+                            showAddIngredientComponents = false
                         )
                     }
                     recipeTagConfig.isNoneSelected() -> {
-                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
-                            newMessage = "Please choose at least 1 tag"
+                        popUpWindowConfigState = PopUpWindowConfig(
+                            show = true,
+                            message = "Please choose at least 1 tag",
+                            showAddIngredientComponents = false
                         )
                     }
                     else -> {
@@ -532,8 +535,10 @@ val EditRecipePage = FC<Props> {
                                 HttpStatusCode.OK -> {
                                     val response = recipeImageState?.let {
                                         println("Creating recipe in progress...")
-                                        popUpWindowConfigState = popUpWindowConfigState.newWithField(
-                                            newMessage = "Creating recipe in progress..."
+                                        popUpWindowConfigState = PopUpWindowConfig(
+                                            show = true,
+                                            message = "Creating recipe in progress...",
+                                            showAddIngredientComponents = false
                                         )
                                         uploadRecipePicture(recipe.id, it)
                                     }
@@ -546,16 +551,14 @@ val EditRecipePage = FC<Props> {
                                 HttpStatusCode.Unauthorized -> "Please log in first"
                                 else -> "Unknown error occurred, please contact Ling"
                             }
-                            popUpWindowConfigState = popUpWindowConfigState.newWithField(
-                                newMessage = message
+                            popUpWindowConfigState = PopUpWindowConfig(
+                                show = true,
+                                message = message,
+                                showAddIngredientComponents = false
                             )
                         }
                     }
                 }
-                popUpWindowConfigState = popUpWindowConfigState.newWithField(
-                    newShow = true,
-                    newShowAddIngredientTextBox = false
-                )
             }
             +"Add recipe"
         }
@@ -655,7 +658,8 @@ val EditRecipePage = FC<Props> {
                                     }
                                     popUpWindowConfigState = PopUpWindowConfig(
                                         show = true,
-                                        message = popUpMessage
+                                        message = popUpMessage,
+                                        showAddIngredientComponents = false
                                     )
                                 }
                             }
@@ -675,9 +679,7 @@ val EditRecipePage = FC<Props> {
                             cursor = Cursor.pointer
 
                             onClick = {
-                                popUpWindowConfigState = popUpWindowConfigState.newWithField(
-                                    newShow = false
-                                )
+                                popUpWindowConfigState = PopUpWindowConfig()
                             }
                         }
                         +"OK"
