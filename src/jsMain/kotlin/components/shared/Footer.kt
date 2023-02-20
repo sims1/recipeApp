@@ -15,7 +15,7 @@ val Footer = FC<Props> {
             color = unimportantColorAlias
         }
         p {
-            +"V3.0"
+            +"V4.0"
         }
     }
 }

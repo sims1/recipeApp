@@ -6,6 +6,14 @@ This project is built with React and Kotlin/JS.
 
 # Release notes
 
+### v4.0
+- Implement login & auth
+- Implement recipe image upload & store
+- Refactor & simplify the data model & names
+- Make web page title to be home button
+- Upgrade ktor version
+- Add more recipes
+
 ### v3.0
 - Use ktor to build asynchronous server and client
 - Switch from in-memory store to MongoDB
