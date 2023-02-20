@@ -147,7 +147,8 @@
       ],
       "tags":[
          "CHICKEN",
-         "SOUP"
+         "SOUP",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Boil pasta, drain\nOil, onion, carrot, celery, 3-4min\nAdd chicken leg, 2min, broth cube, lots of water, simmer 18-22min\nShred chicken leg, put back, mix with pasta\nMay add lemon juice",
       "author":"Ling",
@@ -242,7 +243,8 @@
 
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Boil macaroni, and drain (dont let it stick to each other)\nOil, shallot, carrot, cauliflower, stir dry 3-5min, sp\nAdd tuna, green peas, 1-2 tbsp flour, stir fry for 1min\nAdd 250ml of milk, hand full of mozzarella, stir till cheese is melt\nPour it to a pot on top of macaroni, 425F, 10-12min",
       "author":"Ling",
@@ -281,7 +283,8 @@
          }
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"steam potato slices and 1 garlic\nadd all spices and mash\n",
       "author":"Ling",
@@ -387,7 +390,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"cut bread into small cubes\n450F, 5-7min\nor\nbroil, 4-5min",
       "author":"Ling",
@@ -410,7 +414,8 @@
 
       ],
       "tags":[
-         "CHICKEN"
+         "CHICKEN",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"400F 40min",
       "author":"Ling",
@@ -525,7 +530,8 @@
          }
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"basa, curry spice blend, 3-4min per side\noil, carrots, 3-4min, zucchini, 1min, mild curry paste, 1 min\nadd coconut milk, water, sp, 8-10min\n(pour on rice)",
       "author":"Ling",
@@ -548,7 +554,8 @@
 
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"brush oil, 425F, 10-12min\nadd salt and pepper",
       "author":"Ling",
@@ -629,7 +636,8 @@
 
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"450F 12min",
       "author":"Ling",
@@ -684,7 +692,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"using fork to poke holes on sweet potatoes\nput into cold oven\n425F 75min\nturn off oven, leave it in oven for another 30min\n",
       "author":"Ling",
@@ -707,7 +716,8 @@
 
       ],
       "tags":[
-         "BEEF"
+         "BEEF",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"leave it out of fridge for 30min to warm up to room temperature\npat dry steak, add salt and pepper\n450F with cast iron pan\n3min one side, 3min the other side\n(medium rare 135-140 degrees)\n",
       "author":"Ling",
@@ -763,7 +773,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"boil potatoes till fork can go through\nsmash the potatoes and brush oil on them\n400F 40min",
       "author":"Ling",
@@ -827,7 +838,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"cut potato into wedges\ntoss with oil and sp\n450F 26min\n",
       "author":"Ling",
@@ -850,7 +862,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"toss sweet potato wedge with oil\n450F 22-24min",
       "author":"Ling",
@@ -873,7 +886,8 @@
 
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"medium, 4-5min, flip, 2-3min",
       "author":"Ling",
@@ -919,7 +933,8 @@
          }
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"2tbsp mayo, panko, old bay seasoning\n450F 12-14min",
       "author":"Ling",
@@ -951,7 +966,8 @@
 
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"5-6min",
       "author":"Ling",
@@ -981,7 +997,8 @@
          }
       ],
       "tags":[
-         "SAUCE"
+         "SAUCE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"lemon juice, mayo, sp",
       "author":"Ling",
@@ -1020,7 +1037,8 @@
          }
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"garlic oil on bread\n450F 5-6mjn",
       "author":"Ling",
@@ -1112,7 +1130,8 @@
       ],
       "tags":[
          "BEEF",
-         "SOUP"
+         "SOUP",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"ground beef pan fry 4-5min, discard fat\t\t\t\t\t\t\t\t\t\t\tbutter, garlic, thyme, carrot, 3-4min, add beef and gravy mix, 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd broth concentrate, soy sauce, water, 10-12min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd quartered potato\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1135,7 +1154,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"450F 25-28min",
       "author":"Ling",
@@ -1199,7 +1219,8 @@
          }
       ],
       "tags":[
-         "SAUCE"
+         "SAUCE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Italian seasoning, sugar, lemon juice, oil, onion dices\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1231,7 +1252,8 @@
 
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Salmon, Spinach, capers dressing, croutons\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1314,7 +1336,8 @@
          }
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"corn, onion, pepper, oil, old bay seasoning, 450F 8-10min\nadd shrimp with old bay seasoning, 2-4min, 450F\nbutter, garlic, lemon juice, pour on top",
       "author":"Ling",
@@ -1424,7 +1447,8 @@
          }
       ],
       "tags":[
-         "PORK"
+         "PORK",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"sausage + panko into balls, 400F 10-12min\noil, shallot 2-3min, garlic, tomato sauce base 1-2min, crushed tomato, broth concentrate, 6-8min\nadd spaghetti, spinach, meatballs, water, parmesan, 1min",
       "author":"Ling",
@@ -1456,7 +1480,8 @@
 
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"oil, S&P\n450F, 12-15min",
       "author":"Ling",
@@ -1503,7 +1528,8 @@
          }
       ],
       "tags":[
-         "CHICKEN"
+         "CHICKEN",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"half chicken breast, mayo, panko\n4-5min per side\nsprinkle cheese, broil 2-3min",
       "author":"Ling",
@@ -1549,7 +1575,8 @@
          }
       ],
       "tags":[
-         "SAUCE"
+         "SAUCE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"",
       "author":"Ling",
@@ -1579,7 +1606,8 @@
          }
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"lemon-pepper seasoning, pan fry 2-3min",
       "author":"Ling",
@@ -1635,7 +1663,8 @@
          }
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Pan fry green bean, add a bit of water, 3-4min\nAdd cherry tomato, garlic, 3-4min\nAdd dry dill, garlic salt\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1658,7 +1687,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Boil potato cubes, 10-12min\nDrain, oil, butter, pan fry 2-3min",
       "author":"Ling",
@@ -1699,7 +1729,8 @@
 
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"onion, pepper, pan fry 3-4min\nadd corn 2min",
       "author":"Ling",
@@ -1767,7 +1798,8 @@
 
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Oil, carrot, garlic pan fry 2-3min\nadd small potato cubes 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd shrimp, corn, broth cube, water, 12-15min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1806,7 +1838,8 @@
          }
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Boil potato slices & crushed garlic for 10-12min\nmash 2 tbsp water, butter, sp",
       "author":"Ling",
@@ -1854,7 +1887,8 @@
          }
       ],
       "tags":[
-         "SAUCE"
+         "SAUCE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"1 tbsp butter, shallot, gravy mic, 2/3cup water, chicken broth, boil till thickens thickens\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1901,7 +1935,8 @@
          }
       ],
       "tags":[
-         "CHICKEN"
+         "CHICKEN",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Chicken breast, dijon, panko, pan fry 1-2min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nzucchini, oil, sp, 10-14min 450F with chicken\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1992,7 +2027,8 @@
          }
       ],
       "tags":[
-         "BEEF"
+         "BEEF",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Oil, ground beef, onions, peppers, jalapeno, sp, pan fry 3-5min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAdd cajun spice blend, garlic, 1 min, add beef broth, soy sauce, 1.4 cup water\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAdd steamed rice, 2-3min, no stir\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAnother 2-3min, stir\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2015,7 +2051,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"400F 6-8min",
       "author":"Ling",
@@ -2083,7 +2120,8 @@
 
       ],
       "tags":[
-         "PORK"
+         "PORK",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Ground pork, s&p, make small meat balls\nOil, meatball, pan fry 8 min, set aside\nOil, onion, carrot, pan fry 2-3 min\nAdd chicken broth, lots of water, couscous\nBoil, add meatball, 10-12min\nAdd spinach\nAdd parmesan\n",
       "author":"Ling",
@@ -2163,7 +2201,8 @@
          }
       ],
       "tags":[
-         "CHICKEN"
+         "CHICKEN",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"chicken thigh 450F, 12-14min\nmix cabbage, vinegar, mayo, mustard, sugar\ntop of the rack, buns 2min, butter\nstack together",
       "author":"Ling",
@@ -2195,7 +2234,8 @@
 
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"oil, sp\t450F, 12-14min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2227,7 +2267,8 @@
 
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"oil, 3-4min one side, 2-3min the other side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd garlic, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2268,7 +2309,8 @@
 
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"zucchini, onions, carrots, oil, sp\n450F, 14-16min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2350,7 +2392,8 @@
          }
       ],
       "tags":[
-         "BEEF"
+         "BEEF",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Steam rice with tumeric spice blend\nsauce -> mayo, garlic, water, sp\noil, ground beef, pan fry till no pink, discard fat, sp\nadd peppers, peas, beef broth, water, 4-6min",
       "author":"Ling",
@@ -2389,7 +2432,8 @@
          }
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"butter, ginger, 1min\nbasa, pan fry 3-4min per side",
       "author":"Ling",
@@ -2494,7 +2538,8 @@
          }
       ],
       "tags":[
-         "BEEF"
+         "BEEF",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"coleslaw, pickle brine, white vinegar, water, sugar in wok, 2-3min till liquid is absorbed, fridge to cool\nground beef, breadcrumbs, garlic salt, mix to meat patty, 5-6min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nsauce -> mayo, ketchup, chopped pickle\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nbuns, butter, 450F, 3-4min\nstack together\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2584,7 +2629,8 @@
          }
       ],
       "tags":[
-         "BEEF"
+         "BEEF",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"ground beef, garlic, breadcrumb spice blend, italian herb spice blend, sp, 3-5min per side\nadd cheese, remove from heat and cover\nbuns, 450F, 3-4min toast\ntomato 450F, 12-14min\npesto, mayo, stack together",
       "author":"Ling",
@@ -2659,7 +2705,8 @@
          }
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"oil, zucchini, shallots, 4-5min, sp, add shrimp and garlic, 2-3min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd lemon juice, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd boiled pasta and butter\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2682,7 +2729,8 @@
 
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"pan fry 2-4min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2705,7 +2753,8 @@
 
       ],
       "tags":[
-         "PORK"
+         "PORK",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"oil, 4-6min per side, s&p",
       "author":"Ling",
@@ -2752,7 +2801,8 @@
          }
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"oil, onion, cherry tomato, vinegar, sugar, 3-4min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nwater, 2-5min, sp\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2816,7 +2866,8 @@
          }
       ],
       "tags":[
-         "SEAFOOD"
+         "SEAFOOD",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"basa, mayo, meditterean spice blend, panko, 3-4min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nsauce -> mayo, capers, lemon juice\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2889,7 +2940,8 @@
          }
       ],
       "tags":[
-         "CHICKEN"
+         "CHICKEN",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"chicken breast coated with mayo and panko, 1-2min per side\nBaking sheet, add peppers, add chicken sprinkled with parmesan, 450F, 10-14min\nsauce -> mayo, garlic, lemon juice, sp\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2940,7 +2992,8 @@
       ],
       "tags":[
          "VEGETABLE",
-         "CARB"
+         "CARB",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"potato, onion, carrot, butternut squash, 450F, 20-22min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -3005,7 +3058,8 @@
          }
       ],
       "tags":[
-         "VEGETABLE"
+         "VEGETABLE",
+         "WESTERN_FOOD"
       ],
       "cookingInstructions":"Onion, peppers, pan fry 8-10min, cherry tomatoes, garlic, 3-5min, off heat vinegar, sugar\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",

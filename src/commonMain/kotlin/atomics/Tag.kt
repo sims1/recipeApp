@@ -11,5 +11,7 @@ enum class Tag(val value:String) {
     CARB("Carb"),
     DESERT("Desert"),
     SAUCE("Sauce"),
-    CHINESE_FOOD("Chinese food")
+
+    CHINESE_FOOD("Chinese food"),
+    WESTERN_FOOD("Western food")
 }
