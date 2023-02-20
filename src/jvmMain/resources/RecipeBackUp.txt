@@ -26,7 +26,8 @@
       ],
       "tags":[
          "VEGETABLE",
-         "CARB"
+         "CARB",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"Oil + green onion\nwhen fragrant, add potato shoots",
       "author":"Ling",
@@ -67,7 +68,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"Oil + egg, fry put on side\nCut kimchi into dices\nFry rice without oil, when hot, add salt\nAdd cooked egg and kimchi dices",
       "author":"Ling",
@@ -361,7 +363,8 @@
          }
       ],
       "tags":[
-         "SOUP"
+         "SOUP",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"Seasame oil + green onion + pork bits\nAdd onion dices + kimchi\nAdd minced garlic + salt + a bit of sugar + soy sauce + chili powder\nAdd water and soft tofu slices\nBoil for 5 min",
       "author":"Ling",
@@ -456,7 +459,8 @@
       ],
       "tags":[
          "PORK",
-         "CARB"
+         "CARB",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"Rehydrate dry mushrooms\n\nStir fry Cantonese sausage slices, drain fat\nStir fry Carrot dices + mushroom dices Kernel corn\nSteam sausage + carrot + corn + rice as usual",
       "author":"Ling",
@@ -601,7 +605,8 @@
          }
       ],
       "tags":[
-         "CHICKEN"
+         "CHICKEN",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"Oil + Small red chili dices\nwhen fragrant, add chicken thigh (5x25mm)\nwhen almost cooked, add soy sauce and pickle(minced)\n",
       "author":"Ling",
@@ -655,7 +660,8 @@
       ],
       "tags":[
          "CARB",
-         "VEGETABLE"
+         "VEGETABLE",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"cook!",
       "author":"Ling",
@@ -733,7 +739,8 @@
 
       ],
       "tags":[
-         "CARB"
+         "CARB",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"Steam rice (better use rice from fridge)\nStir fry egg\n\nNo oil, stir fry rice, when hot, add tiny bit of salt\nAdd kimchi and egg",
       "author":"Ling",
@@ -796,7 +803,8 @@
       ],
       "tags":[
          "VEGETABLE",
-         "CARB"
+         "CARB",
+         "CHINESE_FOOD"
       ],
       "cookingInstructions":"Oil + garlic slices + dry chili halves\nwhen fragrant, add potato shoots",
       "author":"Ling",
@@ -1306,8 +1314,7 @@
          }
       ],
       "tags":[
-         "SEAFOOD",
-         "MEAT_AND_VEGETABLE"
+         "SEAFOOD"
       ],
       "cookingInstructions":"corn, onion, pepper, oil, old bay seasoning, 450F 8-10min\nadd shrimp with old bay seasoning, 2-4min, 450F\nbutter, garlic, lemon juice, pour on top",
       "author":"Ling",
@@ -1760,8 +1767,7 @@
 
       ],
       "tags":[
-         "SEAFOOD",
-         "MEAT_AND_VEGETABLE"
+         "SEAFOOD"
       ],
       "cookingInstructions":"Oil, carrot, garlic pan fry 2-3min\nadd small potato cubes 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd shrimp, corn, broth cube, water, 12-15min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -1895,8 +1901,7 @@
          }
       ],
       "tags":[
-         "CHICKEN",
-         "MEAT_AND_VEGETABLE"
+         "CHICKEN"
       ],
       "cookingInstructions":"Chicken breast, dijon, panko, pan fry 1-2min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nzucchini, oil, sp, 10-14min 450F with chicken\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
@@ -2386,7 +2391,7 @@
       "tags":[
          "SEAFOOD"
       ],
-      "cookingInstructions":"butter, ginger, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nbasa, pan fry 3-4min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "cookingInstructions":"butter, ginger, 1min\nbasa, pan fry 3-4min per side",
       "author":"Ling",
       "_id":"Pan-frybasa"
    },

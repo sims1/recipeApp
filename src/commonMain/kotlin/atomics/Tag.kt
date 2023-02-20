@@ -6,11 +6,10 @@ enum class Tag(val value:String) {
     LAMB("Lamb"),
     PORK("Pork"),
     SEAFOOD("Seafood"),
-
-    MEAT_AND_VEGETABLE("Meat&Vegetable"),
     VEGETABLE("Vegetable"),
     SOUP("Soup"),
     CARB("Carb"),
     DESERT("Desert"),
     SAUCE("Sauce"),
+    CHINESE_FOOD("Chinese food")
 }
