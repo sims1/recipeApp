@@ -1104,7 +1104,7 @@
       ],
       "tags":[
          "BEEF",
-         "SOUP",
+         "SOUP"
       ],
       "cookingInstructions":"ground beef pan fry 4-5min, discard fat\t\t\t\t\t\t\t\t\t\t\tbutter, garlic, thyme, carrot, 3-4min, add beef and gravy mix, 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd broth concentrate, soy sauce, water, 10-12min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd quartered potato\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
