@@ -4,179 +4,246 @@
       "ingredients":[
          {
             "type":{
-                           "name":"Green Onion",
-                           "isMainIngredient":false
-                        },
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Potato"},
-            "description":"big potatoes",
-            "quantity":2,
-            "unit":"DEFAULT"
-         }
-      ],
-      "seasonings":[],
-      "tags":[
-         "VEGETABLE",
-         "CARB"
-      ],
-      "cookingInstructions":"Oil + green onion\nwhen fragrant, add potato shoots",
-      "_id":"GreenOnionPotatoShoots"
-   },
-   {
-      "name":"Kimchi Fried Rice",
-      "ingredients":[
-         {
-            "type":{"name": "Kimchi"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Rice"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Egg"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
-      ],
-      "seasonings":[      ],
-      "tags":[
-         "CARB"
-      ],
-      "cookingInstructions":"Oil + egg, fry put on side\nCut kimchi into dices\nFry rice without oil, when hot, add salt\nAdd cooked egg and kimchi dices",
-      "_id":"KimchiFriedRice"
-   },
-   {
-      "name":"Chicken noodle soup",
-      "ingredients":[
-         {
-            "type":{"name": "Onion"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Carrot"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Celery"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Chicken thigh"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Chicken broth", "isMainIngredient":false},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Pasta"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Lemon", "isMainIngredient":false},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         }
-      ],
-      "seasonings":[
-      ],
-      "tags":[
-         "MEAT_AND_VEGETABLE"
-      ],
-      "cookingInstructions":"Boil pasta, drain\nOil, onion, carrot, celery, 3-4min\nAdd chicken leg, 2min, broth cube, lots of water, simmer 18-22min\nShred chicken leg, put back, mix with pasta\nMay add lemon juice",
-      "_id":"Chickennoodlesoup"
-   },
-   {
-      "name":"Tuna macaroni casserole",
-      "ingredients":[
-         {
-            "type":{"name": "Macaroni"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Shallot"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Carrot"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Cauliflower"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Tuna"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name": "Green peas", "isMainIngredient":false},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-         "type":{"name": "All purpose flour"},
-            "description":null,
-            "quantity":1,
-            "unit":"DEFAULT"
-         },
-         {
-            "type":{"name":"Milk",
-                          "isMainIngredient":false},
+               "name":"Green Onion",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Mozzarella",
-                         "isMainIngredient":false
-                      },
+               "name":"Potato",
+               "isMainIngredient":true
+            },
+            "description":"big potatoes",
+            "quantity":2,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE",
+         "CARB"
+      ],
+      "cookingInstructions":"Oil + green onion\nwhen fragrant, add potato shoots",
+      "author":"Ling",
+      "_id":"GreenOnionPotatoShoots"
+   },
+   {
+      "name":"Kimchi Fried Rice",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Kimchi",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Rice",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Egg",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
-         "MEAT_AND_VEGETABLE"
+         "CARB"
+      ],
+      "cookingInstructions":"Oil + egg, fry put on side\nCut kimchi into dices\nFry rice without oil, when hot, add salt\nAdd cooked egg and kimchi dices",
+      "author":"Ling",
+      "_id":"KimchiFriedRice"
+   },
+   {
+      "name":"Chicken noodle soup",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Celery",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Chicken thigh",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Chicken broth",
+               "isMainIngredient":false
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pasta",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Lemon",
+               "isMainIngredient":false
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "CHICKEN",
+         "SOUP"
+      ],
+      "cookingInstructions":"Boil pasta, drain\nOil, onion, carrot, celery, 3-4min\nAdd chicken leg, 2min, broth cube, lots of water, simmer 18-22min\nShred chicken leg, put back, mix with pasta\nMay add lemon juice",
+      "author":"Ling",
+      "_id":"Chickennoodlesoup"
+   },
+   {
+      "name":"Tuna macaroni casserole",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Macaroni",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Shallot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Cauliflower",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Tuna",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Green peas",
+               "isMainIngredient":false
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"All purpose flour",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Milk",
+               "isMainIngredient":false
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mozzarella",
+               "isMainIngredient":false
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "SEAFOOD"
       ],
       "cookingInstructions":"Boil macaroni, and drain (dont let it stick to each other)\nOil, shallot, carrot, cauliflower, stir dry 3-5min, sp\nAdd tuna, green peas, 1-2 tbsp flour, stir fry for 1min\nAdd 250ml of milk, hand full of mozzarella, stir till cheese is melt\nPour it to a pot on top of macaroni, 425F, 10-12min",
+      "author":"Ling",
       "_id":"Tunamacaronicasserole"
    },
    {
@@ -184,17 +251,18 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Potato"
-                      },
+               "name":"Potato",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Garlic",
-                         "isMainIngredient":false
-                      },
+               "name":"Garlic",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -202,7 +270,9 @@
       ],
       "seasonings":[
          {
-            "type":{"name":"Butter"},
+            "type":{
+               "name":"Butter"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -212,6 +282,7 @@
          "CARB"
       ],
       "cookingInstructions":"steam potato slices and 1 garlic\nadd all spices and mash\n",
+      "author":"Ling",
       "_id":"MashedPotato"
    },
    {
@@ -219,42 +290,45 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Kimchi (韩国泡菜)"
-                      },
+               "name":"Kimchi (韩国泡菜)",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Soft Tofu"
-                      },
+               "name":"Soft Tofu",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                            "name":"Ground Pork"
-                         },
+               "name":"Ground Pork",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Garlic",
-                         "isMainIngredient":false
-                      },
+               "name":"Garlic",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Green Onion",
-                         "isMainIngredient":false
-                      },
+               "name":"Green Onion",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -262,19 +336,25 @@
       ],
       "seasonings":[
          {
-            "type":   {"name":"Seasame Oil(芝麻油)"},
+            "type":{
+               "name":"Seasame Oil(芝麻油)"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
-            "type":   {"name":"Soy Sauce"},
+            "type":{
+               "name":"Soy Sauce"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
-            "type": {"name":"Chili Powder"},
+            "type":{
+               "name":"Chili Powder"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -284,6 +364,7 @@
          "SOUP"
       ],
       "cookingInstructions":"Seasame oil + green onion + pork bits\nAdd onion dices + kimchi\nAdd minced garlic + salt + a bit of sugar + soy sauce + chili powder\nAdd water and soft tofu slices\nBoil for 5 min",
+      "author":"Ling",
       "_id":"Kimchitofusoup"
    },
    {
@@ -291,19 +372,22 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Ciabatta bread"
-                      },
+               "name":"Ciabatta bread",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
          "CARB"
       ],
       "cookingInstructions":"cut bread into small cubes\n450F, 5-7min\nor\nbroil, 4-5min",
+      "author":"Ling",
       "_id":"Croutons"
    },
    {
@@ -311,18 +395,22 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Chicken wing"
-                      },
+               "name":"Chicken wing",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
-      "seasonings":[],
+      "seasonings":[
+
+      ],
       "tags":[
          "CHICKEN"
       ],
       "cookingInstructions":"400F 40min",
+      "author":"Ling",
       "_id":"OrleansChickenWing"
    },
    {
@@ -330,25 +418,27 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Cantonese sausage(广东腊肠)"
-                      },
+               "name":"Cantonese sausage(广东腊肠)",
+               "isMainIngredient":true
+            },
             "description":"half package",
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Carrot"
-                      },
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
             "description":"half",
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Kernel corn(玉米粒)",
-                         "isMainIngredient":false
-                      },
+               "name":"Kernel corn(玉米粒)",
+               "isMainIngredient":false
+            },
             "description":"few",
             "quantity":1,
             "unit":"DEFAULT"
@@ -356,16 +446,20 @@
       ],
       "seasonings":[
          {
-            "type":   {"name":"Soy Sauce"},
+            "type":{
+               "name":"Soy Sauce"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
       "tags":[
+         "PORK",
          "CARB"
       ],
       "cookingInstructions":"Rehydrate dry mushrooms\n\nStir fry Cantonese sausage slices, drain fat\nStir fry Carrot dices + mushroom dices Kernel corn\nSteam sausage + carrot + corn + rice as usual",
+      "author":"Ling",
       "_id":"SausageFriedRice"
    },
    {
@@ -373,33 +467,36 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Basa"
-                      },
+               "name":"Basa",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Carrot"
-                      },
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Zucchini"
-                      },
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Coconut milk",
-                         "isMainIngredient":false
-                      },
+               "name":"Coconut milk",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -407,13 +504,17 @@
       ],
       "seasonings":[
          {
-            "type":   {"name":"Curry spice blend"},
+            "type":{
+               "name":"Curry spice blend"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
-            "type":   {"name":"Curry paste"},
+            "type":{
+               "name":"Curry paste"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -423,6 +524,7 @@
          "SEAFOOD"
       ],
       "cookingInstructions":"basa, curry spice blend, 3-4min per side\noil, carrots, 3-4min, zucchini, 1min, mild curry paste, 1 min\nadd coconut milk, water, sp, 8-10min\n(pour on rice)",
+      "author":"Ling",
       "_id":"Curryfish"
    },
    {
@@ -430,19 +532,22 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Salmon"
-                      },
+               "name":"Salmon",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
          "SEAFOOD"
       ],
       "cookingInstructions":"brush oil, 425F, 10-12min\nadd salt and pepper",
+      "author":"Ling",
       "_id":"Ovensalmon"
    },
    {
@@ -450,35 +555,36 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Chicken thigh"
-                      },
+               "name":"Chicken thigh",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Pickle mustard (酸芥菜)",
-                         "isMainIngredient":false
-                      },
+               "name":"Pickle mustard (酸芥菜)",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Small red chili (小米辣)",
-                         "isMainIngredient":false
-                      },
+               "name":"Small red chili (小米辣)",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Garlic",
-                         "isMainIngredient":false
-                      },
+               "name":"Garlic",
+               "isMainIngredient":false
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -486,7 +592,9 @@
       ],
       "seasonings":[
          {
-            "type":   {"name":"Soy Sauce"},
+            "type":{
+               "name":"Soy Sauce"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -496,6 +604,7 @@
          "CHICKEN"
       ],
       "cookingInstructions":"Oil + Small red chili dices\nwhen fragrant, add chicken thigh (5x25mm)\nwhen almost cooked, add soy sauce and pickle(minced)\n",
+      "author":"Ling",
       "_id":"PickleChicken"
    },
    {
@@ -503,19 +612,22 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Zucchini"
-                      },
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
          "VEGETABLE"
       ],
       "cookingInstructions":"450F 12min",
+      "author":"Ling",
       "_id":"ItalianZucchini"
    },
    {
@@ -523,8 +635,9 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Potato"
-                      },
+               "name":"Potato",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -532,7 +645,9 @@
       ],
       "seasonings":[
          {
-            "type":   {"name":"Black vinegar"},
+            "type":{
+               "name":"Black vinegar"
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -543,6 +658,7 @@
          "VEGETABLE"
       ],
       "cookingInstructions":"cook!",
+      "author":"Ling",
       "_id":"PotatoShoots"
    },
    {
@@ -550,8 +666,9 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Sweet potato"
-                      },
+               "name":"Sweet potato",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -564,6 +681,7 @@
          "CARB"
       ],
       "cookingInstructions":"using fork to poke holes on sweet potatoes\nput into cold oven\n425F 75min\nturn off oven, leave it in oven for another 30min\n",
+      "author":"Ling",
       "_id":"BakedSweetPotato"
    },
    {
@@ -571,19 +689,22 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Steak"
-                      },
+               "name":"Steak",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
          "BEEF"
       ],
       "cookingInstructions":"leave it out of fridge for 30min to warm up to room temperature\npat dry steak, add salt and pepper\n450F with cast iron pan\n3min one side, 3min the other side\n(medium rare 135-140 degrees)\n",
+      "author":"Ling",
       "_id":"OvenSteak"
    },
    {
@@ -591,27 +712,31 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Kimchi (韩国泡菜)"
-                      },
+               "name":"Kimchi (韩国泡菜)",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Egg"
-                      },
+               "name":"Egg",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":2,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
          "CARB"
       ],
       "cookingInstructions":"Steam rice (better use rice from fridge)\nStir fry egg\n\nNo oil, stir fry rice, when hot, add tiny bit of salt\nAdd kimchi and egg",
+      "author":"Ling",
       "_id":"KimchiEggFriedRice"
    },
    {
@@ -619,19 +744,22 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Potato"
-                      },
+               "name":"Potato",
+               "isMainIngredient":true
+            },
             "description":"choose yellow potatoes",
             "quantity":3,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
          "CARB"
       ],
       "cookingInstructions":"boil potatoes till fork can go through\nsmash the potatoes and brush oil on them\n400F 40min",
+      "author":"Ling",
       "_id":"Crispysmashedpotato"
    },
    {
@@ -639,17 +767,18 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Potato"
-                      },
+               "name":"Potato",
+               "isMainIngredient":true
+            },
             "description":"big potatoes",
             "quantity":2,
             "unit":"DEFAULT"
          },
          {
             "type":{
-                         "name":"Garlic",
-                         "isMainIngredient":false
-                      },
+               "name":"Garlic",
+               "isMainIngredient":false
+            },
             "description":"big potatoes",
             "quantity":2,
             "unit":"DEFAULT"
@@ -657,7 +786,9 @@
       ],
       "seasonings":[
          {
-            "type":   {"name":"Dry Chili"},
+            "type":{
+               "name":"Dry Chili"
+            },
             "description":null,
             "quantity":5,
             "unit":"DEFAULT"
@@ -668,6 +799,7 @@
          "CARB"
       ],
       "cookingInstructions":"Oil + garlic slices + dry chili halves\nwhen fragrant, add potato shoots",
+      "author":"Ling",
       "_id":"SpicyPotatoShoots"
    },
    {
@@ -675,8 +807,9 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Potato"
-                      },
+               "name":"Potato",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -689,6 +822,7 @@
          "CARB"
       ],
       "cookingInstructions":"cut potato into wedges\ntoss with oil and sp\n450F 26min\n",
+      "author":"Ling",
       "_id":"Potatowedge"
    },
    {
@@ -696,8 +830,9 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Sweet potato"
-                      },
+               "name":"Sweet potato",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
@@ -710,6 +845,7 @@
          "CARB"
       ],
       "cookingInstructions":"toss sweet potato wedge with oil\n450F 22-24min",
+      "author":"Ling",
       "_id":"Sweetpotatowedge"
    },
    {
@@ -717,19 +853,2157 @@
       "ingredients":[
          {
             "type":{
-                         "name":"Salmon"
-                      },
+               "name":"Salmon",
+               "isMainIngredient":true
+            },
             "description":null,
             "quantity":1,
             "unit":"DEFAULT"
          }
       ],
       "seasonings":[
+
       ],
       "tags":[
          "SEAFOOD"
       ],
       "cookingInstructions":"medium, 4-5min, flip, 2-3min",
+      "author":"Ling",
       "_id":"Panfriedsalmon"
+   },
+   {
+      "name":"Oven shrimp",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Shrimp",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Old bay seasoning"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":2,
+            "unit":"TABLESPOON"
+         }
+      ],
+      "tags":[
+         "SEAFOOD"
+      ],
+      "cookingInstructions":"2tbsp mayo, panko, old bay seasoning\n450F 12-14min",
+      "author":"Ling",
+      "_id":"Ovenshrimp"
+   },
+   {
+      "name":"Zucchini & onion",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"5-6min",
+      "author":"Ling",
+      "_id":"Zucchini&onion"
+   },
+   {
+      "name":"Lemon mayo dipping",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Lemon",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SAUCE"
+      ],
+      "cookingInstructions":"lemon juice, mayo, sp",
+      "author":"Ling",
+      "_id":"Lemonmayodipping"
+   },
+   {
+      "name":"Garlic bread",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Ciabatta bread",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Vegetable oil"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "CARB"
+      ],
+      "cookingInstructions":"garlic oil on bread\n450F 5-6mjn",
+      "author":"Ling",
+      "_id":"Garlicbread"
+   },
+   {
+      "name":"Ground beef soup",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Ground beef",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Gravy mix",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Broth concentrate",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Potato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Thyme"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Soy Sauce"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "BEEF",
+         "SOUP",
+      ],
+      "cookingInstructions":"ground beef pan fry 4-5min, discard fat\t\t\t\t\t\t\t\t\t\t\tbutter, garlic, thyme, carrot, 3-4min, add beef and gravy mix, 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd broth concentrate, soy sauce, water, 10-12min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd quartered potato\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Groundbeefsoup"
+   },
+   {
+      "name":"Oven quater potato",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Potato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "CARB"
+      ],
+      "cookingInstructions":"450F 25-28min",
+      "author":"Ling",
+      "_id":"Ovenquaterpotato"
+   },
+   {
+      "name":"Capers dressing",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Capers",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Lemon",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Italian herb spice blend"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Sugar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Vegetable oil"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SAUCE"
+      ],
+      "cookingInstructions":"Italian seasoning, sugar, lemon juice, oil, onion dices\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Capersdressing"
+   },
+   {
+      "name":"Salmon Salad",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Salmon",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Spinach",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "SEAFOOD"
+      ],
+      "cookingInstructions":"Salmon, Spinach, capers dressing, croutons\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"SalmonSalad"
+   },
+   {
+      "name":"Shrimp & vege",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Shrimp",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Corn",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pepper",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Lemon",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Old bay seasoning"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SEAFOOD",
+         "MEAT_AND_VEGETABLE"
+      ],
+      "cookingInstructions":"corn, onion, pepper, oil, old bay seasoning, 450F 8-10min\nadd shrimp with old bay seasoning, 2-4min, 450F\nbutter, garlic, lemon juice, pour on top",
+      "author":"Ling",
+      "_id":"Shrimp&vege"
+   },
+   {
+      "name":"Meatball spaghetti",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Spaghetti",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Sausage",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Shallot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Crushed tomato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Broth concentrate",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Spaghetti",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Spinach",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Parmesan",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Tomato sauce base"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "PORK"
+      ],
+      "cookingInstructions":"sausage + panko into balls, 400F 10-12min\noil, shallot 2-3min, garlic, tomato sauce base 1-2min, crushed tomato, broth concentrate, 6-8min\nadd spaghetti, spinach, meatballs, water, parmesan, 1min",
+      "author":"Ling",
+      "_id":"Meatballspaghetti"
+   },
+   {
+      "name":"Oven pepper & zucchini",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Pepper",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"oil, S&P\n450F, 12-15min",
+      "author":"Ling",
+      "_id":"Ovenpepper&zucchini"
+   },
+   {
+      "name":"Oven chicken breast",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Chicken breast",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mozzarella",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "CHICKEN"
+      ],
+      "cookingInstructions":"half chicken breast, mayo, panko\n4-5min per side\nsprinkle cheese, broil 2-3min",
+      "author":"Ling",
+      "_id":"Ovenchickenbreast"
+   },
+   {
+      "name":"Vinegar salad dressing",
+      "ingredients":[
+
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Dijon"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Balsamic vinegar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Sugar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Olive Oil"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SAUCE"
+      ],
+      "cookingInstructions":"",
+      "author":"Ling",
+      "_id":"Vinegarsaladdressing"
+   },
+   {
+      "name":"Lemon pepper shrimp",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Shrimp",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Lemon-pepper seasoning"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SEAFOOD"
+      ],
+      "cookingInstructions":"lemon-pepper seasoning, pan fry 2-3min",
+      "author":"Ling",
+      "_id":"Lemonpeppershrimp"
+   },
+   {
+      "name":"Green bean & cherry tomato",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Green bean",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Cherry tomato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Garlic salt"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Dill"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"Pan fry green bean, add a bit of water, 3-4min\nAdd cherry tomato, garlic, 3-4min\nAdd dry dill, garlic salt\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Greenbean&cherrytomato"
+   },
+   {
+      "name":"Crispy potatoes",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Potato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "CARB"
+      ],
+      "cookingInstructions":"Boil potato cubes, 10-12min\nDrain, oil, butter, pan fry 2-3min",
+      "author":"Ling",
+      "_id":"Crispypotatoes"
+   },
+   {
+      "name":"Onion, pepper & corn",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pepper",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Corn",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"onion, pepper, pan fry 3-4min\nadd corn 2min",
+      "author":"Ling",
+      "_id":"Onion,pepper&corn"
+   },
+   {
+      "name":"Shrimp chowder",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Potato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Shrimp",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Corn",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Chicken broth",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "SEAFOOD",
+         "MEAT_AND_VEGETABLE"
+      ],
+      "cookingInstructions":"Oil, carrot, garlic pan fry 2-3min\nadd small potato cubes 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd shrimp, corn, broth cube, water, 12-15min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Shrimpchowder"
+   },
+   {
+      "name":"Mashed potato",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Potato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "CARB"
+      ],
+      "cookingInstructions":"Boil potato slices & crushed garlic for 10-12min\nmash 2 tbsp water, butter, sp",
+      "author":"Ling",
+      "_id":"Mashedpotato"
+   },
+   {
+      "name":"Gravy",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Shallot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Gravy mix",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Chicken broth",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SAUCE"
+      ],
+      "cookingInstructions":"1 tbsp butter, shallot, gravy mic, 2/3cup water, chicken broth, boil till thickens thickens\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Gravy"
+   },
+   {
+      "name":"Oven chicken & zucchini",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Chicken breast",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Dijon"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "CHICKEN",
+         "MEAT_AND_VEGETABLE"
+      ],
+      "cookingInstructions":"Chicken breast, dijon, panko, pan fry 1-2min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nzucchini, oil, sp, 10-14min 450F with chicken\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Ovenchicken&zucchini"
+   },
+   {
+      "name":"Beef dirty rice",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Ground beef",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pepper",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Jalapeno",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Rice",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Cajun spice blend"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Beef broth"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Soy Sauce"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "BEEF"
+      ],
+      "cookingInstructions":"Oil, ground beef, onions, peppers, jalapeno, sp, pan fry 3-5min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAdd cajun spice blend, garlic, 1 min, add beef broth, soy sauce, 1.4 cup water\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAdd steamed rice, 2-3min, no stir\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAnother 2-3min, stir\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Beefdirtyrice"
+   },
+   {
+      "name":"Store-bought garlic bread",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Garlic bread",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "CARB"
+      ],
+      "cookingInstructions":"400F 6-8min",
+      "author":"Ling",
+      "_id":"Store-boughtgarlicbread"
+   },
+   {
+      "name":"Italian wedding soup",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Ground Pork",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Chicken broth",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Spinach",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Parmesan",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "PORK"
+      ],
+      "cookingInstructions":"Ground pork, s&p, make small meat balls\nOil, meatball, pan fry 8 min, set aside\nOil, onion, carrot, pan fry 2-3 min\nAdd chicken broth, lots of water, couscous\nBoil, add meatball, 10-12min\nAdd spinach\nAdd parmesan\n",
+      "author":"Ling",
+      "_id":"Italianweddingsoup"
+   },
+   {
+      "name":"Chicken thigh burger",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Chicken thigh",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Cabbage",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Burger bun",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Balsamic vinegar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mustard"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Sugar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "CHICKEN"
+      ],
+      "cookingInstructions":"chicken thigh 450F, 12-14min\nmix cabbage, vinegar, mayo, mustard, sugar\ntop of the rack, buns 2min, butter\nstack together",
+      "author":"Ling",
+      "_id":"Chickenthighburger"
+   },
+   {
+      "name":"Oven zucchini & onion",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"oil, sp\t450F, 12-14min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Ovenzucchini&onion"
+   },
+   {
+      "name":"Pan-fried basa",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Basa",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "SEAFOOD"
+      ],
+      "cookingInstructions":"oil, 3-4min one side, 2-3min the other side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd garlic, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Pan-friedbasa"
+   },
+   {
+      "name":"Oven veggies",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"zucchini, onions, carrots, oil, sp\n450F, 14-16min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Ovenveggies"
+   },
+   {
+      "name":"Beef & Vege Bowl",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Rice",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Ground beef",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pepper",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Green Peas",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Tumeric"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Beef broth"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "BEEF"
+      ],
+      "cookingInstructions":"Steam rice with tumeric spice blend\nsauce -> mayo, garlic, water, sp\noil, ground beef, pan fry till no pink, discard fat, sp\nadd peppers, peas, beef broth, water, 4-6min",
+      "author":"Ling",
+      "_id":"Beef&VegeBowl"
+   },
+   {
+      "name":"Pan-fry basa",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Ginger",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Basa",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SEAFOOD"
+      ],
+      "cookingInstructions":"butter, ginger, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nbasa, pan fry 3-4min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Pan-frybasa"
+   },
+   {
+      "name":"Beef burger",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Coleslaw",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pickle",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Ground beef",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Burger bun",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"White vinegar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Sugar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic salt"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Ketchup"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "BEEF"
+      ],
+      "cookingInstructions":"coleslaw, pickle brine, white vinegar, water, sugar in wok, 2-3min till liquid is absorbed, fridge to cool\nground beef, breadcrumbs, garlic salt, mix to meat patty, 5-6min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nsauce -> mayo, ketchup, chopped pickle\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nbuns, butter, 450F, 3-4min\nstack together\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Beefburger"
+   },
+   {
+      "name":"Beef burger 2",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Ground beef",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mozzarella",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Burger bun",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Tomato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Italian herb spice blend"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pesto"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "BEEF"
+      ],
+      "cookingInstructions":"ground beef, garlic, breadcrumb spice blend, italian herb spice blend, sp, 3-5min per side\nadd cheese, remove from heat and cover\nbuns, 450F, 3-4min toast\ntomato 450F, 12-14min\npesto, mayo, stack together",
+      "author":"Ling",
+      "_id":"Beefburger2"
+   },
+   {
+      "name":"Lemon shrimp pasta",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Zucchini",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Shallot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Shrimp",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Lemon",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pasta",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Butter"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SEAFOOD"
+      ],
+      "cookingInstructions":"oil, zucchini, shallots, 4-5min, sp, add shrimp and garlic, 2-3min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd lemon juice, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd boiled pasta and butter\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Lemonshrimppasta"
+   },
+   {
+      "name":"Pan-fried pepper",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Pepper",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"pan fry 2-4min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Pan-friedpepper"
+   },
+   {
+      "name":"Pan-fried pork",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Pork",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "PORK"
+      ],
+      "cookingInstructions":"oil, 4-6min per side, s&p",
+      "author":"Ling",
+      "_id":"Pan-friedpork"
+   },
+   {
+      "name":"Tomato chutney",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Cherry tomato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Balsamic vinegar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Sugar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"oil, onion, cherry tomato, vinegar, sugar, 3-4min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nwater, 2-5min, sp\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Tomatochutney"
+   },
+   {
+      "name":"Pan-fried basa 2",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Capers",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Lemon",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Basa",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Mediterranean Seasoning"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "SEAFOOD"
+      ],
+      "cookingInstructions":"basa, mayo, meditterean spice blend, panko, 3-4min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nsauce -> mayo, capers, lemon juice\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Pan-friedbasa2"
+   },
+   {
+      "name":"Parmasan chicken",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Chicken breast",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Parmesan",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Lemon",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Mayo"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Panko"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pepper"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "CHICKEN"
+      ],
+      "cookingInstructions":"chicken breast coated with mayo and panko, 1-2min per side\nBaking sheet, add peppers, add chicken sprinkled with parmesan, 450F, 10-14min\nsauce -> mayo, garlic, lemon juice, sp\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Parmasanchicken"
+   },
+   {
+      "name":"Carb vege",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Potato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Butternut squash",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+
+      ],
+      "tags":[
+         "VEGETABLE",
+         "CARB"
+      ],
+      "cookingInstructions":"potato, onion, carrot, butternut squash, 450F, 20-22min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Carbvege"
+   },
+   {
+      "name":"Sour vege",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Pepper",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Cherry tomato",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Garlic",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Balsamic vinegar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Sugar"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "VEGETABLE"
+      ],
+      "cookingInstructions":"Onion, peppers, pan fry 8-10min, cherry tomatoes, garlic, 3-5min, off heat vinegar, sugar\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+      "author":"Ling",
+      "_id":"Sourvege"
    }
 ]
