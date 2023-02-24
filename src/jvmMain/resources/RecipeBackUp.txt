@@ -1133,7 +1133,7 @@
          "SOUP",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"ground beef pan fry 4-5min, discard fat\nbutter, garlic, thyme, carrot, 3-4min, add beef and gravy mix, 1-2min\nadd broth concentrate, soy sauce, water, 10-12min\nadd quartered potato",
+      "cookingInstructions":"ground beef pan fry 4-5min, discard fat\t\t\t\t\t\t\t\t\t\t\tbutter, garlic, thyme, carrot, 3-4min, add beef and gravy mix, 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd broth concentrate, soy sauce, water, 10-12min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd quartered potato\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Groundbeefsoup"
    },
@@ -1222,7 +1222,7 @@
          "SAUCE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"Italian seasoning, sugar, lemon juice, oil, onion dices",
+      "cookingInstructions":"Italian seasoning, sugar, lemon juice, oil, onion dices\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Capersdressing"
    },
@@ -1255,7 +1255,7 @@
          "SEAFOOD",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"Salmon, Spinach, capers dressing, croutons",
+      "cookingInstructions":"Salmon, Spinach, capers dressing, croutons\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"SalmonSalad"
    },
@@ -1666,7 +1666,7 @@
          "VEGETABLE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"Pan fry green bean, add a bit of water, 3-4min\nAdd cherry tomato, garlic, 3-4min\nAdd dry dill, garlic salt",
+      "cookingInstructions":"Pan fry green bean, add a bit of water, 3-4min\nAdd cherry tomato, garlic, 3-4min\nAdd dry dill, garlic salt\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Greenbean&cherrytomato"
    },
@@ -1801,7 +1801,7 @@
          "SEAFOOD",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"Oil, carrot, garlic pan fry 2-3min\nadd small potato cubes 1-2min\nadd shrimp, corn, broth cube, water, 12-15min",
+      "cookingInstructions":"Oil, carrot, garlic pan fry 2-3min\nadd small potato cubes 1-2min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd shrimp, corn, broth cube, water, 12-15min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Shrimpchowder"
    },
@@ -1890,7 +1890,7 @@
          "SAUCE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"1 tbsp butter, shallot, gravy mic, 2/3cup water, chicken broth, boil till thickens thickens",
+      "cookingInstructions":"1 tbsp butter, shallot, gravy mic, 2/3cup water, chicken broth, boil till thickens thickens\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Gravy"
    },
@@ -1938,7 +1938,7 @@
          "CHICKEN",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"Chicken breast, dijon, panko, pan fry 1-2min per side\nzucchini, oil, sp, 10-14min 450F with chicken",
+      "cookingInstructions":"Chicken breast, dijon, panko, pan fry 1-2min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nzucchini, oil, sp, 10-14min 450F with chicken\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Ovenchicken&zucchini"
    },
@@ -2030,7 +2030,7 @@
          "BEEF",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"Oil, ground beef, onions, peppers, jalapeno, sp, pan fry 3-5min\nAdd cajun spice blend, garlic, 1 min, add beef broth, soy sauce, 1.4 cup water\nAdd steamed rice, 2-3min, no stir\nAnother 2-3min, stir",
+      "cookingInstructions":"Oil, ground beef, onions, peppers, jalapeno, sp, pan fry 3-5min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAdd cajun spice blend, garlic, 1 min, add beef broth, soy sauce, 1.4 cup water\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAdd steamed rice, 2-3min, no stir\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nAnother 2-3min, stir\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Beefdirtyrice"
    },
@@ -2168,7 +2168,7 @@
          "VEGETABLE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"oil, sp\t450F, 12-14min",
+      "cookingInstructions":"oil, sp\t450F, 12-14min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Ovenzucchini&onion"
    },
@@ -2201,7 +2201,7 @@
          "SEAFOOD",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"oil, 3-4min one side, 2-3min the other side\nadd garlic, 1min",
+      "cookingInstructions":"oil, 3-4min one side, 2-3min the other side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd garlic, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Pan-friedbasa"
    },
@@ -2243,7 +2243,7 @@
          "VEGETABLE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"zucchini, onions, carrots, oil, sp\n450F, 14-16min",
+      "cookingInstructions":"zucchini, onions, carrots, oil, sp\n450F, 14-16min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Ovenveggies"
    },
@@ -2472,7 +2472,7 @@
          "BEEF",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"coleslaw, pickle brine, white vinegar, water, sugar in wok, 2-3min till liquid is absorbed, fridge to cool\nground beef, breadcrumbs, garlic salt, mix to meat patty, 5-6min per side\nsauce -> mayo, ketchup, chopped pickle\nbuns, butter, 450F, 3-4min\nstack together",
+      "cookingInstructions":"coleslaw, pickle brine, white vinegar, water, sugar in wok, 2-3min till liquid is absorbed, fridge to cool\nground beef, breadcrumbs, garlic salt, mix to meat patty, 5-6min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nsauce -> mayo, ketchup, chopped pickle\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nbuns, butter, 450F, 3-4min\nstack together\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Beefburger"
    },
@@ -2639,7 +2639,7 @@
          "SEAFOOD",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"oil, zucchini, shallots, 4-5min, sp, add shrimp and garlic, 2-3min\nadd lemon juice, 1min\nadd boiled pasta and butter",
+      "cookingInstructions":"oil, zucchini, shallots, 4-5min, sp, add shrimp and garlic, 2-3min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd lemon juice, 1min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nadd boiled pasta and butter\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Lemonshrimppasta"
    },
@@ -2663,7 +2663,7 @@
          "VEGETABLE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"pan fry 2-4min",
+      "cookingInstructions":"pan fry 2-4min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Pan-friedpepper"
    },
@@ -2735,7 +2735,7 @@
          "VEGETABLE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"oil, onion, cherry tomato, vinegar, sugar, 3-4min\nwater, 2-5min, sp",
+      "cookingInstructions":"oil, onion, cherry tomato, vinegar, sugar, 3-4min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nwater, 2-5min, sp\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Tomatochutney"
    },
@@ -2800,7 +2800,7 @@
          "SEAFOOD",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"basa, mayo, meditterean spice blend, panko, 3-4min per side\nsauce -> mayo, capers, lemon juice",
+      "cookingInstructions":"basa, mayo, meditterean spice blend, panko, 3-4min per side\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nsauce -> mayo, capers, lemon juice\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Pan-friedbasa2"
    },
@@ -2874,7 +2874,7 @@
          "CHICKEN",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"chicken breast coated with mayo and panko, 1-2min per side\nBaking sheet, add peppers, add chicken sprinkled with parmesan, 450F, 10-14min\nsauce -> mayo, garlic, lemon juice, sp",
+      "cookingInstructions":"chicken breast coated with mayo and panko, 1-2min per side\nBaking sheet, add peppers, add chicken sprinkled with parmesan, 450F, 10-14min\nsauce -> mayo, garlic, lemon juice, sp\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Parmasanchicken"
    },
@@ -2926,7 +2926,7 @@
          "CARB",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"potato, onion, carrot, butternut squash, 450F, 20-22min",
+      "cookingInstructions":"potato, onion, carrot, butternut squash, 450F, 20-22min\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Carbvege"
    },
@@ -2992,8 +2992,119 @@
          "VEGETABLE",
          "WESTERN_FOOD"
       ],
-      "cookingInstructions":"Onion, peppers, pan fry 8-10min, cherry tomatoes, garlic, 3-5min, off heat vinegar, sugar",
+      "cookingInstructions":"Onion, peppers, pan fry 8-10min, cherry tomatoes, garlic, 3-5min, off heat vinegar, sugar\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
       "author":"Ling",
       "_id":"Sourvege"
+   },
+   {
+      "name":"Italian wedding soup ",
+      "ingredients":[
+         {
+            "type":{
+               "name":"Parmesan",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Ground Pork",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Egg",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Onion",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Carrot",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Corn",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Chicken broth",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Macaroni",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Spinach",
+               "isMainIngredient":true
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "seasonings":[
+         {
+            "type":{
+               "name":"Corn Starch"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         },
+         {
+            "type":{
+               "name":"Italian herb spice blend"
+            },
+            "description":null,
+            "quantity":1,
+            "unit":"DEFAULT"
+         }
+      ],
+      "tags":[
+         "PORK",
+         "SOUP"
+      ],
+      "cookingInstructions":"Ground pork, add an egg, a bit of corn starch, a bit of Italian seasoning, s&p, make small meat balls\nOil, meatball, pan fry 8 min, set aside\nOil, onion, carrot, corn, pan fry 2-3 min\nAdd chicken broth, lots of water, macaroni\nBoil, add meatball, 10-12min\nAdd spinach\nAdd parmesan\n",
+      "author":"Ling",
+      "_id":"Italianweddingsoup"
    }
 ]
